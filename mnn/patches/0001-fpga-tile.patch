@@ -1,0 +1,47 @@
+--- a/source/backend/cpu/CPUMatMul.cpp
++++ b/source/backend/cpu/CPUMatMul.cpp
+@@ -8,6 +8,9 @@
+ 
+ #include <limits>
+ #include "CPUMatMul.hpp"
++#ifdef MNN_FPGA_ENABLED
++#include "fpga_bridge.hpp"
++#endif
+ #include "CPUBackend.hpp"
+ #include "math/Matrix.hpp"
+ #include "compute/CommonOptFunction.h"
+@@ -161,6 +164,22 @@
+     if (inputs.size() > 2) {
+         biasPtr = inputs[2]->host<float>();
+     }
++#ifdef MNN_FPGA_ENABLED
++    // Deliberately narrow: two dense row-major FP32 16x16 inputs, no bias.
++    auto denseTile = [](const Tensor* t) {
++        return t->dimensions() == 2 && t->length(0) == 16 && t->length(1) == 16 &&
++               t->stride(0) == 16 && t->stride(1) == 1 &&
++               t->getType().code == halide_type_float && t->getType().bits == 32 &&
++               t->getType().lanes == 1;
++    };
++    if (inputs.size() == 2 && outputs.size() == 1 &&
++        !mTransposeA && !mTransposeB && mTransposeC &&
++        static_cast<CPUBackend*>(backend())->functions()->bytes == 4 &&
++        denseTile(inputs[0]) && denseTile(inputs[1]) && denseTile(outputs[0]) &&
++        mnn_fpga_try_tile(APtr, BPtr, CPtr)) {
++        return NO_ERROR;
++    }
++#endif
+     execute(APtr, BPtr, CPtr, biasPtr);
+     return NO_ERROR;
+ }
+--- a/source/backend/cpu/CMakeLists.txt
++++ b/source/backend/cpu/CMakeLists.txt
+@@ -6,6 +6,9 @@
+ FILE(GLOB MNN_CPU_SRC ${CMAKE_CURRENT_LIST_DIR}/*.cpp ${CMAKE_CURRENT_LIST_DIR}/*.h ${CMAKE_CURRENT_LIST_DIR}/*.hpp ${CMAKE_CURRENT_LIST_DIR}/compute/*)
+ endif()
+ add_library(MNNCPU OBJECT ${MNN_CPU_SRC})
++if(MNN_FPGA_ROOT)
++    include("${MNN_FPGA_ROOT}/mnn/fpga.cmake")
++endif()
+ if (MNN_PIPELINE_PROFILE)
+     target_compile_options(MNNCPU PRIVATE -DMNN_PIPELINE_PROFILE)
+ endif()

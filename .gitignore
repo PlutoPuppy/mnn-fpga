@@ -1,0 +1,15 @@
+/build/
+/mnn/vendor/
+__pycache__/
+/platform/db/
+/platform/incremental_db/
+/platform/output_files/
+/platform/generated/
+*.qws
+/sw/driver/*.o
+/sw/driver/*.ko
+/sw/driver/*.mod*
+/sw/driver/.*.cmd
+/sw/driver/Module.symvers
+/sw/driver/modules.order
+/sw/driver/.tmp_versions/

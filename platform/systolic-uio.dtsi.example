@@ -1,0 +1,12 @@
+// Example ONLY: include in a board DTS whose root uses one address cell and
+// one size cell. Confirm the parent cell counts before using this reg encoding.
+// Assumes the accelerator has offset 0 in the lightweight HPS-to-FPGA window.
+// Change the unit address AND reg when Platform Designer assigns another offset.
+// This node exposes MMIO; it does NOT program the FPGA or enable the bridge.
+/ {
+    systolic_mmio: accelerator@ff200000 {
+        compatible = "mnn,systolic-mmio-1.0";
+        reg = <0xff200000 0x1000>;
+        status = "okay";
+    };
+};
