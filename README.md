@@ -1,7 +1,7 @@
 # mnn-fpga
 Explore communication for MNN on HPS with FPGA fabric on DE1-SOC
 
-[View full TinyViT graph](docs/tinyvit-graph.svg)
+[View full TinyViT graph](docs/tiny-vit.mnn.svg)
 
 build two connections:
 1. HPS ↔ FPGA: a hardware interface and Linux software that can submit matrix multiplications.
