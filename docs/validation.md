@@ -1,5 +1,62 @@
 # Validation record
 
+## DSP capacity fix, 2026-10-12
+
+The user's subsequent GUI compilation reached fitting. Its report requested
+**174 DSP blocks on a device with 87**, with 15,018 / 32,070 ALMs (47%).
+Fitter errors 184036 and 11802 identify DSP capacity/placement as the blocker.
+The old report summary is preserved at `build/quartus-jtag/pre-8x8-fit.summary`.
+
+The MMIO controller now uses an 8x8 physical array (64 PEs) for four output
+quadrants, each reducing over all 16 k values. The external 16x16 operation,
+numeric format and register ABI are unchanged. Job latency is now 384 clocks;
+the host smoke tests and timing documentation have been updated. This reduces
+PE count by 75%; actual DSP mapping and timing still require a new fitter run.
+
+- Platform Designer regeneration: pass, updated RTL copied into synthesis files.
+- Revised RTL/testbench compilation with Questa: pass, zero errors.
+- Updated Python/Tcl host tests: pass, 5 tests.
+- Full command-line compilation of revised RTL: blocked by the same internal
+  QSYN pipe-opening error; see `build/quartus-jtag/compile-8x8.log`. Recompile
+  the regenerated QPF through the user's working GUI flow to check fit/timing.
+- Historical 304-clock simulation results below apply to the former design.
+- Revised RTL execution and final fitting/timing are not yet established.
+
+## Windows Quartus integration, 2026-10-12
+
+The supplied `tinyvit.qpf` targets `5CSEMA5F31C6` and contains DE1-SoC pin
+assignments, but has no HPS system. Its top assignment is `tinyvit` while
+`tinyvit.v` defines `bram_2_2`. The new build script derives a JTAG project
+inside the writable repository, reusing the device and clock/key/LED pins.
+The parent project was not modified.
+
+| Check | Actual result |
+|---|---|
+| Installed Quartus | 23.1std.1 Build 993, `C:/intelFPGA_lite/23.1std/quartus` |
+| Component catalog | Fixed incorrect `qsys` component package and global `add_fileset_file` use; clock/reset/Avalon interfaces now load |
+| Platform Designer creation and synthesis HDL generation | Pass; 15 modules, 29 files, zero generation warnings/errors |
+| Derived project | Created at `build/quartus-jtag/tinyvit_jtag.qpf`, top `tinyvit_jtag`, 50 MHz constraint, supplied board pins |
+| Quartus full compilation | Failed in synthesis: internal QSYN error at `qsyn_cmd.cpp:1539`, `FAILED at opening pipe ul_pipertl...`; repeated with one worker |
+| Fit, utilization, timing closure, `.sof` | Not obtained; synthesis failure prevents later stages |
+| Questa RTL/testbench compilation | Pass, zero errors; two input-port-kind warnings from reused array |
+| Questa RTL execution | Not run; `vsim` cannot initialize its licensing environment |
+| Tcl host test against independent Python MMIO model | Pass: 5 tests, covering 12 tiles and detection of wrong results, cycle count, device error and invalid input |
+| Programmer enumeration | `quartus_pgm -l`: no JTAG hardware available |
+| Physical FPGA matrix multiplication | Not run; no connected cable or successfully built bitstream |
+| MNN/HPS execution in this session | Not run; existing MNN prototype unchanged |
+
+Generated logs are retained under `build/quartus-jtag/`, including
+`gemm_jtag/gemm_jtag_generation.rpt` and `compile-single.log`. The simulator
+transcript is under `build/questa/`. Host tests do not establish RTL correctness
+or hardware execution. The Quartus pipe error is an internal tool/runtime
+failure; its underlying cause has not been established. Compile the generated
+QPF in the local Quartus GUI or rerun `platform/build-jtag.ps1` in a working
+tool environment, then check fitting and timing before programming.
+
+See [JTAG bring-up](jtag-bringup.md) for reproducible build and board-test steps.
+
+## Original implementation record
+
 The following checks were run during the initial implementation. No physical
 DE1-SoC was connected to this environment.
 

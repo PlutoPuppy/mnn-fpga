@@ -1,4 +1,5 @@
-// Fixed 16x16 signed INT8 GEMM, INT32 output. Avalon address is a WORD index.
+// Fixed 16x16 signed INT8 GEMM, using an 8x8 array for four output quadrants.
+// INT32 output. Avalon address is a WORD index; the host ABI stays 16x16.
 // See docs/register-map.md. All logic uses clk; reset is synchronous active-high.
 module systolic_mmio (
     input  logic        clk,
@@ -17,11 +18,14 @@ module systolic_mmio (
     logic signed [7:0] a_mem [0:255];
     logic signed [7:0] b_mem [0:255];
     logic signed [31:0] c_mem [0:255];
-    logic signed [7:0] a_left [0:15];
-    logic signed [7:0] b_top [0:15];
-    wire signed [31:0] result [0:15][0:15];
-    logic [5:0] cycle;
-    logic [7:0] store_index;
+    logic signed [7:0] a_left [0:7];
+    logic signed [7:0] b_top [0:7];
+    wire signed [31:0] result [0:7][0:7];
+    logic [4:0] cycle;
+    logic [5:0] store_index;
+    logic [1:0] quadrant; // bit 1: output row half; bit 0: output column half
+    wire [7:0] output_index = {quadrant[1], store_index[5:3],
+                               quadrant[0], store_index[2:0]};
     logic done, error;
     logic [31:0] cycles, scratch;
     wire busy = state != IDLE;
@@ -29,20 +33,20 @@ module systolic_mmio (
     wire abort_job = control_write && avs_writedata[2];
     assign avs_waitrequest = 1'b0;
 
-    // Row i and column j are delayed i and j cycles respectively.
-    // 46 RUN edges cover t=0..45; the last product is at 15+15+15.
+    // Each quadrant reduces over all 16 k values, with local lane delays.
+    // 30 RUN edges cover t=0..29; the last product is at 15+7+7.
     always_comb begin
-        for (int lane = 0; lane < 16; lane++) begin
+        for (int lane = 0; lane < 8; lane++) begin
             a_left[lane] = '0;
             b_top[lane] = '0;
             if (state == RUN && int'(cycle) >= lane && int'(cycle) < lane + 16) begin
-                a_left[lane] = a_mem[lane*16 + int'(cycle)-lane];
-                b_top[lane] = b_mem[(int'(cycle)-lane)*16 + lane];
+                a_left[lane] = a_mem[(int'(quadrant[1])*8+lane)*16 + int'(cycle)-lane];
+                b_top[lane] = b_mem[(int'(cycle)-lane)*16 + int'(quadrant[0])*8+lane];
             end
         end
     end
 
-    systolic_array #(.N(16), .DATA_W(8), .ACC_W(32)) array_inst (
+    systolic_array #(.N(8), .DATA_W(8), .ACC_W(32)) array_inst (
         .clk(clk), .reset(reset), .clear(state == CLEAR || abort_job),
         .a_left(a_left), .b_top(b_top), .result(result)
     );
@@ -77,6 +81,7 @@ module systolic_mmio (
             state <= IDLE;
             cycle <= 0;
             store_index <= 0;
+            quadrant <= 0;
             done <= 0;
             error <= 0;
             cycles <= 0;
@@ -87,14 +92,16 @@ module systolic_mmio (
                 IDLE: ;
                 CLEAR: begin cycle <= 0; state <= RUN; end
                 RUN: begin
-                    if (cycle == 45) state <= DRAIN;
+                    if (cycle == 29) state <= DRAIN;
                     else cycle <= cycle + 1'b1;
                 end
                 DRAIN: begin store_index <= 0; state <= STORE; end
                 STORE: begin
-                    c_mem[store_index] <= result[store_index[7:4]][store_index[3:0]];
-                    if (store_index == 255) begin state <= IDLE; done <= 1; end
-                    else store_index <= store_index + 1'b1;
+                    c_mem[output_index] <= result[store_index[5:3]][store_index[2:0]];
+                    if (store_index == 63) begin
+                        if (quadrant == 3) begin state <= IDLE; done <= 1; end
+                        else begin quadrant <= quadrant + 1'b1; state <= CLEAR; end
+                    end else store_index <= store_index + 1'b1;
                 end
                 default: begin state <= IDLE; error <= 1; end
             endcase
@@ -106,6 +113,7 @@ module systolic_mmio (
                         if (busy) error <= 1;
                         else begin
                             state <= CLEAR;
+                            quadrant <= 0;
                             done <= 0;
                             error <= 0;
                             cycles <= 0;

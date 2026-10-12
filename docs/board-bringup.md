@@ -1,5 +1,9 @@
 # DE1-SoC board bring-up
 
+For the supplied FPGA-only `tinyvit.qpf`, first use
+[JTAG matrix bring-up](jtag-bringup.md). The steps below apply when a working
+HPS/DDR base system and Linux image are available.
+
 Target: Cyclone V `5CSEMA5F31C6N`, Quartus Prime Lite 23.1std. Start from your
 working DE1-SoC HPS project or the matching Terasic reference project, keeping
 its DDR, pin, clock, and boot configuration. Those settings are not contained
@@ -26,8 +30,9 @@ in the supplied systolic module.
 8. Exclude `rtl/legacy/systolic_16by16.sv`; it defines duplicate PE/array
    modules and a different top level.
 9. Run synthesis, fitting and TimeQuest. Inspect DSP/ALM/register utilization,
-   inferred memories, unconstrained paths, and achieved frequency. A 256-PE
-   design is not guaranteed to fit or close timing until these checks pass.
+   inferred memories, unconstrained paths, and achieved frequency. The current
+   64-PE array tiles the 16x16 output into four quadrants to reduce DSP use;
+   fitting and timing must still be checked.
 
 No ready-to-program `.qsf`, `.qsys`, pin assignments or bitstream are included.
 Save your selected base project into `platform/` and preserve its actual
@@ -90,7 +95,7 @@ image. Deploy an executable compatible with your image.
 ```
 
 The test checks ID/version/format, scratch/operand readback, and 12 matrix
-pairs. All outputs must match. Each job reports 304 accelerator clocks. The
+pairs. All outputs must match. Each job reports 384 accelerator clocks. The
 legacy LED demo is not involved.
 
 If ID is wrong, inspect bridge, address, FPGA image, clock and reset. For wrong

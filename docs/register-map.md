@@ -56,18 +56,33 @@ All clients must cooperate. `RegisterIo`/`gemm` alone are not thread-safe.
 
 ## Array timing
 
-The original PE and array datapath are reused. At RUN cycle `t`, left lane `i`
-gets `A[i,t-i]`, top lane `j` gets `B[t-j,j]`, or zero outside bounds. Reduction
-index `k` reaches PE `(i,j)` at `t=k+i+j`. The last product is at t=45.
+The original PE and parameterized array datapath are reused with **8x8 physical
+PEs**, computing four output quadrants in order: top-left, top-right,
+bottom-left, bottom-right. Each quadrant uses all 16 reduction terms. The
+host still submits two complete 16x16 inputs and receives one 16x16 output;
+no software tiling or partial-sum accumulation is required.
+
+For quadrant row half `qr` and column half `qc`, at RUN cycle `t`, local left
+lane `i` gets `A[8*qr+i,t-i]`, and local top lane `j` gets `B[t-j,8*qc+j]`,
+or zero outside the valid k range. Local lanes are 0..7. Reduction index `k`
+reaches PE `(i,j)` at `t=k+i+j`; the last product is at t=29.
+
+Each quadrant takes:
 
 - CLEAR: 1 clock, clears accumulators and inter-PE registers.
-- RUN: 46 clocks, t=0 through 45 inclusive.
+- RUN: 30 clocks, t=0 through 29 inclusive.
 - DRAIN: 1 clock with zero external operands.
-- STORE: 256 clocks, one C element per clock.
+- STORE: 64 clocks, one C element per clock in its global row-major location.
 
-CYCLES reads **304** after success, excluding HPS upload/download. DONE is
-asserted on the edge storing the last output. Zero feed outside RUN avoids
-unintended accumulation between jobs.
+CYCLES reads **384 = 4 * (1+30+1+64)** after success, excluding HPS
+upload/download. BUSY remains set across quadrant transitions; DONE is only
+asserted on the edge storing the last output of the fourth quadrant. Zero feed
+outside RUN avoids unintended accumulation between quadrants or jobs.
+
+The former 16x16 physical implementation took 304 clocks but required 174 DSP
+blocks in the supplied device's fitter report, exceeding its 87-block capacity.
+Register addresses, ABI version, numeric format, input/output shapes and
+arithmetic are unchanged. Rebuild smoke tests to use the new cycle count.
 
 The original LED controller registers `clear_array` one phase late, overlapping
 the first RUN edge, and stays in DONE until reset. The original file is

@@ -1,18 +1,20 @@
 # Quartus Prime Lite 23.1std / Cyclone V. Open in Platform Designer to validate.
-package require -exact qsys 23.1
+package require -exact sopc 11.0
 set_module_property NAME systolic_mmio
 set_module_property VERSION 1.0
 set_module_property DISPLAY_NAME "16x16 INT8 systolic GEMM"
 set_module_property GROUP "MNN FPGA"
 set_module_property INSTANTIATE_IN_SYSTEM_MODULE true
-set_module_property EDITABLE true
+set_module_property EDITABLE false
 set_module_property OPAQUE_ADDRESS_MAP true
 
-add_fileset QUARTUS_SYNTH QUARTUS_SYNTH "" ""
+add_fileset QUARTUS_SYNTH QUARTUS_SYNTH synthesis_files ""
 set_fileset_property QUARTUS_SYNTH TOP_LEVEL systolic_mmio
-add_fileset_file systolic_pe.sv SYSTEM_VERILOG PATH ../rtl/systolic_pe.sv
-add_fileset_file systolic_array.sv SYSTEM_VERILOG PATH ../rtl/systolic_array.sv
-add_fileset_file systolic_mmio.sv SYSTEM_VERILOG PATH ../rtl/systolic_mmio.sv TOP_LEVEL_FILE
+proc synthesis_files {entity} {
+    add_fileset_file systolic_pe.sv SYSTEM_VERILOG PATH ../rtl/systolic_pe.sv
+    add_fileset_file systolic_array.sv SYSTEM_VERILOG PATH ../rtl/systolic_array.sv
+    add_fileset_file systolic_mmio.sv SYSTEM_VERILOG PATH ../rtl/systolic_mmio.sv TOP_LEVEL_FILE
+}
 
 add_interface clock clock end
 add_interface_port clock clk clk Input 1

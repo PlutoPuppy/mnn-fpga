@@ -5,6 +5,7 @@
 
 namespace fpga {
 constexpr unsigned N = 16, Elements = N * N, Span = 4096;
+constexpr unsigned JobCycles = 384; // Four 8x8 quadrants, each reducing over K=16.
 namespace reg {
 constexpr unsigned Id=0x00, Version=0x04, Control=0x08, Status=0x0c;
 constexpr unsigned Cycles=0x10, Scratch=0x14, Format=0x18;

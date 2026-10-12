@@ -13,7 +13,7 @@ C++ GEMM library → Linux UIO → lightweight HPS-to-FPGA bridge
                                       ↓
                             feed/capture controller
                                       ↓
-                             16×16 systolic array
+                      8×8 systolic array, four output quadrants
                                       ↓
                                   C buffer
 ```
@@ -46,12 +46,23 @@ docker run --rm -v "$PWD:/work" mnn-fpga-dev make BUILD_DIR=build/linux
 docker run --rm -v "$PWD:/work" mnn-fpga-dev make BUILD_DIR=build/arm CXX=arm-linux-gnueabihf-g++ 'CXXFLAGS=-O2 -std=c++17 -Wall -Wextra -Werror -mcpu=cortex-a9 -mfpu=neon -mfloat-abi=hard'
 ```
 
+The 16×16 external operation uses 64 physical PEs, processing four 8×8 output
+quadrants sequentially over the full K=16, for 384 fabric clocks per job.
+The former 256-PE design exceeded the target's DSP capacity.
+
 `make sim` compares all 256 outputs for 12 deterministic matrix pairs, then
 checks byte enables, busy-write rejection, reset/abort recovery, float-input
 eligibility, and software timeout/error handling. It simulates the actual RTL;
 it does not establish Quartus timing closure or board operation.
 
 ## Bring up the board
+
+For the supplied `tinyvit.qpf` project on Windows, start with
+[JTAG fabric bring-up](docs/jtag-bringup.md). Run `./platform/build-jtag.ps1`
+to generate a derived Quartus project using its device and board pins, then
+use `platform/jtag-smoke.tcl` to submit and check 12 matrix multiplications.
+This first test requires no HPS Linux setup. See `docs/validation.md` for
+build and hardware limitations observed in this environment.
 
 Follow [board-bringup.md](docs/board-bringup.md), using
 [register-map.md](docs/register-map.md) as the hardware/software contract.

@@ -38,7 +38,7 @@ inline void run_vectors(RegisterIo& io) {
             if (actual[i] != expected[i]) throw std::runtime_error("Vector "+std::to_string(test)+
                 " index "+std::to_string(i)+" expected "+std::to_string(expected[i])+
                 " got "+std::to_string(actual[i]));
-        if (cycles != 304) throw std::runtime_error("Unexpected job cycle count");
+        if (cycles != JobCycles) throw std::runtime_error("Unexpected job cycle count");
         std::cout << "PASS vector " << test << ": 256 outputs, " << cycles << " FPGA cycles\n";
     }
 }
