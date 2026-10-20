@@ -84,7 +84,7 @@ DE1-SoC was connected to this environment.
 | UIO driver build against board kernel | Not run: kernel/image/build tree unknown |
 | Device-tree/bridge/boot configuration and MMIO on DE1-SoC | Not run: HPS project and board access unavailable |
 | MNN → Linux UIO → physical FPGA end-to-end | Not run |
-| Full TinyViT inference, accuracy or speedup | Not implemented or claimed |
+| Full TinyViT FPGA acceleration, accuracy or speedup | Not implemented or claimed |
 
 The cross-build uses GCC 12 from Debian Bookworm. It does not establish
 compatibility with the board image's dynamic libraries. MNN's upstream ARM
@@ -107,3 +107,27 @@ Useful products from the validation run:
 
 The legacy board demo is preserved, not validated or repaired in place. The
 replacement MMIO controller was tested with its extracted PE/array modules.
+
+## Full-model ARM application — 2026-10-20
+
+Added `mnn/app/tinyvit_run.cpp`, a full-model loader and image/raw-tensor runner.
+The supplied `tiny-vit.mnn` successfully executes with `[1,3,224,224]` input
+and returns `[1,1000]` FP32 scores.
+
+- Host integration suite passed full inference, RGB normalization/channel
+  order, constant-image resize/crop, raw-input replay, output files/metadata,
+  and invalid-input/error checks.
+- Dynamic and static Cortex-A9 application builds passed with application
+  compiler warnings treated as errors.
+- The packaged static executable is ARM ELF32, ARMv7, VFPv3, NEONv1, hard-float.
+  It has no dynamic section/shared-library dependencies and targets Linux 3.2+.
+- The actual ARM executable ran the full model in QEMU with `-cpu cortex-a9`,
+  using synthetic zero input and a nonzero RGB image. Both returned 1000 finite
+  values. This is instruction-set/runtime validation, not physical board testing.
+- Full-model runs reported zero FPGA submissions, as expected for this CPU
+  baseline. No classification accuracy or physical-board timing is claimed.
+
+Deployment artifacts: `build/de1-tinyvit/tinyvit_run` and
+`build/de1-tinyvit.tar.gz` (executable, original full model, instructions).
+These are generated/ignored files; copy the archive separately or rebuild it
+using `mnn/app/build_arm.sh`. See `mnn/app/DEPLOY.md` for board commands.

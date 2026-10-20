@@ -77,6 +77,12 @@ compiler/sysroot compatible with your Linux image.
 
 ## MNN integration
 
+For the **full TinyViT model on HPS Linux**, use
+[the ARM application](mnn/app/README.md). It loads your actual `tiny-vit.mnn`
+at 224×224, supports images/preprocessed tensors, and exports its 1000 scores.
+The deployment package is `build/de1-tinyvit.tar.gz`; see
+[board run commands](mnn/app/DEPLOY.md). This is CPU inference on Cortex-A9.
+
 See [mnn/README.md](mnn/README.md). This is an opt-in patch to CPU MatMul
 execution, not a complete new backend. It accepts dense 16×16 FP32 tensors
 whose values are exact signed INT8 integers. Other inputs keep CPU execution.
