@@ -1,5 +1,9 @@
 # First MNN offload experiment
 
+To load and run the **full `tiny-vit.mnn` on ARM Cortex-A9**, use
+[app/README.md](app/README.md). The small `mnn_tile_test` below remains the
+separate FPGA communication experiment.
+
 This integration patches CPU `CPUMatMul::onExecute` in Alibaba MNN at
 `2c3f5b21a223734e5db7da4ef7b492bc02cafcf5`. It is deliberately opt-in:
 without `MNN_FPGA_UIO`, the existing CPU path runs.
