@@ -1,0 +1,12 @@
+/* Root-level example for a parent with one address and one size cell.
+ * If placing under an FPGA bridge bus, translate reg through its ranges.
+ * Full HPS-to-FPGA bridge, NOT lightweight 0xff200000. Verify Qsys addresses.
+ * Use the updated sw/driver/systolic_uio.c, with its distinct 128 KB binding.
+ */
+/ {
+matmul_soc_uio: accelerator@c0000000 {
+    compatible = "mnn,matmul-soc-1.0";
+    reg = <0xc0000000 0x00020000>;
+    status = "okay";
+};
+};

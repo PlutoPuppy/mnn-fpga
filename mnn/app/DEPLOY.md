@@ -51,13 +51,37 @@ Outputs are stored as `outputs/output_0.f32` with names, shape, and type in
 class indices and raw scores; labels and probability calibration are not
 included. Inference timing excludes image/model loading and output transfer.
 
-Inference runs on the HPS CPU. The existing optional `MNN_FPGA_UIO` path only
-accepts a restricted 16×16 integer-valued MatMul, so ordinary full TinyViT
-inference is expected to report zero FPGA submissions. Do not claim FPGA
-acceleration from successful CPU inference. No FPGA image is needed for this
-CPU baseline.
+Inference runs on the HPS CPU by default and reports zero FPGA submissions.
+No FPGA image is needed for this CPU baseline. The original `MNN_FPGA_UIO`
+interface remains an exact integer-valued MatMul experiment.
 
-The binary is tested with Cortex-A9 user-mode emulation, not a physical board.
-It targets Linux 3.2 or later and requires sufficient RAM. The exact board
-kernel is still unknown. If execution fails, collect `uname -a`, available RAM
-(`free -m`), and the full error message. QEMU timing is not board timing.
+Physical-board CPU inference now passes on Ubuntu 16.04 / Linux 4.5.0. The
+rebuilt static runner, deployed as `tinyvit_offload`, produces the same 1000
+scores as the earlier runner for a zero input. See the validation record for
+measured results. This is not image-classification accuracy validation.
+
+## One selected operation on matmul-soc
+
+Rebuild with the updated MNN patch. The friend's hardware has an INT8 output
+format; this path quantizes FP32 tiles and is approximate. Read
+[the integration guide](../../docs/matmul-soc-integration.md) and load the
+matching FPGA image before accessing it. The connected board lacks UIO, so
+the explicit prototype `/dev/mem` path requires root:
+
+On this board, normal boot loads `soc_system.rbf` and replaces the JTAG image.
+Follow the integration guide's **tested boot sequence** before these commands.
+The sequence retains the accelerator without changing saved boot settings.
+
+```sh
+sudo ./matmul_soc_smoke --devmem
+sudo env MNN_MATMUL_SOC_DEVMEM=1 ./tinyvit_offload \
+  --model tiny-vit.mnn --height 224 --width 224 --zeros --threads 2 \
+  --fpga-op /layers.3/blocks.1/attn/MatMul_output_0 --require-fpga \
+  --output-dir outputs/fpga-one-op
+```
+
+That runtime operation multiplies ten 49x32 matrices by 32x49 matrices.
+The tiler submits 320 independent 16x16x16 jobs, including zero-padded edges.
+Other operations stay on the CPU. For another export, run `--list-ops` first
+and choose its actual operation name. `--require-fpga` fails on CPU-only
+execution; model success alone does not prove an offload.

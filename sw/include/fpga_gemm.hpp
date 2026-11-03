@@ -2,6 +2,7 @@
 #include <array>
 #include <chrono>
 #include <cstdint>
+#include <cstddef>
 
 namespace fpga {
 constexpr unsigned N = 16, Elements = N * N, Span = 4096;
@@ -29,4 +30,9 @@ Output reference(const Input& a, const Input& b);
 // Exact subset for the first MNN demo: finite, integral INT8-valued floats.
 // Returns false without submitting anything for unsupported values.
 bool exact_float_tile(RegisterIo& io, const float* a, const float* b, float* c);
+// Zero-padded M/N/K tiling for the original INT32-result hardware. K<=1024
+// keeps all integral dot products exactly representable as FP32.
+bool exact_float_gemm(RegisterIo& io,const float* a,const float* b,float* c,
+    size_t m,size_t n,size_t k,bool ta=false,bool tb=false,bool tc=false,
+    size_t* submissions=nullptr);
 }

@@ -1,5 +1,10 @@
 # First MNN offload experiment
 
+The newer [matmul-soc integration](../docs/matmul-soc-integration.md) adds
+M/N/K tiling and selection of one runtime operation in the full TinyViT runner.
+It supports the friend's INT8-result hardware through a separate opt-in,
+approximate quantization path. The original 16x16 test below is still supported.
+
 To load and run the **full `tiny-vit.mnn` on ARM Cortex-A9**, use
 [app/README.md](app/README.md). The small `mnn_tile_test` below remains the
 separate FPGA communication experiment.

@@ -11,9 +11,11 @@ static int systolic_probe(struct platform_device *pdev)
 {
     struct resource *res;
     struct uio_info *info;
+    bool matmul_soc = of_device_is_compatible(pdev->dev.of_node, "mnn,matmul-soc-1.0");
 
     res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-    if (!res || resource_size(res) != 0x1000 || (res->start & (PAGE_SIZE - 1)))
+    if (!res || resource_size(res) != (matmul_soc ? 0x20000 : 0x1000) ||
+        (res->start & (PAGE_SIZE - 1)))
         return -EINVAL;
     if (!devm_request_mem_region(&pdev->dev, res->start, resource_size(res),
                                  dev_name(&pdev->dev)))
@@ -21,7 +23,7 @@ static int systolic_probe(struct platform_device *pdev)
     info = devm_kzalloc(&pdev->dev, sizeof(*info), GFP_KERNEL);
     if (!info)
         return -ENOMEM;
-    info->name = "systolic-mmio";
+    info->name = matmul_soc ? "matmul-soc" : "systolic-mmio";
     info->version = "1.0";
     info->irq = UIO_IRQ_NONE;
     info->mem[0].name = "registers-and-tiles";
@@ -33,6 +35,7 @@ static int systolic_probe(struct platform_device *pdev)
 
 static const struct of_device_id systolic_match[] = {
     { .compatible = "mnn,systolic-mmio-1.0" },
+    { .compatible = "mnn,matmul-soc-1.0" },
     { }
 };
 MODULE_DEVICE_TABLE(of, systolic_match);
@@ -45,4 +48,4 @@ static struct platform_driver systolic_driver = {
 };
 module_platform_driver(systolic_driver);
 MODULE_LICENSE("GPL");
-MODULE_DESCRIPTION("Polled UIO driver for 16x16 systolic GEMM");
+MODULE_DESCRIPTION("Polled UIO for systolic INT32 GEMM or matmul-soc INT8 accelerator");

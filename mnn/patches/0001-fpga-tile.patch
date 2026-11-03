@@ -33,6 +33,21 @@
      execute(APtr, BPtr, CPtr, biasPtr);
      return NO_ERROR;
  }
+@@ -169,4 +188,14 @@
+ void CPUMatMul::execute(const float* APtr, const float* BPtr, float* CPtr, const float* biasPtr) {
++#ifdef MNN_FPGA_ENABLED
++    // execute() also serves geometry-lowered batched MatMul commands. Its
++    // operands are dense matrices; mTransposeC=false stores the result as HxE.
++    if (mE > 0 && mL > 0 && mH > 0 &&
++        static_cast<CPUBackend*>(backend())->functions()->bytes == 4 &&
++        mnn_fpga_try_matmul(APtr, BPtr, CPtr, mE, mH, mL,
++                            mTransposeA, mTransposeB, !mTransposeC, biasPtr)) {
++        return;
++    }
++#endif
+     mA = APtr;
+     mB = BPtr;
+     mC = CPtr;
 --- a/source/backend/cpu/CMakeLists.txt
 +++ b/source/backend/cpu/CMakeLists.txt
 @@ -6,6 +6,9 @@

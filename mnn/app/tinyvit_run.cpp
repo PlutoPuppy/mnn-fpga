@@ -19,10 +19,13 @@
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <set>
 
 namespace {
 struct Options {
     std::string model,image,raw,output,dump;
+    std::string fpga_op;
+    bool list_ops=false;
     int width=0,height=0,threads=2,runs=1,warmup=0,resize_short=0,topk=5;
     bool zeros=false,mean_set=false,std_set=false,require_fpga=false;
     std::array<float,3> mean{0,0,0},stddev{1,1,1};
@@ -31,6 +34,7 @@ const char* usage=R"(Usage: tinyvit_run --model tiny-vit.mnn --height H --width 
     (--image image.jpg --mean R,G,B --std R,G,B | --input-f32 input.f32 | --zeros)
     [--resize-short N] [--threads N] [--runs N] [--warmup N]
     [--output-dir DIR] [--dump-input input.f32] [--topk N] [--require-fpga]
+    [--list-ops] [--fpga-op EXACT_RUNTIME_NAME]
 
 Loads the full model from disk. Requires one NCHW FP32 RGB input, batch 1.
 Image: decode RGB, bilinear resize, normalize (pixel/255 - mean)/std.
@@ -40,6 +44,8 @@ Raw input: exactly 3*H*W little-endian FP32 values, already preprocessed in NCHW
 --zeros is a runtime smoke test, not an image accuracy test.
 Outputs: raw FP32 files plus JSON shape/name metadata; top-k only for vectors.
 CPU is used by default. MNN_FPGA_UIO enables the existing restricted tile path.
+MNN_MATMUL_SOC_UIO plus --fpga-op selects approximate INT8 tiling on matmul-soc.
+--list-ops prints runtime operation names, types and input shapes.
 --require-fpga fails if no FPGA submissions complete during measured runs.
 )";
 
@@ -66,9 +72,11 @@ Options parse(int argc,char** argv) {
         if(key=="--help" || key=="-h") {std::cout<<usage; std::exit(0);}
         if(key=="--zeros") {o.zeros=true; continue;}
         if(key=="--require-fpga") {o.require_fpga=true; continue;}
+        if(key=="--list-ops") {o.list_ops=true; continue;}
         if(i+1==argc) throw std::runtime_error("Missing value for "+key);
         const std::string value=argv[++i];
         if(key=="--model") o.model=value;
+        else if(key=="--fpga-op") o.fpga_op=value;
         else if(key=="--image") o.image=value;
         else if(key=="--input-f32") o.raw=value;
         else if(key=="--output-dir") o.output=value;
@@ -169,7 +177,30 @@ int main(int argc,char** argv) {
             std::cout<<"Input mode: RGB, "<<(o.resize_short ? "resize short side then center crop" : "stretch resize")<<"; (pixel/255 - mean)/std\n";
             std::cout<<"Mean: "<<o.mean[0]<<','<<o.mean[1]<<','<<o.mean[2]<<"; std: "<<o.stddev[0]<<','<<o.stddev[1]<<','<<o.stddev[2]<<'\n';
         }
-        auto run=[&] {auto rc=net->runSession(session); if(rc!=MNN::NO_ERROR) throw std::runtime_error("MNN runSession failed, code "+std::to_string(int(rc)));};
+        std::set<std::string> seen_ops;
+        bool target_seen=false;
+        auto before_op=[&](const std::vector<MNN::Tensor*>& tensors,const MNN::OperatorInfo* info) {
+            const std::string name=info->name();
+            if(o.list_ops && seen_ops.insert(name).second) {
+                std::cout<<"Runtime op: "<<name<<" type="<<info->type();
+                for(auto* tensor:tensors) std::cout<<' '<<shape(*tensor);
+                std::cout<<'\n';
+            }
+            const bool match=!o.fpga_op.empty() && name==o.fpga_op;
+            target_seen=target_seen || match;
+            mnn_fpga_select_operation(match);
+            return true;
+        };
+        auto after_op=[](const std::vector<MNN::Tensor*>&,const MNN::OperatorInfo*) {
+            mnn_fpga_select_operation(false);return true;
+        };
+        auto run=[&] {
+            auto rc=(o.list_ops || !o.fpga_op.empty())
+                ? net->runSessionWithCallBackInfo(session,before_op,after_op,true)
+                : net->runSession(session);
+            mnn_fpga_select_operation(false);
+            if(rc!=MNN::NO_ERROR) throw std::runtime_error("MNN runSession failed, code "+std::to_string(int(rc)));
+        };
         for(int i=0;i<o.warmup;++i) run();
         const auto before=mnn_fpga_completed_jobs();
         double total=0;
@@ -179,6 +210,7 @@ int main(int argc,char** argv) {
             total+=ms; std::cout<<"Inference "<<i+1<<": "<<ms<<" ms\n";
         }
         const auto offloads=mnn_fpga_completed_jobs()-before;
+        if(!o.fpga_op.empty() && !target_seen) throw std::runtime_error("Selected runtime operation was not found: "+o.fpga_op);
         std::cout<<"Mean inference: "<<total/o.runs<<" ms (excludes loading/preprocessing/output copy)\nFPGA submissions: "<<offloads<<'\n';
         if(o.require_fpga && !offloads) throw std::runtime_error("No FPGA submissions; CPU inference is not FPGA offload");
         std::ofstream manifest;

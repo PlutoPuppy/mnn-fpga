@@ -16,6 +16,8 @@ args = p.parse_args()
 exe, model = str(pathlib.Path(args.exe).resolve()), str(pathlib.Path(args.model).resolve())
 env = dict(os.environ)
 env.pop("MNN_FPGA_UIO", None)
+env.pop("MNN_MATMUL_SOC_UIO", None)
+env.pop("MNN_MATMUL_SOC_DEVMEM", None)
 base = [exe, "--model", model, "--height", "224", "--width", "224", "--threads", "1"]
 
 def run(options, ok=True):

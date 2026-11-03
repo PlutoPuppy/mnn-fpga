@@ -1,5 +1,79 @@
 # Validation record
 
+## matmul-soc integration, 2026-11-03
+
+- Upstream inspected at `4b749cedf88742dc999267999cd234186eb26bf7`.
+- Located `adder_prototype.qpf`, `de1soc_top`, 16x16 INT8 array, and 64 KB
+  INT8 output canvas. This differs from this repository's INT32-result ABI.
+- Host tiled-driver tests: pass with GCC 7.4, warnings treated as errors.
+- Static ARMv7/Cortex-A9 tiled-driver tests: compiled with Zig 0.13 / Clang 18,
+  transferred over COM8 with independently verified SHA256, and passed on the
+  connected board. These tests use a software register/datapath model.
+- Actual board: Cyclone V JTAG ID `02D120DD`, Linux 4.5.0, Ubuntu 16.04,
+  no UIO devices, no network address, and no installed C++ compiler.
+- Existing full TinyViT runner: CPU zero-input smoke passed in 2169.86 ms,
+  produced 1000 finite FP32 scores and zero FPGA submissions. Baseline scores
+  and metadata downloaded with verified SHA256 to `build/board-cpu-before`.
+- New hardware smoke-test executable cross-compiled, stripped, and deployed
+  with SHA256 verification. Physical execution passed all six cases with 48
+  submissions: 17x16, 17x32 and 17x33 inputs times 16/32/33x31, using ones
+  and signed patterns. Maximum errors ranged from 0.000992 to 0.506165.
+- Updated MNN patch applied successfully to the pinned upstream source.
+  Full static ARM MNN library and TinyViT runner build: pass, with Cortex-A9
+  NEON assembly and MNN's pthread pool enabled.
+- Rebuilt runner deployed as `~/tinyvit/tinyvit_offload`: full zero-input CPU
+  inference passed in 1265.17 ms; all 1000 FP32 scores are bit-identical to the
+  earlier runner. This CPU timing change is not evidence of FPGA acceleration.
+- Runtime trace identifies `/layers.3/blocks.1/attn/MatMul_output_0` as a While
+  command multiplying `[1,10,49,32]` by `[1,10,32,49]`. The selected operator's
+  ten matrix heads require 320 independent 16x16x16 hardware jobs with this
+  driver's padding policy. Hardware-disabled `--require-fpga` correctly fails
+  with zero submissions for this valid operation name.
+- Actual missing-device fallback: pass. Selecting that operation with
+  `/dev/uio999` produced one diagnostic, disabled further device attempts,
+  completed CPU inference with zero FPGA jobs, and produced bit-identical
+  scores (SHA256 `2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b`).
+- Standard Quartus regeneration fails because the HPS ROM workflow invokes
+  unavailable WSL. A temporary installation-view launcher with Windows path
+  conversion now passes generation; installed Quartus files remain unchanged.
+  The unmodified 90 MHz design fitted (23,743/32,070 ALMs, 378/397 RAM blocks,
+  2/87 DSPs) and assembled, but failed setup timing at -0.515 ns. It was not
+  programmed. Reports are in `build/matmul-soc-reports/90mhz`.
+- A reproducible DE1-SoC profile now sets the fabric clock to 80 MHz and fixes
+  upstream placeholder DDR geometry to the board's 32-bit, 1 GB interface.
+  The running board's live DDR interface width was independently read as 32;
+  its bootloader and live DDR configuration remain unchanged. The revised
+  profile passed generation, fitting and assembly. Replacing the stale exported
+  timing snapshot with derived PLL constraints passed all 88 STA summary checks:
+  minimum slack 0.077 ns; slow 85 C core setup slack 2.049 ns. Reports are in
+  `build/matmul-soc-reports/80mhz-derived`.
+- JTAG programming of FPGA device 2 succeeded on 2026-11-03 at 14:01.
+  Bitstream: `build/matmul-soc-deploy/matmul-soc-80mhz.sof`, SHA256
+  `8e0320ac525a3062fc9f6f13402bb2eaf514f527d34a113849467303c2dff2d7`.
+  Linux stopped responding during the preceding bridge-isolation command;
+  serial Ctrl+C and FPGA reconfiguration did not restore the shell. An HPS
+  reset recovered Linux. The next smoke attempt stalled because normal boot
+  had loaded the stock FPGA image: `u-boot.scr` loads `soc_system.rbf`.
+- Successful recovery procedure: interrupt U-Boot, program the accelerator
+  using JTAG device 2, then `run bridge_enable_handoff; run mmcload; run mmcboot`
+  to boot Linux without the stock-image script. No saved boot settings or SD
+  files were changed. JTAG register readback and the physical smoke tests passed.
+- Full TinyViT selected-operation offload passed on both zero input and a
+  deterministic nonuniform synthetic input, exit 0 and **320 FPGA submissions**
+  each. All other model operations run on CPU. Scores and run logs downloaded
+  with verified SHA256 to `build/board-fpga-zero` and `build/board-synthetic-fpga`.
+- Compared to matching CPU baselines, zero input: max absolute error 0.013155,
+  RMSE 0.004836, relative L2 0.013017, cosine 0.99992987. Nonuniform input:
+  max absolute error 0.020070, RMSE 0.005169, relative L2 0.003202,
+  cosine 0.99999541. Top-5 rankings matched CPU for both inputs (top-1 674/729).
+  These synthetic tests do not establish image-dataset accuracy.
+- Single measured FPGA full-model runs: 1192.56 ms zero input and 1263.35 ms
+  nonuniform input, versus earlier CPU 1265.17/1230.07 ms. These timings are
+  not a controlled benchmark and do not establish a speedup.
+
+See [the integration guide](matmul-soc-integration.md) for the numeric policy,
+separate register ABIs, build instructions and explicit validation limits.
+
 ## DSP capacity fix, 2026-10-12
 
 The user's subsequent GUI compilation reached fitting. Its report requested

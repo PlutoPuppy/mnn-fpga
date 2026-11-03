@@ -1,5 +1,13 @@
 # Linux submission library
 
+## Tiled matrix interfaces
+
+`fpga::exact_float_gemm` tiles dense integer-valued FP32 matrices for the original
+INT32-result hardware. `fpga::matmul_soc_gemm` targets the friend's separate
+INT8-result ABI, with explicit quantization, transpose support and M/N/K tails.
+See [the integration guide](../docs/matmul-soc-integration.md). `make test`
+checks both paths without an FPGA. The original single-tile API is described below.
+
 `fpga_gemm.hpp` defines the byte-offset ABI and synchronous one-tile API.
 `uio.cpp` provides aligned volatile MMIO plus ARM `dmb sy` ordering around each
 access. The UIO map must be uncached/device memory, as supplied by the included

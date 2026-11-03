@@ -1,5 +1,10 @@
 # MNN on DE1-SoC FPGA
 
+For the friend's **16x16 matmul-soc array / 256x256 INT8 output canvas**, see
+[the new integration guide](docs/matmul-soc-integration.md). It adds M/N/K tiling,
+an explicit approximate FP32 path, and named-operation selection in TinyViT.
+The original INT32 register interface described below remains a separate target.
+
 HPS Linux submits a signed INT8 **16×16 matrix multiplication** to the FPGA
 and reads 256 INT32 results. Target: DE1-SoC **5CSEMA5F31C6N**, Quartus Prime
 Lite **23.1std**. The Quartus device picker typically omits ordering suffix N.
@@ -81,22 +86,26 @@ For the **full TinyViT model on HPS Linux**, use
 [the ARM application](mnn/app/README.md). It loads your actual `tiny-vit.mnn`
 at 224×224, supports images/preprocessed tensors, and exports its 1000 scores.
 The deployment package is `build/de1-tinyvit.tar.gz`; see
-[board run commands](mnn/app/DEPLOY.md). This is CPU inference on Cortex-A9.
+[board run commands](mnn/app/DEPLOY.md). CPU inference on Cortex-A9 is the default;
+the new integration guide describes selection of one FPGA operation.
 
 See [mnn/README.md](mnn/README.md). This is an opt-in patch to CPU MatMul
-execution, not a complete new backend. It accepts dense 16×16 FP32 tensors
-whose values are exact signed INT8 integers. Other inputs keep CPU execution.
+execution, not a complete new backend. The original 16×16 demo accepts exact
+signed INT8-valued FP32 inputs. Named-operation selection adds larger tiled
+integer matrices on that hardware, or approximate FP32 tiling on matmul-soc.
 
 The full [TinyViT graph](docs/tiny-vit.mnn.svg) needs further work: ordinary
-float activations require validated quantization, and larger/batched operations
-need tiling. General GEMM, DMA, interrupts, and TinyViT acceleration come later.
+float activations still require accuracy validation of the new quantization
+policy. M/N/K tiling is implemented; DMA, interrupts and performance tuning
+remain future work. See the integration guide for current board-test evidence.
 
 ## Current limits
 
 - See [validation.md](docs/validation.md) for checks actually performed.
-- No HPS base project, DDR/pin configuration, Linux image, or kernel build tree
-  has been supplied. `platform/` contains integration files, not a ready-to-program
-  board project or bitstream.
+- The original `platform/` target contains integration files. The friend's
+  complete HPS project is now supported by a separate build helper and DE1-SoC
+  board profile; see the new integration guide. A matching Linux image and
+  kernel build tree are still external to this repository.
 - Quartus fitting, bridge/boot setup, kernel compatibility, and physical board
   execution must be checked in your board environment.
 - This version prioritizes correctness: each INT8 element uses one MMIO word.

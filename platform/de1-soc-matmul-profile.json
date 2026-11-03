@@ -1,0 +1,31 @@
+{
+  "description": "DE1-SoC geometry and conservative fabric clock; retain the board's existing bootloader",
+  "reference": "https://people.ece.cornell.edu/land/courses/ece5760/DE1_SOC/SoC-FPGA%20Design%20Guide_EPFL.pdf",
+  "modules": {
+    "pll_0": {"gui_output_clock_frequency0": "80.0"},
+    "hps_0": {
+      "F2H_AXI_CLOCK_FREQ": "80000000",
+      "F2H_SDRAM0_CLOCK_FREQ": "80000000",
+      "MEM_CLK_FREQ": "400.0",
+      "MEM_CLK_FREQ_MAX": "800.0",
+      "MEM_DQ_WIDTH": "32",
+      "MEM_ROW_ADDR_WIDTH": "15",
+      "MEM_COL_ADDR_WIDTH": "10",
+      "MEM_BANKADDR_WIDTH": "3",
+      "MEM_TCL": "11",
+      "MEM_WTCL": "8",
+      "MEM_DRV_STR": "RZQ/7",
+      "MEM_RTT_NOM": "RZQ/4",
+      "MEM_RTT_WR": "RZQ/4",
+      "MEM_TINIT_US": "500",
+      "MEM_TMRD_CK": "4",
+      "MEM_TRAS_NS": "35.0",
+      "MEM_TRCD_NS": "13.75",
+      "MEM_TRP_NS": "13.75",
+      "MEM_TREFI_US": "7.8",
+      "MEM_TRFC_NS": "260.0",
+      "MEM_TWTR": "4",
+      "MEM_TFAW_NS": "30.0"
+    }
+  }
+}

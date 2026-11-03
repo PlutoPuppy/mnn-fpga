@@ -4,6 +4,8 @@ endif()
 target_sources(MNNCPU PRIVATE
     "${MNN_FPGA_ROOT}/mnn/fpga_bridge.cpp"
     "${MNN_FPGA_ROOT}/sw/src/fpga_gemm.cpp"
+    "${MNN_FPGA_ROOT}/sw/src/matmul_soc.cpp"
+    "${MNN_FPGA_ROOT}/sw/src/matmul_soc_uio.cpp"
     "${MNN_FPGA_ROOT}/sw/src/uio.cpp")
 target_include_directories(MNNCPU PRIVATE "${MNN_FPGA_ROOT}/mnn" "${MNN_FPGA_ROOT}/sw/include")
 target_compile_definitions(MNNCPU PRIVATE MNN_FPGA_ENABLED=1)
@@ -11,5 +13,7 @@ target_compile_definitions(MNNCPU PRIVATE MNN_FPGA_ENABLED=1)
 set_source_files_properties(
     "${MNN_FPGA_ROOT}/mnn/fpga_bridge.cpp"
     "${MNN_FPGA_ROOT}/sw/src/fpga_gemm.cpp"
+    "${MNN_FPGA_ROOT}/sw/src/matmul_soc.cpp"
+    "${MNN_FPGA_ROOT}/sw/src/matmul_soc_uio.cpp"
     "${MNN_FPGA_ROOT}/sw/src/uio.cpp"
     PROPERTIES COMPILE_OPTIONS "-fexceptions")

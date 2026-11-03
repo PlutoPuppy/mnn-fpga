@@ -1,6 +1,9 @@
 #include "fpga_gemm.hpp"
 #include <cmath>
 #include <stdexcept>
+#include <algorithm>
+#include <limits>
+#include <vector>
 
 namespace fpga {
 void probe(RegisterIo& io) {
@@ -59,6 +62,34 @@ bool exact_float_tile(RegisterIo& io, const float* a, const float* b, float* c) 
     Output out{};
     gemm(io, qa, qb, out);
     for (unsigned i=0; i<Elements; ++i) c[i] = static_cast<float>(out[i]);
+    return true;
+}
+bool exact_float_gemm(RegisterIo& io,const float* a,const float* b,float* c,
+    size_t m,size_t n,size_t k,bool ta,bool tb,bool tc,size_t* submissions) {
+    if (submissions) *submissions=0;
+    const auto limit=std::numeric_limits<size_t>::max();
+    if (!a || !b || !c || !m || !n || !k || k>1024 || m>limit/k || k>limit/n || m>limit/n)
+        return false;
+    auto eligible=[](const float* x,size_t count) {
+        for(size_t i=0;i<count;++i)
+            if(!std::isfinite(x[i]) || x[i]<-128 || x[i]>127 || std::trunc(x[i])!=x[i]) return false;
+        return true;
+    };
+    if(!eligible(a,m*k) || !eligible(b,k*n)) return false;
+    std::vector<int32_t> result(m*n,0);
+    for(size_t r=0;r<m;r+=N) for(size_t col=0;col<n;col+=N) for(size_t p=0;p<k;p+=N) {
+        Input qa{},qb{};Output out{};
+        for(size_t i=0;i<N && r+i<m;++i) for(size_t t=0;t<N && p+t<k;++t)
+            qa[i*N+t]=static_cast<int8_t>(a[ta ? (p+t)*m+r+i : (r+i)*k+p+t]);
+        for(size_t t=0;t<N && p+t<k;++t) for(size_t j=0;j<N && col+j<n;++j)
+            qb[t*N+j]=static_cast<int8_t>(b[tb ? (col+j)*k+p+t : (p+t)*n+col+j]);
+        gemm(io,qa,qb,out);
+        if(submissions) ++*submissions;
+        for(size_t i=0;i<N && r+i<m;++i) for(size_t j=0;j<N && col+j<n;++j)
+            result[(r+i)*n+col+j]+=out[i*N+j];
+    }
+    for(size_t i=0;i<m;++i) for(size_t j=0;j<n;++j)
+        c[tc ? j*m+i : i*n+j]=static_cast<float>(result[i*n+j]);
     return true;
 }
 }

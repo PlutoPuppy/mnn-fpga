@@ -1,0 +1,3 @@
+/work/build/tinyvit-arm/CMakeFiles/tinyvit_run.dir
+/work/build/tinyvit-arm/CMakeFiles/edit_cache.dir
+/work/build/tinyvit-arm/CMakeFiles/rebuild_cache.dir

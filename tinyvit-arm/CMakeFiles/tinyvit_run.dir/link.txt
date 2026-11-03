@@ -1,0 +1,1 @@
+/usr/bin/arm-linux-gnueabihf-g++ -mcpu=cortex-a9 -mfpu=neon -mfloat-abi=hard CMakeFiles/tinyvit_run.dir/tinyvit_run.cpp.o CMakeFiles/tinyvit_run.dir/image_input.cpp.o -o tinyvit_run  -Wl,-rpath,"\$ORIGIN" /work/build/mnn-arm/libMNN.so 

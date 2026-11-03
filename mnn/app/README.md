@@ -73,3 +73,11 @@ qemu-arm -cpu cortex-a9 build/de1-tinyvit/tinyvit_run \
 
 This exercises the actual 32-bit ARM binary and full model. It is not a
 simulation of the DE1-SoC's FPGA, memory controller, boot process, or performance.
+
+## Select one FPGA operation
+
+For M/N/K tiling with the friend's 16x16 array, see
+[matmul-soc integration](../../docs/matmul-soc-integration.md).
+Use `--list-ops` for runtime names, then `--fpga-op NAME --require-fpga` with
+`MNN_MATMUL_SOC_UIO=/dev/uioN`. Rebuild the patched MNN library and runner;
+existing binaries contain only the earlier tile experiment.
