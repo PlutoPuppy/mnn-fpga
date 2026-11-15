@@ -1,2 +1,4 @@
 # Preserve measured evidence bytes and their SHA256 manifests on every platform.
-docs/benchmarks/** -text
+docs/benchmarks/** -text whitespace=cr-at-eol
+# A unified diff's empty context line is a required single space.
+mnn/patches/*.patch -whitespace
