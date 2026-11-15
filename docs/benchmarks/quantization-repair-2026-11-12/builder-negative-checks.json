@@ -1,0 +1,22 @@
+[
+  {
+    "test": "missing",
+    "returncode": 1,
+    "error": "ERROR Allowlist contains missing operators"
+  },
+  {
+    "test": "duplicate",
+    "returncode": 1,
+    "error": "ERROR Duplicate allowlist entry"
+  },
+  {
+    "test": "empty",
+    "returncode": 1,
+    "error": "ERROR Empty allowlist"
+  },
+  {
+    "test": "refuse_overwrite_preserves_hash",
+    "returncode": 1,
+    "error": "ERROR Output already exists"
+  }
+]

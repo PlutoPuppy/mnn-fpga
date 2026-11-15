@@ -1,0 +1,126 @@
+{
+  "full": {
+    "native_int8_inputs_identical": true,
+    "hardware_matches_banded_oracle": true,
+    "independent_full_int32_vs_mnn": {
+      "max_abs": 1.0,
+      "rmse": 0.002733805516499083,
+      "relative_l2": 0.0001816447063905935,
+      "mean_signed_error": -2.4912308673469386e-06,
+      "exact_values": 401405,
+      "values": 401408
+    },
+    "hardware_vs_mnn": {
+      "max_abs": 56.0,
+      "rmse": 15.250252224829541,
+      "relative_l2": 1.013286267455151,
+      "mean_signed_error": -14.084208585778061,
+      "exact_values": 0,
+      "values": 401408
+    },
+    "hardware_vs_full_int32": {
+      "max_abs": 56.0,
+      "rmse": 15.25025197979449,
+      "relative_l2": 1.0132861118691927,
+      "mean_signed_error": -14.084206094547193,
+      "exact_values": 0,
+      "values": 401408
+    },
+    "hardware_q16_scales": [
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      42,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      41,
+      42,
+      42,
+      42,
+      42
+    ],
+    "per_channel_multipliers": {
+      "minimum": 0.0011743460018812813,
+      "maximum": 0.005462495221913115
+    }
+  },
+  "hybrid": {
+    "native_int8_inputs_identical": true,
+    "hardware_matches_banded_oracle": true,
+    "independent_full_int32_vs_mnn": {
+      "max_abs": 0.0,
+      "rmse": 0.0,
+      "relative_l2": 0.0,
+      "mean_signed_error": 0.0,
+      "exact_values": 401408,
+      "values": 401408
+    },
+    "hardware_vs_mnn": {
+      "max_abs": 59.0,
+      "rmse": 15.68407502732282,
+      "relative_l2": 1.0108546287342355,
+      "mean_signed_error": -14.466228874362244,
+      "exact_values": 0,
+      "values": 401408
+    },
+    "hardware_vs_full_int32": {
+      "max_abs": 59.0,
+      "rmse": 15.68407502732282,
+      "relative_l2": 1.0108546287342355,
+      "mean_signed_error": -14.466228874362244,
+      "exact_values": 0,
+      "values": 401408
+    },
+    "hardware_q16_scales": [
+      42,
+      42,
+      42,
+      42,
+      40,
+      40,
+      40,
+      40,
+      40,
+      40,
+      40,
+      40,
+      42,
+      42,
+      42,
+      42,
+      40,
+      40,
+      40,
+      40,
+      39,
+      39,
+      39,
+      39,
+      42,
+      42,
+      42,
+      42
+    ],
+    "per_channel_multipliers": {
+      "minimum": 0.0011743460018812813,
+      "maximum": 0.005462495221913115
+    }
+  }
+}

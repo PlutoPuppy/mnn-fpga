@@ -1,0 +1,5 @@
+sudo: unable to resolve host DE1_SoC: Connection refused
+The device supports: i8sdot:0, fp16:0, i8mm: 0, sve2: 0, sme2: 0, perfCores: 0
+PASS native fc1 equals independent FP32 GEMM; max_error=2.60007e-06
+PASS fixed64 hardware equals banded arithmetic oracle, 16 jobs
+PASS capacity hardware equals banded arithmetic oracle, 28 jobs

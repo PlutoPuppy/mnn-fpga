@@ -1,0 +1,588 @@
+{
+  "inputs": 20,
+  "measured_inferences": 80,
+  "warmup_inferences": 4,
+  "bootstrap_replicates": 20000,
+  "bootstrap_seed": 20261111,
+  "controls": {
+    "inference_ms": {
+      "cpu": {
+        "mean": 1178.2065,
+        "median": 1166.925,
+        "stddev": 30.626475006369734,
+        "minimum": 1156.81,
+        "maximum": 1289.2
+      },
+      "dma": {
+        "mean": 1224.513,
+        "median": 1220.17,
+        "stddev": 17.75042122554308,
+        "minimum": 1207.16,
+        "maximum": 1288.06
+      },
+      "added_ms": {
+        "mean": 46.30649999999999,
+        "median": 53.88999999999987,
+        "stddev": 38.13823434146121,
+        "minimum": -71.70000000000005,
+        "maximum": 128.47000000000003
+      },
+      "latency_increase_pct": 3.930253312980357,
+      "cpu_over_dma_ratio": 0.9621837416180964,
+      "paired_bootstrap_95_ci_added_ms": [
+        28.968000000000075,
+        61.29600000000005
+      ],
+      "paired_bootstrap_95_ci_increase_pct": [
+        2.428353088848697,
+        5.241726134461164
+      ],
+      "dma_faster_inputs": 2,
+      "dma_slower_inputs": 18
+    },
+    "process_ms": {
+      "cpu": {
+        "mean": 1949.3765790000907,
+        "median": 1846.3619500003006,
+        "stddev": 219.9088650317814,
+        "minimum": 1690.5637300005765,
+        "maximum": 2500.405600000704
+      },
+      "dma": {
+        "mean": 2167.6637299999584,
+        "median": 2109.9542400002065,
+        "stddev": 242.06231505330015,
+        "minimum": 1779.0454099995259,
+        "maximum": 2831.7090099999405
+      },
+      "added_ms": {
+        "mean": 218.28715099986766,
+        "median": 186.80541999992784,
+        "stddev": 358.8010539648882,
+        "minimum": -436.2882699997499,
+        "maximum": 975.1348299996607
+      },
+      "latency_increase_pct": 11.197792840613456,
+      "cpu_over_dma_ratio": 0.8992984253143951,
+      "paired_bootstrap_95_ci_added_ms": [
+        66.67424850020325,
+        374.89308599983815
+      ],
+      "paired_bootstrap_95_ci_increase_pct": [
+        3.2876555421590306,
+        19.877478416079168
+      ],
+      "dma_faster_inputs": 5,
+      "dma_slower_inputs": 15
+    }
+  },
+  "profiles": {
+    "inference_ms": {
+      "cpu": {
+        "mean": 1170.726,
+        "median": 1168.3600000000001,
+        "stddev": 12.094611414309979,
+        "minimum": 1154.41,
+        "maximum": 1200.03
+      },
+      "dma": {
+        "mean": 1227.189,
+        "median": 1222.9299999999998,
+        "stddev": 17.709126371509807,
+        "minimum": 1205.41,
+        "maximum": 1284.37
+      },
+      "added_ms": {
+        "mean": 56.46299999999999,
+        "median": 55.02499999999998,
+        "stddev": 18.38177217846667,
+        "minimum": 17.190000000000055,
+        "maximum": 100.56999999999994
+      },
+      "latency_increase_pct": 4.82290476166071,
+      "cpu_over_dma_ratio": 0.9539899722047704,
+      "paired_bootstrap_95_ci_added_ms": [
+        48.796499999999924,
+        64.57050000000004
+      ],
+      "paired_bootstrap_95_ci_increase_pct": [
+        4.1583960581666926,
+        5.525009529275215
+      ],
+      "dma_faster_inputs": 0,
+      "dma_slower_inputs": 20
+    },
+    "process_ms": {
+      "cpu": {
+        "mean": 2072.3886010000115,
+        "median": 2074.210584999946,
+        "stddev": 168.7700413802913,
+        "minimum": 1775.6497400005173,
+        "maximum": 2290.9302500002013
+      },
+      "dma": {
+        "mean": 2063.6156029999256,
+        "median": 2043.6312450001424,
+        "stddev": 184.76997053952743,
+        "minimum": 1757.0344000005207,
+        "maximum": 2434.3090899992603
+      },
+      "added_ms": {
+        "mean": -8.772998000085863,
+        "median": 18.255955000313406,
+        "stddev": 186.2405317345786,
+        "minimum": -476.26373000002786,
+        "maximum": 298.3652600005371
+      },
+      "latency_increase_pct": -0.42332784478029534,
+      "cpu_over_dma_ratio": 1.0042512752798207,
+      "paired_bootstrap_95_ci_added_ms": [
+        -90.41200249998838,
+        66.59150050004428
+      ],
+      "paired_bootstrap_95_ci_increase_pct": [
+        -4.305498638865181,
+        3.2727719512592945
+      ],
+      "dma_faster_inputs": 10,
+      "dma_slower_inputs": 10
+    }
+  },
+  "selected_qk": {
+    "cpu": {
+      "mean": 4.8218475,
+      "median": 4.830945,
+      "stddev": 0.06114858468689623,
+      "minimum": 4.73104,
+      "maximum": 4.96636
+    },
+    "dma": {
+      "mean": 59.1080445,
+      "median": 55.873845,
+      "stddev": 6.88826112396298,
+      "minimum": 54.71504,
+      "maximum": 81.5361
+    },
+    "added_ms": {
+      "mean": 54.286197,
+      "median": 51.118314999999996,
+      "stddev": 6.9070630319436885,
+      "minimum": 49.87786,
+      "maximum": 76.80506
+    },
+    "latency_increase_pct": 1125.8381149549007,
+    "cpu_over_dma_ratio": 0.08157684018797136,
+    "paired_bootstrap_95_ci_added_ms": [
+      51.702785,
+      57.5888825
+    ],
+    "paired_bootstrap_95_ci_increase_pct": [
+      1070.403891379126,
+      1196.8604297666766
+    ],
+    "dma_faster_inputs": 0,
+    "dma_slower_inputs": 20
+  },
+  "cpu_execute_aggregate_thread_ms": {
+    "mean": 8.855684,
+    "median": 8.857795,
+    "stddev": 0.07501170072939164,
+    "minimum": 8.72421,
+    "maximum": 8.95621
+  },
+  "stages_ms": {
+    "scale_bound": {
+      "mean": 1.2088635,
+      "median": 1.203505,
+      "stddev": 0.02593790241793089,
+      "minimum": 1.17488,
+      "maximum": 1.26074
+    },
+    "input_dma_setup": {
+      "mean": 0.472081,
+      "median": 0.469855,
+      "stddev": 0.013822858223742445,
+      "minimum": 0.45618,
+      "maximum": 0.51247
+    },
+    "output_dma_wait": {
+      "mean": 0.452365,
+      "median": 0.446515,
+      "stddev": 0.017648103372078786,
+      "minimum": 0.43928,
+      "maximum": 0.51867
+    },
+    "dequantize": {
+      "mean": 2.8653,
+      "median": 2.835065,
+      "stddev": 0.0848001611840573,
+      "minimum": 2.79166,
+      "maximum": 3.16171
+    },
+    "device_init": {
+      "mean": 1.03819,
+      "median": 0.5027200000000001,
+      "stddev": 1.417895774716144,
+      "minimum": 0.45214,
+      "maximum": 5.3663
+    },
+    "peak_scan": {
+      "mean": 4.193819,
+      "median": 4.127855,
+      "stddev": 0.19398138209361068,
+      "minimum": 4.06178,
+      "maximum": 4.77059
+    },
+    "output_stage_copy": {
+      "mean": 2.7398875,
+      "median": 2.7400599999999997,
+      "stddev": 0.047389244490929086,
+      "minimum": 2.66839,
+      "maximum": 2.83774
+    },
+    "input_dma_wait": {
+      "mean": 1.778361,
+      "median": 1.7797450000000001,
+      "stddev": 0.013305555586809754,
+      "minimum": 1.75697,
+      "maximum": 1.80636
+    },
+    "completion_wait": {
+      "mean": 0.657222,
+      "median": 0.6521349999999999,
+      "stddev": 0.017193732823940606,
+      "minimum": 0.64415,
+      "maximum": 0.72217
+    },
+    "workspace": {
+      "mean": 2.1716325,
+      "median": 2.140535,
+      "stddev": 0.09816307382026151,
+      "minimum": 2.08501,
+      "maximum": 2.48239
+    },
+    "input_stage_copy": {
+      "mean": 2.461732,
+      "median": 2.44557,
+      "stddev": 0.06765616178418944,
+      "minimum": 2.40238,
+      "maximum": 2.66944
+    },
+    "upload": {
+      "mean": 5.098111,
+      "median": 5.0733999999999995,
+      "stddev": 0.07647731764867834,
+      "minimum": 5.0203,
+      "maximum": 5.31575
+    },
+    "output_convert": {
+      "mean": 9.823528,
+      "median": 9.60699,
+      "stddev": 0.4636943779734778,
+      "minimum": 9.52084,
+      "maximum": 11.19337
+    },
+    "pack_pad": {
+      "mean": 1.822571,
+      "median": 1.77252,
+      "stddev": 0.16461973853319306,
+      "minimum": 1.71957,
+      "maximum": 2.37705
+    },
+    "configure": {
+      "mean": 1.930047,
+      "median": 0.21198499999999998,
+      "stddev": 5.165642192310652,
+      "minimum": 0.20422,
+      "maximum": 22.38373
+    },
+    "download": {
+      "mean": 3.6530825,
+      "median": 3.6484199999999998,
+      "stddev": 0.05872069991650484,
+      "minimum": 3.57079,
+      "maximum": 3.78107
+    },
+    "launch": {
+      "mean": 0.10308,
+      "median": 0.10259499999999999,
+      "stddev": 0.0037200254668058675,
+      "minimum": 0.09932,
+      "maximum": 0.1125
+    },
+    "adapter_total": {
+      "mean": 52.659396,
+      "median": 50.461330000000004,
+      "stddev": 5.981981547231212,
+      "minimum": 50.02314,
+      "maximum": 76.59128
+    },
+    "quantize": {
+      "mean": 17.2200955,
+      "median": 17.05736,
+      "stddev": 0.3538922340349716,
+      "minimum": 16.94569,
+      "maximum": 18.06195
+    },
+    "output_dma_setup": {
+      "mean": 0.2356935,
+      "median": 0.23565,
+      "stddev": 0.007207277955394522,
+      "minimum": 0.2269,
+      "maximum": 0.25346
+    },
+    "bridge_total": {
+      "mean": 58.216675,
+      "median": 55.045635000000004,
+      "stddev": 6.8730556149752,
+      "minimum": 53.76519,
+      "maximum": 80.60701
+    }
+  },
+  "instrumentation": {
+    "cpu": {
+      "cpu": {
+        "mean": 1178.2065,
+        "median": 1166.925,
+        "stddev": 30.626475006369734,
+        "minimum": 1156.81,
+        "maximum": 1289.2
+      },
+      "dma": {
+        "mean": 1170.726,
+        "median": 1168.3600000000001,
+        "stddev": 12.094611414309979,
+        "minimum": 1154.41,
+        "maximum": 1200.03
+      },
+      "added_ms": {
+        "mean": -7.480500000000018,
+        "median": -0.09500000000002728,
+        "stddev": 31.508852803616968,
+        "minimum": -116.60000000000014,
+        "maximum": 39.11999999999989
+      },
+      "latency_increase_pct": -0.6349056807953354,
+      "cpu_over_dma_ratio": 1.0063896248994213,
+      "paired_bootstrap_95_ci_added_ms": [
+        -22.338000000000193,
+        4.214999999999918
+      ],
+      "paired_bootstrap_95_ci_increase_pct": [
+        -1.8735535989940508,
+        0.3602309477308178
+      ],
+      "dma_faster_inputs": 11,
+      "dma_slower_inputs": 9
+    },
+    "dma": {
+      "cpu": {
+        "mean": 1224.513,
+        "median": 1220.17,
+        "stddev": 17.75042122554308,
+        "minimum": 1207.16,
+        "maximum": 1288.06
+      },
+      "dma": {
+        "mean": 1227.189,
+        "median": 1222.9299999999998,
+        "stddev": 17.709126371509807,
+        "minimum": 1205.41,
+        "maximum": 1284.37
+      },
+      "added_ms": {
+        "mean": 2.675999999999976,
+        "median": 1.794999999999959,
+        "stddev": 25.060363629906835,
+        "minimum": -52.549999999999955,
+        "maximum": 72.76999999999998
+      },
+      "latency_increase_pct": 0.21853585874548973,
+      "cpu_over_dma_ratio": 0.997819406790641,
+      "paired_bootstrap_95_ci_added_ms": [
+        -7.6749999999999545,
+        13.995499999999993
+      ],
+      "paired_bootstrap_95_ci_increase_pct": [
+        -0.62316238807205,
+        1.1468700868981752
+      ],
+      "dma_faster_inputs": 9,
+      "dma_slower_inputs": 11
+    }
+  },
+  "runner_phases": {
+    "cpu_profile": {
+      "preprocess_ms": {
+        "mean": 21.985502,
+        "median": 22.222875000000002,
+        "stddev": 0.5714035529576552,
+        "minimum": 21.19522,
+        "maximum": 23.31811
+      },
+      "model_load_ms": {
+        "mean": 655.459172,
+        "median": 662.884145,
+        "stddev": 152.62422573105323,
+        "minimum": 386.9816,
+        "maximum": 869.24237
+      },
+      "session_ms": {
+        "mean": 153.4543875,
+        "median": 139.766415,
+        "stddev": 25.295418767820777,
+        "minimum": 129.22548,
+        "maximum": 196.1187
+      },
+      "input_copy_ms": {
+        "mean": 4.7336085,
+        "median": 4.778245,
+        "stddev": 0.12722005052477506,
+        "minimum": 4.53043,
+        "maximum": 4.89857
+      },
+      "inference_ms": {
+        "mean": 1170.725935,
+        "median": 1168.362165,
+        "stddev": 12.095884913717146,
+        "minimum": 1154.40521,
+        "maximum": 1200.03195
+      },
+      "selected_qk_ms": {
+        "mean": 4.8218475,
+        "median": 4.830945,
+        "stddev": 0.06114858468689623,
+        "minimum": 4.73104,
+        "maximum": 4.96636
+      },
+      "output_ms": {
+        "mean": 3.7112535,
+        "median": 0.88171,
+        "stddev": 4.543999792674286,
+        "minimum": 0.79926,
+        "maximum": 14.864
+      },
+      "main_elapsed_ms": {
+        "mean": 2010.3626075,
+        "median": 1997.874695,
+        "stddev": 156.18171669139844,
+        "minimum": 1735.00974,
+        "maximum": 2233.65524
+      }
+    },
+    "dma_profile": {
+      "preprocess_ms": {
+        "mean": 22.5484325,
+        "median": 22.25189,
+        "stddev": 2.7292434093504556,
+        "minimum": 21.20274,
+        "maximum": 33.94333
+      },
+      "model_load_ms": {
+        "mean": 593.4397105,
+        "median": 574.1109799999999,
+        "stddev": 189.51064404705664,
+        "minimum": 316.06305,
+        "maximum": 982.60209
+      },
+      "session_ms": {
+        "mean": 151.9510945,
+        "median": 139.21422,
+        "stddev": 32.77503652901918,
+        "minimum": 129.19261,
+        "maximum": 256.98319
+      },
+      "input_copy_ms": {
+        "mean": 4.7679625,
+        "median": 4.83164,
+        "stddev": 0.13873373717399515,
+        "minimum": 4.52542,
+        "maximum": 4.9077
+      },
+      "inference_ms": {
+        "mean": 1227.188604,
+        "median": 1222.930675,
+        "stddev": 17.709842545872164,
+        "minimum": 1205.41487,
+        "maximum": 1284.37497
+      },
+      "selected_qk_ms": {
+        "mean": 59.1080445,
+        "median": 55.873845,
+        "stddev": 6.88826112396298,
+        "minimum": 54.71504,
+        "maximum": 81.5361
+      },
+      "output_ms": {
+        "mean": 3.823062,
+        "median": 0.8714,
+        "stddev": 3.8171928690577404,
+        "minimum": 0.74036,
+        "maximum": 10.46917
+      },
+      "main_elapsed_ms": {
+        "mean": 2004.000803,
+        "median": 1995.0738000000001,
+        "stddev": 177.58039789299752,
+        "minimum": 1715.98343,
+        "maximum": 2366.60888
+      }
+    }
+  },
+  "residuals_ms": {
+    "adapter_unassigned": {
+      "mean": 1.9120439999999992,
+      "median": 1.8903549999999996,
+      "stddev": 0.054491821733079954,
+      "minimum": 1.8558599999999998,
+      "maximum": 2.022970000000008
+    },
+    "bridge_logging_and_bookkeeping": {
+      "mean": 4.519089000000001,
+      "median": 3.282079999999999,
+      "stddev": 3.75308021140657,
+      "minimum": 3.163640000000003,
+      "maximum": 16.20715000000001
+    },
+    "mnn_qk_outside_bridge": {
+      "mean": 0.891369499999999,
+      "median": 0.8534299999999995,
+      "stddev": 0.11628460623446786,
+      "minimum": 0.796369999999996,
+      "maximum": 1.3052199999999985
+    },
+    "input_transport_unassigned": {
+      "mean": 0.38593700000000025,
+      "median": 0.38417499999999993,
+      "stddev": 0.007450172799126497,
+      "minimum": 0.3742200000000002,
+      "maximum": 0.4046700000000003
+    },
+    "output_transport_unassigned": {
+      "mean": 0.22513649999999996,
+      "median": 0.22091999999999978,
+      "stddev": 0.009513641327892819,
+      "minimum": 0.21902999999999961,
+      "maximum": 0.2556400000000001
+    },
+    "dma_qk_excluding_completion": {
+      "mean": 58.4508225,
+      "median": 55.222719999999995,
+      "stddev": 6.888246889702301,
+      "minimum": 54.068380000000005,
+      "maximum": 80.88572
+    },
+    "profiled_rest_of_inference_delta": {
+      "mean": 2.176471999999967,
+      "median": 5.136160000000018,
+      "stddev": 15.09578194077429,
+      "minimum": -34.86335000000031,
+      "maximum": 23.767809999999827
+    }
+  },
+  "scores": {
+    "top1_agreement": 20,
+    "top5_ranking_agreement": 18,
+    "max_abs_error": 0.015166044235229492
+  }
+}

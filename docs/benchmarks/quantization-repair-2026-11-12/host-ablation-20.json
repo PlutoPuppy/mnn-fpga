@@ -1,0 +1,602 @@
+{
+  "images": 20,
+  "summary": {
+    "tiny-vit-fp32.mnn": {
+      "top1_agreement": 20,
+      "mean_cosine": 1.0,
+      "mean_relative_l2": 0.0
+    },
+    "tiny-vit-weights-only-ablation.mnn": {
+      "top1_agreement": 19,
+      "mean_cosine": 0.997047460331632,
+      "mean_relative_l2": 0.07495972884289961
+    },
+    "tiny-vit-convio-ablation.mnn": {
+      "top1_agreement": 4,
+      "mean_cosine": 0.316150360139828,
+      "mean_relative_l2": 1.4023124732951784
+    }
+  },
+  "rows": [
+    {
+      "image": "n01440764-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 66.36389999766834
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9967040660411003,
+          "relative_l2": 0.08221995403761977,
+          "max_abs": 0.3263251781463623,
+          "host_inference_ms": 66.79900000744965
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 361,
+          "agrees": false,
+          "cosine": 0.27312887989468276,
+          "relative_l2": 1.5613302667361004,
+          "max_abs": 8.367190480232239,
+          "host_inference_ms": 89.04099999926984
+        }
+      }
+    },
+    {
+      "image": "n01440764-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 66.8805000022985
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9979173351002908,
+          "relative_l2": 0.06573750845259722,
+          "max_abs": 0.21343684196472168,
+          "host_inference_ms": 75.32150000042748
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.3505086114092177,
+          "relative_l2": 1.3496240904656607,
+          "max_abs": 5.4978203773498535,
+          "host_inference_ms": 102.90310000709724
+        }
+      }
+    },
+    {
+      "image": "n02102040-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 68.6755000060657
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 0.997741631374953,
+          "relative_l2": 0.06717525293038011,
+          "max_abs": 0.3180012106895447,
+          "host_inference_ms": 65.22560000303201
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 361,
+          "agrees": false,
+          "cosine": 0.2082606413394598,
+          "relative_l2": 1.5296393787155793,
+          "max_abs": 7.375691890716553,
+          "host_inference_ms": 105.86090000288095
+        }
+      }
+    },
+    {
+      "image": "n02102040-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 68.2334000011906
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 0.9954508418858463,
+          "relative_l2": 0.09612766931814301,
+          "max_abs": 0.5617837309837341,
+          "host_inference_ms": 68.44709999859333
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 361,
+          "agrees": false,
+          "cosine": 0.2521962315607941,
+          "relative_l2": 1.4106242107879268,
+          "max_abs": 6.504855394363403,
+          "host_inference_ms": 98.69090000574943
+        }
+      }
+    },
+    {
+      "image": "n02979186-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 68.53639999462757
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.9975698802101542,
+          "relative_l2": 0.07002723060150186,
+          "max_abs": 0.320084810256958,
+          "host_inference_ms": 69.34880001062993
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 423,
+          "agrees": false,
+          "cosine": 0.250631496315985,
+          "relative_l2": 1.3551720673089396,
+          "max_abs": 6.808578729629517,
+          "host_inference_ms": 100.13580000668298
+        }
+      }
+    },
+    {
+      "image": "n02979186-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 63.00249999912921
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.9982623506809484,
+          "relative_l2": 0.05962821886657763,
+          "max_abs": 0.3156072050333023,
+          "host_inference_ms": 61.28760000865441
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.35371671171404984,
+          "relative_l2": 1.4066860480036607,
+          "max_abs": 4.95073664188385,
+          "host_inference_ms": 89.70169999520294
+        }
+      }
+    },
+    {
+      "image": "n03000684-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 491,
+          "agrees": true,
+          "cosine": 0.9999999999999999,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 60.72010000934824
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 491,
+          "agrees": true,
+          "cosine": 0.9983385072349211,
+          "relative_l2": 0.058825916396087814,
+          "max_abs": 0.29436159133911133,
+          "host_inference_ms": 62.868300010450184
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 491,
+          "agrees": true,
+          "cosine": 0.4038906115965146,
+          "relative_l2": 1.096258354635879,
+          "max_abs": 5.440824121236801,
+          "host_inference_ms": 89.17150000343099
+        }
+      }
+    },
+    {
+      "image": "n03000684-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 726,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 67.55350000457838
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 726,
+          "agrees": true,
+          "cosine": 0.9928210343291648,
+          "relative_l2": 0.12107302997422038,
+          "max_abs": 0.623450517654419,
+          "host_inference_ms": 62.789799994789064
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 595,
+          "agrees": false,
+          "cosine": 0.36032875586195545,
+          "relative_l2": 1.168373763886763,
+          "max_abs": 5.445958971977234,
+          "host_inference_ms": 85.0337000010768
+        }
+      }
+    },
+    {
+      "image": "n03028079-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 497,
+          "agrees": true,
+          "cosine": 0.9999999999999999,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 77.4781000072835
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 497,
+          "agrees": true,
+          "cosine": 0.9978537437658698,
+          "relative_l2": 0.06550864161751786,
+          "max_abs": 0.26234912872314453,
+          "host_inference_ms": 63.29540000297129
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 437,
+          "agrees": false,
+          "cosine": 0.4656739903645649,
+          "relative_l2": 1.1628511860971542,
+          "max_abs": 6.8907310962677,
+          "host_inference_ms": 85.8960999903502
+        }
+      }
+    },
+    {
+      "image": "n03028079-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 727,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 77.319299991359
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 727,
+          "agrees": true,
+          "cosine": 0.9920706724381418,
+          "relative_l2": 0.12723890203892071,
+          "max_abs": 0.8790841102600098,
+          "host_inference_ms": 63.005399992107414
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 437,
+          "agrees": false,
+          "cosine": 0.46348222401182754,
+          "relative_l2": 1.0518042591508723,
+          "max_abs": 7.099104642868042,
+          "host_inference_ms": 87.45209999324288
+        }
+      }
+    },
+    {
+      "image": "n03394916-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 62.221599990152754
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 0.9982399746345878,
+          "relative_l2": 0.059322890220177,
+          "max_abs": 0.18703609704971313,
+          "host_inference_ms": 62.74019999545999
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 840,
+          "agrees": false,
+          "cosine": 0.17595708241217345,
+          "relative_l2": 1.6983421824233227,
+          "max_abs": 6.254607200622559,
+          "host_inference_ms": 86.26090000325348
+        }
+      }
+    },
+    {
+      "image": "n03394916-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 159.30450000450946
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 0.9982717912224858,
+          "relative_l2": 0.05920385880874751,
+          "max_abs": 0.16921961307525635,
+          "host_inference_ms": 78.71280000836123
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 835,
+          "agrees": false,
+          "cosine": 0.2237778566330052,
+          "relative_l2": 1.7143410119664342,
+          "max_abs": 5.707912921905518,
+          "host_inference_ms": 85.37519999663346
+        }
+      }
+    },
+    {
+      "image": "n03417042-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 61.86610000440851
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9981809087649528,
+          "relative_l2": 0.06158122729939751,
+          "max_abs": 0.22565555572509766,
+          "host_inference_ms": 62.08129999868106
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 595,
+          "agrees": false,
+          "cosine": 0.24679453652311678,
+          "relative_l2": 1.5850105830663808,
+          "max_abs": 5.287810742855072,
+          "host_inference_ms": 94.64399999706075
+        }
+      }
+    },
+    {
+      "image": "n03417042-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 63.45419998979196
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9977340465626378,
+          "relative_l2": 0.06776402731247017,
+          "max_abs": 0.3005049228668213,
+          "host_inference_ms": 61.96400000771973
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 595,
+          "agrees": false,
+          "cosine": 0.3359650940827003,
+          "relative_l2": 1.2872316937187351,
+          "max_abs": 8.482305526733398,
+          "host_inference_ms": 90.1884000049904
+        }
+      }
+    },
+    {
+      "image": "n03425413-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 62.89939999987837
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9979209420160291,
+          "relative_l2": 0.06542807335300942,
+          "max_abs": 0.25280749797821045,
+          "host_inference_ms": 63.71930000022985
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 870,
+          "agrees": false,
+          "cosine": 0.26802976985267646,
+          "relative_l2": 1.2908111920506515,
+          "max_abs": 8.160704433918,
+          "host_inference_ms": 86.85279999917839
+        }
+      }
+    },
+    {
+      "image": "n03425413-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 65.79839999903925
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9975591425264134,
+          "relative_l2": 0.07028593912991724,
+          "max_abs": 0.3323390781879425,
+          "host_inference_ms": 66.28660000569653
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 866,
+          "agrees": false,
+          "cosine": 0.32903930611218296,
+          "relative_l2": 1.3244491577456134,
+          "max_abs": 7.873111963272095,
+          "host_inference_ms": 85.74619999853894
+        }
+      }
+    },
+    {
+      "image": "n03445777-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 429,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 64.56870000693016
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 574,
+          "agrees": false,
+          "cosine": 0.9961619189075158,
+          "relative_l2": 0.08909449642190317,
+          "max_abs": 0.40565943717956543,
+          "host_inference_ms": 64.53449999389704
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 81,
+          "agrees": false,
+          "cosine": 0.3591369067957979,
+          "relative_l2": 1.5369527307234747,
+          "max_abs": 6.243359923362732,
+          "host_inference_ms": 92.92870000354014
+        }
+      }
+    },
+    {
+      "image": "n03445777-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 574,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 68.99870000779629
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 574,
+          "agrees": true,
+          "cosine": 0.999154579698748,
+          "relative_l2": 0.04148308948565759,
+          "max_abs": 0.13705097138881683,
+          "host_inference_ms": 69.33019999996759
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 574,
+          "agrees": true,
+          "cosine": 0.3647870437586215,
+          "relative_l2": 1.7882999091925336,
+          "max_abs": 4.869288146495819,
+          "host_inference_ms": 85.04240000911523
+        }
+      }
+    },
+    {
+      "image": "n03888257-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 701,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 69.24150000850204
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 701,
+          "agrees": true,
+          "cosine": 0.9962721453517305,
+          "relative_l2": 0.0885822087939355,
+          "max_abs": 0.3809633255004883,
+          "host_inference_ms": 61.4417000033427
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 843,
+          "agrees": false,
+          "cosine": 0.31807127488653625,
+          "relative_l2": 1.3289961101454772,
+          "max_abs": 8.346314191818237,
+          "host_inference_ms": 86.6985000029672
+        }
+      }
+    },
+    {
+      "image": "n03888257-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 417,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 61.595300008775666
+        },
+        "tiny-vit-weights-only-ablation.mnn": {
+          "top1": 417,
+          "agrees": true,
+          "cosine": 0.9967236938861498,
+          "relative_l2": 0.0828864417992109,
+          "max_abs": 0.3892340660095215,
+          "host_inference_ms": 63.05599999905098
+        },
+        "tiny-vit-convio-ablation.mnn": {
+          "top1": 39,
+          "agrees": false,
+          "cosine": 0.3196301776706972,
+          "relative_l2": 1.3994512690824044,
+          "max_abs": 6.944019317626953,
+          "host_inference_ms": 89.97599998838268
+        }
+      }
+    }
+  ]
+}

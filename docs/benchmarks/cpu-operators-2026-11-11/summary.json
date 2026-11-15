@@ -1,0 +1,5062 @@
+{
+  "inputs": 20,
+  "measured_cpu_inferences": 40,
+  "operator_count": 339,
+  "unique_names": 339,
+  "control_inference_ms": {
+    "mean": 1167.7915,
+    "median": 1164.1750000000002,
+    "stddev": 10.348138034906249,
+    "minimum": 1159.34,
+    "maximum": 1197.57
+  },
+  "profiled_inference_ms": {
+    "mean": 1175.514917,
+    "median": 1174.77683,
+    "stddev": 8.247342986091503,
+    "minimum": 1161.1021,
+    "maximum": 1203.69918
+  },
+  "profiling_comparison": {
+    "cpu": {
+      "mean": 1167.7915,
+      "median": 1164.1750000000002,
+      "stddev": 10.348138034906249,
+      "minimum": 1159.34,
+      "maximum": 1197.57
+    },
+    "dma": {
+      "mean": 1175.514917,
+      "median": 1174.77683,
+      "stddev": 8.247342986091503,
+      "minimum": 1161.1021,
+      "maximum": 1203.69918
+    },
+    "added_ms": {
+      "mean": 7.723417000000007,
+      "median": 10.326224999999909,
+      "stddev": 14.937430933721696,
+      "minimum": -34.7346399999999,
+      "maximum": 42.55917999999997
+    },
+    "latency_increase_pct": 0.6613695167330749,
+    "cpu_over_dma_ratio": 0.9934297584077362,
+    "paired_bootstrap_95_ci_added_ms": [
+      1.0468590000000404,
+      13.792997499999956
+    ],
+    "paired_bootstrap_95_ci_increase_pct": [
+      0.0893160374140374,
+      1.1844294342328816
+    ],
+    "dma_faster_inputs": 2,
+    "dma_slower_inputs": 18
+  },
+  "sum_operator_ms": {
+    "mean": 1165.9976965,
+    "median": 1165.2061549999999,
+    "stddev": 8.074170325220166,
+    "minimum": 1152.42948,
+    "maximum": 1194.0212
+  },
+  "outside_operator_ms": {
+    "mean": 9.5172205,
+    "median": 9.604445,
+    "stddev": 0.31053200869806097,
+    "minimum": 8.60562,
+    "maximum": 9.75216
+  },
+  "operator_coverage_pct": 99.1903785853872,
+  "types": [
+    {
+      "type": "Convolution",
+      "commands_per_inference": 53,
+      "ms": {
+        "mean": 721.777993,
+        "median": 720.1373000000001,
+        "stddev": 5.239950021925291,
+        "minimum": 718.0854299999997,
+        "maximum": 741.6392000000001
+      },
+      "share_pct": 61.40100670453678
+    },
+    {
+      "type": "UnaryOp",
+      "commands_per_inference": 23,
+      "ms": {
+        "mean": 124.192478,
+        "median": 124.16675,
+        "stddev": 0.20386583660003518,
+        "minimum": 123.8473,
+        "maximum": 124.49912000000002
+      },
+      "share_pct": 10.564942750105484
+    },
+    {
+      "type": "Raster",
+      "commands_per_inference": 154,
+      "ms": {
+        "mean": 115.75915200000001,
+        "median": 115.90688499999999,
+        "stddev": 2.0053654281572797,
+        "minimum": 110.36212999999995,
+        "maximum": 119.47928000000003
+      },
+      "share_pct": 9.847527268767106
+    },
+    {
+      "type": "While",
+      "commands_per_inference": 22,
+      "ms": {
+        "mean": 86.80598250000001,
+        "median": 86.92683500000003,
+        "stddev": 1.5123018389366973,
+        "minimum": 82.80229,
+        "maximum": 88.76744000000002
+      },
+      "share_pct": 7.384507099368439
+    },
+    {
+      "type": "ConvolutionDepthwise",
+      "commands_per_inference": 15,
+      "ms": {
+        "mean": 41.1546775,
+        "median": 41.134505,
+        "stddev": 0.21840113673009987,
+        "minimum": 40.87454999999999,
+        "maximum": 41.90112
+      },
+      "share_pct": 3.5009915148528905
+    },
+    {
+      "type": "BinaryOp",
+      "commands_per_inference": 40,
+      "ms": {
+        "mean": 39.503530000000005,
+        "median": 39.46524000000001,
+        "stddev": 0.43817200046268584,
+        "minimum": 38.399040000000014,
+        "maximum": 40.37314
+      },
+      "share_pct": 3.360529877478365
+    },
+    {
+      "type": "Softmax",
+      "commands_per_inference": 10,
+      "ms": {
+        "mean": 29.0713895,
+        "median": 29.09709,
+        "stddev": 0.3812014377627247,
+        "minimum": 28.15971,
+        "maximum": 29.67187
+      },
+      "share_pct": 2.473077038800351
+    },
+    {
+      "type": "LayerNorm",
+      "commands_per_inference": 21,
+      "ms": {
+        "mean": 7.589881,
+        "median": 7.604215000000001,
+        "stddev": 0.08580776586741992,
+        "minimum": 7.384819999999999,
+        "maximum": 7.721010000000001
+      },
+      "share_pct": 0.6456643714373214
+    },
+    {
+      "type": "Reduction",
+      "commands_per_inference": 1,
+      "ms": {
+        "mean": 0.142613,
+        "median": 0.14277499999999999,
+        "stddev": 0.005075855229987303,
+        "minimum": 0.13262,
+        "maximum": 0.15225
+      },
+      "share_pct": 0.012131960040452638
+    }
+  ],
+  "grouped_by_name": [
+    {
+      "name": "/layers.1/blocks.1/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 35.6361635,
+        "median": 35.47142,
+        "stddev": 0.6290308886589802,
+        "minimum": 35.30762,
+        "maximum": 38.25216
+      },
+      "share_pct": 3.031536476878243
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 35.5930745,
+        "median": 35.506235000000004,
+        "stddev": 0.24853145010080757,
+        "minimum": 35.29928,
+        "maximum": 36.11552
+      },
+      "share_pct": 3.027870934282666
+    },
+    {
+      "name": "/patch_embed/seq/seq.2/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 34.206981999999996,
+        "median": 34.21789,
+        "stddev": 0.24437432401521683,
+        "minimum": 33.81226,
+        "maximum": 34.66779
+      },
+      "share_pct": 2.9099572881047497
+    },
+    {
+      "name": "/layers.0/blocks.0/conv3/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 31.6718205,
+        "median": 31.596175000000002,
+        "stddev": 0.21163459473632898,
+        "minimum": 31.47769,
+        "maximum": 32.24547
+      },
+      "share_pct": 2.6942933723741085
+    },
+    {
+      "name": "/layers.0/blocks.1/conv3/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 31.584656,
+        "median": 31.554904999999998,
+        "stddev": 0.12672085037593445,
+        "minimum": 31.42631,
+        "maximum": 31.87555
+      },
+      "share_pct": 2.6868783665124685
+    },
+    {
+      "name": "/layers.0/blocks.0/conv1/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 28.994812,
+        "median": 28.958875,
+        "stddev": 0.19706930537784229,
+        "minimum": 28.733,
+        "maximum": 29.59263
+      },
+      "share_pct": 2.466562659536204
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 28.555822499999998,
+        "median": 28.505395,
+        "stddev": 0.24034805378154991,
+        "minimum": 28.17471,
+        "maximum": 29.0631
+      },
+      "share_pct": 2.4292182163775977
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 28.486044,
+        "median": 28.477575,
+        "stddev": 0.22238760322321993,
+        "minimum": 28.23074,
+        "maximum": 29.00095
+      },
+      "share_pct": 2.4232822219473378
+    },
+    {
+      "name": "/layers.0/blocks.1/conv1/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 28.132414,
+        "median": 28.1005,
+        "stddev": 0.17476453877928658,
+        "minimum": 27.91874,
+        "maximum": 28.63011
+      },
+      "share_pct": 2.393199234918769
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 21.397669,
+        "median": 21.094435,
+        "stddev": 1.1407441755778274,
+        "minimum": 20.94169,
+        "maximum": 26.18721
+      },
+      "share_pct": 1.820280516270131
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 21.186101,
+        "median": 21.14949,
+        "stddev": 0.16805921972861093,
+        "minimum": 20.95078,
+        "maximum": 21.61019
+      },
+      "share_pct": 1.802282616206052
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 19.014824,
+        "median": 18.760385,
+        "stddev": 1.1405312823896911,
+        "minimum": 18.34171,
+        "maximum": 23.57751
+      },
+      "share_pct": 1.617574028624598
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 18.8585575,
+        "median": 18.814475,
+        "stddev": 0.3913170267574149,
+        "minimum": 18.38299,
+        "maximum": 19.84015
+      },
+      "share_pct": 1.604280577581135
+    },
+    {
+      "name": "/layers.0/blocks.0/act1/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 17.0027205,
+        "median": 16.959965,
+        "stddev": 0.12922940391636506,
+        "minimum": 16.88314,
+        "maximum": 17.41065
+      },
+      "share_pct": 1.446406187970135
+    },
+    {
+      "name": "/layers.0/blocks.1/act2/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 15.189256499999999,
+        "median": 15.16263,
+        "stddev": 0.09561564627936708,
+        "minimum": 15.08451,
+        "maximum": 15.4668
+      },
+      "share_pct": 1.292136431476692
+    },
+    {
+      "name": "/layers.0/blocks.0/act2/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 15.1500685,
+        "median": 15.158495,
+        "stddev": 0.029761280970415402,
+        "minimum": 15.1047,
+        "maximum": 15.22296
+      },
+      "share_pct": 1.2888027434534035
+    },
+    {
+      "name": "/layers.0/blocks.1/act1/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 15.141371,
+        "median": 15.117805,
+        "stddev": 0.062058078391811475,
+        "minimum": 15.08605,
+        "maximum": 15.33228
+      },
+      "share_pct": 1.2880628549267485
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 15.019459,
+        "median": 14.95869,
+        "stddev": 0.18025765503563881,
+        "minimum": 14.8746,
+        "maximum": 15.54721
+      },
+      "share_pct": 1.277691910395383
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 15.000435,
+        "median": 14.876854999999999,
+        "stddev": 0.4329959412293059,
+        "minimum": 14.81153,
+        "maximum": 16.77873
+      },
+      "share_pct": 1.2760735557726657
+    },
+    {
+      "name": "/layers.0/downsample/conv1/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 14.537810499999999,
+        "median": 14.51925,
+        "stddev": 0.049305699731903505,
+        "minimum": 14.46853,
+        "maximum": 14.67731
+      },
+      "share_pct": 1.2367185043556532
+    },
+    {
+      "name": "/layers.0/blocks.0/conv2/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 14.369004,
+        "median": 14.364265,
+        "stddev": 0.07292717560040717,
+        "minimum": 14.26909,
+        "maximum": 14.57001
+      },
+      "share_pct": 1.2223582867557945
+    },
+    {
+      "name": "/layers.0/blocks.1/conv2/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 14.3287225,
+        "median": 14.305029999999999,
+        "stddev": 0.10026220565544486,
+        "minimum": 14.21033,
+        "maximum": 14.65682
+      },
+      "share_pct": 1.2189315756679588
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 14.0191495,
+        "median": 13.808264999999999,
+        "stddev": 0.7985901021931018,
+        "minimum": 13.63523,
+        "maximum": 17.32484
+      },
+      "share_pct": 1.1925964781270402
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 13.9325045,
+        "median": 13.772065,
+        "stddev": 0.4788482012570425,
+        "minimum": 13.61874,
+        "maximum": 15.50677
+      },
+      "share_pct": 1.1852256656646067
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 13.8334675,
+        "median": 13.76781,
+        "stddev": 0.3834769655729011,
+        "minimum": 13.5378,
+        "maximum": 15.40827
+      },
+      "share_pct": 1.1768006768730779
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 13.824788999999999,
+        "median": 13.775475,
+        "stddev": 0.1930234037596149,
+        "minimum": 13.64959,
+        "maximum": 14.51132
+      },
+      "share_pct": 1.176062404659387
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 13.789559,
+        "median": 13.78264,
+        "stddev": 0.1088465398671572,
+        "minimum": 13.60797,
+        "maximum": 14.07774
+      },
+      "share_pct": 1.17306542014728
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/fc2/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 13.7841035,
+        "median": 13.782554999999999,
+        "stddev": 0.12155281322493006,
+        "minimum": 13.58032,
+        "maximum": 14.03623
+      },
+      "share_pct": 1.172601325653786
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 12.581403,
+        "median": 12.41004,
+        "stddev": 0.8282019215594324,
+        "minimum": 12.27582,
+        "maximum": 16.09257
+      },
+      "share_pct": 1.0702886724830902
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 12.5726095,
+        "median": 12.39673,
+        "stddev": 0.7293385927816992,
+        "minimum": 12.30455,
+        "maximum": 15.65453
+      },
+      "share_pct": 1.0695406173225108
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 12.4804975,
+        "median": 12.40392,
+        "stddev": 0.3123464825423504,
+        "minimum": 12.2978,
+        "maximum": 13.76466
+      },
+      "share_pct": 1.0617047320718944
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 12.4429755,
+        "median": 12.464680000000001,
+        "stddev": 0.06958043573145348,
+        "minimum": 12.30977,
+        "maximum": 12.60085
+      },
+      "share_pct": 1.0585127691748382
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 12.4373825,
+        "median": 12.423845,
+        "stddev": 0.08247847124999867,
+        "minimum": 12.31045,
+        "maximum": 12.62359
+      },
+      "share_pct": 1.0580369776796292
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 12.427364,
+        "median": 12.411145000000001,
+        "stddev": 0.09066847948781069,
+        "minimum": 12.313,
+        "maximum": 12.64867
+      },
+      "share_pct": 1.0571847128674081
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 11.2435135,
+        "median": 11.14612,
+        "stddev": 0.3182109624178504,
+        "minimum": 11.00915,
+        "maximum": 12.40951
+      },
+      "share_pct": 0.9564756122954415
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 11.226151,
+        "median": 11.192875,
+        "stddev": 0.1566227501421978,
+        "minimum": 11.11006,
+        "maximum": 11.86635
+      },
+      "share_pct": 0.9549985999879915
+    },
+    {
+      "name": "/patch_embed/seq/seq.0/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.54463,
+        "median": 9.5328,
+        "stddev": 0.04660395668768254,
+        "minimum": 9.50236,
+        "maximum": 9.69851
+      },
+      "share_pct": 0.8119531162019273
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.1900465,
+        "median": 9.101185000000001,
+        "stddev": 0.3751080624408891,
+        "minimum": 8.95748,
+        "maximum": 10.72667
+      },
+      "share_pct": 0.7817890157832851
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.170751,
+        "median": 9.100950000000001,
+        "stddev": 0.343017351485315,
+        "minimum": 8.9926,
+        "maximum": 10.59538
+      },
+      "share_pct": 0.7801475648989998
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.118527,
+        "median": 9.09043,
+        "stddev": 0.0897151434204247,
+        "minimum": 8.98629,
+        "maximum": 9.29686
+      },
+      "share_pct": 0.7757049160440387
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.0973715,
+        "median": 9.01034,
+        "stddev": 0.2563484019901329,
+        "minimum": 8.94147,
+        "maximum": 10.11273
+      },
+      "share_pct": 0.773905236627465
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.094692,
+        "median": 9.022469999999998,
+        "stddev": 0.1985287106533566,
+        "minimum": 8.94814,
+        "maximum": 9.87637
+      },
+      "share_pct": 0.7736772939649561
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/qkv/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 9.081693,
+        "median": 9.07883,
+        "stddev": 0.07494961199295651,
+        "minimum": 8.9934,
+        "maximum": 9.27301
+      },
+      "share_pct": 0.7725714806901084
+    },
+    {
+      "name": "/layers.1/downsample/conv1/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 8.9756645,
+        "median": 8.89513,
+        "stddev": 0.31893717808197697,
+        "minimum": 8.77454,
+        "maximum": 10.28553
+      },
+      "share_pct": 0.7635517312622925
+    },
+    {
+      "name": "/patch_embed/seq/seq.1/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 8.1664695,
+        "median": 8.12633,
+        "stddev": 0.1457793990021259,
+        "minimum": 8.04702,
+        "maximum": 8.583
+      },
+      "share_pct": 0.6947142381520285
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 7.589472,
+        "median": 7.58903,
+        "stddev": 0.04123511069082036,
+        "minimum": 7.53187,
+        "maximum": 7.69612
+      },
+      "share_pct": 0.6456295781740385
+    },
+    {
+      "name": "/layers.0/downsample/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 7.588895,
+        "median": 7.594015000000001,
+        "stddev": 0.034865989083013894,
+        "minimum": 7.52945,
+        "maximum": 7.67957
+      },
+      "share_pct": 0.6455804933013879
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 7.585496,
+        "median": 7.58295,
+        "stddev": 0.03460374187250495,
+        "minimum": 7.52684,
+        "maximum": 7.69509
+      },
+      "share_pct": 0.6452913434189964
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 7.226238,
+        "median": 7.226875,
+        "stddev": 0.06794467746475427,
+        "minimum": 7.10665,
+        "maximum": 7.42344
+      },
+      "share_pct": 0.6147295874766003
+    },
+    {
+      "name": "/layers.0/downsample/conv3/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 7.2143135,
+        "median": 7.216705,
+        "stddev": 0.07463486029541286,
+        "minimum": 7.08905,
+        "maximum": 7.40233
+      },
+      "share_pct": 0.6137151809533354
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 7.1913025,
+        "median": 7.18507,
+        "stddev": 0.045137101307834125,
+        "minimum": 7.11998,
+        "maximum": 7.28662
+      },
+      "share_pct": 0.6117576558154387
+    },
+    {
+      "name": "/layers.2/downsample/conv1/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.9469140000000005,
+        "median": 5.88932,
+        "stddev": 0.19820199471618263,
+        "minimum": 5.8403,
+        "maximum": 6.76243
+      },
+      "share_pct": 0.5058986418630025
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.154036,
+        "median": 5.080565,
+        "stddev": 0.43311092583528155,
+        "minimum": 4.8482,
+        "maximum": 6.95573
+      },
+      "share_pct": 0.4384492213126037
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.1227835,
+        "median": 5.062855,
+        "stddev": 0.38080926552298844,
+        "minimum": 4.78335,
+        "maximum": 6.68848
+      },
+      "share_pct": 0.43579059915919377
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.1031315,
+        "median": 5.11351,
+        "stddev": 0.19432814391817818,
+        "minimum": 4.76935,
+        "maximum": 5.7787
+      },
+      "share_pct": 0.43411882113955347
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.086749,
+        "median": 5.086265,
+        "stddev": 0.15717106419439936,
+        "minimum": 4.78441,
+        "maximum": 5.54825
+      },
+      "share_pct": 0.43272517655341675
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.077678,
+        "median": 5.064205,
+        "stddev": 0.2057906375702717,
+        "minimum": 4.6985,
+        "maximum": 5.64798
+      },
+      "share_pct": 0.43195351471664906
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.075898,
+        "median": 5.08117,
+        "stddev": 0.18593015951384034,
+        "minimum": 4.70937,
+        "maximum": 5.63378
+      },
+      "share_pct": 0.4318020917126311
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.0684785,
+        "median": 5.09116,
+        "stddev": 0.11382030409354635,
+        "minimum": 4.7675,
+        "maximum": 5.20947
+      },
+      "share_pct": 0.431170921500097
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.0587115,
+        "median": 5.058669999999999,
+        "stddev": 0.1552780523100754,
+        "minimum": 4.76362,
+        "maximum": 5.57723
+      },
+      "share_pct": 0.43034005156737626
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.0542275,
+        "median": 5.066955,
+        "stddev": 0.11514138406758881,
+        "minimum": 4.77177,
+        "maximum": 5.31187
+      },
+      "share_pct": 0.42995860170781647
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.0534925,
+        "median": 5.0824750000000005,
+        "stddev": 0.09094935802412243,
+        "minimum": 4.81809,
+        "maximum": 5.1427
+      },
+      "share_pct": 0.4298960759168316
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.049907,
+        "median": 5.062415,
+        "stddev": 0.1107935927322799,
+        "minimum": 4.7791,
+        "maximum": 5.29599
+      },
+      "share_pct": 0.4295910606466596
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 5.036652,
+        "median": 5.062005,
+        "stddev": 0.09540315953059963,
+        "minimum": 4.77343,
+        "maximum": 5.13018
+      },
+      "share_pct": 0.4284634696813465
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.9666755,
+        "median": 4.9915,
+        "stddev": 0.07240340305138332,
+        "minimum": 4.77616,
+        "maximum": 5.05407
+      },
+      "share_pct": 0.4225106315686167
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.963444,
+        "median": 4.98418,
+        "stddev": 0.09100505199394722,
+        "minimum": 4.71349,
+        "maximum": 5.05929
+      },
+      "share_pct": 0.4222357307610415
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.703485,
+        "median": 4.697465,
+        "stddev": 0.0392754386219602,
+        "minimum": 4.62389,
+        "maximum": 4.79761
+      },
+      "share_pct": 0.40012125171526
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.694224,
+        "median": 4.672455,
+        "stddev": 0.07369687548900644,
+        "minimum": 4.62974,
+        "maximum": 4.90643
+      },
+      "share_pct": 0.39933342674885003
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.68019,
+        "median": 4.67696,
+        "stddev": 0.08623072672533234,
+        "minimum": 4.48505,
+        "maximum": 4.81896
+      },
+      "share_pct": 0.3981395669520032
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.6518239999999995,
+        "median": 4.67076,
+        "stddev": 0.09290717033118256,
+        "minimum": 4.42779,
+        "maximum": 4.82245
+      },
+      "share_pct": 0.3957264967655021
+    },
+    {
+      "name": "/layers.0/downsample/conv2/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.4663785,
+        "median": 4.466519999999999,
+        "stddev": 0.04337560972118109,
+        "minimum": 4.39277,
+        "maximum": 4.57817
+      },
+      "share_pct": 0.3799508143544894
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.2580655,
+        "median": 4.2595600000000005,
+        "stddev": 0.047720864737720095,
+        "minimum": 4.20282,
+        "maximum": 4.42557
+      },
+      "share_pct": 0.36222981422191514
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 4.214008,
+        "median": 4.207085,
+        "stddev": 0.032686448439360125,
+        "minimum": 4.16859,
+        "maximum": 4.2723
+      },
+      "share_pct": 0.3584818821997135
+    },
+    {
+      "name": "/layers.0/blocks.1/act3/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.8383025,
+        "median": 3.82936,
+        "stddev": 0.08705720230037504,
+        "minimum": 3.7676,
+        "maximum": 4.15735
+      },
+      "share_pct": 0.326520952179461
+    },
+    {
+      "name": "/layers.0/blocks.0/act3/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.817056,
+        "median": 3.795255,
+        "stddev": 0.05582971038887138,
+        "minimum": 3.77198,
+        "maximum": 4.01554
+      },
+      "share_pct": 0.3247135314744798
+    },
+    {
+      "name": "Softmax676",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.6092445,
+        "median": 3.55248,
+        "stddev": 0.19547374615681487,
+        "minimum": 3.39488,
+        "maximum": 4.16161
+      },
+      "share_pct": 0.30703519349725106
+    },
+    {
+      "name": "Softmax1188",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.582634,
+        "median": 3.5538,
+        "stddev": 0.15695741683318873,
+        "minimum": 3.40119,
+        "maximum": 4.19095
+      },
+      "share_pct": 0.304771462121735
+    },
+    {
+      "name": "Softmax546",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.568158,
+        "median": 3.5711500000000003,
+        "stddev": 0.043929560075432694,
+        "minimum": 3.46307,
+        "maximum": 3.62946
+      },
+      "share_pct": 0.3035400017811939
+    },
+    {
+      "name": "Softmax1060",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.5560995,
+        "median": 3.54601,
+        "stddev": 0.07976191318213025,
+        "minimum": 3.45159,
+        "maximum": 3.84861
+      },
+      "share_pct": 0.302514195998076
+    },
+    {
+      "name": "Softmax804",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.5532304999999997,
+        "median": 3.5481949999999998,
+        "stddev": 0.049767212676938004,
+        "minimum": 3.40727,
+        "maximum": 3.64174
+      },
+      "share_pct": 0.3022701327404763
+    },
+    {
+      "name": "Softmax932",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.5501315,
+        "median": 3.550795,
+        "stddev": 0.06075378587077165,
+        "minimum": 3.40282,
+        "maximum": 3.67697
+      },
+      "share_pct": 0.3020065035890991
+    },
+    {
+      "name": "/layers.2/downsample/conv3/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.511162,
+        "median": 3.476645,
+        "stddev": 0.1403443716682196,
+        "minimum": 3.37774,
+        "maximum": 4.06039
+      },
+      "share_pct": 0.29869140316489917
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.484179,
+        "median": 3.471145,
+        "stddev": 0.060392903635060335,
+        "minimum": 3.40106,
+        "maximum": 3.60947
+      },
+      "share_pct": 0.2963959835483738
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.4435355,
+        "median": 3.450285,
+        "stddev": 0.039890802986336765,
+        "minimum": 3.37011,
+        "maximum": 3.50634
+      },
+      "share_pct": 0.29293847744511436
+    },
+    {
+      "name": "Softmax191",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.3690539999999998,
+        "median": 3.3526100000000003,
+        "stddev": 0.0331715449396649,
+        "minimum": 3.33969,
+        "maximum": 3.43835
+      },
+      "share_pct": 0.28660240302165385
+    },
+    {
+      "name": "Softmax382",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.356147,
+        "median": 3.3410599999999997,
+        "stddev": 0.04017089167413061,
+        "minimum": 3.31514,
+        "maximum": 3.46828
+      },
+      "share_pct": 0.28550441610431726
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/norm/Add_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 3.336512,
+        "median": 3.3397300000000003,
+        "stddev": 0.05360374914224994,
+        "minimum": 3.18419,
+        "maximum": 3.39102
+      },
+      "share_pct": 0.2838340842594344
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.967536,
+        "median": 2.912115,
+        "stddev": 0.26935065588422674,
+        "minimum": 2.86636,
+        "maximum": 4.10572
+      },
+      "share_pct": 0.25244562677038324
+    },
+    {
+      "name": "/layers.1/downsample/conv3/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.9382485000000003,
+        "median": 2.9189350000000003,
+        "stddev": 0.055146275941926955,
+        "minimum": 2.8917,
+        "maximum": 3.12836
+      },
+      "share_pct": 0.2499541654051167
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.9344625,
+        "median": 2.90027,
+        "stddev": 0.11647036103096875,
+        "minimum": 2.86222,
+        "maximum": 3.38842
+      },
+      "share_pct": 0.24963209377971682
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.9264815,
+        "median": 2.9110899999999997,
+        "stddev": 0.04467181759348131,
+        "minimum": 2.87383,
+        "maximum": 3.02482
+      },
+      "share_pct": 0.24895315726563425
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.916072,
+        "median": 2.904985,
+        "stddev": 0.048916262778451576,
+        "minimum": 2.85894,
+        "maximum": 3.05738
+      },
+      "share_pct": 0.24806763043399138
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.9050875,
+        "median": 2.902515,
+        "stddev": 0.03224003132344696,
+        "minimum": 2.86006,
+        "maximum": 2.97273
+      },
+      "share_pct": 0.24713318886790445
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/proj/Add_output_0__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.895404,
+        "median": 2.88995,
+        "stddev": 0.024622598819612432,
+        "minimum": 2.86625,
+        "maximum": 2.94978
+      },
+      "share_pct": 0.24630942220531604
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.676733,
+        "median": 2.6478149999999996,
+        "stddev": 0.1508525635774704,
+        "minimum": 2.50316,
+        "maximum": 3.26893
+      },
+      "share_pct": 0.22770727629992293
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.637193,
+        "median": 2.633375,
+        "stddev": 0.04170479438550008,
+        "minimum": 2.55106,
+        "maximum": 2.71062
+      },
+      "share_pct": 0.22434364395224426
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.3863775,
+        "median": 2.37255,
+        "stddev": 0.02570718164556153,
+        "minimum": 2.35981,
+        "maximum": 2.43272
+      },
+      "share_pct": 0.20300699425322563
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.3852125,
+        "median": 2.370685,
+        "stddev": 0.041764516275623706,
+        "minimum": 2.34781,
+        "maximum": 2.54091
+      },
+      "share_pct": 0.20290788874778695
+    },
+    {
+      "name": "/layers.1/downsample/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.3841365,
+        "median": 2.372085,
+        "stddev": 0.025239188467018583,
+        "minimum": 2.3574,
+        "maximum": 2.43331
+      },
+      "share_pct": 0.20281635439254914
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.381123,
+        "median": 2.37033,
+        "stddev": 0.02223923893529306,
+        "minimum": 2.36454,
+        "maximum": 2.43214
+      },
+      "share_pct": 0.202559998649511
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.380602,
+        "median": 2.3698300000000003,
+        "stddev": 0.027979178085065164,
+        "minimum": 2.35336,
+        "maximum": 2.47135
+      },
+      "share_pct": 0.20251567764664957
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.3799935,
+        "median": 2.37448,
+        "stddev": 0.02013906318706583,
+        "minimum": 2.35801,
+        "maximum": 2.43589
+      },
+      "share_pct": 0.2024639130972423
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.3757125,
+        "median": 2.371975,
+        "stddev": 0.015030034098431053,
+        "minimum": 2.35784,
+        "maximum": 2.42222
+      },
+      "share_pct": 0.20209973226566894
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.191238,
+        "median": 2.166425,
+        "stddev": 0.08948531791364024,
+        "minimum": 2.12836,
+        "maximum": 2.55009
+      },
+      "share_pct": 0.18640665195403897
+    },
+    {
+      "name": "/layers.1/blocks.0/Add_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1880319999999998,
+        "median": 2.180325,
+        "stddev": 0.05445486238982464,
+        "minimum": 2.06837,
+        "maximum": 2.26814
+      },
+      "share_pct": 0.18613392040859997
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1880175,
+        "median": 2.17694,
+        "stddev": 0.07124833973134871,
+        "minimum": 2.12058,
+        "maximum": 2.45776
+      },
+      "share_pct": 0.18613268690660095
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1861285,
+        "median": 2.16283,
+        "stddev": 0.058797565316135884,
+        "minimum": 2.09966,
+        "maximum": 2.29428
+      },
+      "share_pct": 0.18597199137031453
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1851555,
+        "median": 2.1620350000000004,
+        "stddev": 0.07281363084326277,
+        "minimum": 2.12337,
+        "maximum": 2.448
+      },
+      "share_pct": 0.18588921913272496
+    },
+    {
+      "name": "/layers.0/blocks.0/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.180356,
+        "median": 2.1603199999999996,
+        "stddev": 0.08129190672476178,
+        "minimum": 2.1084,
+        "maximum": 2.51187
+      },
+      "share_pct": 0.18548092997104862
+    },
+    {
+      "name": "/layers.0/blocks.1/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1762585,
+        "median": 2.1726400000000003,
+        "stddev": 0.03818596053318686,
+        "minimum": 2.12439,
+        "maximum": 2.2485
+      },
+      "share_pct": 0.18513235931994557
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1743245,
+        "median": 2.170935,
+        "stddev": 0.04180377450535699,
+        "minimum": 2.10116,
+        "maximum": 2.27922
+      },
+      "share_pct": 0.18496783567400701
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.1659335,
+        "median": 2.156415,
+        "stddev": 0.031061323263742904,
+        "minimum": 2.1135,
+        "maximum": 2.23174
+      },
+      "share_pct": 0.18425402082753833
+    },
+    {
+      "name": "/layers.1/blocks.1/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 2.0828945,
+        "median": 2.08614,
+        "stddev": 0.03883352464789863,
+        "minimum": 1.98189,
+        "maximum": 2.15208
+      },
+      "share_pct": 0.17718996755189625
+    },
+    {
+      "name": "/layers.0/downsample/act_1/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.913911,
+        "median": 1.90104,
+        "stddev": 0.024445732358150292,
+        "minimum": 1.89013,
+        "maximum": 1.95771
+      },
+      "share_pct": 0.16281469272073898
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.5585665,
+        "median": 1.5249899999999998,
+        "stddev": 0.12243850853108176,
+        "minimum": 1.49573,
+        "maximum": 2.06587
+      },
+      "share_pct": 0.13258585471442386
+    },
+    {
+      "name": "output__matmul_converted",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.5315665,
+        "median": 1.5242300000000002,
+        "stddev": 0.03663074941759638,
+        "minimum": 1.49297,
+        "maximum": 1.62379
+      },
+      "share_pct": 0.130288988923141
+    },
+    {
+      "name": "Softmax1188_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.504777,
+        "median": 1.417075,
+        "stddev": 0.3042022742760758,
+        "minimum": 1.36707,
+        "maximum": 2.75889
+      },
+      "share_pct": 0.12801003017811982
+    },
+    {
+      "name": "/layers.1/blocks.0/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.5037375,
+        "median": 1.492095,
+        "stddev": 0.03220029500927298,
+        "minimum": 1.47103,
+        "maximum": 1.57206
+      },
+      "share_pct": 0.12792160084515541
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.482863,
+        "median": 1.4761,
+        "stddev": 0.03504302229515809,
+        "minimum": 1.38725,
+        "maximum": 1.53645
+      },
+      "share_pct": 0.12614582584663195
+    },
+    {
+      "name": "/layers.1/blocks.1/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4813,
+        "median": 1.48028,
+        "stddev": 0.02084597903925989,
+        "minimum": 1.45145,
+        "maximum": 1.53805
+      },
+      "share_pct": 0.1260128628380477
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.477152,
+        "median": 1.46994,
+        "stddev": 0.03267958280993777,
+        "minimum": 1.4202,
+        "maximum": 1.53289
+      },
+      "share_pct": 0.12565999619722393
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4762520000000001,
+        "median": 1.4751400000000001,
+        "stddev": 0.025194131647542174,
+        "minimum": 1.40261,
+        "maximum": 1.54489
+      },
+      "share_pct": 0.12558343400418118
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4731015,
+        "median": 1.471845,
+        "stddev": 0.030902839126084054,
+        "minimum": 1.41238,
+        "maximum": 1.52744
+      },
+      "share_pct": 0.1253154237939798
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.471782,
+        "median": 1.46625,
+        "stddev": 0.029371415319911588,
+        "minimum": 1.42688,
+        "maximum": 1.5285
+      },
+      "share_pct": 0.1252031751120688
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.46955,
+        "median": 1.46314,
+        "stddev": 0.029373381075209454,
+        "minimum": 1.3904,
+        "maximum": 1.5261
+      },
+      "share_pct": 0.1250133008733227
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.464383,
+        "median": 1.45818,
+        "stddev": 0.03892676120478993,
+        "minimum": 1.38788,
+        "maximum": 1.56298
+      },
+      "share_pct": 0.1245737488161539
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4632505,
+        "median": 1.462095,
+        "stddev": 0.030801274832639464,
+        "minimum": 1.3905,
+        "maximum": 1.51891
+      },
+      "share_pct": 0.1244774080565751
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.462724,
+        "median": 1.46238,
+        "stddev": 0.02995499719315802,
+        "minimum": 1.40074,
+        "maximum": 1.50563
+      },
+      "share_pct": 0.12443261917364508
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4624075,
+        "median": 1.456665,
+        "stddev": 0.04540408222720437,
+        "minimum": 1.38925,
+        "maximum": 1.61221
+      },
+      "share_pct": 0.12440569480242505
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4620075000000001,
+        "median": 1.45506,
+        "stddev": 0.03392154599800451,
+        "minimum": 1.39555,
+        "maximum": 1.5223
+      },
+      "share_pct": 0.1243716671610727
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.461744,
+        "median": 1.45882,
+        "stddev": 0.017314211199869436,
+        "minimum": 1.42885,
+        "maximum": 1.51634
+      },
+      "share_pct": 0.12434925145233185
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.459811,
+        "median": 1.45134,
+        "stddev": 0.03956667948240234,
+        "minimum": 1.3835,
+        "maximum": 1.53882
+      },
+      "share_pct": 0.12418481287549667
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.450692,
+        "median": 1.45228,
+        "stddev": 0.026254717791585364,
+        "minimum": 1.38819,
+        "maximum": 1.514
+      },
+      "share_pct": 0.12340906772176675
+    },
+    {
+      "name": "Softmax1060_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.419033,
+        "median": 1.412315,
+        "stddev": 0.0510394831787891,
+        "minimum": 1.36115,
+        "maximum": 1.61389
+      },
+      "share_pct": 0.12071586497783253
+    },
+    {
+      "name": "Softmax804_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.41498,
+        "median": 1.4131200000000002,
+        "stddev": 0.027676666782879136,
+        "minimum": 1.35956,
+        "maximum": 1.48274
+      },
+      "share_pct": 0.12037107990182995
+    },
+    {
+      "name": "Softmax932_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4104445,
+        "median": 1.411235,
+        "stddev": 0.019979286767470992,
+        "minimum": 1.37182,
+        "maximum": 1.44817
+      },
+      "share_pct": 0.11998524898344613
+    },
+    {
+      "name": "Softmax546_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.4103315,
+        "median": 1.40531,
+        "stddev": 0.02926931234245178,
+        "minimum": 1.36844,
+        "maximum": 1.48823
+      },
+      "share_pct": 0.11997563617476409
+    },
+    {
+      "name": "Softmax676_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.40788,
+        "median": 1.4095499999999999,
+        "stddev": 0.018625088908300697,
+        "minimum": 1.36853,
+        "maximum": 1.44399
+      },
+      "share_pct": 0.11976708926782595
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3829525,
+        "median": 1.35596,
+        "stddev": 0.10570083387984569,
+        "minimum": 1.28653,
+        "maximum": 1.79785
+      },
+      "share_pct": 0.1176465291932999
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3642185,
+        "median": 1.349275,
+        "stddev": 0.04503111114902439,
+        "minimum": 1.2996,
+        "maximum": 1.5123
+      },
+      "share_pct": 0.11605284461056313
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3610875,
+        "median": 1.3496199999999998,
+        "stddev": 0.03610320672082073,
+        "minimum": 1.31852,
+        "maximum": 1.47897
+      },
+      "share_pct": 0.11578649324787768
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3594385,
+        "median": 1.3499949999999998,
+        "stddev": 0.03183668130598647,
+        "minimum": 1.30143,
+        "maximum": 1.42155
+      },
+      "share_pct": 0.11564621429640268
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3558755,
+        "median": 1.34905,
+        "stddev": 0.0439522117849543,
+        "minimum": 1.28938,
+        "maximum": 1.51964
+      },
+      "share_pct": 0.11534311308105671
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3557919999999999,
+        "median": 1.36154,
+        "stddev": 0.021305273278549718,
+        "minimum": 1.32321,
+        "maximum": 1.39491
+      },
+      "share_pct": 0.1153360098109244
+    },
+    {
+      "name": "/patch_embed/seq/seq.0/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.3326355,
+        "median": 1.3304049999999998,
+        "stddev": 0.030038572479046805,
+        "minimum": 1.29153,
+        "maximum": 1.40619
+      },
+      "share_pct": 0.11336610711848585
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2727065,
+        "median": 1.27111,
+        "stddev": 0.03189269711408126,
+        "minimum": 1.20506,
+        "maximum": 1.33917
+      },
+      "share_pct": 0.1082680008219751
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2677355,
+        "median": 1.26586,
+        "stddev": 0.033047138338567546,
+        "minimum": 1.20262,
+        "maximum": 1.3713
+      },
+      "share_pct": 0.10784512230906891
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.253467,
+        "median": 1.20058,
+        "stddev": 0.23479928102418388,
+        "minimum": 1.11705,
+        "maximum": 2.23989
+      },
+      "share_pct": 0.10663131380747932
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2353985,
+        "median": 1.2046000000000001,
+        "stddev": 0.1559200313681411,
+        "minimum": 1.11832,
+        "maximum": 1.88387
+      },
+      "share_pct": 0.10509424271304249
+    },
+    {
+      "name": "/layers.1/downsample/conv2/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.223022,
+        "median": 1.22296,
+        "stddev": 0.020695412051950052,
+        "minimum": 1.18188,
+        "maximum": 1.27449
+      },
+      "share_pct": 0.10404138495504944
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2213145,
+        "median": 1.2052550000000002,
+        "stddev": 0.06230272043354973,
+        "minimum": 1.12097,
+        "maximum": 1.44483
+      },
+      "share_pct": 0.10389612946102665
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.21212,
+        "median": 1.207395,
+        "stddev": 0.04286008878346282,
+        "minimum": 1.10637,
+        "maximum": 1.28768
+      },
+      "share_pct": 0.10311396158999146
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.212025,
+        "median": 1.20241,
+        "stddev": 0.02159325174800291,
+        "minimum": 1.17981,
+        "maximum": 1.2547
+      },
+      "share_pct": 0.10310588002517027
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2054065,
+        "median": 1.204955,
+        "stddev": 0.03753112704984464,
+        "minimum": 1.11792,
+        "maximum": 1.32265
+      },
+      "share_pct": 0.10254285016444416
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2026275,
+        "median": 1.19917,
+        "stddev": 0.01790100405152269,
+        "minimum": 1.18115,
+        "maximum": 1.25845
+      },
+      "share_pct": 0.10230644312614878
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.2019925,
+        "median": 1.20333,
+        "stddev": 0.031147644647794206,
+        "minimum": 1.11386,
+        "maximum": 1.26709
+      },
+      "share_pct": 0.10225242424550195
+    },
+    {
+      "name": "/layers.2/downsample/act/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.200745,
+        "median": 1.1878950000000001,
+        "stddev": 0.02328039959414696,
+        "minimum": 1.18,
+        "maximum": 1.24139
+      },
+      "share_pct": 0.10214630053903434
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.183065,
+        "median": 1.16957,
+        "stddev": 0.04316895942566528,
+        "minimum": 1.10124,
+        "maximum": 1.2967
+      },
+      "share_pct": 0.10064227879126098
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.157619,
+        "median": 1.143975,
+        "stddev": 0.05586238400136349,
+        "minimum": 1.08948,
+        "maximum": 1.3599
+      },
+      "share_pct": 0.09847761038663196
+    },
+    {
+      "name": "Softmax191_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.1543505,
+        "median": 1.149335,
+        "stddev": 0.03592734620035271,
+        "minimum": 1.08207,
+        "maximum": 1.2325
+      },
+      "share_pct": 0.09819956202223167
+    },
+    {
+      "name": "Softmax382_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.148439,
+        "median": 1.14174,
+        "stddev": 0.039569337530865695,
+        "minimum": 1.08197,
+        "maximum": 1.27344
+      },
+      "share_pct": 0.0976966760175958
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.1453145,
+        "median": 1.146935,
+        "stddev": 0.021866638245461822,
+        "minimum": 1.09376,
+        "maximum": 1.20549
+      },
+      "share_pct": 0.09743087760408234
+    },
+    {
+      "name": "/layers.1/blocks.1/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.1213385,
+        "median": 1.0724200000000002,
+        "stddev": 0.19804169322525575,
+        "minimum": 1.04815,
+        "maximum": 1.95383
+      },
+      "share_pct": 0.09539126078142315
+    },
+    {
+      "name": "/layers.1/blocks.0/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.1136065,
+        "median": 1.11226,
+        "stddev": 0.01865635245982619,
+        "minimum": 1.0763,
+        "maximum": 1.16263
+      },
+      "share_pct": 0.09473350647408245
+    },
+    {
+      "name": "/layers.1/blocks.1/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.109887,
+        "median": 1.100375,
+        "stddev": 0.04464099627496068,
+        "minimum": 1.06715,
+        "maximum": 1.28447
+      },
+      "share_pct": 0.09441709194405741
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/norm/Add_1_output_0_raster_2",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.100223,
+        "median": 1.098055,
+        "stddev": 0.031220055986328318,
+        "minimum": 1.04664,
+        "maximum": 1.19971
+      },
+      "share_pct": 0.0935949841289849
+    },
+    {
+      "name": "/layers.1/blocks.0/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.099478,
+        "median": 1.080735,
+        "stddev": 0.05464148237181596,
+        "minimum": 1.06048,
+        "maximum": 1.30925
+      },
+      "share_pct": 0.09353160764696618
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.0488035,
+        "median": 1.043705,
+        "stddev": 0.02586854425440492,
+        "minimum": 1.02082,
+        "maximum": 1.11383
+      },
+      "share_pct": 0.08922077336769346
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.042116,
+        "median": 1.03989,
+        "stddev": 0.02416547546005511,
+        "minimum": 0.99522,
+        "maximum": 1.10872
+      },
+      "share_pct": 0.08865187373883407
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_output_0_raster_2",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.0408305,
+        "median": 1.0341900000000002,
+        "stddev": 0.023316621917241348,
+        "minimum": 1.01375,
+        "maximum": 1.10356
+      },
+      "share_pct": 0.08854251740643798
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_output_0_raster_2",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.0304,
+        "median": 1.0283250000000002,
+        "stddev": 0.011764650888416365,
+        "minimum": 1.01895,
+        "maximum": 1.0707
+      },
+      "share_pct": 0.08765520412362406
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.0290075,
+        "median": 1.02597,
+        "stddev": 0.028069406997842425,
+        "minimum": 0.96821,
+        "maximum": 1.09324
+      },
+      "share_pct": 0.08753674539716624
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.026417,
+        "median": 1.02197,
+        "stddev": 0.02697791925572506,
+        "minimum": 0.96498,
+        "maximum": 1.08245
+      },
+      "share_pct": 0.08731637388485815
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.0222585,
+        "median": 1.019525,
+        "stddev": 0.029724028783212803,
+        "minimum": 0.95797,
+        "maximum": 1.09816
+      },
+      "share_pct": 0.0869626140184489
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 1.005282,
+        "median": 1.00202,
+        "stddev": 0.018726053227353698,
+        "minimum": 0.99339,
+        "maximum": 1.08127
+      },
+      "share_pct": 0.08551843838490397
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.987908,
+        "median": 0.981195,
+        "stddev": 0.022505737186677307,
+        "minimum": 0.96772,
+        "maximum": 1.05888
+      },
+      "share_pct": 0.08404044778276515
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.975074,
+        "median": 0.9655750000000001,
+        "stddev": 0.03191973657720087,
+        "minimum": 0.94916,
+        "maximum": 1.07702
+      },
+      "share_pct": 0.08294867090997536
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.972296,
+        "median": 0.96451,
+        "stddev": 0.025953213247972534,
+        "minimum": 0.94708,
+        "maximum": 1.03565
+      },
+      "share_pct": 0.08271234894078337
+    },
+    {
+      "name": "/layers.1/blocks.0/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.96626,
+        "median": 0.9564950000000001,
+        "stddev": 0.028868375157090603,
+        "minimum": 0.9264,
+        "maximum": 1.03312
+      },
+      "share_pct": 0.08219887183277659
+    },
+    {
+      "name": "/layers.1/blocks.1/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.9619285,
+        "median": 0.9583,
+        "stddev": 0.02161374057959672,
+        "minimum": 0.92328,
+        "maximum": 1.02265
+      },
+      "share_pct": 0.08183039501148244
+    },
+    {
+      "name": "/layers.1/downsample/conv1/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.960488,
+        "median": 0.9468650000000001,
+        "stddev": 0.03167737223285648,
+        "minimum": 0.92379,
+        "maximum": 1.0426
+      },
+      "share_pct": 0.08170785296806234
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.920093,
+        "median": 0.910585,
+        "stddev": 0.02421593170664827,
+        "minimum": 0.89167,
+        "maximum": 0.96535
+      },
+      "share_pct": 0.07827148653699306
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.9143575,
+        "median": 0.9135150000000001,
+        "stddev": 0.0204460843954353,
+        "minimum": 0.87639,
+        "maximum": 0.96388
+      },
+      "share_pct": 0.0777835726945522
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.902721,
+        "median": 0.903585,
+        "stddev": 0.023055190282176553,
+        "minimum": 0.84094,
+        "maximum": 0.96027
+      },
+      "share_pct": 0.07679366607306098
+    },
+    {
+      "name": "/layers.1/blocks.1/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.8962175,
+        "median": 0.8961049999999999,
+        "stddev": 0.028034507096753005,
+        "minimum": 0.83935,
+        "maximum": 0.95664
+      },
+      "share_pct": 0.07624041915922365
+    },
+    {
+      "name": "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.8671655,
+        "median": 0.872465,
+        "stddev": 0.020361975779171815,
+        "minimum": 0.81882,
+        "maximum": 0.89742
+      },
+      "share_pct": 0.07376899156780331
+    },
+    {
+      "name": "/layers.1/blocks.0/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.8137105,
+        "median": 0.81134,
+        "stddev": 0.011735300088105749,
+        "minimum": 0.79732,
+        "maximum": 0.85251
+      },
+      "share_pct": 0.06922162264658016
+    },
+    {
+      "name": "/layers.1/blocks.0/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.800084,
+        "median": 0.797915,
+        "stddev": 0.011602892742760317,
+        "minimum": 0.77972,
+        "maximum": 0.81969
+      },
+      "share_pct": 0.06806242850936106
+    },
+    {
+      "name": "/layers.1/blocks.1/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.777169,
+        "median": 0.775575,
+        "stddev": 0.016630939113275404,
+        "minimum": 0.75555,
+        "maximum": 0.82508
+      },
+      "share_pct": 0.06611307000538896
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.713971,
+        "median": 0.711125,
+        "stddev": 0.012852937366507639,
+        "minimum": 0.70238,
+        "maximum": 0.76132
+      },
+      "share_pct": 0.06073687280992625
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/MatMul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.709256,
+        "median": 0.70643,
+        "stddev": 0.01432951550949445,
+        "minimum": 0.69597,
+        "maximum": 0.76425
+      },
+      "share_pct": 0.060335771987485555
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6889085,
+        "median": 0.6844950000000001,
+        "stddev": 0.02077271724744034,
+        "minimum": 0.66696,
+        "maximum": 0.75949
+      },
+      "share_pct": 0.05860482840644378
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6871875000000001,
+        "median": 0.6832750000000001,
+        "stddev": 0.025649631755846426,
+        "minimum": 0.65546,
+        "maximum": 0.75005
+      },
+      "share_pct": 0.058458424479525345
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6368125,
+        "median": 0.627575,
+        "stddev": 0.02648657055446859,
+        "minimum": 0.60811,
+        "maximum": 0.70447
+      },
+      "share_pct": 0.05417306839671521
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/MatMul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6204895,
+        "median": 0.6196349999999999,
+        "stddev": 0.006513673452216139,
+        "minimum": 0.60907,
+        "maximum": 0.63348
+      },
+      "share_pct": 0.05278448542222966
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6199105,
+        "median": 0.61976,
+        "stddev": 0.02656874568182065,
+        "minimum": 0.57311,
+        "maximum": 0.67674
+      },
+      "share_pct": 0.052735230411372146
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6150990000000001,
+        "median": 0.609745,
+        "stddev": 0.036898296195153286,
+        "minimum": 0.56205,
+        "maximum": 0.73801
+      },
+      "share_pct": 0.05232592042045521
+    },
+    {
+      "name": "/layers.1/downsample/act_1/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.6125855,
+        "median": 0.609675,
+        "stddev": 0.019065284095223425,
+        "minimum": 0.60073,
+        "maximum": 0.69264
+      },
+      "share_pct": 0.05211209922910744
+    },
+    {
+      "name": "/layers.2/downsample/conv2/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.5914015,
+        "median": 0.565795,
+        "stddev": 0.11517895706361975,
+        "minimum": 0.53541,
+        "maximum": 1.07726
+      },
+      "share_pct": 0.0503099953430876
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.554454,
+        "median": 0.553625,
+        "stddev": 0.019268476683023245,
+        "minimum": 0.51706,
+        "maximum": 0.61102
+      },
+      "share_pct": 0.047166904645923775
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/MatMul_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.548205,
+        "median": 0.552445,
+        "stddev": 0.013199474271827346,
+        "minimum": 0.51516,
+        "maximum": 0.56404
+      },
+      "share_pct": 0.04663530781889687
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4777565,
+        "median": 0.47434,
+        "stddev": 0.02716356097789832,
+        "minimum": 0.4476,
+        "maximum": 0.58491
+      },
+      "share_pct": 0.04064231708937131
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.476211,
+        "median": 0.473905,
+        "stddev": 0.018153381851092613,
+        "minimum": 0.44616,
+        "maximum": 0.5256
+      },
+      "share_pct": 0.040510842790096216
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4749575,
+        "median": 0.474855,
+        "stddev": 0.015439097967583191,
+        "minimum": 0.44592,
+        "maximum": 0.52396
+      },
+      "share_pct": 0.040404208669008325
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4720265,
+        "median": 0.47383,
+        "stddev": 0.01659776024046618,
+        "minimum": 0.44603,
+        "maximum": 0.52713
+      },
+      "share_pct": 0.040154871126999066
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.469985,
+        "median": 0.47327,
+        "stddev": 0.009579966212444545,
+        "minimum": 0.44408,
+        "maximum": 0.4803
+      },
+      "share_pct": 0.03998120255244707
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4686765,
+        "median": 0.473,
+        "stddev": 0.009300542867573855,
+        "minimum": 0.44343,
+        "maximum": 0.47766
+      },
+      "share_pct": 0.03986988963067323
+    },
+    {
+      "name": "Softmax1467",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.46479550000000003,
+        "median": 0.462165,
+        "stddev": 0.012237813046369641,
+        "minimum": 0.45449,
+        "maximum": 0.51304
+      },
+      "share_pct": 0.03953973644045217
+    },
+    {
+      "name": "Softmax1338",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.461895,
+        "median": 0.458195,
+        "stddev": 0.012401365586944563,
+        "minimum": 0.45448,
+        "maximum": 0.51104
+      },
+      "share_pct": 0.039292993506096024
+    },
+    {
+      "name": "/layers.2/blocks.5/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.45927,
+        "median": 0.45537,
+        "stddev": 0.022230562887965506,
+        "minimum": 0.42565,
+        "maximum": 0.51506
+      },
+      "share_pct": 0.0390696871097213
+    },
+    {
+      "name": "/layers.2/blocks.0/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.457822,
+        "median": 0.453675,
+        "stddev": 0.026877864224360504,
+        "minimum": 0.42381,
+        "maximum": 0.54356
+      },
+      "share_pct": 0.03894650704802583
+    },
+    {
+      "name": "/layers.2/blocks.5/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.456677,
+        "median": 0.45159499999999997,
+        "stddev": 0.028692238103159903,
+        "minimum": 0.41777,
+        "maximum": 0.55623
+      },
+      "share_pct": 0.03884910292465476
+    },
+    {
+      "name": "/layers.2/blocks.4/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.456132,
+        "median": 0.45321500000000003,
+        "stddev": 0.017933696481029344,
+        "minimum": 0.42681,
+        "maximum": 0.50219
+      },
+      "share_pct": 0.0388027402633122
+    },
+    {
+      "name": "/layers.2/blocks.5/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4550185,
+        "median": 0.430335,
+        "stddev": 0.1006729042245231,
+        "minimum": 0.41942,
+        "maximum": 0.87958
+      },
+      "share_pct": 0.038708015816697625
+    },
+    {
+      "name": "/layers.2/blocks.2/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.454182,
+        "median": 0.45387,
+        "stddev": 0.015363344139798946,
+        "minimum": 0.42559,
+        "maximum": 0.5051
+      },
+      "share_pct": 0.03863685551171955
+    },
+    {
+      "name": "/layers.2/blocks.4/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.45359,
+        "median": 0.452735,
+        "stddev": 0.018725824836024554,
+        "minimum": 0.42071,
+        "maximum": 0.52114
+      },
+      "share_pct": 0.03858649460251809
+    },
+    {
+      "name": "/layers.2/blocks.1/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.452622,
+        "median": 0.45285,
+        "stddev": 0.01030049697319196,
+        "minimum": 0.42474,
+        "maximum": 0.47716
+      },
+      "share_pct": 0.038504147710445434
+    },
+    {
+      "name": "/layers.2/blocks.2/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.45124949999999997,
+        "median": 0.45031,
+        "stddev": 0.009525149798518158,
+        "minimum": 0.4259,
+        "maximum": 0.47858
+      },
+      "share_pct": 0.03838739036605522
+    },
+    {
+      "name": "/layers.2/blocks.3/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4507255,
+        "median": 0.453195,
+        "stddev": 0.008790543049508551,
+        "minimum": 0.42757,
+        "maximum": 0.46468
+      },
+      "share_pct": 0.038342814155883656
+    },
+    {
+      "name": "/layers.2/blocks.0/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.450595,
+        "median": 0.452965,
+        "stddev": 0.008921275870518452,
+        "minimum": 0.42355,
+        "maximum": 0.45917
+      },
+      "share_pct": 0.03833171263789246
+    },
+    {
+      "name": "/layers.2/blocks.3/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.4488345,
+        "median": 0.44632,
+        "stddev": 0.019334058978366327,
+        "minimum": 0.41523,
+        "maximum": 0.50233
+      },
+      "share_pct": 0.038181948481390476
+    },
+    {
+      "name": "/layers.2/blocks.1/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.444007,
+        "median": 0.44591000000000003,
+        "stddev": 0.008925036989456007,
+        "minimum": 0.41467,
+        "maximum": 0.45347
+      },
+      "share_pct": 0.03777127738481944
+    },
+    {
+      "name": "/layers.2/blocks.4/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.440482,
+        "median": 0.43389,
+        "stddev": 0.025607984486751088,
+        "minimum": 0.4189,
+        "maximum": 0.53303
+      },
+      "share_pct": 0.03747140879540196
+    },
+    {
+      "name": "/layers.2/blocks.3/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.432916,
+        "median": 0.42929,
+        "stddev": 0.01580578521667904,
+        "minimum": 0.41958,
+        "maximum": 0.49474
+      },
+      "share_pct": 0.03682777595922247
+    },
+    {
+      "name": "/layers.2/blocks.1/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.430839,
+        "median": 0.4276,
+        "stddev": 0.015467555823655351,
+        "minimum": 0.4197,
+        "maximum": 0.49138
+      },
+      "share_pct": 0.03665108743150045
+    },
+    {
+      "name": "/layers.2/blocks.0/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.430359,
+        "median": 0.430955,
+        "stddev": 0.006372076336807748,
+        "minimum": 0.41937,
+        "maximum": 0.44127
+      },
+      "share_pct": 0.036610254261877646
+    },
+    {
+      "name": "/layers.2/blocks.2/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.42886599999999997,
+        "median": 0.427365,
+        "stddev": 0.009271683773727403,
+        "minimum": 0.41533,
+        "maximum": 0.44499
+      },
+      "share_pct": 0.03648324609053004
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.399936,
+        "median": 0.37936000000000003,
+        "stddev": 0.07151971089368155,
+        "minimum": 0.35805,
+        "maximum": 0.67117
+      },
+      "share_pct": 0.034022196929722165
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.381034,
+        "median": 0.37816,
+        "stddev": 0.0210940678615427,
+        "minimum": 0.34789,
+        "maximum": 0.44146
+      },
+      "share_pct": 0.032414220737617405
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.377867,
+        "median": 0.376415,
+        "stddev": 0.01531076301856071,
+        "minimum": 0.35294,
+        "maximum": 0.4332
+      },
+      "share_pct": 0.03214480688721027
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3761955,
+        "median": 0.37804000000000004,
+        "stddev": 0.009796067672393102,
+        "minimum": 0.34754,
+        "maximum": 0.38973
+      },
+      "share_pct": 0.032002613880909185
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3757775,
+        "median": 0.375635,
+        "stddev": 0.011010256402674353,
+        "minimum": 0.34935,
+        "maximum": 0.39578
+      },
+      "share_pct": 0.031967054995695986
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3751195,
+        "median": 0.37731499999999996,
+        "stddev": 0.00992342177561964,
+        "minimum": 0.34586,
+        "maximum": 0.38536
+      },
+      "share_pct": 0.03191107952567139
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3610995,
+        "median": 0.35019,
+        "stddev": 0.06323001947567894,
+        "minimum": 0.31631,
+        "maximum": 0.62426
+      },
+      "share_pct": 0.030718410696271927
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.358407,
+        "median": 0.35509500000000005,
+        "stddev": 0.030319559797526565,
+        "minimum": 0.32239,
+        "maximum": 0.47561
+      },
+      "share_pct": 0.03048936213541899
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.356188,
+        "median": 0.35377000000000003,
+        "stddev": 0.021140303388750625,
+        "minimum": 0.31982,
+        "maximum": 0.41348
+      },
+      "share_pct": 0.030300593795016897
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.354517,
+        "median": 0.34993,
+        "stddev": 0.027642343395975898,
+        "minimum": 0.33254,
+        "maximum": 0.4689
+      },
+      "share_pct": 0.030158443323267503
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3544175,
+        "median": 0.351145,
+        "stddev": 0.018552295892819766,
+        "minimum": 0.31831,
+        "maximum": 0.41427
+      },
+      "share_pct": 0.030149978947481105
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3528865,
+        "median": 0.354295,
+        "stddev": 0.013039070549294296,
+        "minimum": 0.32141,
+        "maximum": 0.38576
+      },
+      "share_pct": 0.03001973815020503
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3521695,
+        "median": 0.352355,
+        "stddev": 0.007969015309308922,
+        "minimum": 0.33205,
+        "maximum": 0.36528
+      },
+      "share_pct": 0.029958743603080967
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.3490505,
+        "median": 0.35128499999999996,
+        "stddev": 0.013225193054008304,
+        "minimum": 0.31621,
+        "maximum": 0.36928
+      },
+      "share_pct": 0.0296934130696361
+    },
+    {
+      "name": "/layers.2/downsample/act_1/Mul_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.308319,
+        "median": 0.302885,
+        "stddev": 0.017073931776711238,
+        "minimum": 0.29679,
+        "maximum": 0.35943
+      },
+      "share_pct": 0.02622842088527916
+    },
+    {
+      "name": "/layers.3/blocks.0/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2896905,
+        "median": 0.28534499999999996,
+        "stddev": 0.013285095120789351,
+        "minimum": 0.27633,
+        "maximum": 0.32661
+      },
+      "share_pct": 0.024643711092949067
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2894435,
+        "median": 0.256145,
+        "stddev": 0.14015965619231294,
+        "minimum": 0.2252,
+        "maximum": 0.87842
+      },
+      "share_pct": 0.024622699024414
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.288973,
+        "median": 0.28973,
+        "stddev": 0.015492455583283103,
+        "minimum": 0.25866,
+        "maximum": 0.31836
+      },
+      "share_pct": 0.024582674011273307
+    },
+    {
+      "name": "/layers.3/blocks.1/local_conv/c/Conv_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2829405,
+        "median": 0.279085,
+        "stddev": 0.012215753192195379,
+        "minimum": 0.27489,
+        "maximum": 0.33165
+      },
+      "share_pct": 0.024069494645128354
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.28165450000000003,
+        "median": 0.27514,
+        "stddev": 0.028619830900784057,
+        "minimum": 0.25577,
+        "maximum": 0.398
+      },
+      "share_pct": 0.023960095778180587
+    },
+    {
+      "name": "/layers.2/blocks.5/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.281022,
+        "median": 0.27354,
+        "stddev": 0.035514905632779925,
+        "minimum": 0.24663,
+        "maximum": 0.41092
+      },
+      "share_pct": 0.0239062895702922
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2808115,
+        "median": 0.2792,
+        "stddev": 0.013674547341685573,
+        "minimum": 0.2666,
+        "maximum": 0.32671
+      },
+      "share_pct": 0.023888382524030534
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2805305,
+        "median": 0.2787,
+        "stddev": 0.014333789477645954,
+        "minimum": 0.26192,
+        "maximum": 0.33377
+      },
+      "share_pct": 0.023864478105980517
+    },
+    {
+      "name": "/layers.2/downsample/conv1/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.279943,
+        "median": 0.28059,
+        "stddev": 0.015624626681856062,
+        "minimum": 0.24237,
+        "maximum": 0.31402
+      },
+      "share_pct": 0.023814500007744266
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.279048,
+        "median": 0.27843,
+        "stddev": 0.012752798495768847,
+        "minimum": 0.26476,
+        "maximum": 0.32481
+      },
+      "share_pct": 0.02373836316021841
+    },
+    {
+      "name": "/layers.2/blocks.2/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.277952,
+        "median": 0.27420500000000003,
+        "stddev": 0.01628672808083156,
+        "minimum": 0.26064,
+        "maximum": 0.34174
+      },
+      "share_pct": 0.023645127422912998
+    },
+    {
+      "name": "/layers.2/blocks.4/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.277186,
+        "median": 0.27424000000000004,
+        "stddev": 0.011637157547677763,
+        "minimum": 0.25922,
+        "maximum": 0.31686
+      },
+      "share_pct": 0.02357996448972327
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2766615,
+        "median": 0.27554999999999996,
+        "stddev": 0.013784698333946042,
+        "minimum": 0.24859,
+        "maximum": 0.30641
+      },
+      "share_pct": 0.02353534574500002
+    },
+    {
+      "name": "/layers.2/blocks.5/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.276624,
+        "median": 0.272115,
+        "stddev": 0.016888517868346938,
+        "minimum": 0.25897,
+        "maximum": 0.3232
+      },
+      "share_pct": 0.023532155653623234
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.275235,
+        "median": 0.27654999999999996,
+        "stddev": 0.007139290470421603,
+        "minimum": 0.25599,
+        "maximum": 0.28866
+      },
+      "share_pct": 0.023413994669027244
+    },
+    {
+      "name": "/layers.2/blocks.1/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2751345,
+        "median": 0.271985,
+        "stddev": 0.022688462515467852,
+        "minimum": 0.24574,
+        "maximum": 0.3491
+      },
+      "share_pct": 0.023405445224137466
+    },
+    {
+      "name": "/layers.2/blocks.4/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.27465649999999997,
+        "median": 0.26522,
+        "stddev": 0.04633527748634772,
+        "minimum": 0.22064,
+        "maximum": 0.45565
+      },
+      "share_pct": 0.02336478219272142
+    },
+    {
+      "name": "/layers.2/blocks.1/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.274462,
+        "median": 0.27391,
+        "stddev": 0.007753088756305956,
+        "minimum": 0.25219,
+        "maximum": 0.28598
+      },
+      "share_pct": 0.023348236252113845
+    },
+    {
+      "name": "/layers.2/blocks.3/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2737945,
+        "median": 0.26639,
+        "stddev": 0.030369523240283258,
+        "minimum": 0.24218,
+        "maximum": 0.37609
+      },
+      "share_pct": 0.023291452625607133
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2726715,
+        "median": 0.25614000000000003,
+        "stddev": 0.05423856544786289,
+        "minimum": 0.23192,
+        "maximum": 0.49342
+      },
+      "share_pct": 0.023195920022510443
+    },
+    {
+      "name": "/layers.2/blocks.3/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.27252350000000003,
+        "median": 0.272175,
+        "stddev": 0.007079079835387469,
+        "minimum": 0.25268,
+        "maximum": 0.28371
+      },
+      "share_pct": 0.02318332979521008
+    },
+    {
+      "name": "/layers.2/blocks.0/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2721705,
+        "median": 0.27277,
+        "stddev": 0.006896090024903893,
+        "minimum": 0.25632,
+        "maximum": 0.28465
+      },
+      "share_pct": 0.023153300401716637
+    },
+    {
+      "name": "/layers.2/blocks.2/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2680535,
+        "median": 0.26773,
+        "stddev": 0.026458735553787586,
+        "minimum": 0.21698,
+        "maximum": 0.35026
+      },
+      "share_pct": 0.022803070903097696
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2680455,
+        "median": 0.261685,
+        "stddev": 0.027819993279162222,
+        "minimum": 0.22922,
+        "maximum": 0.36411
+      },
+      "share_pct": 0.022802390350270645
+    },
+    {
+      "name": "/layers.2/blocks.0/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2643475,
+        "median": 0.26763000000000003,
+        "stddev": 0.01860063945561805,
+        "minimum": 0.22308,
+        "maximum": 0.30258
+      },
+      "share_pct": 0.02248780480596828
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2633895,
+        "median": 0.258155,
+        "stddev": 0.018150059728769343,
+        "minimum": 0.23401,
+        "maximum": 0.31563
+      },
+      "share_pct": 0.022406308604929426
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2631015,
+        "median": 0.25811,
+        "stddev": 0.017556270217428536,
+        "minimum": 0.22664,
+        "maximum": 0.30266
+      },
+      "share_pct": 0.02238180870315574
+    },
+    {
+      "name": "/layers.2/blocks.3/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2608305,
+        "median": 0.255555,
+        "stddev": 0.022682902087371084,
+        "minimum": 0.22811,
+        "maximum": 0.3295
+      },
+      "share_pct": 0.022188616769377844
+    },
+    {
+      "name": "/layers.2/blocks.2/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2601445,
+        "median": 0.259515,
+        "stddev": 0.013751287585646584,
+        "minimum": 0.23224,
+        "maximum": 0.2829
+      },
+      "share_pct": 0.02213025936445858
+    },
+    {
+      "name": "/layers.2/blocks.4/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.259671,
+        "median": 0.25903,
+        "stddev": 0.022268463397937078,
+        "minimum": 0.22185,
+        "maximum": 0.32101
+      },
+      "share_pct": 0.02208997914400775
+    },
+    {
+      "name": "/layers.2/blocks.1/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2588495,
+        "median": 0.25888,
+        "stddev": 0.015101265013236479,
+        "minimum": 0.22776,
+        "maximum": 0.29365
+      },
+      "share_pct": 0.022020094875580383
+    },
+    {
+      "name": "/layers.2/blocks.5/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2586305,
+        "median": 0.25597000000000003,
+        "stddev": 0.016351499681744958,
+        "minimum": 0.23054,
+        "maximum": 0.29049
+      },
+      "share_pct": 0.022001464741939977
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.249012,
+        "median": 0.247965,
+        "stddev": 0.005901313502317221,
+        "minimum": 0.23774,
+        "maximum": 0.26036
+      },
+      "share_pct": 0.02118322757107131
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2463425,
+        "median": 0.245555,
+        "stddev": 0.005311946689451895,
+        "minimum": 0.23603,
+        "maximum": 0.25955
+      },
+      "share_pct": 0.020956135599596137
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2462045,
+        "median": 0.2472,
+        "stddev": 0.01703201272990303,
+        "minimum": 0.21843,
+        "maximum": 0.28985
+      },
+      "share_pct": 0.02094439606332958
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.245832,
+        "median": 0.24236,
+        "stddev": 0.018955697268825764,
+        "minimum": 0.21584,
+        "maximum": 0.28952
+      },
+      "share_pct": 0.020912707822320215
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.243437,
+        "median": 0.24346,
+        "stddev": 0.005617193624090796,
+        "minimum": 0.23372,
+        "maximum": 0.25647
+      },
+      "share_pct": 0.02070896731972309
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.243386,
+        "median": 0.243085,
+        "stddev": 0.005050483457837949,
+        "minimum": 0.23435,
+        "maximum": 0.2551
+      },
+      "share_pct": 0.020704628795450666
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.242432,
+        "median": 0.236805,
+        "stddev": 0.02698612091622772,
+        "minimum": 0.20361,
+        "maximum": 0.30563
+      },
+      "share_pct": 0.02062347287082534
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.242004,
+        "median": 0.24042000000000002,
+        "stddev": 0.017149307305329608,
+        "minimum": 0.21221,
+        "maximum": 0.27757
+      },
+      "share_pct": 0.020587063294578337
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2411755,
+        "median": 0.23975000000000002,
+        "stddev": 0.006356917885264836,
+        "minimum": 0.22962,
+        "maximum": 0.25325
+      },
+      "share_pct": 0.020516583542427306
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2405945,
+        "median": 0.23962,
+        "stddev": 0.005385861095204936,
+        "minimum": 0.23132,
+        "maximum": 0.25423
+      },
+      "share_pct": 0.020467158393363032
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2388465,
+        "median": 0.238915,
+        "stddev": 0.0056073751012675945,
+        "minimum": 0.2276,
+        "maximum": 0.25261
+      },
+      "share_pct": 0.020318457600653317
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2384215,
+        "median": 0.236365,
+        "stddev": 0.015666660973309904,
+        "minimum": 0.21118,
+        "maximum": 0.27355
+      },
+      "share_pct": 0.020282303231716457
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2378905,
+        "median": 0.23459,
+        "stddev": 0.01542103569291328,
+        "minimum": 0.21744,
+        "maximum": 0.2772
+      },
+      "share_pct": 0.020237131537821227
+    },
+    {
+      "name": "/layers.3/blocks.1/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.225928,
+        "median": 0.22203,
+        "stddev": 0.01636487785986871,
+        "minimum": 0.20736,
+        "maximum": 0.28649
+      },
+      "share_pct": 0.019219492388627853
+    },
+    {
+      "name": "/layers.2/blocks.3/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2203615,
+        "median": 0.21575,
+        "stddev": 0.02535086342866742,
+        "minimum": 0.19178,
+        "maximum": 0.30743
+      },
+      "share_pct": 0.01874595522465837
+    },
+    {
+      "name": "/layers.3/blocks.0/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.220006,
+        "median": 0.21946,
+        "stddev": 0.012657729238441004,
+        "minimum": 0.20623,
+        "maximum": 0.26794
+      },
+      "share_pct": 0.01871571315840648
+    },
+    {
+      "name": "/layers.2/blocks.0/attn/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.218749,
+        "median": 0.21978,
+        "stddev": 0.010593386665869965,
+        "minimum": 0.19583,
+        "maximum": 0.23429
+      },
+      "share_pct": 0.018608781295456754
+    },
+    {
+      "name": "/layers.3/blocks.1/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2187125,
+        "median": 0.22084,
+        "stddev": 0.006378542050046431,
+        "minimum": 0.20404,
+        "maximum": 0.22733
+      },
+      "share_pct": 0.018605676273183356
+    },
+    {
+      "name": "/layers.2/blocks.0/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.218101,
+        "median": 0.208265,
+        "stddev": 0.03815958152424189,
+        "minimum": 0.1982,
+        "maximum": 0.37654
+      },
+      "share_pct": 0.018553656516465965
+    },
+    {
+      "name": "/layers.3/blocks.0/Add_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2173935,
+        "median": 0.2192,
+        "stddev": 0.005154167731069683,
+        "minimum": 0.20678,
+        "maximum": 0.2266
+      },
+      "share_pct": 0.018493470125824016
+    },
+    {
+      "name": "/layers.2/blocks.4/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2163455,
+        "median": 0.21126,
+        "stddev": 0.019304397501469367,
+        "minimum": 0.19613,
+        "maximum": 0.28634
+      },
+      "share_pct": 0.018404317705480892
+    },
+    {
+      "name": "/layers.2/blocks.5/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2141545,
+        "median": 0.21194000000000002,
+        "stddev": 0.014944013578758056,
+        "minimum": 0.19199,
+        "maximum": 0.26281
+      },
+      "share_pct": 0.018217931299973456
+    },
+    {
+      "name": "/layers.2/blocks.1/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.214032,
+        "median": 0.21356999999999998,
+        "stddev": 0.010682799061550946,
+        "minimum": 0.19185,
+        "maximum": 0.2368
+      },
+      "share_pct": 0.0182075103348093
+    },
+    {
+      "name": "/layers.2/blocks.2/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.209751,
+        "median": 0.211415,
+        "stddev": 0.009639440855153376,
+        "minimum": 0.18766,
+        "maximum": 0.22612
+      },
+      "share_pct": 0.0178433295032359
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2080565,
+        "median": 0.20944000000000002,
+        "stddev": 0.005899625567958128,
+        "minimum": 0.19639,
+        "maximum": 0.21662
+      },
+      "share_pct": 0.017699179907557056
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/MatMul_1_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.207205,
+        "median": 0.20879999999999999,
+        "stddev": 0.005799182791793307,
+        "minimum": 0.19307,
+        "maximum": 0.21454
+      },
+      "share_pct": 0.017626743566028266
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.20418,
+        "median": 0.20425500000000002,
+        "stddev": 0.008337186197045768,
+        "minimum": 0.18621,
+        "maximum": 0.22005
+      },
+      "share_pct": 0.017369409528301204
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.2038935,
+        "median": 0.201205,
+        "stddev": 0.016680889877499435,
+        "minimum": 0.18602,
+        "maximum": 0.2677
+      },
+      "share_pct": 0.017345037230182592
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.199699,
+        "median": 0.201095,
+        "stddev": 0.007100770084256615,
+        "minimum": 0.18344,
+        "maximum": 0.21452
+      },
+      "share_pct": 0.016988214876051632
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.195851,
+        "median": 0.192745,
+        "stddev": 0.01585843056547526,
+        "minimum": 0.17715,
+        "maximum": 0.25161
+      },
+      "share_pct": 0.016660868966242137
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.194467,
+        "median": 0.194665,
+        "stddev": 0.008122193183202621,
+        "minimum": 0.17818,
+        "maximum": 0.21161
+      },
+      "share_pct": 0.016543133327163045
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1932015,
+        "median": 0.193865,
+        "stddev": 0.006658558619906928,
+        "minimum": 0.17856,
+        "maximum": 0.20682
+      },
+      "share_pct": 0.01643547837683458
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1835185,
+        "median": 0.17973499999999998,
+        "stddev": 0.012700632091605355,
+        "minimum": 0.16822,
+        "maximum": 0.22864
+      },
+      "share_pct": 0.015611754248797847
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/Mul_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1758165,
+        "median": 0.17532999999999999,
+        "stddev": 0.006335211768985686,
+        "minimum": 0.16373,
+        "maximum": 0.19108
+      },
+      "share_pct": 0.01495655201455857
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.175685,
+        "median": 0.176805,
+        "stddev": 0.008102528195439664,
+        "minimum": 0.16034,
+        "maximum": 0.18865
+      },
+      "share_pct": 0.01494536542746399
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/MatMul_output_0_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.172207,
+        "median": 0.17332999999999998,
+        "stddev": 0.006591706192353827,
+        "minimum": 0.15758,
+        "maximum": 0.18397
+      },
+      "share_pct": 0.014649495085905406
+    },
+    {
+      "name": "Softmax1467_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.165622,
+        "median": 0.15374,
+        "stddev": 0.03273475950728827,
+        "minimum": 0.14378,
+        "maximum": 0.27686
+      },
+      "share_pct": 0.014089315040142533
+    },
+    {
+      "name": "Softmax1338_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.158089,
+        "median": 0.15897,
+        "stddev": 0.01114105442425494,
+        "minimum": 0.13619,
+        "maximum": 0.18632
+      },
+      "share_pct": 0.013448489484374618
+    },
+    {
+      "name": "/ReduceMean_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.142613,
+        "median": 0.14277499999999999,
+        "stddev": 0.005075855229987303,
+        "minimum": 0.13262,
+        "maximum": 0.15225
+      },
+      "share_pct": 0.012131960040452638
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1417965,
+        "median": 0.132445,
+        "stddev": 0.026538703271180932,
+        "minimum": 0.12459,
+        "maximum": 0.22777
+      },
+      "share_pct": 0.012062501117542177
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.13696,
+        "median": 0.13627,
+        "stddev": 0.004665160909956857,
+        "minimum": 0.12777,
+        "maximum": 0.14732
+      },
+      "share_pct": 0.011651064399040715
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.126111,
+        "median": 0.12618000000000001,
+        "stddev": 0.003064775942699134,
+        "minimum": 0.11886,
+        "maximum": 0.13391
+      },
+      "share_pct": 0.010728149696461914
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/norm/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1250085,
+        "median": 0.125085,
+        "stddev": 0.002559118423454289,
+        "minimum": 0.12001,
+        "maximum": 0.1332
+      },
+      "share_pct": 0.010634361009984529
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.12382750000000001,
+        "median": 0.121415,
+        "stddev": 0.009589202192268682,
+        "minimum": 0.11332,
+        "maximum": 0.15916
+      },
+      "share_pct": 0.010533894398891751
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1232325,
+        "median": 0.12048500000000001,
+        "stddev": 0.014748163801853974,
+        "minimum": 0.10547,
+        "maximum": 0.18282
+      },
+      "share_pct": 0.010483278282380146
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/MatMul_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.122342,
+        "median": 0.12173500000000001,
+        "stddev": 0.0056144143435493486,
+        "minimum": 0.11245,
+        "maximum": 0.13736
+      },
+      "share_pct": 0.010407524245819503
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.121143,
+        "median": 0.12039,
+        "stddev": 0.009141556990498189,
+        "minimum": 0.10586,
+        "maximum": 0.14606
+      },
+      "share_pct": 0.010305526390865868
+    },
+    {
+      "name": "/layers.3/blocks.0/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.120628,
+        "median": 0.120665,
+        "stddev": 0.010772142239176597,
+        "minimum": 0.10935,
+        "maximum": 0.16224
+      },
+      "share_pct": 0.010261715802624732
+    },
+    {
+      "name": "/layers.3/blocks.1/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.120308,
+        "median": 0.11726500000000001,
+        "stddev": 0.011035864309270551,
+        "minimum": 0.11202,
+        "maximum": 0.16169
+      },
+      "share_pct": 0.010234493689542861
+    },
+    {
+      "name": "/layers.3/blocks.1/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.119164,
+        "median": 0.12018999999999999,
+        "stddev": 0.003963849006630856,
+        "minimum": 0.10964,
+        "maximum": 0.12394
+      },
+      "share_pct": 0.010137174635275173
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/proj/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1176345,
+        "median": 0.116345,
+        "stddev": 0.008978715460230904,
+        "minimum": 0.10372,
+        "maximum": 0.14736
+      },
+      "share_pct": 0.01000706144165417
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1149485,
+        "median": 0.10975,
+        "stddev": 0.021603599425972855,
+        "minimum": 0.10221,
+        "maximum": 0.20437
+      },
+      "share_pct": 0.009778565829973215
+    },
+    {
+      "name": "/layers.3/blocks.0/local_conv/c/Conv_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.112465,
+        "median": 0.10961499999999999,
+        "stddev": 0.012509686562609668,
+        "minimum": 0.09823,
+        "maximum": 0.15612
+      },
+      "share_pct": 0.009567296711726883
+    },
+    {
+      "name": "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1123805,
+        "median": 0.11268500000000001,
+        "stddev": 0.006637680694338949,
+        "minimum": 0.10202,
+        "maximum": 0.12922
+      },
+      "share_pct": 0.009560108372491202
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/proj/Add_output_0__matmul_converted_raster_1",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.109872,
+        "median": 0.10582,
+        "stddev": 0.014599553201526767,
+        "minimum": 0.09615,
+        "maximum": 0.15078
+      },
+      "share_pct": 0.009346712526660349
+    },
+    {
+      "name": "/layers.3/blocks.0/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1085715,
+        "median": 0.108615,
+        "stddev": 0.010339264086099418,
+        "minimum": 0.09878,
+        "maximum": 0.14778
+      },
+      "share_pct": 0.009236080157713558
+    },
+    {
+      "name": "/layers.3/blocks.0/attn/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.108434,
+        "median": 0.110085,
+        "stddev": 0.005123306292661124,
+        "minimum": 0.09873,
+        "maximum": 0.11619
+      },
+      "share_pct": 0.009224383155998692
+    },
+    {
+      "name": "/layers.3/blocks.1/Add_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1079215,
+        "median": 0.10941500000000001,
+        "stddev": 0.004638670720436145,
+        "minimum": 0.09814,
+        "maximum": 0.11276
+      },
+      "share_pct": 0.009180785240516008
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.105517,
+        "median": 0.10475000000000001,
+        "stddev": 0.01074498419092173,
+        "minimum": 0.09458,
+        "maximum": 0.14654
+      },
+      "share_pct": 0.008976236581436764
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.1048535,
+        "median": 0.104265,
+        "stddev": 0.006100413510574509,
+        "minimum": 0.09519,
+        "maximum": 0.1195
+      },
+      "share_pct": 0.008919793231343572
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.0911035,
+        "median": 0.09246,
+        "stddev": 0.003924389694421823,
+        "minimum": 0.08504,
+        "maximum": 0.0974
+      },
+      "share_pct": 0.007750093059856935
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp/norm/Add_1_output_0_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.09092,
+        "median": 0.09287000000000001,
+        "stddev": 0.003930794750228133,
+        "minimum": 0.08583,
+        "maximum": 0.09598
+      },
+      "share_pct": 0.00773448287938655
+    },
+    {
+      "name": "/norm_head/Add_1_output_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.0193715,
+        "median": 0.017515000000000003,
+        "stddev": 0.0037551834701831607,
+        "minimum": 0.01644,
+        "maximum": 0.02654
+      },
+      "share_pct": 0.0016479161361420648
+    },
+    {
+      "name": "output_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.015957,
+        "median": 0.015265,
+        "stddev": 0.0029826376528872987,
+        "minimum": 0.01408,
+        "maximum": 0.02827
+      },
+      "share_pct": 0.001357447682648165
+    },
+    {
+      "name": "output__matmul_converted_raster_0",
+      "runtime_commands": 1,
+      "ms": {
+        "mean": 0.0094115,
+        "median": 0.00844,
+        "stddev": 0.002934325485121168,
+        "minimum": 0.00786,
+        "maximum": 0.01852
+      },
+      "share_pct": 0.0008006278664688352
+    }
+  ],
+  "regions": [
+    {
+      "name": "/layers.2",
+      "commands": 169,
+      "ms": {
+        "mean": 392.74740750000007,
+        "median": 391.64459999999985,
+        "stddev": 6.591546408093532,
+        "minimum": 384.8160100000002,
+        "maximum": 418.70608999999985
+      },
+      "share_pct": 33.41066981117689
+    },
+    {
+      "name": "/layers.1",
+      "commands": 67,
+      "ms": {
+        "mean": 308.0446965,
+        "median": 307.74495,
+        "stddev": 2.152309180762,
+        "minimum": 304.46409000000006,
+        "maximum": 313.57987
+      },
+      "share_pct": 26.205086132479934
+    },
+    {
+      "name": "/layers.0",
+      "commands": 19,
+      "ms": {
+        "mean": 259.298127,
+        "median": 259.26295500000003,
+        "stddev": 0.3539490508994531,
+        "minimum": 258.52388,
+        "maximum": 259.82657
+      },
+      "share_pct": 22.058259172222826
+    },
+    {
+      "name": "/layers.3",
+      "commands": 55,
+      "ms": {
+        "mean": 110.672493,
+        "median": 110.18694,
+        "stddev": 1.7851076803348638,
+        "minimum": 109.07131000000001,
+        "maximum": 117.54466
+      },
+      "share_pct": 9.414809748432992
+    },
+    {
+      "name": "/layers.1/blocks.0/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 79.4051335,
+        "median": 79.39169,
+        "stddev": 0.4008719579967623,
+        "minimum": 78.81560999999999,
+        "maximum": 80.49363
+      },
+      "share_pct": 6.754923510681405
+    },
+    {
+      "name": "/layers.1/blocks.1/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 79.38544399999999,
+        "median": 79.16396,
+        "stddev": 0.7028538669588061,
+        "minimum": 78.8527,
+        "maximum": 82.13225
+      },
+      "share_pct": 6.753248542570387
+    },
+    {
+      "name": "/layers.3/blocks.0/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 36.168639999999996,
+        "median": 35.779585,
+        "stddev": 1.5514929017935566,
+        "minimum": 35.32606,
+        "maximum": 42.50332
+      },
+      "share_pct": 3.0768337753046135
+    },
+    {
+      "name": "/layers.3/blocks.1/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 36.017811,
+        "median": 36.00213,
+        "stddev": 0.3494926293010921,
+        "minimum": 35.41587,
+        "maximum": 36.882090000000005
+      },
+      "share_pct": 3.0640028875107848
+    },
+    {
+      "name": "/layers.2/blocks.5/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 31.1031115,
+        "median": 30.775994999999998,
+        "stddev": 1.5301109424182804,
+        "minimum": 30.45024,
+        "maximum": 37.55019
+      },
+      "share_pct": 2.6459138076594906
+    },
+    {
+      "name": "/layers.2/blocks.4/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 30.9446825,
+        "median": 30.752744999999997,
+        "stddev": 0.7473726106967901,
+        "minimum": 30.41643,
+        "maximum": 33.817769999999996
+      },
+      "share_pct": 2.6324363946799663
+    },
+    {
+      "name": "/layers.2/blocks.3/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 30.9386395,
+        "median": 30.715195,
+        "stddev": 0.9960821362004397,
+        "minimum": 30.49222,
+        "maximum": 35.11788
+      },
+      "share_pct": 2.631922322088236
+    },
+    {
+      "name": "/layers.2/blocks.2/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 30.786691,
+        "median": 30.74203,
+        "stddev": 0.3680803904026232,
+        "minimum": 30.49029,
+        "maximum": 32.24199
+      },
+      "share_pct": 2.6189961994331714
+    },
+    {
+      "name": "/layers.2/blocks.0/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 30.785189,
+        "median": 30.771770000000004,
+        "stddev": 0.11987782240352313,
+        "minimum": 30.59053,
+        "maximum": 30.954700000000003
+      },
+      "share_pct": 2.6188684256398935
+    },
+    {
+      "name": "/layers.2/blocks.1/mlp",
+      "commands": 7,
+      "ms": {
+        "mean": 30.725155,
+        "median": 30.725364999999996,
+        "stddev": 0.12125580504823105,
+        "minimum": 30.52072,
+        "maximum": 30.97638
+      },
+      "share_pct": 2.6137613870875276
+    }
+  ],
+  "shape_families": [
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 196,
+        "N": 160,
+        "K": 640
+      },
+      "calls_per_inference": 6,
+      "ms": {
+        "mean": 83.183573,
+        "median": 82.77337,
+        "stddev": 1.738187298826295,
+        "minimum": 82.17662999999999,
+        "maximum": 90.36371
+      },
+      "share_pct": 7.076351971125178
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 196,
+        "N": 640,
+        "K": 160
+      },
+      "calls_per_inference": 6,
+      "ms": {
+        "mean": 74.942232,
+        "median": 74.57672,
+        "stddev": 1.820122566317126,
+        "minimum": 74.17712,
+        "maximum": 82.63248
+      },
+      "share_pct": 6.375268481599371
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 784,
+        "N": 128,
+        "K": 512
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 71.229238,
+        "median": 71.028805,
+        "stddev": 0.614410913054125,
+        "minimum": 70.76588,
+        "maximum": 73.55144000000001
+      },
+      "share_pct": 6.059407411160908
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 3136,
+        "N": 64,
+        "K": 256
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 63.2564765,
+        "median": 63.19034499999999,
+        "stddev": 0.27889818046386095,
+        "minimum": 62.90716,
+        "maximum": 64.00448
+      },
+      "share_pct": 5.381171738886577
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 3136,
+        "N": 256,
+        "K": 64
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 57.127226,
+        "median": 57.052725,
+        "stddev": 0.24887735105342304,
+        "minimum": 56.73726,
+        "maximum": 57.61506
+      },
+      "share_pct": 4.859761894454973
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 784,
+        "N": 512,
+        "K": 128
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 57.0418665,
+        "median": 56.967594999999996,
+        "stddev": 0.37530884215921906,
+        "minimum": 56.48413,
+        "maximum": 58.023799999999994
+      },
+      "share_pct": 4.8525004383249355
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 196,
+        "N": 480,
+        "K": 160
+      },
+      "calls_per_inference": 6,
+      "ms": {
+        "mean": 54.753081,
+        "median": 54.495305,
+        "stddev": 0.827411561182156,
+        "minimum": 54.12250000000001,
+        "maximum": 57.944269999999996
+      },
+      "share_pct": 4.657795508008854
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 784,
+        "N": 384,
+        "K": 128
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 42.58377,
+        "median": 42.36233,
+        "stddev": 1.1166063659659975,
+        "minimum": 41.95393,
+        "maximum": 47.18509
+      },
+      "share_pct": 3.6225631324761833
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 49,
+        "N": 320,
+        "K": 1280
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 37.8733815,
+        "median": 37.712175,
+        "stddev": 1.2495387086705454,
+        "minimum": 36.77829,
+        "maximum": 42.37371
+      },
+      "share_pct": 3.221854606205733
+    },
+    {
+      "kind": "spatial_convolution",
+      "gemm": {
+        "batch": 1,
+        "M": 3136,
+        "N": 64,
+        "K": 288
+      },
+      "calls_per_inference": 1,
+      "ms": {
+        "mean": 34.206981999999996,
+        "median": 34.21789,
+        "stddev": 0.24437432401521683,
+        "minimum": 33.81226,
+        "maximum": 34.66779
+      },
+      "share_pct": 2.9099572881047497
+    },
+    {
+      "kind": "dynamic_matmul",
+      "gemm": {
+        "batch": 5,
+        "M": 196,
+        "N": 32,
+        "K": 196
+      },
+      "calls_per_inference": 6,
+      "ms": {
+        "mean": 30.5700995,
+        "median": 30.537734999999998,
+        "stddev": 0.9087822448313947,
+        "minimum": 28.798130000000004,
+        "maximum": 32.73625
+      },
+      "share_pct": 2.600570954728259
+    },
+    {
+      "kind": "dynamic_matmul",
+      "gemm": {
+        "batch": 5,
+        "M": 196,
+        "N": 196,
+        "K": 32
+      },
+      "calls_per_inference": 6,
+      "ms": {
+        "mean": 30.3716455,
+        "median": 30.51295,
+        "stddev": 0.7164738762525595,
+        "minimum": 28.506,
+        "maximum": 31.44723
+      },
+      "share_pct": 2.5836886508859163
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 49,
+        "N": 1280,
+        "K": 320
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 30.019894,
+        "median": 29.893810000000002,
+        "stddev": 0.44420070962999286,
+        "minimum": 29.72146,
+        "maximum": 31.72508
+      },
+      "share_pct": 2.5537654661680484
+    },
+    {
+      "kind": "depthwise_convolution",
+      "gemm": {
+        "batch": 256,
+        "M": 3136,
+        "N": 1,
+        "K": 9
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 28.6977265,
+        "median": 28.681185,
+        "stddev": 0.13689661578512816,
+        "minimum": 28.47942,
+        "maximum": 29.03996
+      },
+      "share_pct": 2.441289862423754
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 49,
+        "N": 960,
+        "K": 320
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 22.4696645,
+        "median": 22.341695,
+        "stddev": 0.34269437087009874,
+        "minimum": 22.18981,
+        "maximum": 23.60716
+      },
+      "share_pct": 1.911474212283433
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 784,
+        "N": 128,
+        "K": 128
+      },
+      "calls_per_inference": 3,
+      "ms": {
+        "mean": 21.631854,
+        "median": 21.658459999999998,
+        "stddev": 0.07579077033101325,
+        "minimum": 21.47219,
+        "maximum": 21.7762
+      },
+      "share_pct": 1.8402024242453743
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 196,
+        "N": 160,
+        "K": 160
+      },
+      "calls_per_inference": 7,
+      "ms": {
+        "mean": 20.483292,
+        "median": 20.408640000000002,
+        "stddev": 0.29075047564969875,
+        "minimum": 20.17012,
+        "maximum": 21.55632
+      },
+      "share_pct": 1.7424952847280624
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 3136,
+        "N": 128,
+        "K": 64
+      },
+      "calls_per_inference": 1,
+      "ms": {
+        "mean": 14.537810499999999,
+        "median": 14.51925,
+        "stddev": 0.049305699731903505,
+        "minimum": 14.46853,
+        "maximum": 14.67731
+      },
+      "share_pct": 1.2367185043556532
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 49,
+        "N": 320,
+        "K": 320
+      },
+      "calls_per_inference": 3,
+      "ms": {
+        "mean": 10.4388765,
+        "median": 10.40001,
+        "stddev": 0.17010416011110752,
+        "minimum": 10.22082,
+        "maximum": 11.0729
+      },
+      "share_pct": 0.8880258641583872
+    },
+    {
+      "kind": "spatial_convolution",
+      "gemm": {
+        "batch": 1,
+        "M": 12544,
+        "N": 32,
+        "K": 27
+      },
+      "calls_per_inference": 1,
+      "ms": {
+        "mean": 9.54463,
+        "median": 9.5328,
+        "stddev": 0.04660395668768254,
+        "minimum": 9.50236,
+        "maximum": 9.69851
+      },
+      "share_pct": 0.8119531162019273
+    },
+    {
+      "kind": "dynamic_matmul",
+      "gemm": {
+        "batch": 64,
+        "M": 49,
+        "N": 49,
+        "K": 32
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 9.397709,
+        "median": 9.382404999999999,
+        "stddev": 0.08951864339195965,
+        "minimum": 9.26653,
+        "maximum": 9.6555
+      },
+      "share_pct": 0.7994546784641101
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 784,
+        "N": 160,
+        "K": 128
+      },
+      "calls_per_inference": 1,
+      "ms": {
+        "mean": 8.9756645,
+        "median": 8.89513,
+        "stddev": 0.31893717808197697,
+        "minimum": 8.77454,
+        "maximum": 10.28553
+      },
+      "share_pct": 0.7635517312622925
+    },
+    {
+      "kind": "dynamic_matmul",
+      "gemm": {
+        "batch": 64,
+        "M": 49,
+        "N": 32,
+        "K": 49
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 8.4720735,
+        "median": 8.462879999999998,
+        "stddev": 0.0686404930569795,
+        "minimum": 8.371410000000001,
+        "maximum": 8.685479999999998
+      },
+      "share_pct": 0.7207116964216287
+    },
+    {
+      "kind": "depthwise_convolution",
+      "gemm": {
+        "batch": 128,
+        "M": 784,
+        "N": 1,
+        "K": 9
+      },
+      "calls_per_inference": 3,
+      "ms": {
+        "mean": 7.451416,
+        "median": 7.440905000000001,
+        "stddev": 0.0620718511845241,
+        "minimum": 7.369009999999999,
+        "maximum": 7.64086
+      },
+      "share_pct": 0.6338852780376926
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 196,
+        "N": 320,
+        "K": 160
+      },
+      "calls_per_inference": 1,
+      "ms": {
+        "mean": 5.9469140000000005,
+        "median": 5.88932,
+        "stddev": 0.19820199471618263,
+        "minimum": 5.8403,
+        "maximum": 6.76243
+      },
+      "share_pct": 0.5058986418630025
+    },
+    {
+      "kind": "depthwise_convolution",
+      "gemm": {
+        "batch": 160,
+        "M": 196,
+        "N": 1,
+        "K": 9
+      },
+      "calls_per_inference": 7,
+      "ms": {
+        "mean": 3.8415025,
+        "median": 3.8272999999999997,
+        "stddev": 0.10005597069824672,
+        "minimum": 3.75071,
+        "maximum": 4.23391
+      },
+      "share_pct": 0.3267931733102796
+    },
+    {
+      "kind": "static_pointwise_gemm",
+      "gemm": {
+        "batch": 1,
+        "M": 1,
+        "N": 1000,
+        "K": 320
+      },
+      "calls_per_inference": 1,
+      "ms": {
+        "mean": 1.5315665,
+        "median": 1.5242300000000002,
+        "stddev": 0.03663074941759638,
+        "minimum": 1.49297,
+        "maximum": 1.62379
+      },
+      "share_pct": 0.130288988923141
+    },
+    {
+      "kind": "dynamic_matmul",
+      "gemm": {
+        "batch": 10,
+        "M": 49,
+        "N": 49,
+        "K": 32
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 1.423227,
+        "median": 1.4169800000000001,
+        "stddev": 0.02083670776601514,
+        "minimum": 1.3983599999999998,
+        "maximum": 1.47634
+      },
+      "share_pct": 0.12107264479741178
+    },
+    {
+      "kind": "dynamic_matmul",
+      "gemm": {
+        "batch": 10,
+        "M": 49,
+        "N": 32,
+        "K": 49
+      },
+      "calls_per_inference": 2,
+      "ms": {
+        "mean": 1.257302,
+        "median": 1.252685,
+        "stddev": 0.026209862265948694,
+        "minimum": 1.21718,
+        "maximum": 1.32305
+      },
+      "share_pct": 0.10695755381894485
+    },
+    {
+      "kind": "depthwise_convolution",
+      "gemm": {
+        "batch": 320,
+        "M": 49,
+        "N": 1,
+        "K": 9
+      },
+      "calls_per_inference": 3,
+      "ms": {
+        "mean": 1.1640325,
+        "median": 1.136955,
+        "stddev": 0.11380319502845346,
+        "minimum": 1.08776,
+        "maximum": 1.6362
+      },
+      "share_pct": 0.09902320108116501
+    }
+  ],
+  "candidate_count": {
+    "static_pointwise_gemm": 51,
+    "spatial_convolution": 2,
+    "other": 251,
+    "depthwise_convolution": 15,
+    "dynamic_matmul": 20
+  },
+  "current_first_qk": [
+    {
+      "index": 32,
+      "name": "/layers.1/blocks.0/attn/MatMul_output_0",
+      "runtime_type": "While",
+      "model_type": "MatMul",
+      "calls_per_inference": 1,
+      "profile_samples": 20,
+      "ms": {
+        "mean": 4.703485,
+        "median": 4.697465,
+        "stddev": 0.0392754386219602,
+        "minimum": 4.62389,
+        "maximum": 4.79761
+      },
+      "share_profiled_inference_pct": 0.40012125171526,
+      "inputs": [
+        {
+          "shape": [
+            16,
+            4,
+            49,
+            32
+          ],
+          "dtype_code": 2,
+          "bits": 32,
+          "strides": [
+            6272,
+            1568,
+            32,
+            1
+          ],
+          "lanes": 1,
+          "layout": 1
+        },
+        {
+          "shape": [
+            16,
+            4,
+            32,
+            49
+          ],
+          "dtype_code": 2,
+          "bits": 32,
+          "strides": [
+            6272,
+            1568,
+            49,
+            1
+          ],
+          "lanes": 1,
+          "layout": 1
+        }
+      ],
+      "outputs": [
+        {
+          "shape": [
+            16,
+            4,
+            49,
+            49
+          ],
+          "dtype_code": 2,
+          "bits": 32,
+          "strides": [
+            9604,
+            2401,
+            49,
+            1
+          ],
+          "lanes": 1,
+          "layout": 1
+        }
+      ],
+      "mnn_estimated_mflops": 4.689453125,
+      "kind": "dynamic_matmul",
+      "static_weights": false,
+      "gemm": {
+        "batch": 64,
+        "M": 49,
+        "N": 49,
+        "K": 32
+      },
+      "notes": "Existing dense MatMul hook is a candidate; verify transposes, broadcasting and runtime type",
+      "macs": 4917248,
+      "current_host_jobs": 64,
+      "logical_input_elements": 200704,
+      "logical_output_elements": 153664,
+      "reduction_panels": 1,
+      "current_panel_output_elements": 153664,
+      "int8_weight_bytes": 0
+    }
+  ]
+}

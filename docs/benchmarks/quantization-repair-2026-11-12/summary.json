@@ -1,0 +1,80 @@
+{
+  "corrected_model_sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+  "reference_model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+  "host_holdout": {
+    "images": 200,
+    "top1_agreement": 0.965,
+    "mean_cosine": 0.9975830469237679,
+    "mean_relative_l2": 0.06790376898629441,
+    "reference_accuracy": 0.745,
+    "candidate_accuracy": 0.74,
+    "accuracy_drop": 0.0050000000000000044
+  },
+  "hps_real20": {
+    "images": 20,
+    "top1_agreement": 20,
+    "mean_cosine": 0.9976682726517268,
+    "fp32_correct": 16,
+    "corrected_correct": 16,
+    "fp32_mean_ms": 1163.676,
+    "corrected_mean_ms": 1098.4560000000001,
+    "fp32_median_ms": 1161.64,
+    "corrected_median_ms": 1082.585,
+    "fp32_sd_ms": 9.896001531719222,
+    "corrected_sd_ms": 43.40286970866523,
+    "paired_difference_ms": -65.22,
+    "paired_difference_ci95_ms": [
+      -81.84604999999999,
+      -44.27712500000011
+    ],
+    "latency_reduction_percent": 5.604652841512569,
+    "speedup_ratio": 1.059374248945793,
+    "corrected_faster_pairs": 18,
+    "fp32_process_mean_ms": 2261.139492499933,
+    "corrected_process_mean_ms": 1911.1890880001738,
+    "cpu_frequency_khz_before": null,
+    "cpu_frequency_khz_after": null,
+    "fpga_enabled": false
+  },
+  "native_fpga_smoke": {
+    "cpu_top1": 0,
+    "fpga_top1": 63,
+    "relative_l2": 1.4529830963044525,
+    "cosine": 0.33268137112781365,
+    "fpga_jobs": 28,
+    "linear_replacements": 1,
+    "offload_ms": 43.25622
+  },
+  "precision": {
+    "int8_convolutions": 37,
+    "fp32_convolutions": 31,
+    "operator_counts": {
+      "Raster": 154,
+      "Convolution": 53,
+      "UnaryOp": 23,
+      "ConvolutionDepthwise": 15,
+      "BinaryOp": 40,
+      "LayerNorm": 21,
+      "While": 22,
+      "Softmax": 10,
+      "FloatToInt8": 37,
+      "Int8ToFloat": 37,
+      "Reduction": 1
+    },
+    "operator_ms": {
+      "Raster": 124.51876,
+      "Convolution": 619.71491,
+      "UnaryOp": 124.42457,
+      "ConvolutionDepthwise": 44.87386,
+      "BinaryOp": 39.02513999999999,
+      "LayerNorm": 7.71652,
+      "While": 84.31258,
+      "Softmax": 28.936349999999997,
+      "FloatToInt8": 20.819970000000005,
+      "Int8ToFloat": 14.779030000000002,
+      "Reduction": 0.16199
+    },
+    "note": "One diagnostic profile, with native tensor tracing; not a paired performance benchmark. Explicit conversion times are included in inference."
+  },
+  "limitation": "Mixed precision CPU model repair; FPGA arithmetic remains inaccurate; only ten Imagenette classes evaluated."
+}

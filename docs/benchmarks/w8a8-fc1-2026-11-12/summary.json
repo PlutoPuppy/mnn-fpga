@@ -1,0 +1,2320 @@
+{
+  "inputs": 20,
+  "measured_inferences": 200,
+  "warmup_inferences": 10,
+  "bootstrap_replicates": 20000,
+  "bootstrap_seed": 20261112,
+  "controls": {
+    "inference_ms": {
+      "fp32": {
+        "mean": 1161.753,
+        "median": 1159.43,
+        "stddev": 7.110226215958608,
+        "minimum": 1154.63,
+        "maximum": 1184.29
+      },
+      "full_cpu": {
+        "mean": 850.3140500000001,
+        "median": 843.4065,
+        "stddev": 12.594923189732558,
+        "minimum": 840.33,
+        "maximum": 881.712
+      },
+      "full_fpga": {
+        "mean": 868.01415,
+        "median": 862.116,
+        "stddev": 9.625314678519675,
+        "minimum": 859.214,
+        "maximum": 888.794
+      },
+      "hybrid_cpu": {
+        "mean": 1166.908,
+        "median": 1155.94,
+        "stddev": 36.560797613089115,
+        "minimum": 1148.5,
+        "maximum": 1318.02
+      },
+      "hybrid_fpga": {
+        "mean": 1184.6605,
+        "median": 1183.01,
+        "stddev": 11.323923662108635,
+        "minimum": 1171.73,
+        "maximum": 1210.89
+      }
+    },
+    "process_ms": {
+      "fp32": {
+        "mean": 2581.795439500047,
+        "median": 2678.650370000014,
+        "stddev": 247.41864645679462,
+        "minimum": 1987.6111899993703,
+        "maximum": 2943.2871399994838
+      },
+      "full_cpu": {
+        "mean": 1498.339603500017,
+        "median": 1663.0452150002384,
+        "stddev": 225.99002880837733,
+        "minimum": 1243.3868899997833,
+        "maximum": 1735.7770100006746
+      },
+      "full_fpga": {
+        "mean": 1548.3950619999632,
+        "median": 1701.9407600000704,
+        "stddev": 220.8570266070305,
+        "minimum": 1266.2088200004291,
+        "maximum": 1792.1029099998123
+      },
+      "hybrid_cpu": {
+        "mean": 2250.819507999904,
+        "median": 2243.2333149999977,
+        "stddev": 297.0164587344698,
+        "minimum": 1785.8368600000176,
+        "maximum": 2694.8265199998787
+      },
+      "hybrid_fpga": {
+        "mean": 2332.265791499958,
+        "median": 2321.691914999519,
+        "stddev": 339.7840326296212,
+        "minimum": 1789.2804000002798,
+        "maximum": 2737.5724700004866
+      }
+    }
+  },
+  "selected_operation_ms": {
+    "fp32": {
+      "mean": 28.774485,
+      "median": 28.549210000000002,
+      "stddev": 0.7874787524184549,
+      "minimum": 28.34223,
+      "maximum": 31.87877
+    },
+    "full_cpu": {
+      "mean": 21.2842475,
+      "median": 21.28042,
+      "stddev": 0.10935292150093447,
+      "minimum": 20.9349,
+      "maximum": 21.42367
+    },
+    "full_fpga": {
+      "mean": 41.5376935,
+      "median": 41.23875,
+      "stddev": 1.565190554809877,
+      "minimum": 39.90047,
+      "maximum": 46.52054
+    },
+    "hybrid_cpu": {
+      "mean": 21.7836305,
+      "median": 21.32217,
+      "stddev": 1.403673214453215,
+      "minimum": 21.13435,
+      "maximum": 26.48848
+    },
+    "hybrid_fpga": {
+      "mean": 42.4703615,
+      "median": 42.32033,
+      "stddev": 0.8695494070480592,
+      "minimum": 41.34635,
+      "maximum": 44.07777
+    }
+  },
+  "comparisons": {
+    "fp32_to_full_cpu": {
+      "inference_ms": {
+        "baseline": {
+          "mean": 1161.753,
+          "median": 1159.43,
+          "stddev": 7.110226215958608,
+          "minimum": 1154.63,
+          "maximum": 1184.29
+        },
+        "other": {
+          "mean": 850.3140500000001,
+          "median": 843.4065,
+          "stddev": 12.594923189732558,
+          "minimum": 840.33,
+          "maximum": 881.712
+        },
+        "added_ms": {
+          "mean": -311.43895,
+          "median": -315.6915000000001,
+          "stddev": 14.687191016145213,
+          "minimum": -328.30099999999993,
+          "maximum": -274.578
+        },
+        "latency_change_pct": -26.807673403899123,
+        "baseline_over_other": 1.3662634411368366,
+        "paired_bootstrap_95_ci_added_ms": [
+          -317.2121587500002,
+          -304.72324375000034
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -27.273407156605458,
+          -26.263191593220043
+        ],
+        "faster_inputs": 20,
+        "slower_inputs": 0
+      },
+      "process_ms": {
+        "baseline": {
+          "mean": 2581.795439500047,
+          "median": 2678.650370000014,
+          "stddev": 247.41864645679462,
+          "minimum": 1987.6111899993703,
+          "maximum": 2943.2871399994838
+        },
+        "other": {
+          "mean": 1498.339603500017,
+          "median": 1663.0452150002384,
+          "stddev": 225.99002880837733,
+          "minimum": 1243.3868899997833,
+          "maximum": 1735.7770100006746
+        },
+        "added_ms": {
+          "mean": -1083.45583600003,
+          "median": -1156.6223149998223,
+          "stddev": 403.3295919016527,
+          "minimum": -1616.436430000249,
+          "maximum": -275.38413999900513
+        },
+        "latency_change_pct": -41.965208374906595,
+        "baseline_over_other": 1.7231043172516782,
+        "paired_bootstrap_95_ci_added_ms": [
+          -1248.0906134625945,
+          -905.6485741625947
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -46.92555943049294,
+          -36.453586187077576
+        ],
+        "faster_inputs": 20,
+        "slower_inputs": 0
+      },
+      "selected_operation_ms": {
+        "baseline": {
+          "mean": 28.774485,
+          "median": 28.549210000000002,
+          "stddev": 0.7874787524184549,
+          "minimum": 28.34223,
+          "maximum": 31.87877
+        },
+        "other": {
+          "mean": 21.2842475,
+          "median": 21.28042,
+          "stddev": 0.10935292150093447,
+          "minimum": 20.9349,
+          "maximum": 21.42367
+        },
+        "added_ms": {
+          "mean": -7.4902375,
+          "median": -7.224599999999999,
+          "stddev": 0.8282819555331642,
+          "minimum": -10.66149,
+          "maximum": -6.980129999999999
+        },
+        "latency_change_pct": -26.030830786372018,
+        "baseline_over_other": 1.3519146025716906,
+        "paired_bootstrap_95_ci_added_ms": [
+          -7.902070049999996,
+          -7.217084825
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -27.095658546386474,
+          -25.301078806374772
+        ],
+        "faster_inputs": 20,
+        "slower_inputs": 0
+      }
+    },
+    "full_cpu_to_full_fpga": {
+      "inference_ms": {
+        "baseline": {
+          "mean": 850.3140500000001,
+          "median": 843.4065,
+          "stddev": 12.594923189732558,
+          "minimum": 840.33,
+          "maximum": 881.712
+        },
+        "other": {
+          "mean": 868.01415,
+          "median": 862.116,
+          "stddev": 9.625314678519675,
+          "minimum": 859.214,
+          "maximum": 888.794
+        },
+        "added_ms": {
+          "mean": 17.700099999999985,
+          "median": 18.829999999999984,
+          "stddev": 13.333299401755063,
+          "minimum": -19.82899999999995,
+          "maximum": 43.759000000000015
+        },
+        "latency_change_pct": 2.0815956175250783,
+        "baseline_over_other": 0.9796085121423423,
+        "paired_bootstrap_95_ci_added_ms": [
+          11.833028750000048,
+          23.287316249999968
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          1.3833249536727799,
+          2.7489915356123364
+        ],
+        "faster_inputs": 1,
+        "slower_inputs": 19
+      },
+      "process_ms": {
+        "baseline": {
+          "mean": 1498.339603500017,
+          "median": 1663.0452150002384,
+          "stddev": 225.99002880837733,
+          "minimum": 1243.3868899997833,
+          "maximum": 1735.7770100006746
+        },
+        "other": {
+          "mean": 1548.3950619999632,
+          "median": 1701.9407600000704,
+          "stddev": 220.8570266070305,
+          "minimum": 1266.2088200004291,
+          "maximum": 1792.1029099998123
+        },
+        "added_ms": {
+          "mean": 50.055458499946326,
+          "median": 36.534370000026684,
+          "stddev": 265.61554219749206,
+          "minimum": -401.3495099998181,
+          "maximum": 506.67641000018193
+        },
+        "latency_change_pct": 3.340728522627323,
+        "baseline_over_other": 0.9676726826839057,
+        "paired_bootstrap_95_ci_added_ms": [
+          -60.34102317502857,
+          164.91113698733898
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -3.888912021286934,
+          11.461559784210204
+        ],
+        "faster_inputs": 4,
+        "slower_inputs": 16
+      },
+      "selected_operation_ms": {
+        "baseline": {
+          "mean": 21.2842475,
+          "median": 21.28042,
+          "stddev": 0.10935292150093447,
+          "minimum": 20.9349,
+          "maximum": 21.42367
+        },
+        "other": {
+          "mean": 41.5376935,
+          "median": 41.23875,
+          "stddev": 1.565190554809877,
+          "minimum": 39.90047,
+          "maximum": 46.52054
+        },
+        "added_ms": {
+          "mean": 20.253446,
+          "median": 19.919185000000002,
+          "stddev": 1.5753714036926754,
+          "minimum": 18.639879999999998,
+          "maximum": 25.367849999999997
+        },
+        "latency_change_pct": 95.15697465931086,
+        "baseline_over_other": 0.5124080252554225,
+        "paired_bootstrap_95_ci_added_ms": [
+          19.6665826125,
+          21.004700662500003
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          92.36460265728215,
+          98.72372022195356
+        ],
+        "faster_inputs": 0,
+        "slower_inputs": 20
+      }
+    },
+    "fp32_to_hybrid_cpu": {
+      "inference_ms": {
+        "baseline": {
+          "mean": 1161.753,
+          "median": 1159.43,
+          "stddev": 7.110226215958608,
+          "minimum": 1154.63,
+          "maximum": 1184.29
+        },
+        "other": {
+          "mean": 1166.908,
+          "median": 1155.94,
+          "stddev": 36.560797613089115,
+          "minimum": 1148.5,
+          "maximum": 1318.02
+        },
+        "added_ms": {
+          "mean": 5.154999999999961,
+          "median": -1.1650000000000773,
+          "stddev": 37.53426161171741,
+          "minimum": -30.75999999999999,
+          "maximum": 156.69000000000005
+        },
+        "latency_change_pct": 0.44372598994792956,
+        "baseline_over_other": 0.995582342395459,
+        "paired_bootstrap_95_ci_added_ms": [
+          -6.739100000000041,
+          23.709012499999613
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -0.5788402190737907,
+          2.042239660498068
+        ],
+        "faster_inputs": 12,
+        "slower_inputs": 8
+      },
+      "process_ms": {
+        "baseline": {
+          "mean": 2581.795439500047,
+          "median": 2678.650370000014,
+          "stddev": 247.41864645679462,
+          "minimum": 1987.6111899993703,
+          "maximum": 2943.2871399994838
+        },
+        "other": {
+          "mean": 2250.819507999904,
+          "median": 2243.2333149999977,
+          "stddev": 297.0164587344698,
+          "minimum": 1785.8368600000176,
+          "maximum": 2694.8265199998787
+        },
+        "added_ms": {
+          "mean": -330.9759315001429,
+          "median": -351.6313749996698,
+          "stddev": 312.65550011211064,
+          "minimum": -941.0911500008297,
+          "maximum": 124.55897000018012
+        },
+        "latency_change_pct": -12.819603227908516,
+        "baseline_over_other": 1.1470468557446665,
+        "paired_bootstrap_95_ci_added_ms": [
+          -466.8400959251949,
+          -199.400619625103
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -17.757180180224832,
+          -7.8447122922503185
+        ],
+        "faster_inputs": 17,
+        "slower_inputs": 3
+      },
+      "selected_operation_ms": {
+        "baseline": {
+          "mean": 28.774485,
+          "median": 28.549210000000002,
+          "stddev": 0.7874787524184549,
+          "minimum": 28.34223,
+          "maximum": 31.87877
+        },
+        "other": {
+          "mean": 21.7836305,
+          "median": 21.32217,
+          "stddev": 1.403673214453215,
+          "minimum": 21.13435,
+          "maximum": 26.48848
+        },
+        "added_ms": {
+          "mean": -6.9908545,
+          "median": -7.193605,
+          "stddev": 1.7187854108657659,
+          "minimum": -10.744419999999998,
+          "maximum": -2.00582
+        },
+        "latency_change_pct": -24.29532448625926,
+        "baseline_over_other": 1.3209223779296109,
+        "paired_bootstrap_95_ci_added_ms": [
+          -7.677459525000005,
+          -6.2044749874999985
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -26.430280636200013,
+          -21.667406137377608
+        ],
+        "faster_inputs": 20,
+        "slower_inputs": 0
+      }
+    },
+    "hybrid_cpu_to_hybrid_fpga": {
+      "inference_ms": {
+        "baseline": {
+          "mean": 1166.908,
+          "median": 1155.94,
+          "stddev": 36.560797613089115,
+          "minimum": 1148.5,
+          "maximum": 1318.02
+        },
+        "other": {
+          "mean": 1184.6605,
+          "median": 1183.01,
+          "stddev": 11.323923662108635,
+          "minimum": 1171.73,
+          "maximum": 1210.89
+        },
+        "added_ms": {
+          "mean": 17.752500000000033,
+          "median": 28.07000000000005,
+          "stddev": 39.86979952888758,
+          "minimum": -141.78999999999996,
+          "maximum": 55.710000000000036
+        },
+        "latency_change_pct": 1.52132815954642,
+        "baseline_over_other": 0.9850146940832415,
+        "paired_bootstrap_95_ci_added_ms": [
+          -2.0751624999999474,
+          30.499599999999887
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -0.17522560580607188,
+          2.6354306354035675
+        ],
+        "faster_inputs": 2,
+        "slower_inputs": 18
+      },
+      "process_ms": {
+        "baseline": {
+          "mean": 2250.819507999904,
+          "median": 2243.2333149999977,
+          "stddev": 297.0164587344698,
+          "minimum": 1785.8368600000176,
+          "maximum": 2694.8265199998787
+        },
+        "other": {
+          "mean": 2332.265791499958,
+          "median": 2321.691914999519,
+          "stddev": 339.7840326296212,
+          "minimum": 1789.2804000002798,
+          "maximum": 2737.5724700004866
+        },
+        "added_ms": {
+          "mean": 81.44628350005405,
+          "median": 139.42832000020644,
+          "stddev": 416.92299664718945,
+          "minimum": -797.185439999339,
+          "maximum": 579.4424400000935
+        },
+        "latency_change_pct": 3.6185168651051924,
+        "baseline_over_other": 0.9650784727037165,
+        "paired_bootstrap_95_ci_added_ms": [
+          -112.4898566624995,
+          249.07377317502548
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -4.815368420639569,
+          11.395452611639858
+        ],
+        "faster_inputs": 5,
+        "slower_inputs": 15
+      },
+      "selected_operation_ms": {
+        "baseline": {
+          "mean": 21.7836305,
+          "median": 21.32217,
+          "stddev": 1.403673214453215,
+          "minimum": 21.13435,
+          "maximum": 26.48848
+        },
+        "other": {
+          "mean": 42.4703615,
+          "median": 42.32033,
+          "stddev": 0.8695494070480592,
+          "minimum": 41.34635,
+          "maximum": 44.07777
+        },
+        "added_ms": {
+          "mean": 20.686731,
+          "median": 20.958614999999998,
+          "stddev": 1.8102115714000186,
+          "minimum": 15.513700000000004,
+          "maximum": 22.46556
+        },
+        "latency_change_pct": 94.9645698406425,
+        "baseline_over_other": 0.5129137057145134,
+        "paired_bootstrap_95_ci_added_ms": [
+          19.830752775000004,
+          21.381157987500004
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          88.41483350070212,
+          100.11850608093889
+        ],
+        "faster_inputs": 0,
+        "slower_inputs": 20
+      }
+    },
+    "fp32_to_full_fpga": {
+      "inference_ms": {
+        "baseline": {
+          "mean": 1161.753,
+          "median": 1159.43,
+          "stddev": 7.110226215958608,
+          "minimum": 1154.63,
+          "maximum": 1184.29
+        },
+        "other": {
+          "mean": 868.01415,
+          "median": 862.116,
+          "stddev": 9.625314678519675,
+          "minimum": 859.214,
+          "maximum": 888.794
+        },
+        "added_ms": {
+          "mean": -293.73885,
+          "median": -295.0470000000001,
+          "stddev": 9.557571780778645,
+          "minimum": -312.37599999999986,
+          "maximum": -269.9920000000001
+        },
+        "latency_change_pct": -25.284105141110047,
+        "baseline_over_other": 1.3384032967665334,
+        "paired_bootstrap_95_ci_added_ms": [
+          -297.6124824999997,
+          -289.46720000000016
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -25.593442969416422,
+          -24.929175789630133
+        ],
+        "faster_inputs": 20,
+        "slower_inputs": 0
+      },
+      "process_ms": {
+        "baseline": {
+          "mean": 2581.795439500047,
+          "median": 2678.650370000014,
+          "stddev": 247.41864645679462,
+          "minimum": 1987.6111899993703,
+          "maximum": 2943.2871399994838
+        },
+        "other": {
+          "mean": 1548.3950619999632,
+          "median": 1701.9407600000704,
+          "stddev": 220.8570266070305,
+          "minimum": 1266.2088200004291,
+          "maximum": 1792.1029099998123
+        },
+        "added_ms": {
+          "mean": -1033.4003775000838,
+          "median": -1058.5311199997705,
+          "stddev": 379.0526108034982,
+          "minimum": -1470.891639999536,
+          "maximum": -234.4911999989563
+        },
+        "latency_change_pct": -40.02642353803976,
+        "baseline_over_other": 1.6674009772191514,
+        "paired_bootstrap_95_ci_added_ms": [
+          -1188.4678532751923,
+          -865.564478300105
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -44.75171169422142,
+          -34.7730495865155
+        ],
+        "faster_inputs": 20,
+        "slower_inputs": 0
+      },
+      "selected_operation_ms": {
+        "baseline": {
+          "mean": 28.774485,
+          "median": 28.549210000000002,
+          "stddev": 0.7874787524184549,
+          "minimum": 28.34223,
+          "maximum": 31.87877
+        },
+        "other": {
+          "mean": 41.5376935,
+          "median": 41.23875,
+          "stddev": 1.565190554809877,
+          "minimum": 39.90047,
+          "maximum": 46.52054
+        },
+        "added_ms": {
+          "mean": 12.763208500000001,
+          "median": 12.61775,
+          "stddev": 1.9000810515185227,
+          "minimum": 8.771519999999999,
+          "maximum": 18.178309999999996
+        },
+        "latency_change_pct": 44.35599281794271,
+        "baseline_over_other": 0.6927318918177293,
+        "paired_bootstrap_95_ci_added_ms": [
+          11.993558112499999,
+          13.619932662500004
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          41.275791664885006,
+          47.59691352917911
+        ],
+        "faster_inputs": 0,
+        "slower_inputs": 20
+      }
+    },
+    "fp32_to_hybrid_fpga": {
+      "inference_ms": {
+        "baseline": {
+          "mean": 1161.753,
+          "median": 1159.43,
+          "stddev": 7.110226215958608,
+          "minimum": 1154.63,
+          "maximum": 1184.29
+        },
+        "other": {
+          "mean": 1184.6605,
+          "median": 1183.01,
+          "stddev": 11.323923662108635,
+          "minimum": 1171.73,
+          "maximum": 1210.89
+        },
+        "added_ms": {
+          "mean": 22.90749999999999,
+          "median": 24.909999999999968,
+          "stddev": 11.49723118842099,
+          "minimum": 0.15000000000009095,
+          "maximum": 46.49000000000001
+        },
+        "latency_change_pct": 1.9718046779306553,
+        "baseline_over_other": 0.9806632364293401,
+        "paired_bootstrap_95_ci_added_ms": [
+          18.050500000000056,
+          27.833537499999952
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          1.5517356342554973,
+          2.3970447257188017
+        ],
+        "faster_inputs": 0,
+        "slower_inputs": 20
+      },
+      "process_ms": {
+        "baseline": {
+          "mean": 2581.795439500047,
+          "median": 2678.650370000014,
+          "stddev": 247.41864645679462,
+          "minimum": 1987.6111899993703,
+          "maximum": 2943.2871399994838
+        },
+        "other": {
+          "mean": 2332.265791499958,
+          "median": 2321.691914999519,
+          "stddev": 339.7840326296212,
+          "minimum": 1789.2804000002798,
+          "maximum": 2737.5724700004866
+        },
+        "added_ms": {
+          "mean": -249.52964800008886,
+          "median": -223.730820000128,
+          "stddev": 402.0942632874523,
+          "minimum": -951.2199199998577,
+          "maximum": 589.2115699998612
+        },
+        "latency_change_pct": -9.66496586764477,
+        "baseline_over_other": 1.1069902276616628,
+        "paired_bootstrap_95_ci_added_ms": [
+          -421.5081475499403,
+          -75.185418875059
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          -16.025303467280565,
+          -2.9819599398663112
+        ],
+        "faster_inputs": 15,
+        "slower_inputs": 5
+      },
+      "selected_operation_ms": {
+        "baseline": {
+          "mean": 28.774485,
+          "median": 28.549210000000002,
+          "stddev": 0.7874787524184549,
+          "minimum": 28.34223,
+          "maximum": 31.87877
+        },
+        "other": {
+          "mean": 42.4703615,
+          "median": 42.32033,
+          "stddev": 0.8695494070480592,
+          "minimum": 41.34635,
+          "maximum": 44.07777
+        },
+        "added_ms": {
+          "mean": 13.6958765,
+          "median": 13.722364999999998,
+          "stddev": 1.261278416846532,
+          "minimum": 10.031990000000004,
+          "maximum": 15.607110000000002
+        },
+        "latency_change_pct": 47.59729496461884,
+        "baseline_over_other": 0.6775191918251037,
+        "paired_bootstrap_95_ci_added_ms": [
+          13.128493375000001,
+          14.203254050000007
+        ],
+        "paired_bootstrap_95_ci_change_pct": [
+          45.112996771319786,
+          49.68800343095283
+        ],
+        "faster_inputs": 0,
+        "slower_inputs": 20
+      }
+    }
+  },
+  "stages_ms": {
+    "full_fpga": {
+      "device_init": {
+        "mean": 0.439239,
+        "median": 0.42805499999999996,
+        "stddev": 0.031001067197250185,
+        "minimum": 0.42143,
+        "maximum": 0.55593
+      },
+      "bridge_total": {
+        "mean": 36.804773,
+        "median": 36.15737,
+        "stddev": 1.4395597745111266,
+        "minimum": 35.69522,
+        "maximum": 41.36206
+      },
+      "input_dma_wait": {
+        "mean": 5.422183,
+        "median": 5.401590000000001,
+        "stddev": 0.04695170834849464,
+        "minimum": 5.37274,
+        "maximum": 5.52473
+      },
+      "adapter_total": {
+        "mean": 36.262124,
+        "median": 35.631335,
+        "stddev": 1.437839572316745,
+        "minimum": 35.16666,
+        "maximum": 40.83292
+      },
+      "tile_plan": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "mean": 0.670724,
+        "median": 0.67188,
+        "stddev": 0.02045066680163704,
+        "minimum": 0.63616,
+        "maximum": 0.71204
+      },
+      "scale_bound": {
+        "mean": 4.576893,
+        "median": 4.472315,
+        "stddev": 0.25145367735168284,
+        "minimum": 4.42098,
+        "maximum": 5.49088
+      },
+      "upload": {
+        "mean": 13.9833975,
+        "median": 13.715905,
+        "stddev": 0.7009485001945579,
+        "minimum": 13.5702,
+        "maximum": 16.3332
+      },
+      "launch": {
+        "mean": 0.0448835,
+        "median": 0.043660000000000004,
+        "stddev": 0.0030900302757842285,
+        "minimum": 0.04312,
+        "maximum": 0.05526
+      },
+      "download": {
+        "mean": 5.10618,
+        "median": 5.0136,
+        "stddev": 0.2792965475129107,
+        "minimum": 4.94856,
+        "maximum": 6.23059
+      },
+      "configure": {
+        "mean": 0.0947555,
+        "median": 0.0932,
+        "stddev": 0.005524196035814194,
+        "minimum": 0.09012,
+        "maximum": 0.11342
+      },
+      "quantize": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "mean": 4.6770115,
+        "median": 4.6065249999999995,
+        "stddev": 0.20126856808163462,
+        "minimum": 4.49752,
+        "maximum": 5.40494
+      },
+      "output_dma_setup": {
+        "mean": 0.194142,
+        "median": 0.182265,
+        "stddev": 0.034568124136490096,
+        "minimum": 0.18149,
+        "maximum": 0.30093
+      },
+      "input_layout": {
+        "mean": 0.5529645,
+        "median": 0.551405,
+        "stddev": 0.018283653174927937,
+        "minimum": 0.51978,
+        "maximum": 0.59588
+      },
+      "int8_accumulate": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "mean": 0.3899375,
+        "median": 0.37961999999999996,
+        "stddev": 0.027304696892081065,
+        "minimum": 0.37841,
+        "maximum": 0.49958
+      },
+      "peak_scan": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_wait": {
+        "mean": 0.675628,
+        "median": 0.6752400000000001,
+        "stddev": 0.01669111695672754,
+        "minimum": 0.65472,
+        "maximum": 0.73796
+      },
+      "workspace": {
+        "mean": 0.546399,
+        "median": 0.53251,
+        "stddev": 0.03381071223895266,
+        "minimum": 0.51503,
+        "maximum": 0.64881
+      },
+      "output_layout": {
+        "mean": 3.310712,
+        "median": 3.39642,
+        "stddev": 0.40225156875295154,
+        "minimum": 2.40942,
+        "maximum": 3.94521
+      },
+      "dequantize": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "mean": 4.108192,
+        "median": 4.037940000000001,
+        "stddev": 0.23897940822105193,
+        "minimum": 3.96894,
+        "maximum": 5.0565
+      },
+      "input_stage_copy": {
+        "mean": 7.9435585,
+        "median": 7.71849,
+        "stddev": 0.6781163375058652,
+        "minimum": 7.56587,
+        "maximum": 10.33624
+      },
+      "output_convert": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "mean": 4.168592,
+        "median": 4.0779,
+        "stddev": 0.22719495295543213,
+        "minimum": 3.86375,
+        "maximum": 4.86189
+      },
+      "completion_wait": {
+        "mean": 2.9317699999999998,
+        "median": 2.9140249999999996,
+        "stddev": 0.035416746410642956,
+        "minimum": 2.90659,
+        "maximum": 3.03288
+      }
+    },
+    "hybrid_fpga": {
+      "device_init": {
+        "mean": 0.4819335,
+        "median": 0.48739,
+        "stddev": 0.035334563409157756,
+        "minimum": 0.43425,
+        "maximum": 0.56759
+      },
+      "bridge_total": {
+        "mean": 37.791397,
+        "median": 37.500965,
+        "stddev": 0.6866157663198154,
+        "minimum": 37.07835,
+        "maximum": 39.01501
+      },
+      "input_dma_wait": {
+        "mean": 5.4143185,
+        "median": 5.40485,
+        "stddev": 0.03073517824646706,
+        "minimum": 5.3712,
+        "maximum": 5.48229
+      },
+      "adapter_total": {
+        "mean": 37.203405000000004,
+        "median": 36.923294999999996,
+        "stddev": 0.6686461531726865,
+        "minimum": 36.54108,
+        "maximum": 38.42665
+      },
+      "tile_plan": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "mean": 0.7229415,
+        "median": 0.72379,
+        "stddev": 0.025196764887371416,
+        "minimum": 0.64966,
+        "maximum": 0.75869
+      },
+      "scale_bound": {
+        "mean": 4.5545905,
+        "median": 4.500825000000001,
+        "stddev": 0.13432126243392042,
+        "minimum": 4.43555,
+        "maximum": 4.93268
+      },
+      "upload": {
+        "mean": 13.787996,
+        "median": 13.703624999999999,
+        "stddev": 0.20109905031051117,
+        "minimum": 13.5823,
+        "maximum": 14.21892
+      },
+      "launch": {
+        "mean": 0.0440405,
+        "median": 0.043910000000000005,
+        "stddev": 0.0006092227576355402,
+        "minimum": 0.04302,
+        "maximum": 0.04533
+      },
+      "download": {
+        "mean": 5.027269,
+        "median": 4.979215,
+        "stddev": 0.09785236591282222,
+        "minimum": 4.92826,
+        "maximum": 5.22965
+      },
+      "configure": {
+        "mean": 0.096692,
+        "median": 0.0937,
+        "stddev": 0.0061598270652417015,
+        "minimum": 0.09116,
+        "maximum": 0.11145
+      },
+      "quantize": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "mean": 4.796639,
+        "median": 4.74184,
+        "stddev": 0.11518778799946872,
+        "minimum": 4.657,
+        "maximum": 5.00451
+      },
+      "output_dma_setup": {
+        "mean": 0.1833905,
+        "median": 0.18239,
+        "stddev": 0.0023034812898375338,
+        "minimum": 0.18196,
+        "maximum": 0.19084
+      },
+      "input_layout": {
+        "mean": 0.5389185,
+        "median": 0.5305150000000001,
+        "stddev": 0.03372748578876848,
+        "minimum": 0.49216,
+        "maximum": 0.64697
+      },
+      "int8_accumulate": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "mean": 0.3842235,
+        "median": 0.38066500000000003,
+        "stddev": 0.008080577282009395,
+        "minimum": 0.37885,
+        "maximum": 0.40726
+      },
+      "peak_scan": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_wait": {
+        "mean": 0.6713655000000001,
+        "median": 0.670785,
+        "stddev": 0.019288578424331307,
+        "minimum": 0.65055,
+        "maximum": 0.74409
+      },
+      "workspace": {
+        "mean": 0.5393485,
+        "median": 0.53118,
+        "stddev": 0.029314152729750836,
+        "minimum": 0.51453,
+        "maximum": 0.65146
+      },
+      "output_layout": {
+        "mean": 3.1844595,
+        "median": 3.265505,
+        "stddev": 0.2594472695736275,
+        "minimum": 2.51286,
+        "maximum": 3.54253
+      },
+      "dequantize": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "mean": 4.0493485,
+        "median": 4.00374,
+        "stddev": 0.08836521054393345,
+        "minimum": 3.96683,
+        "maximum": 4.25173
+      },
+      "input_stage_copy": {
+        "mean": 7.7634935,
+        "median": 7.681595,
+        "stddev": 0.201948582963064,
+        "minimum": 7.56364,
+        "maximum": 8.24102
+      },
+      "output_convert": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "mean": 5.301341,
+        "median": 5.208265,
+        "stddev": 0.21795028677248976,
+        "minimum": 5.04417,
+        "maximum": 5.61192
+      },
+      "completion_wait": {
+        "mean": 2.9233415000000003,
+        "median": 2.91352,
+        "stddev": 0.025965062614577837,
+        "minimum": 2.90989,
+        "maximum": 2.9994
+      }
+    }
+  },
+  "residuals_ms": {
+    "full_fpga": {
+      "adapter_unassigned": {
+        "mean": 0.1322420000000001,
+        "median": 0.12869500000000045,
+        "stddev": 0.008176243250064127,
+        "minimum": 0.12192999999999898,
+        "maximum": 0.1498899999999992
+      },
+      "bridge_remainder": {
+        "mean": 0.10341000000000011,
+        "median": 0.09985499999999961,
+        "stddev": 0.01036385622196054,
+        "minimum": 0.09536000000000178,
+        "maximum": 0.13665999999999973
+      },
+      "selected_framework_casts": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "outer_remainder": {
+        "mean": 0.19851999999999972,
+        "median": 0.18238000000000376,
+        "stddev": 0.03870038052308439,
+        "minimum": 0.17524000000000584,
+        "maximum": 0.3356799999999982
+      },
+      "non_compute": {
+        "mean": 38.6059235,
+        "median": 38.248295,
+        "stddev": 1.5674955495824499,
+        "minimum": 36.990719999999996,
+        "maximum": 43.58566999999999
+      },
+      "rest_of_model_delta": {
+        "mean": -4.19751300000001,
+        "median": -0.40006499999992684,
+        "stddev": 14.039940787717816,
+        "minimum": -35.63063,
+        "maximum": 22.53383999999994
+      }
+    },
+    "hybrid_fpga": {
+      "adapter_unassigned": {
+        "mean": 0.1321469999999998,
+        "median": 0.131730000000001,
+        "stddev": 0.010429195911881456,
+        "minimum": 0.11617000000000388,
+        "maximum": 0.14941999999999922
+      },
+      "bridge_remainder": {
+        "mean": 0.10605850000000021,
+        "median": 0.1032849999999999,
+        "stddev": 0.01149168911362552,
+        "minimum": 0.0939000000000011,
+        "maximum": 0.13648000000000438
+      },
+      "selected_framework_casts": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "outer_remainder": {
+        "mean": 0.2326450000000011,
+        "median": 0.23180000000000067,
+        "stddev": 0.01587479548148398,
+        "minimum": 0.20905000000000218,
+        "maximum": 0.26691999999999716
+      },
+      "non_compute": {
+        "mean": 39.54702,
+        "median": 39.40839,
+        "stddev": 0.8684819458717965,
+        "minimum": 38.35083,
+        "maximum": 41.15753
+      },
+      "rest_of_model_delta": {
+        "mean": -4.74580500000003,
+        "median": 1.1590800000000172,
+        "stddev": 27.500771469772413,
+        "minimum": -110.83867000000009,
+        "maximum": 23.045339999999896
+      }
+    }
+  },
+  "workflow": {
+    "fp32": {
+      "preprocess_ms": {
+        "mean": 23.8890905,
+        "median": 21.38369,
+        "stddev": 3.7196822012094626,
+        "minimum": 21.26384,
+        "maximum": 30.20325
+      },
+      "model_load_ms": {
+        "mean": 1144.9761369999999,
+        "median": 1293.92066,
+        "stddev": 260.0504300269226,
+        "minimum": 612.20473,
+        "maximum": 1358.10274
+      },
+      "session_ms": {
+        "mean": 158.830788,
+        "median": 139.469145,
+        "stddev": 33.67711694543291,
+        "minimum": 129.16251,
+        "maximum": 214.99808
+      },
+      "input_copy_ms": {
+        "mean": 4.7286465,
+        "median": 4.66472,
+        "stddev": 0.1662317356575959,
+        "minimum": 4.49186,
+        "maximum": 5.04753
+      },
+      "linear_setup_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_ms": {
+        "mean": 3.0641075,
+        "median": 0.81391,
+        "stddev": 4.549871281952439,
+        "minimum": 0.74183,
+        "maximum": 14.09902
+      },
+      "main_elapsed_ms": {
+        "mean": 2519.9938675,
+        "median": 2627.04624,
+        "stddev": 228.83656411842352,
+        "minimum": 2043.5972,
+        "maximum": 2805.55243
+      },
+      "inference_ms": {
+        "mean": 1184.197614,
+        "median": 1166.54295,
+        "stddev": 46.99000498792855,
+        "minimum": 1153.97619,
+        "maximum": 1325.91591
+      },
+      "selected_operation_ms": {
+        "mean": 28.774485,
+        "median": 28.549210000000002,
+        "stddev": 0.7874787524184549,
+        "minimum": 28.34223,
+        "maximum": 31.87877
+      }
+    },
+    "full_cpu": {
+      "preprocess_ms": {
+        "mean": 23.175152,
+        "median": 21.4065,
+        "stddev": 3.3420224065402144,
+        "minimum": 21.24535,
+        "maximum": 30.16504
+      },
+      "model_load_ms": {
+        "mean": 359.828913,
+        "median": 519.17296,
+        "stddev": 255.57165554142145,
+        "minimum": 94.00121,
+        "maximum": 860.84848
+      },
+      "session_ms": {
+        "mean": 250.56984599999998,
+        "median": 243.95909999999998,
+        "stddev": 10.789847541315673,
+        "minimum": 243.15842,
+        "maximum": 283.38789
+      },
+      "input_copy_ms": {
+        "mean": 4.6793325,
+        "median": 4.55669,
+        "stddev": 0.31865036518143697,
+        "minimum": 4.48429,
+        "maximum": 5.92061
+      },
+      "linear_setup_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_ms": {
+        "mean": 0.7467145,
+        "median": 0.730545,
+        "stddev": 0.03161620078960186,
+        "minimum": 0.71472,
+        "maximum": 0.80843
+      },
+      "main_elapsed_ms": {
+        "mean": 1491.7762255,
+        "median": 1631.11479,
+        "stddev": 265.59948018031486,
+        "minimum": 1206.69592,
+        "maximum": 2049.04888
+      },
+      "inference_ms": {
+        "mean": 852.4576625,
+        "median": 845.2170100000001,
+        "stddev": 11.911512730997904,
+        "minimum": 839.48519,
+        "maximum": 877.56384
+      },
+      "selected_operation_ms": {
+        "mean": 21.2842475,
+        "median": 21.28042,
+        "stddev": 0.10935292150093447,
+        "minimum": 20.9349,
+        "maximum": 21.42367
+      }
+    },
+    "full_fpga": {
+      "preprocess_ms": {
+        "mean": 24.5374475,
+        "median": 21.657975,
+        "stddev": 4.034958990505584,
+        "minimum": 21.27223,
+        "maximum": 31.29711
+      },
+      "model_load_ms": {
+        "mean": 356.7436325,
+        "median": 519.30865,
+        "stddev": 217.0785197494307,
+        "minimum": 94.0844,
+        "maximum": 568.14831
+      },
+      "session_ms": {
+        "mean": 248.322143,
+        "median": 244.08472,
+        "stddev": 10.609428170450489,
+        "minimum": 243.09103,
+        "maximum": 287.233
+      },
+      "input_copy_ms": {
+        "mean": 4.697129,
+        "median": 4.57899,
+        "stddev": 0.40069051916200343,
+        "minimum": 4.51931,
+        "maximum": 6.34588
+      },
+      "linear_setup_ms": {
+        "mean": 5.277073,
+        "median": 5.2005,
+        "stddev": 0.16718685314405113,
+        "minimum": 5.14939,
+        "maximum": 5.64908
+      },
+      "output_ms": {
+        "mean": 1.793824,
+        "median": 0.754895,
+        "stddev": 3.040595836714626,
+        "minimum": 0.73402,
+        "maximum": 10.88812
+      },
+      "main_elapsed_ms": {
+        "mean": 1510.275319,
+        "median": 1662.604315,
+        "stddev": 218.31163957390248,
+        "minimum": 1231.54428,
+        "maximum": 1716.6759
+      },
+      "inference_ms": {
+        "mean": 868.5135955,
+        "median": 864.77729,
+        "stddev": 8.055353173865175,
+        "minimum": 861.64011,
+        "maximum": 889.0108
+      },
+      "selected_operation_ms": {
+        "mean": 41.5376935,
+        "median": 41.23875,
+        "stddev": 1.565190554809877,
+        "minimum": 39.90047,
+        "maximum": 46.52054
+      }
+    },
+    "hybrid_cpu": {
+      "preprocess_ms": {
+        "mean": 23.1200645,
+        "median": 21.359385000000003,
+        "stddev": 3.413991293997278,
+        "minimum": 21.27333,
+        "maximum": 30.41544
+      },
+      "model_load_ms": {
+        "mean": 768.534822,
+        "median": 730.18482,
+        "stddev": 330.04345240142646,
+        "minimum": 231.18859,
+        "maximum": 1398.53497
+      },
+      "session_ms": {
+        "mean": 174.35036350000001,
+        "median": 144.21165000000002,
+        "stddev": 47.330596766678845,
+        "minimum": 132.59255,
+        "maximum": 305.41071
+      },
+      "input_copy_ms": {
+        "mean": 4.727857,
+        "median": 4.73772,
+        "stddev": 0.16538421636330744,
+        "minimum": 4.47736,
+        "maximum": 4.99708
+      },
+      "linear_setup_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_ms": {
+        "mean": 3.3325845,
+        "median": 0.8302849999999999,
+        "stddev": 4.4371336964549,
+        "minimum": 0.75447,
+        "maximum": 11.92858
+      },
+      "main_elapsed_ms": {
+        "mean": 2143.705499,
+        "median": 2098.7090550000003,
+        "stddev": 332.4223634227494,
+        "minimum": 1570.21308,
+        "maximum": 2713.75235
+      },
+      "inference_ms": {
+        "mean": 1169.2956055,
+        "median": 1164.657785,
+        "stddev": 24.527530064937565,
+        "minimum": 1151.09215,
+        "maximum": 1265.28915
+      },
+      "selected_operation_ms": {
+        "mean": 21.7836305,
+        "median": 21.32217,
+        "stddev": 1.403673214453215,
+        "minimum": 21.13435,
+        "maximum": 26.48848
+      }
+    },
+    "hybrid_fpga": {
+      "preprocess_ms": {
+        "mean": 24.3866865,
+        "median": 22.087380000000003,
+        "stddev": 3.9103473152316965,
+        "minimum": 21.26686,
+        "maximum": 31.32235
+      },
+      "model_load_ms": {
+        "mean": 865.6770895,
+        "median": 834.487595,
+        "stddev": 309.83450454347945,
+        "minimum": 319.72532,
+        "maximum": 1283.25345
+      },
+      "session_ms": {
+        "mean": 147.8477745,
+        "median": 133.820765,
+        "stddev": 26.43465873638651,
+        "minimum": 132.69377,
+        "maximum": 214.2875
+      },
+      "input_copy_ms": {
+        "mean": 4.6577595,
+        "median": 4.592305,
+        "stddev": 0.1566734327888494,
+        "minimum": 4.48677,
+        "maximum": 5.03725
+      },
+      "linear_setup_ms": {
+        "mean": 4.982605,
+        "median": 4.92104,
+        "stddev": 0.11897640365347999,
+        "minimum": 4.84727,
+        "maximum": 5.20159
+      },
+      "output_ms": {
+        "mean": 0.874847,
+        "median": 0.8306899999999999,
+        "stddev": 0.14970320332331957,
+        "minimum": 0.77848,
+        "maximum": 1.46976
+      },
+      "main_elapsed_ms": {
+        "mean": 2234.14392,
+        "median": 2256.09061,
+        "stddev": 307.5572440426695,
+        "minimum": 1676.74822,
+        "maximum": 2659.13643
+      },
+      "inference_ms": {
+        "mean": 1185.2365315,
+        "median": 1182.30739,
+        "stddev": 10.249399177596654,
+        "minimum": 1173.27778,
+        "maximum": 1215.36975
+      },
+      "selected_operation_ms": {
+        "mean": 42.4703615,
+        "median": 42.32033,
+        "stddev": 0.8695494070480592,
+        "minimum": 41.34635,
+        "maximum": 44.07777
+      }
+    }
+  },
+  "framework_casts": {
+    "fp32": {
+      "selected_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize_calls": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "selected_dequantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantized_values": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantize_calls": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantized_values": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "full_cpu": {
+      "selected_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize_calls": {
+        "mean": 43,
+        "median": 43.0,
+        "stddev": 0.0,
+        "minimum": 43,
+        "maximum": 43
+      },
+      "selected_dequantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantized_values": {
+        "mean": 3586729,
+        "median": 3586729.0,
+        "stddev": 0.0,
+        "minimum": 3586729,
+        "maximum": 3586729
+      },
+      "dequantize_ms": {
+        "mean": 21.97873,
+        "median": 21.60385,
+        "stddev": 0.6461797492550884,
+        "minimum": 21.41157,
+        "maximum": 23.09158
+      },
+      "quantize_ms": {
+        "mean": 59.397287,
+        "median": 58.486670000000004,
+        "stddev": 1.4797848406301999,
+        "minimum": 58.07753,
+        "maximum": 61.53856
+      },
+      "quantize_calls": {
+        "mean": 33,
+        "median": 33.0,
+        "stddev": 0.0,
+        "minimum": 33,
+        "maximum": 33
+      },
+      "dequantized_values": {
+        "mean": 3492916,
+        "median": 3492916.0,
+        "stddev": 0.0,
+        "minimum": 3492916,
+        "maximum": 3492916
+      }
+    },
+    "full_fpga": {
+      "selected_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize_calls": {
+        "mean": 43,
+        "median": 43.0,
+        "stddev": 0.0,
+        "minimum": 43,
+        "maximum": 43
+      },
+      "selected_dequantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantized_values": {
+        "mean": 3586729,
+        "median": 3586729.0,
+        "stddev": 0.0,
+        "minimum": 3586729,
+        "maximum": 3586729
+      },
+      "dequantize_ms": {
+        "mean": 21.8432665,
+        "median": 21.6051,
+        "stddev": 0.4783013058872213,
+        "minimum": 21.4971,
+        "maximum": 22.80783
+      },
+      "quantize_ms": {
+        "mean": 59.0606585,
+        "median": 58.574605,
+        "stddev": 1.149698775420282,
+        "minimum": 58.15428,
+        "maximum": 61.55429
+      },
+      "quantize_calls": {
+        "mean": 33,
+        "median": 33.0,
+        "stddev": 0.0,
+        "minimum": 33,
+        "maximum": 33
+      },
+      "dequantized_values": {
+        "mean": 3492916,
+        "median": 3492916.0,
+        "stddev": 0.0,
+        "minimum": 3492916,
+        "maximum": 3492916
+      }
+    },
+    "hybrid_cpu": {
+      "selected_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize_calls": {
+        "mean": 1,
+        "median": 1.0,
+        "stddev": 0.0,
+        "minimum": 1,
+        "maximum": 1
+      },
+      "selected_dequantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantized_values": {
+        "mean": 100352,
+        "median": 100352.0,
+        "stddev": 0.0,
+        "minimum": 100352,
+        "maximum": 100352
+      },
+      "dequantize_ms": {
+        "mean": 2.528438,
+        "median": 2.495115,
+        "stddev": 0.07662048136243023,
+        "minimum": 2.45086,
+        "maximum": 2.65068
+      },
+      "quantize_ms": {
+        "mean": 1.515535,
+        "median": 1.47244,
+        "stddev": 0.07861547654648912,
+        "minimum": 1.44622,
+        "maximum": 1.74462
+      },
+      "quantize_calls": {
+        "mean": 1,
+        "median": 1.0,
+        "stddev": 0.0,
+        "minimum": 1,
+        "maximum": 1
+      },
+      "dequantized_values": {
+        "mean": 401408,
+        "median": 401408.0,
+        "stddev": 0.0,
+        "minimum": 401408,
+        "maximum": 401408
+      }
+    },
+    "hybrid_fpga": {
+      "selected_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize_calls": {
+        "mean": 1,
+        "median": 1.0,
+        "stddev": 0.0,
+        "minimum": 1,
+        "maximum": 1
+      },
+      "selected_dequantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantized_values": {
+        "mean": 100352,
+        "median": 100352.0,
+        "stddev": 0.0,
+        "minimum": 100352,
+        "maximum": 100352
+      },
+      "dequantize_ms": {
+        "mean": 2.496797,
+        "median": 2.46758,
+        "stddev": 0.052741781110774426,
+        "minimum": 2.4538,
+        "maximum": 2.58607
+      },
+      "quantize_ms": {
+        "mean": 1.500299,
+        "median": 1.47543,
+        "stddev": 0.05067793861341702,
+        "minimum": 1.4473,
+        "maximum": 1.59181
+      },
+      "quantize_calls": {
+        "mean": 1,
+        "median": 1.0,
+        "stddev": 0.0,
+        "minimum": 1,
+        "maximum": 1
+      },
+      "dequantized_values": {
+        "mean": 401408,
+        "median": 401408.0,
+        "stddev": 0.0,
+        "minimum": 401408,
+        "maximum": 401408
+      }
+    }
+  },
+  "setup": {
+    "full_fpga": {
+      "weight_setup_ms": {
+        "mean": 2.1496235,
+        "median": 2.1277350000000004,
+        "stddev": 0.04765089796193718,
+        "minimum": 2.11396,
+        "maximum": 2.28236
+      },
+      "weight_peak_scan_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "weight_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "plan_selection_ms": {
+        "mean": 0.9993295,
+        "median": 0.9903599999999999,
+        "stddev": 0.02379490955623646,
+        "minimum": 0.98448,
+        "maximum": 1.0733
+      },
+      "parameters": {
+        "M": 784,
+        "K": 128,
+        "N": 512,
+        "tile_m": 128,
+        "tile_k": 128,
+        "tile_n": 128,
+        "jobs": 28,
+        "operand_bytes": 860160,
+        "result_bytes": 401408,
+        "input_scale": 0.0252977013588,
+        "output_scale": 0.070453748107,
+        "per_channel_weight_scales": 512,
+        "operand_format": "native_w8a8"
+      }
+    },
+    "hybrid_fpga": {
+      "weight_setup_ms": {
+        "mean": 2.1724035,
+        "median": 2.15625,
+        "stddev": 0.05252759127353931,
+        "minimum": 2.11231,
+        "maximum": 2.27746
+      },
+      "weight_peak_scan_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "weight_quantize_ms": {
+        "mean": 0,
+        "median": 0.0,
+        "stddev": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "plan_selection_ms": {
+        "mean": 1.0043045,
+        "median": 0.99275,
+        "stddev": 0.02154108595097676,
+        "minimum": 0.98735,
+        "maximum": 1.04826
+      },
+      "parameters": {
+        "M": 784,
+        "K": 128,
+        "N": 512,
+        "tile_m": 128,
+        "tile_k": 128,
+        "tile_n": 128,
+        "jobs": 28,
+        "operand_bytes": 860160,
+        "result_bytes": 401408,
+        "input_scale": 0.0252977013588,
+        "output_scale": 0.070453748107,
+        "per_channel_weight_scales": 512,
+        "operand_format": "native_w8a8"
+      }
+    }
+  },
+  "scores": {
+    "full_fpga_vs_fp32": {
+      "top1_agreement": 0,
+      "top5_ranking_agreement": 0,
+      "max_abs_error": {
+        "mean": 4.811579006910324,
+        "median": 4.845437973737717,
+        "stddev": 0.2621070703195223,
+        "minimum": 4.204284071922302,
+        "maximum": 5.4081103801727295
+      },
+      "rmse": {
+        "mean": 1.539814779492596,
+        "median": 1.5462882671233302,
+        "stddev": 0.04433291512861334,
+        "minimum": 1.4546040721038849,
+        "maximum": 1.623176598919902
+      },
+      "relative_l2": {
+        "mean": 2.0895492236305446,
+        "median": 2.0409763503940734,
+        "stddev": 0.18888556811227952,
+        "minimum": 1.7190681082098793,
+        "maximum": 2.497838288080407
+      },
+      "cosine_similarity": {
+        "mean": 0.2593526541445642,
+        "median": 0.25383372636771895,
+        "stddev": 0.0399718731107255,
+        "minimum": 0.1744597296446807,
+        "maximum": 0.32863851216319906
+      }
+    },
+    "hybrid_cpu_vs_fp32": {
+      "top1_agreement": 20,
+      "top5_ranking_agreement": 13,
+      "max_abs_error": {
+        "mean": 0.06833478510379791,
+        "median": 0.06227612495422363,
+        "stddev": 0.021894591941450426,
+        "minimum": 0.04621326923370361,
+        "maximum": 0.13068807125091553
+      },
+      "rmse": {
+        "mean": 0.016719778036707468,
+        "median": 0.01496815539547472,
+        "stddev": 0.004527459092233726,
+        "minimum": 0.011291736993588266,
+        "maximum": 0.027341481353067083
+      },
+      "relative_l2": {
+        "mean": 0.02230303670318336,
+        "median": 0.021531948864626158,
+        "stddev": 0.004375580305546519,
+        "minimum": 0.01643032859418446,
+        "maximum": 0.03077498436272435
+      },
+      "cosine_similarity": {
+        "mean": 0.9997677630153962,
+        "median": 0.9998050623253825,
+        "stddev": 9.601387918991685e-05,
+        "minimum": 0.9995416944510656,
+        "maximum": 0.999877421835592
+      }
+    },
+    "hybrid_fpga_vs_fp32": {
+      "top1_agreement": 14,
+      "top5_ranking_agreement": 0,
+      "max_abs_error": {
+        "mean": 2.4198306586593388,
+        "median": 2.190561145544052,
+        "stddev": 0.5713344208582903,
+        "minimum": 1.7854442596435547,
+        "maximum": 3.5724045634269714
+      },
+      "rmse": {
+        "mean": 0.6065490731747201,
+        "median": 0.5903299304448119,
+        "stddev": 0.07250090249804395,
+        "minimum": 0.5258316975791014,
+        "maximum": 0.7561969461505724
+      },
+      "relative_l2": {
+        "mean": 0.8196799099903787,
+        "median": 0.8053748453590848,
+        "stddev": 0.09139042351747735,
+        "minimum": 0.6831164019477296,
+        "maximum": 1.0585469548602398
+      },
+      "cosine_similarity": {
+        "mean": 0.767126135766294,
+        "median": 0.7833761651196365,
+        "stddev": 0.06248141807426019,
+        "minimum": 0.6365505814753885,
+        "maximum": 0.8508299955068582
+      }
+    },
+    "hybrid_fpga_vs_hybrid_cpu": {
+      "top1_agreement": 14,
+      "top5_ranking_agreement": 0,
+      "max_abs_error": {
+        "mean": 2.395116825029254,
+        "median": 2.176804795861244,
+        "stddev": 0.5590783429046109,
+        "minimum": 1.7645541429519653,
+        "maximum": 3.500403106212616
+      },
+      "rmse": {
+        "mean": 0.6037408551803563,
+        "median": 0.5891723577831178,
+        "stddev": 0.07234887841716364,
+        "minimum": 0.5224711648911655,
+        "maximum": 0.7511908487564233
+      },
+      "relative_l2": {
+        "mean": 0.8207836180372502,
+        "median": 0.804666050528063,
+        "stddev": 0.09276380241792505,
+        "minimum": 0.6798868430310174,
+        "maximum": 1.058765844704423
+      },
+      "cosine_similarity": {
+        "mean": 0.7692838754055589,
+        "median": 0.7846104034657853,
+        "stddev": 0.06275312742686316,
+        "minimum": 0.6416537075526764,
+        "maximum": 0.8527861680425146
+      }
+    },
+    "full_fpga_vs_full_cpu": {
+      "top1_agreement": 3,
+      "top5_ranking_agreement": 0,
+      "max_abs_error": {
+        "mean": 4.068973507359624,
+        "median": 3.9697302877902985,
+        "stddev": 0.36642441251432395,
+        "minimum": 3.5286492109298706,
+        "maximum": 5.072432994842529
+      },
+      "rmse": {
+        "mean": 1.1998024463684158,
+        "median": 1.1895296596976639,
+        "stddev": 0.040478422289604035,
+        "minimum": 1.1117957260524556,
+        "maximum": 1.2538124054420625
+      },
+      "relative_l2": {
+        "mean": 0.7674377830295801,
+        "median": 0.7691251618973076,
+        "stddev": 0.02819786294825308,
+        "minimum": 0.714913476155317,
+        "maximum": 0.8175761862655547
+      },
+      "cosine_similarity": {
+        "mean": 0.70334274618152,
+        "median": 0.7088392547913888,
+        "stddev": 0.021171292476330573,
+        "minimum": 0.6644744685994292,
+        "maximum": 0.7392280874098649
+      }
+    },
+    "full_cpu_vs_fp32": {
+      "top1_agreement": 0,
+      "top5_ranking_agreement": 0,
+      "max_abs_error": {
+        "mean": 5.278726330026984,
+        "median": 5.202717483043671,
+        "stddev": 0.3751683379745235,
+        "minimum": 4.5944452956318855,
+        "maximum": 6.161279857158661
+      },
+      "rmse": {
+        "mean": 1.5989544529194704,
+        "median": 1.5994977622899635,
+        "stddev": 0.04830748406681799,
+        "minimum": 1.5216049712571578,
+        "maximum": 1.6987517183176233
+      },
+      "relative_l2": {
+        "mean": 2.1691684035219727,
+        "median": 2.1525913834125774,
+        "stddev": 0.1887770439284262,
+        "minimum": 1.7773492982709649,
+        "maximum": 2.555959162787707
+      },
+      "cosine_similarity": {
+        "mean": 0.19357230927197258,
+        "median": 0.19849662135150892,
+        "stddev": 0.052544999087742364,
+        "minimum": 0.07522149144391839,
+        "maximum": 0.2629316587029858
+      }
+    }
+  },
+  "instrumentation": {
+    "fp32": {
+      "baseline": {
+        "mean": 1161.753,
+        "median": 1159.43,
+        "stddev": 7.110226215958608,
+        "minimum": 1154.63,
+        "maximum": 1184.29
+      },
+      "other": {
+        "mean": 1184.1970000000001,
+        "median": 1166.54,
+        "stddev": 46.99090025011004,
+        "minimum": 1153.98,
+        "maximum": 1325.92
+      },
+      "added_ms": {
+        "mean": 22.443999999999996,
+        "median": 5.565000000000055,
+        "stddev": 44.58523054956538,
+        "minimum": -11.090000000000146,
+        "maximum": 169.6300000000001
+      },
+      "latency_change_pct": 1.9319080734028438,
+      "baseline_over_other": 0.9810470724043383,
+      "paired_bootstrap_95_ci_added_ms": [
+        6.385424999999867,
+        44.09299999999963
+      ],
+      "paired_bootstrap_95_ci_change_pct": [
+        0.5500448310437561,
+        3.7902783209341457
+      ],
+      "faster_inputs": 3,
+      "slower_inputs": 17
+    },
+    "full_cpu": {
+      "baseline": {
+        "mean": 850.3140500000001,
+        "median": 843.4065,
+        "stddev": 12.594923189732558,
+        "minimum": 840.33,
+        "maximum": 881.712
+      },
+      "other": {
+        "mean": 852.4576,
+        "median": 845.217,
+        "stddev": 11.911620466895691,
+        "minimum": 839.485,
+        "maximum": 877.564
+      },
+      "added_ms": {
+        "mean": 2.143549999999988,
+        "median": 1.5354999999999563,
+        "stddev": 18.08056519399242,
+        "minimum": -37.31299999999999,
+        "maximum": 34.66199999999992
+      },
+      "latency_change_pct": 0.2520892133912156,
+      "baseline_over_other": 0.9974854467835116,
+      "paired_bootstrap_95_ci_added_ms": [
+        -5.595902500000141,
+        9.961182500000238
+      ],
+      "paired_bootstrap_95_ci_change_pct": [
+        -0.6537681787540847,
+        1.1743882688400715
+      ],
+      "faster_inputs": 8,
+      "slower_inputs": 12
+    },
+    "full_fpga": {
+      "baseline": {
+        "mean": 868.01415,
+        "median": 862.116,
+        "stddev": 9.625314678519675,
+        "minimum": 859.214,
+        "maximum": 888.794
+      },
+      "other": {
+        "mean": 868.5136,
+        "median": 864.7775,
+        "stddev": 8.055339892204866,
+        "minimum": 861.64,
+        "maximum": 889.011
+      },
+      "added_ms": {
+        "mean": 0.49945000000000733,
+        "median": 2.261000000000024,
+        "stddev": 9.860067702740771,
+        "minimum": -21.874000000000024,
+        "maximum": 18.31600000000003
+      },
+      "latency_change_pct": 0.05753938458261665,
+      "baseline_over_other": 0.999424937041861,
+      "paired_bootstrap_95_ci_added_ms": [
+        -3.8598937499998245,
+        4.589077500000163
+      ],
+      "paired_bootstrap_95_ci_change_pct": [
+        -0.44356991564826365,
+        0.5300012341984388
+      ],
+      "faster_inputs": 6,
+      "slower_inputs": 14
+    },
+    "hybrid_cpu": {
+      "baseline": {
+        "mean": 1166.908,
+        "median": 1155.94,
+        "stddev": 36.560797613089115,
+        "minimum": 1148.5,
+        "maximum": 1318.02
+      },
+      "other": {
+        "mean": 1169.295,
+        "median": 1164.66,
+        "stddev": 24.528320581040923,
+        "minimum": 1151.09,
+        "maximum": 1265.29
+      },
+      "added_ms": {
+        "mean": 2.387000000000023,
+        "median": 5.305000000000064,
+        "stddev": 47.282546362546036,
+        "minimum": -166.06999999999994,
+        "maximum": 112.19000000000005
+      },
+      "latency_change_pct": 0.20455768578158118,
+      "baseline_over_other": 0.9979585989848583,
+      "paired_bootstrap_95_ci_added_ms": [
+        -20.428974999999983,
+        20.811087499999694
+      ],
+      "paired_bootstrap_95_ci_change_pct": [
+        -1.723585090076313,
+        1.7935972206338897
+      ],
+      "faster_inputs": 7,
+      "slower_inputs": 13
+    },
+    "hybrid_fpga": {
+      "baseline": {
+        "mean": 1184.6605,
+        "median": 1183.01,
+        "stddev": 11.323923662108635,
+        "minimum": 1171.73,
+        "maximum": 1210.89
+      },
+      "other": {
+        "mean": 1185.2375,
+        "median": 1182.31,
+        "stddev": 10.248397499891839,
+        "minimum": 1173.28,
+        "maximum": 1215.37
+      },
+      "added_ms": {
+        "mean": 0.5769999999999641,
+        "median": 1.2350000000000136,
+        "stddev": 10.066220270107156,
+        "minimum": -20.3900000000001,
+        "maximum": 20.319999999999936
+      },
+      "latency_change_pct": 0.048705937270621114,
+      "baseline_over_other": 0.9995131777386391,
+      "paired_bootstrap_95_ci_added_ms": [
+        -3.796599999999927,
+        4.791037499999927
+      ],
+      "paired_bootstrap_95_ci_change_pct": [
+        -0.3194986829478494,
+        0.4049515202836906
+      ],
+      "faster_inputs": 8,
+      "slower_inputs": 12
+    }
+  }
+}

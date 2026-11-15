@@ -1,0 +1,3142 @@
+[
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "7add59316667ba86f517ce07d295a84e880d868fdd1cc56127a82bfc41db57ba",
+        "inference_ms": 1242.7,
+        "process_ms": 2137.3089199996684
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 139.8297,
+          "main_elapsed_ms": 2185.18842,
+          "model_load_ms": 803.98056,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.94349
+          },
+          "input_copy_ms": 4.82529,
+          "inference_ms": 1200.03195,
+          "selected_qk_ms": 4.96636,
+          "output_ms": 14.864,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.33403
+        },
+        "inference_ms": 1200.03,
+        "output_sha256": "9a7b7809dbbd69253f2adf74d0fc6c12374aed34c3e28c2172a7bc2294cd51ab",
+        "fpga_jobs": 0,
+        "process_ms": 2253.7880299996687
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "9a7b7809dbbd69253f2adf74d0fc6c12374aed34c3e28c2172a7bc2294cd51ab",
+        "inference_ms": 1160.91,
+        "process_ms": 2500.405600000704
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 139.35183,
+          "main_elapsed_ms": 2366.60888,
+          "model_load_ms": 982.60209,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.24332,
+              "input_dma_setup": 0.45848,
+              "output_dma_wait": 0.45041,
+              "dequantize": 2.84362,
+              "device_init": 0.5081,
+              "peak_scan": 4.77059,
+              "output_stage_copy": 2.73036,
+              "input_dma_wait": 1.79456,
+              "completion_wait": 0.65877,
+              "workspace": 2.17424,
+              "input_stage_copy": 2.66944,
+              "upload": 5.31575,
+              "output_convert": 9.91249,
+              "pack_pad": 1.8089,
+              "configure": 0.22487,
+              "download": 3.64208,
+              "launch": 0.10573,
+              "adapter_total": 51.81739,
+              "quantize": 17.16451,
+              "output_dma_setup": 0.24104,
+              "bridge_total": 55.71078
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1145,
+            "output_polls": 246,
+            "compute_polls": 432,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.8996,
+          "inference_ms": 1217.21824,
+          "selected_qk_ms": 57.016,
+          "output_ms": 0.90935,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.35297
+        },
+        "inference_ms": 1217.22,
+        "output_sha256": "7add59316667ba86f517ce07d295a84e880d868fdd1cc56127a82bfc41db57ba",
+        "fpga_jobs": 64,
+        "process_ms": 2434.3090899992603
+      }
+    },
+    "input": 1,
+    "image_sha256": "560d6bec95c4e3481bb06add42694eb653b422303efb136cfde58ef15029528a",
+    "seed": 2026111101,
+    "scores": {
+      "cosine_similarity": 0.9999986815648922,
+      "rmse": 0.0009878065366007293,
+      "max_abs_error": 0.003682732582092285,
+      "cpu_top5": [
+        549,
+        904,
+        916,
+        591,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0016480052633246966,
+      "fpga_top5": [
+        549,
+        904,
+        916,
+        591,
+        921
+      ]
+    },
+    "order": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "d374e37e30dbae4d161236b6b3a5acf955a25dd1f49309b94e60d12d4e6d691f",
+        "inference_ms": 1230.88,
+        "process_ms": 2096.5171799998643
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.42301,
+          "main_elapsed_ms": 1994.44364,
+          "model_load_ms": 676.51027,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.95621
+          },
+          "input_copy_ms": 4.59149,
+          "inference_ms": 1161.5483,
+          "selected_qk_ms": 4.86553,
+          "output_ms": 0.79926,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.27379
+        },
+        "inference_ms": 1161.55,
+        "output_sha256": "2d459a131370e1a61fa69c99290f6b342062ed9d9458e11b8ba871ff6975fe5d",
+        "fpga_jobs": 0,
+        "process_ms": 2078.573509999842
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "2d459a131370e1a61fa69c99290f6b342062ed9d9458e11b8ba871ff6975fe5d",
+        "inference_ms": 1168.4,
+        "process_ms": 1845.542789999854
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.63155,
+          "main_elapsed_ms": 2176.26151,
+          "model_load_ms": 787.11812,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.23222,
+              "input_dma_setup": 0.47788,
+              "output_dma_wait": 0.44249,
+              "dequantize": 2.79166,
+              "device_init": 0.49734,
+              "peak_scan": 4.18178,
+              "output_stage_copy": 2.72927,
+              "input_dma_wait": 1.75697,
+              "completion_wait": 0.65198,
+              "workspace": 2.09306,
+              "input_stage_copy": 2.42968,
+              "upload": 5.05595,
+              "output_convert": 9.61062,
+              "pack_pad": 1.73837,
+              "configure": 0.20422,
+              "download": 3.62943,
+              "launch": 0.10555,
+              "adapter_total": 50.15744,
+              "quantize": 16.99324,
+              "output_dma_setup": 0.23248,
+              "bridge_total": 53.84813
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1117,
+            "output_polls": 256,
+            "compute_polls": 448,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.8036,
+          "inference_ms": 1223.32973,
+          "selected_qk_ms": 54.74339,
+          "output_ms": 0.87157,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.25973
+        },
+        "inference_ms": 1223.33,
+        "output_sha256": "d374e37e30dbae4d161236b6b3a5acf955a25dd1f49309b94e60d12d4e6d691f",
+        "fpga_jobs": 64,
+        "process_ms": 2222.9900299998917
+      }
+    },
+    "input": 2,
+    "image_sha256": "a55eec73a7ad9f7af8b24ea84b2ebfc7fc8c490cce3c3e267ab25363e3e105ea",
+    "seed": 2026111102,
+    "scores": {
+      "cosine_similarity": 0.9999979048981558,
+      "rmse": 0.0015463835307911768,
+      "max_abs_error": 0.005322694778442383,
+      "cpu_top5": [
+        904,
+        549,
+        854,
+        741,
+        794
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0021325161211217364,
+      "fpga_top5": [
+        904,
+        549,
+        854,
+        741,
+        794
+      ]
+    },
+    "order": [
+      "dma_control",
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.50879,
+          "main_elapsed_ms": 2082.70419,
+          "model_load_ms": 711.16314,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.21755,
+              "input_dma_setup": 0.46219,
+              "output_dma_wait": 0.44301,
+              "dequantize": 2.80241,
+              "device_init": 0.49252,
+              "peak_scan": 4.13074,
+              "output_stage_copy": 2.70563,
+              "input_dma_wait": 1.76773,
+              "completion_wait": 0.64708,
+              "workspace": 2.09156,
+              "input_stage_copy": 2.40878,
+              "upload": 5.0203,
+              "output_convert": 9.62545,
+              "pack_pad": 1.7512,
+              "configure": 0.21294,
+              "download": 3.61644,
+              "launch": 0.09959,
+              "adapter_total": 50.18361,
+              "quantize": 17.04788,
+              "output_dma_setup": 0.24331,
+              "bridge_total": 53.90282
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1128,
+            "output_polls": 244,
+            "compute_polls": 438,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.53487,
+          "inference_ms": 1205.41487,
+          "selected_qk_ms": 54.75692,
+          "output_ms": 10.46917,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.32257
+        },
+        "inference_ms": 1205.41,
+        "output_sha256": "01a8d2b3daea2068a60bbc2b8c2e5180898a2154809e775b99bb20f2744a21d6",
+        "fpga_jobs": 64,
+        "process_ms": 2162.0808099996793
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 184.93407,
+          "main_elapsed_ms": 2233.65524,
+          "model_load_ms": 862.70004,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.91645
+          },
+          "input_copy_ms": 4.53207,
+          "inference_ms": 1159.06609,
+          "selected_qk_ms": 4.86504,
+          "output_ms": 0.80375,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.32156
+        },
+        "inference_ms": 1159.07,
+        "output_sha256": "3a11770fe637191dc44c8647ef1c19c2d3673314a520dc4d38bea8754c30028f",
+        "fpga_jobs": 0,
+        "process_ms": 2290.9302500002013
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "3a11770fe637191dc44c8647ef1c19c2d3673314a520dc4d38bea8754c30028f",
+        "inference_ms": 1160.68,
+        "process_ms": 1876.8378499999017
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "01a8d2b3daea2068a60bbc2b8c2e5180898a2154809e775b99bb20f2744a21d6",
+        "inference_ms": 1215.8,
+        "process_ms": 2058.500869999989
+      }
+    },
+    "input": 3,
+    "image_sha256": "41cc07167bf02881c13cbe49848d0d11cf2d5d239f6e20d11f1e59c9bad3c172",
+    "seed": 2026111103,
+    "scores": {
+      "cosine_similarity": 0.9999975016466113,
+      "rmse": 0.001745961506018482,
+      "max_abs_error": 0.008585691452026367,
+      "cpu_top5": [
+        549,
+        904,
+        854,
+        741,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.002328379785325826,
+      "fpga_top5": [
+        549,
+        904,
+        854,
+        741,
+        921
+      ]
+    },
+    "order": [
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control",
+      "dma_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 135.7149,
+          "main_elapsed_ms": 1722.25778,
+          "model_load_ms": 318.63489,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.26074,
+              "input_dma_setup": 0.51247,
+              "output_dma_wait": 0.44488,
+              "dequantize": 2.96892,
+              "device_init": 0.52369,
+              "peak_scan": 4.33989,
+              "output_stage_copy": 2.83774,
+              "input_dma_wait": 1.78128,
+              "completion_wait": 0.67805,
+              "workspace": 2.26674,
+              "input_stage_copy": 2.52443,
+              "upload": 5.2081,
+              "output_convert": 10.26226,
+              "pack_pad": 1.9068,
+              "configure": 0.21544,
+              "download": 3.78107,
+              "launch": 0.10597,
+              "adapter_total": 53.0789,
+              "quantize": 18.06195,
+              "output_dma_setup": 0.25346,
+              "bridge_total": 69.80974
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1096,
+            "output_polls": 240,
+            "compute_polls": 425,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.55116,
+          "inference_ms": 1240.84119,
+          "selected_qk_ms": 70.79041,
+          "output_ms": 0.81058,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.46
+        },
+        "inference_ms": 1240.84,
+        "output_sha256": "856ca5287afae97f564c554f5ec2db6fbc1544ac4f892d07a5fe5d91f2d3ccc8",
+        "fpga_jobs": 64,
+        "process_ms": 1765.9993600000234
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "856ca5287afae97f564c554f5ec2db6fbc1544ac4f892d07a5fe5d91f2d3ccc8",
+        "inference_ms": 1207.16,
+        "process_ms": 2100.208190000558
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "ff1de88bbd512619e9fdee703d96e6afedee7f44e01ea5ec081a5e93a56f9a87",
+        "inference_ms": 1156.81,
+        "process_ms": 1801.0906700001215
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 130.57774,
+          "main_elapsed_ms": 2123.24327,
+          "model_load_ms": 805.7097,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.94548
+          },
+          "input_copy_ms": 4.57192,
+          "inference_ms": 1157.96626,
+          "selected_qk_ms": 4.80736,
+          "output_ms": 0.80924,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 23.31811
+        },
+        "inference_ms": 1157.97,
+        "output_sha256": "ff1de88bbd512619e9fdee703d96e6afedee7f44e01ea5ec081a5e93a56f9a87",
+        "fpga_jobs": 0,
+        "process_ms": 2242.2630900000513
+      }
+    },
+    "input": 4,
+    "image_sha256": "8c91233225b8642fb5e26e4f6f691b84ebb650820a5c684556777abbe0f7f55e",
+    "seed": 2026111104,
+    "scores": {
+      "cosine_similarity": 0.999998155523947,
+      "rmse": 0.0015818201671226834,
+      "max_abs_error": 0.005177974700927734,
+      "cpu_top5": [
+        549,
+        904,
+        854,
+        741,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0020576128023440414,
+      "fpga_top5": [
+        549,
+        904,
+        854,
+        741,
+        921
+      ]
+    },
+    "order": [
+      "dma_profile",
+      "cpu_control",
+      "dma_control",
+      "cpu_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "8923ad94b76936f6ea1df8b21e3a7522f80de6c6b76a1f8f5f2092168b12278c",
+        "inference_ms": 1219.84,
+        "process_ms": 1779.0454099995259
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 185.55191,
+          "main_elapsed_ms": 1794.27734,
+          "model_load_ms": 427.3122,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.90942
+          },
+          "input_copy_ms": 4.58182,
+          "inference_ms": 1154.40521,
+          "selected_qk_ms": 4.82933,
+          "output_ms": 0.85314,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.28026
+        },
+        "inference_ms": 1154.41,
+        "output_sha256": "a2107a7a9234d6aa783f1d84c1836acd59cb1de79a55be6c1f8e3aef11404c81",
+        "fpga_jobs": 0,
+        "process_ms": 1844.750379999823
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "a2107a7a9234d6aa783f1d84c1836acd59cb1de79a55be6c1f8e3aef11404c81",
+        "inference_ms": 1175.77,
+        "process_ms": 2215.333679999276
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.31288,
+          "main_elapsed_ms": 1753.6269,
+          "model_load_ms": 378.96909,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.17751,
+              "input_dma_setup": 0.46234,
+              "output_dma_wait": 0.43928,
+              "dequantize": 2.82098,
+              "device_init": 0.45214,
+              "peak_scan": 4.12922,
+              "output_stage_copy": 2.77797,
+              "input_dma_wait": 1.76938,
+              "completion_wait": 0.64666,
+              "workspace": 2.11926,
+              "input_stage_copy": 2.44781,
+              "upload": 5.07721,
+              "output_convert": 9.52084,
+              "pack_pad": 1.74014,
+              "configure": 0.20567,
+              "download": 3.68121,
+              "launch": 0.10016,
+              "adapter_total": 50.02314,
+              "quantize": 16.94842,
+              "output_dma_setup": 0.24378,
+              "bridge_total": 53.76519
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1122,
+            "output_polls": 253,
+            "compute_polls": 443,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.56284,
+          "inference_ms": 1209.5624,
+          "selected_qk_ms": 54.71504,
+          "output_ms": 9.72545,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.20274
+        },
+        "inference_ms": 1209.56,
+        "output_sha256": "8923ad94b76936f6ea1df8b21e3a7522f80de6c6b76a1f8f5f2092168b12278c",
+        "fpga_jobs": 64,
+        "process_ms": 1827.4206499991124
+      }
+    },
+    "input": 5,
+    "image_sha256": "1e7500910201ee02afcfd332dc8b9243d6c1b017ee3e02a27a269ccbe8d7a2d0",
+    "seed": 2026111105,
+    "scores": {
+      "cosine_similarity": 0.9999943277001894,
+      "rmse": 0.0026699260647015262,
+      "max_abs_error": 0.010233163833618164,
+      "cpu_top5": [
+        539,
+        549,
+        741,
+        611,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0033695982983736905,
+      "fpga_top5": [
+        539,
+        549,
+        741,
+        611,
+        921
+      ]
+    },
+    "order": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "55455943ead20c480c96b85fff8de30554a3635eb704665b4b4738fb14223aab",
+        "inference_ms": 1288.06,
+        "process_ms": 2478.4719999997833
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 186.38482,
+          "main_elapsed_ms": 1944.61902,
+          "model_load_ms": 560.13818,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.8626
+          },
+          "input_copy_ms": 4.56248,
+          "inference_ms": 1162.29701,
+          "selected_qk_ms": 4.80431,
+          "output_ms": 9.57231,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.37354
+        },
+        "inference_ms": 1162.3,
+        "output_sha256": "4cbd99e716b70dd971e3f3ca9c536e64ae1aee2371316ab618b23765684e03e5",
+        "fpga_jobs": 0,
+        "process_ms": 1983.3114900002329
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "4cbd99e716b70dd971e3f3ca9c536e64ae1aee2371316ab618b23765684e03e5",
+        "inference_ms": 1159.59,
+        "process_ms": 1690.5637300005765
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.19261,
+          "main_elapsed_ms": 2036.5936,
+          "model_load_ms": 644.87201,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.185,
+              "input_dma_setup": 0.46235,
+              "output_dma_wait": 0.44997,
+              "dequantize": 2.83275,
+              "device_init": 0.53907,
+              "peak_scan": 4.12699,
+              "output_stage_copy": 2.75733,
+              "input_dma_wait": 1.78907,
+              "completion_wait": 0.66158,
+              "workspace": 2.13276,
+              "input_stage_copy": 2.41758,
+              "upload": 5.05806,
+              "output_convert": 9.98792,
+              "pack_pad": 1.78946,
+              "configure": 0.21738,
+              "download": 3.66026,
+              "launch": 0.10557,
+              "adapter_total": 50.64355,
+              "quantize": 17.01777,
+              "output_dma_setup": 0.23292,
+              "bridge_total": 54.34626
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1120,
+            "output_polls": 253,
+            "compute_polls": 432,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.71496,
+          "inference_ms": 1235.5138,
+          "selected_qk_ms": 55.17368,
+          "output_ms": 0.80133,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.25938
+        },
+        "inference_ms": 1235.51,
+        "output_sha256": "55455943ead20c480c96b85fff8de30554a3635eb704665b4b4738fb14223aab",
+        "fpga_jobs": 64,
+        "process_ms": 2081.4405900000565
+      }
+    },
+    "input": 6,
+    "image_sha256": "cf70bfbdd8dac932525e68d183032a996cebb60cb8fcbc747e83cdc0c7dfc81e",
+    "seed": 2026111106,
+    "scores": {
+      "cosine_similarity": 0.9999937134045164,
+      "rmse": 0.0026994783189965457,
+      "max_abs_error": 0.010132074356079102,
+      "cpu_top5": [
+        549,
+        904,
+        854,
+        741,
+        794
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0037233445666516613,
+      "fpga_top5": [
+        549,
+        904,
+        854,
+        741,
+        794
+      ]
+    },
+    "order": [
+      "dma_control",
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.55317,
+          "main_elapsed_ms": 1950.13428,
+          "model_load_ms": 585.93067,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.20796,
+              "input_dma_setup": 0.46161,
+              "output_dma_wait": 0.43954,
+              "dequantize": 2.83738,
+              "device_init": 0.46918,
+              "peak_scan": 4.07624,
+              "output_stage_copy": 2.71144,
+              "input_dma_wait": 1.7802,
+              "completion_wait": 0.6581,
+              "workspace": 2.15218,
+              "input_stage_copy": 2.45661,
+              "upload": 5.07792,
+              "output_convert": 9.98756,
+              "pack_pad": 1.79452,
+              "configure": 0.20876,
+              "download": 3.62495,
+              "launch": 0.09984,
+              "adapter_total": 50.72142,
+              "quantize": 16.98059,
+              "output_dma_setup": 0.24312,
+              "bridge_total": 54.47733
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1126,
+            "output_polls": 253,
+            "compute_polls": 448,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.5759,
+          "inference_ms": 1207.89726,
+          "selected_qk_ms": 55.28539,
+          "output_ms": 0.74036,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.23054
+        },
+        "inference_ms": 1207.9,
+        "output_sha256": "03436a8b268f53286255ae55fb5544f63720af8df2b04e880d5b5bf39ce29f23",
+        "fpga_jobs": 64,
+        "process_ms": 2027.3269300005268
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.79838,
+          "main_elapsed_ms": 1806.64274,
+          "model_load_ms": 474.99733,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.75152
+          },
+          "input_copy_ms": 4.64528,
+          "inference_ms": 1164.47054,
+          "selected_qk_ms": 4.75679,
+          "output_ms": 11.13717,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.29704
+        },
+        "inference_ms": 1164.47,
+        "output_sha256": "8b44a78026d24eec3435082e95b01709c2d981ff6d130bcc3a2882a1ff76a322",
+        "fpga_jobs": 0,
+        "process_ms": 1851.4421399995626
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "8b44a78026d24eec3435082e95b01709c2d981ff6d130bcc3a2882a1ff76a322",
+        "inference_ms": 1189.98,
+        "process_ms": 1797.2879799999646
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "03436a8b268f53286255ae55fb5544f63720af8df2b04e880d5b5bf39ce29f23",
+        "inference_ms": 1209.45,
+        "process_ms": 1943.5545100004674
+      }
+    },
+    "input": 7,
+    "image_sha256": "e531e32762a1201d858a542b8a0025001363b0f69ef819c81ebc49bd060341df",
+    "seed": 2026111107,
+    "scores": {
+      "cosine_similarity": 0.9999950494674091,
+      "rmse": 0.00239984180213632,
+      "max_abs_error": 0.011124610900878906,
+      "cpu_top5": [
+        549,
+        904,
+        854,
+        921,
+        794
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.003354772895625791,
+      "fpga_top5": [
+        549,
+        904,
+        854,
+        921,
+        794
+      ]
+    },
+    "order": [
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control",
+      "dma_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.64335,
+          "main_elapsed_ms": 1715.98343,
+          "model_load_ms": 316.06305,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.20246,
+              "input_dma_setup": 0.46457,
+              "output_dma_wait": 0.44608,
+              "dequantize": 2.81262,
+              "device_init": 0.4651,
+              "peak_scan": 4.09832,
+              "output_stage_copy": 2.81062,
+              "input_dma_wait": 1.76188,
+              "completion_wait": 0.72217,
+              "workspace": 2.11611,
+              "input_stage_copy": 2.41386,
+              "upload": 5.02063,
+              "output_convert": 9.58435,
+              "pack_pad": 1.76315,
+              "configure": 0.209,
+              "download": 3.71049,
+              "launch": 0.09938,
+              "adapter_total": 50.35168,
+              "quantize": 17.0451,
+              "output_dma_setup": 0.23327,
+              "bridge_total": 53.9937
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1139,
+            "output_polls": 250,
+            "compute_polls": 431,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.8615,
+          "inference_ms": 1226.08674,
+          "selected_qk_ms": 54.79416,
+          "output_ms": 7.62575,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.46626
+        },
+        "inference_ms": 1226.09,
+        "output_sha256": "670a5d86beba267bb1ef743e99839e2d1ab6d9e3bda3e8ca2e1c918fa1824255",
+        "fpga_jobs": 64,
+        "process_ms": 1757.0344000005207
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "670a5d86beba267bb1ef743e99839e2d1ab6d9e3bda3e8ca2e1c918fa1824255",
+        "inference_ms": 1246.22,
+        "process_ms": 1979.4039300004442
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "ea929c9902475c4ae721df24505b35436e1800d39b0a5ec301bb1bd583c26c16",
+        "inference_ms": 1181.0,
+        "process_ms": 1808.3792099996572
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 145.23189,
+          "main_elapsed_ms": 2057.33521,
+          "model_load_ms": 716.31863,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.75197
+          },
+          "input_copy_ms": 4.79068,
+          "inference_ms": 1167.6316,
+          "selected_qk_ms": 4.73431,
+          "output_ms": 0.91119,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.22423
+        },
+        "inference_ms": 1167.63,
+        "output_sha256": "ea929c9902475c4ae721df24505b35436e1800d39b0a5ec301bb1bd583c26c16",
+        "fpga_jobs": 0,
+        "process_ms": 2098.134150000078
+      }
+    },
+    "input": 8,
+    "image_sha256": "bc95c267c3ea1833c4db65ddde8541c7e151a5c1774c7c704cf3df7c4f92aa4c",
+    "seed": 2026111108,
+    "scores": {
+      "cosine_similarity": 0.9999986062823886,
+      "rmse": 0.0013057683239101527,
+      "max_abs_error": 0.007858037948608398,
+      "cpu_top5": [
+        904,
+        549,
+        854,
+        741,
+        539
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.00168180974632364,
+      "fpga_top5": [
+        904,
+        549,
+        854,
+        741,
+        539
+      ]
+    },
+    "order": [
+      "dma_profile",
+      "cpu_control",
+      "dma_control",
+      "cpu_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "a84edcbc3a295f8dc4f83b56ff2b3e389fab37d9b09d50f8ee7ecdecd6088b42",
+        "inference_ms": 1217.56,
+        "process_ms": 2045.3777899992929
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 144.72347,
+          "main_elapsed_ms": 2191.64179,
+          "model_load_ms": 854.01924,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.9034
+          },
+          "input_copy_ms": 4.77757,
+          "inference_ms": 1164.7316,
+          "selected_qk_ms": 4.84143,
+          "output_ms": 0.86678,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.30834
+        },
+        "inference_ms": 1164.73,
+        "output_sha256": "e2d716cc2dd34231e7b5e9f11f80af9919347e344d48f9b40a7afa864aef9665",
+        "fpga_jobs": 0,
+        "process_ms": 2281.3398600001165
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "e2d716cc2dd34231e7b5e9f11f80af9919347e344d48f9b40a7afa864aef9665",
+        "inference_ms": 1164.9,
+        "process_ms": 1807.966309999756
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 200.71317,
+          "main_elapsed_ms": 2002.36519,
+          "model_load_ms": 546.77802,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.22829,
+              "input_dma_setup": 0.46983,
+              "output_dma_wait": 0.44379,
+              "dequantize": 2.82718,
+              "device_init": 0.45996,
+              "peak_scan": 4.11388,
+              "output_stage_copy": 2.77023,
+              "input_dma_wait": 1.77884,
+              "completion_wait": 0.64761,
+              "workspace": 2.08501,
+              "input_stage_copy": 2.4203,
+              "upload": 5.07364,
+              "output_convert": 9.58606,
+              "pack_pad": 1.72119,
+              "configure": 0.20548,
+              "download": 3.69783,
+              "launch": 0.09985,
+              "adapter_total": 50.23719,
+              "quantize": 17.04446,
+              "output_dma_setup": 0.22817,
+              "bridge_total": 53.89029
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1146,
+            "output_polls": 256,
+            "compute_polls": 439,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.7541,
+          "inference_ms": 1219.63469,
+          "selected_qk_ms": 54.74368,
+          "output_ms": 7.73044,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.45377
+        },
+        "inference_ms": 1219.63,
+        "output_sha256": "a84edcbc3a295f8dc4f83b56ff2b3e389fab37d9b09d50f8ee7ecdecd6088b42",
+        "fpga_jobs": 64,
+        "process_ms": 2055.230390000361
+      }
+    },
+    "input": 9,
+    "image_sha256": "d2b36beb5177e13def3c8ebe4b795d63b22a732aa394055249e3d17a3ca68642",
+    "seed": 2026111109,
+    "scores": {
+      "cosine_similarity": 0.9999903473722622,
+      "rmse": 0.0035770148004355172,
+      "max_abs_error": 0.015166044235229492,
+      "cpu_top5": [
+        549,
+        741,
+        949,
+        957,
+        539
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.004503293304126965,
+      "fpga_top5": [
+        549,
+        741,
+        949,
+        957,
+        539
+      ]
+    },
+    "order": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "52760c2a2d31421060c58741e08676db9cc6c04dda8ed1dbce4ec4671ed4c10e",
+        "inference_ms": 1217.0,
+        "process_ms": 1991.4612700004
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 129.22548,
+          "main_elapsed_ms": 1757.47985,
+          "model_load_ms": 442.37719,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.90077
+          },
+          "input_copy_ms": 4.53043,
+          "inference_ms": 1157.64007,
+          "selected_qk_ms": 4.83629,
+          "output_ms": 2.21091,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 21.19522
+        },
+        "inference_ms": 1157.64,
+        "output_sha256": "e95c93a558076b23adc88087d0d88da258bae5f6894fd545c6681ab2686f6aac",
+        "fpga_jobs": 0,
+        "process_ms": 1799.7959200001787
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "e95c93a558076b23adc88087d0d88da258bae5f6894fd545c6681ab2686f6aac",
+        "inference_ms": 1165.42,
+        "process_ms": 1799.5134500006316
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 186.52731,
+          "main_elapsed_ms": 1906.36809,
+          "model_load_ms": 468.93781,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.18427,
+              "input_dma_setup": 0.46953,
+              "output_dma_wait": 0.44509,
+              "dequantize": 2.85777,
+              "device_init": 4.67709,
+              "peak_scan": 4.07442,
+              "output_stage_copy": 2.66839,
+              "input_dma_wait": 1.80636,
+              "completion_wait": 0.66399,
+              "workspace": 2.09694,
+              "input_stage_copy": 2.42258,
+              "upload": 5.08058,
+              "output_convert": 9.6884,
+              "pack_pad": 1.76833,
+              "configure": 0.2068,
+              "download": 3.57137,
+              "launch": 0.10007,
+              "adapter_total": 50.11999,
+              "quantize": 16.95629,
+              "output_dma_setup": 0.23835,
+              "bridge_total": 58.11515
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1110,
+            "output_polls": 250,
+            "compute_polls": 444,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.89155,
+          "inference_ms": 1222.53162,
+          "selected_qk_ms": 58.98466,
+          "output_ms": 0.87123,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.37032
+        },
+        "inference_ms": 1222.53,
+        "output_sha256": "52760c2a2d31421060c58741e08676db9cc6c04dda8ed1dbce4ec4671ed4c10e",
+        "fpga_jobs": 64,
+        "process_ms": 1959.022649999497
+      }
+    },
+    "input": 10,
+    "image_sha256": "f7240c16af536a6e41ede0bc1c96e86d7ed775b2a757d0047d34ffd5b87d5200",
+    "seed": 2026111110,
+    "scores": {
+      "cosine_similarity": 0.9999981727013767,
+      "rmse": 0.001598896924781997,
+      "max_abs_error": 0.005988359451293945,
+      "cpu_top5": [
+        741,
+        549,
+        539,
+        904,
+        854
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": false,
+      "relative_l2": 0.0019522892791346545,
+      "fpga_top5": [
+        741,
+        549,
+        539,
+        854,
+        904
+      ]
+    },
+    "order": [
+      "dma_control",
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 130.38219,
+          "main_elapsed_ms": 2274.39736,
+          "model_load_ms": 901.56145,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.25226,
+              "input_dma_setup": 0.47475,
+              "output_dma_wait": 0.44518,
+              "dequantize": 2.85509,
+              "device_init": 5.3663,
+              "peak_scan": 4.11167,
+              "output_stage_copy": 2.69017,
+              "input_dma_wait": 1.76868,
+              "completion_wait": 0.65789,
+              "workspace": 2.15135,
+              "input_stage_copy": 2.40367,
+              "upload": 5.0312,
+              "output_convert": 9.53261,
+              "pack_pad": 1.72775,
+              "configure": 0.21922,
+              "download": 3.59328,
+              "launch": 0.09981,
+              "adapter_total": 50.57098,
+              "quantize": 17.46935,
+              "output_dma_setup": 0.23886,
+              "bridge_total": 59.21067
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1112,
+            "output_polls": 250,
+            "compute_polls": 447,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.52542,
+          "inference_ms": 1214.59763,
+          "selected_qk_ms": 60.0345,
+          "output_ms": 0.77322,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.27162
+        },
+        "inference_ms": 1214.6,
+        "output_sha256": "5de04b2e0bf5f085434a03873c917fbab6531847870e953be6abbe84ae457826",
+        "fpga_jobs": 64,
+        "process_ms": 2346.5386300003956
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 145.99057,
+          "main_elapsed_ms": 2001.30575,
+          "model_load_ms": 649.25802,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.82011
+          },
+          "input_copy_ms": 4.80716,
+          "inference_ms": 1170.94487,
+          "selected_qk_ms": 4.85978,
+          "output_ms": 7.75961,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.21266
+        },
+        "inference_ms": 1170.94,
+        "output_sha256": "7a5d65d2ab10e69b90cbc7d3460640a05dfb5a45ee24349360b7ca0b1f23ed7a",
+        "fpga_jobs": 0,
+        "process_ms": 2048.1733699998586
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "7a5d65d2ab10e69b90cbc7d3460640a05dfb5a45ee24349360b7ca0b1f23ed7a",
+        "inference_ms": 1164.9,
+        "process_ms": 1785.0706700000956
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "5de04b2e0bf5f085434a03873c917fbab6531847870e953be6abbe84ae457826",
+        "inference_ms": 1221.19,
+        "process_ms": 2405.3862999999183
+      }
+    },
+    "input": 11,
+    "image_sha256": "0038f2e15cb978ffbce2d35ab3a5162e09b899d5a52c849951a722641a601b48",
+    "seed": 2026111111,
+    "scores": {
+      "cosine_similarity": 0.9999980294218688,
+      "rmse": 0.0013814522266387265,
+      "max_abs_error": 0.0048926472663879395,
+      "cpu_top5": [
+        549,
+        904,
+        854,
+        794,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.002010117135541715,
+      "fpga_top5": [
+        549,
+        904,
+        854,
+        794,
+        921
+      ]
+    },
+    "order": [
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control",
+      "dma_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 256.98319,
+          "main_elapsed_ms": 1900.69578,
+          "model_load_ms": 397.2698,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.18456,
+              "input_dma_setup": 0.47703,
+              "output_dma_wait": 0.46414,
+              "dequantize": 2.83114,
+              "device_init": 0.54106,
+              "peak_scan": 4.10414,
+              "output_stage_copy": 2.7316,
+              "input_dma_wait": 1.78207,
+              "completion_wait": 0.65344,
+              "workspace": 2.10966,
+              "input_stage_copy": 2.40238,
+              "upload": 5.04187,
+              "output_convert": 9.58852,
+              "pack_pad": 1.77671,
+              "configure": 0.20558,
+              "download": 3.64372,
+              "launch": 0.106,
+              "adapter_total": 50.16947,
+              "quantize": 17.06684,
+              "output_dma_setup": 0.22754,
+              "bridge_total": 54.01382
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1127,
+            "output_polls": 248,
+            "compute_polls": 443,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.9077,
+          "inference_ms": 1218.04722,
+          "selected_qk_ms": 54.81019,
+          "output_ms": 0.84473,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.33255
+        },
+        "inference_ms": 1218.05,
+        "output_sha256": "fa70fbb56ecb63cc92de0e8610dd0cbc499e8e707ae191a25b35bcd76a95a2eb",
+        "fpga_jobs": 64,
+        "process_ms": 1942.491820000214
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "fa70fbb56ecb63cc92de0e8610dd0cbc499e8e707ae191a25b35bcd76a95a2eb",
+        "inference_ms": 1216.46,
+        "process_ms": 2040.6786900002771
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "5fcf98be1fc3c57ab1d020653e53963becfcf4aca4c93fb4c2a1ce07b65c45da",
+        "inference_ms": 1170.57,
+        "process_ms": 2159.1645500002414
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.29748,
+          "main_elapsed_ms": 1968.27088,
+          "model_load_ms": 625.93384,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.80381
+          },
+          "input_copy_ms": 4.89857,
+          "inference_ms": 1175.74326,
+          "selected_qk_ms": 4.79186,
+          "output_ms": 0.88027,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.23256
+        },
+        "inference_ms": 1175.74,
+        "output_sha256": "5fcf98be1fc3c57ab1d020653e53963becfcf4aca4c93fb4c2a1ce07b65c45da",
+        "fpga_jobs": 0,
+        "process_ms": 2031.7813100000421
+      }
+    },
+    "input": 12,
+    "image_sha256": "04e0f2b21d54bb1af30fecc11bc1ba67045b8f432f952ddb7ba224f579172de6",
+    "seed": 2026111112,
+    "scores": {
+      "cosine_similarity": 0.9999986086182371,
+      "rmse": 0.0013364716940469441,
+      "max_abs_error": 0.005353450775146484,
+      "cpu_top5": [
+        549,
+        904,
+        741,
+        539,
+        854
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0017706555019205083,
+      "fpga_top5": [
+        549,
+        904,
+        741,
+        539,
+        854
+      ]
+    },
+    "order": [
+      "dma_profile",
+      "cpu_control",
+      "dma_control",
+      "cpu_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "ea119d565cbae533dd94795680328d5188109ba389e0137fa00184efc4cc0157",
+        "inference_ms": 1217.5,
+        "process_ms": 2492.888249999851
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 196.1187,
+          "main_elapsed_ms": 2182.29495,
+          "model_load_ms": 778.48315,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.79879
+          },
+          "input_copy_ms": 4.82918,
+          "inference_ms": 1172.59624,
+          "selected_qk_ms": 4.75427,
+          "output_ms": 7.72378,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.24889
+        },
+        "inference_ms": 1172.6,
+        "output_sha256": "d0f719a5b6734f5a911f77abc059e80c5f92da8e4f619164448fd19ac6729ee6",
+        "fpga_jobs": 0,
+        "process_ms": 2245.811810000305
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "d0f719a5b6734f5a911f77abc059e80c5f92da8e4f619164448fd19ac6729ee6",
+        "inference_ms": 1289.2,
+        "process_ms": 1840.2770599996074
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 145.64815,
+          "main_elapsed_ms": 2140.13596,
+          "model_load_ms": 735.08489,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.20455,
+              "input_dma_setup": 0.4702,
+              "output_dma_wait": 0.44695,
+              "dequantize": 2.87329,
+              "device_init": 2.18545,
+              "peak_scan": 4.0861,
+              "output_stage_copy": 2.67327,
+              "input_dma_wait": 1.78451,
+              "completion_wait": 0.64415,
+              "workspace": 2.22034,
+              "input_stage_copy": 2.48347,
+              "upload": 5.11348,
+              "output_convert": 9.52942,
+              "pack_pad": 1.78015,
+              "configure": 0.20711,
+              "download": 3.57079,
+              "launch": 0.10503,
+              "adapter_total": 50.15106,
+              "quantize": 16.94569,
+              "output_dma_setup": 0.2269,
+              "bridge_total": 55.61394
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1123,
+            "output_polls": 252,
+            "compute_polls": 443,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.82584,
+          "inference_ms": 1219.49523,
+          "selected_qk_ms": 56.4623,
+          "output_ms": 0.84016,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 33.94333
+        },
+        "inference_ms": 1219.5,
+        "output_sha256": "ea119d565cbae533dd94795680328d5188109ba389e0137fa00184efc4cc0157",
+        "fpga_jobs": 64,
+        "process_ms": 2224.9566000000414
+      }
+    },
+    "input": 13,
+    "image_sha256": "bc16774178dd69dc330c4e58b32394875f240f4697e00ce4bbe6a61c389df112",
+    "seed": 2026111113,
+    "scores": {
+      "cosine_similarity": 0.9999951818274782,
+      "rmse": 0.0023344671549087484,
+      "max_abs_error": 0.009374380111694336,
+      "cpu_top5": [
+        549,
+        904,
+        539,
+        721,
+        741
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0032048291944219956,
+      "fpga_top5": [
+        549,
+        904,
+        539,
+        721,
+        741
+      ]
+    },
+    "order": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "cfbe14e32008a2d4dd59a399550ff0bb07961aa48de0378f4a58d915b3efbd52",
+        "inference_ms": 1222.96,
+        "process_ms": 2119.700289999855
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 139.70313,
+          "main_elapsed_ms": 2082.78613,
+          "model_load_ms": 727.58923,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.9286
+          },
+          "input_copy_ms": 4.87121,
+          "inference_ms": 1178.0495,
+          "selected_qk_ms": 4.88542,
+          "output_ms": 9.8439,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.41267
+        },
+        "inference_ms": 1178.05,
+        "output_sha256": "8035db25caf26270ae5a7bceff280f6e4eea9f2f6ee333a153183f84630347e9",
+        "fpga_jobs": 0,
+        "process_ms": 2160.977720000119
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "8035db25caf26270ae5a7bceff280f6e4eea9f2f6ee333a153183f84630347e9",
+        "inference_ms": 1166.27,
+        "process_ms": 2016.5092600000207
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 139.07661,
+          "main_elapsed_ms": 2149.1122,
+          "model_load_ms": 764.33577,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.18628,
+              "input_dma_setup": 0.46988,
+              "output_dma_wait": 0.452,
+              "dequantize": 2.82072,
+              "device_init": 0.55665,
+              "peak_scan": 4.15248,
+              "output_stage_copy": 2.79049,
+              "input_dma_wait": 1.76786,
+              "completion_wait": 0.64895,
+              "workspace": 2.14831,
+              "input_stage_copy": 2.44514,
+              "upload": 5.07,
+              "output_convert": 9.56083,
+              "pack_pad": 1.81483,
+              "configure": 0.21618,
+              "download": 3.69687,
+              "launch": 0.10635,
+              "adapter_total": 50.28269,
+              "quantize": 16.96318,
+              "output_dma_setup": 0.22812,
+              "bridge_total": 54.18328
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1118,
+            "output_polls": 254,
+            "compute_polls": 436,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.83744,
+          "inference_ms": 1217.25648,
+          "selected_qk_ms": 55.016,
+          "output_ms": 0.84007,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.46973
+        },
+        "inference_ms": 1217.26,
+        "output_sha256": "cfbe14e32008a2d4dd59a399550ff0bb07961aa48de0378f4a58d915b3efbd52",
+        "fpga_jobs": 64,
+        "process_ms": 2239.7879499994815
+      }
+    },
+    "input": 14,
+    "image_sha256": "98765381cc1ff62d439a2966483a6e399fae5fde76e0d85246b9954be85a72e1",
+    "seed": 2026111114,
+    "scores": {
+      "cosine_similarity": 0.9999963838199843,
+      "rmse": 0.0024730058608620977,
+      "max_abs_error": 0.009045600891113281,
+      "cpu_top5": [
+        549,
+        854,
+        539,
+        721,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": false,
+      "relative_l2": 0.0026913041167363205,
+      "fpga_top5": [
+        549,
+        854,
+        539,
+        921,
+        721
+      ]
+    },
+    "order": [
+      "dma_control",
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 140.40919,
+          "main_elapsed_ms": 1927.02705,
+          "model_load_ms": 467.18498,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.23689,
+              "input_dma_setup": 0.47398,
+              "output_dma_wait": 0.51867,
+              "dequantize": 3.16171,
+              "device_init": 0.47138,
+              "peak_scan": 4.68768,
+              "output_stage_copy": 2.77336,
+              "input_dma_wait": 1.75814,
+              "completion_wait": 0.65038,
+              "workspace": 2.48239,
+              "input_stage_copy": 2.53097,
+              "upload": 5.15221,
+              "output_convert": 10.89606,
+              "pack_pad": 2.37705,
+              "configure": 22.38373,
+              "download": 3.74592,
+              "launch": 0.09976,
+              "adapter_total": 76.59128,
+              "quantize": 17.73116,
+              "output_dma_setup": 0.23226,
+              "bridge_total": 80.60701
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1114,
+            "output_polls": 259,
+            "compute_polls": 442,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.87576,
+          "inference_ms": 1284.37497,
+          "selected_qk_ms": 81.5361,
+          "output_ms": 7.69006,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.15501
+        },
+        "inference_ms": 1284.37,
+        "output_sha256": "45df8bdea337fdf3cad20d0fbfce5e45dfc5f8c837abd95bc326caa610d44ba7",
+        "fpga_jobs": 64,
+        "process_ms": 1992.460569999821
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 194.02862,
+          "main_elapsed_ms": 1908.47442,
+          "model_load_ms": 502.1651,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.72421
+          },
+          "input_copy_ms": 4.87571,
+          "inference_ms": 1183.8021,
+          "selected_qk_ms": 4.73104,
+          "output_ms": 0.84393,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.42371
+        },
+        "inference_ms": 1183.8,
+        "output_sha256": "af1f4858ca0adc95453891e9f24615a3425b6a8563f9cf3e479d68314e291c4b",
+        "fpga_jobs": 0,
+        "process_ms": 1955.3080699997736
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "af1f4858ca0adc95453891e9f24615a3425b6a8563f9cf3e479d68314e291c4b",
+        "inference_ms": 1178.35,
+        "process_ms": 2347.378100000242
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "45df8bdea337fdf3cad20d0fbfce5e45dfc5f8c837abd95bc326caa610d44ba7",
+        "inference_ms": 1211.6,
+        "process_ms": 2148.297029999412
+      }
+    },
+    "input": 15,
+    "image_sha256": "2cd27ece0293e4a39ccc8e840feeb3a4a9132d098dd2c3bc91bd8addcfd5e17c",
+    "seed": 2026111115,
+    "scores": {
+      "cosine_similarity": 0.9999972794852754,
+      "rmse": 0.0014704592748662336,
+      "max_abs_error": 0.005339086055755615,
+      "cpu_top5": [
+        549,
+        904,
+        921,
+        539,
+        741
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0023373172306032516,
+      "fpga_top5": [
+        549,
+        904,
+        921,
+        539,
+        741
+      ]
+    },
+    "order": [
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control",
+      "dma_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 195.25345,
+          "main_elapsed_ms": 1987.78241,
+          "model_load_ms": 528.97155,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.19421,
+              "input_dma_setup": 0.50364,
+              "output_dma_wait": 0.44601,
+              "dequantize": 2.83876,
+              "device_init": 0.5085,
+              "peak_scan": 4.22651,
+              "output_stage_copy": 2.67682,
+              "input_dma_wait": 1.78752,
+              "completion_wait": 0.65206,
+              "workspace": 2.22769,
+              "input_stage_copy": 2.45096,
+              "upload": 5.11634,
+              "output_convert": 9.64119,
+              "pack_pad": 1.77868,
+              "configure": 0.21103,
+              "download": 3.58011,
+              "launch": 0.09932,
+              "adapter_total": 51.03305,
+              "quantize": 17.58452,
+              "output_dma_setup": 0.23803,
+              "bridge_total": 66.25541
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1112,
+            "output_polls": 246,
+            "compute_polls": 444,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.76077,
+          "inference_ms": 1235.26846,
+          "selected_qk_ms": 67.08729,
+          "output_ms": 0.85292,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.36602
+        },
+        "inference_ms": 1235.27,
+        "output_sha256": "7a1d46a68fca69b0d5a8cb2abdf3dc34feb928623d37f53b1ea9cb889b1ed61d",
+        "fpga_jobs": 64,
+        "process_ms": 2028.7646899996616
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "7a1d46a68fca69b0d5a8cb2abdf3dc34feb928623d37f53b1ea9cb889b1ed61d",
+        "inference_ms": 1220.5,
+        "process_ms": 2327.4350399997275
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "833bee0bc65921dfbfefd4095065f99f3616c1b59e8051adfa56eb5697ff4a90",
+        "inference_ms": 1164.05,
+        "process_ms": 1971.922280000399
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.51041,
+          "main_elapsed_ms": 1942.31451,
+          "model_load_ms": 582.14033,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.83174
+          },
+          "input_copy_ms": 4.80302,
+          "inference_ms": 1193.36458,
+          "selected_qk_ms": 4.83256,
+          "output_ms": 0.90532,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.32505
+        },
+        "inference_ms": 1193.36,
+        "output_sha256": "833bee0bc65921dfbfefd4095065f99f3616c1b59e8051adfa56eb5697ff4a90",
+        "fpga_jobs": 0,
+        "process_ms": 1983.117509999829
+      }
+    },
+    "input": 16,
+    "image_sha256": "dd479330841d95231af9e1d15bc6525fec2d78b45593c9056a6c0a252728b739",
+    "seed": 2026111116,
+    "scores": {
+      "cosine_similarity": 0.9999981509738102,
+      "rmse": 0.0016081362831134854,
+      "max_abs_error": 0.007537364959716797,
+      "cpu_top5": [
+        854,
+        904,
+        549,
+        741,
+        885
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.001951585194142662,
+      "fpga_top5": [
+        854,
+        904,
+        549,
+        741,
+        885
+      ]
+    },
+    "order": [
+      "dma_profile",
+      "cpu_control",
+      "dma_control",
+      "cpu_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "b04479d098bce7020b03f4e145e2a0a7cd5a18d2c485a4065ac6cf940b23bc76",
+        "inference_ms": 1223.3,
+        "process_ms": 2246.7801599996164
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 194.293,
+          "main_elapsed_ms": 2107.48325,
+          "model_load_ms": 720.69098,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.94148
+          },
+          "input_copy_ms": 4.77594,
+          "inference_ms": 1164.39426,
+          "selected_qk_ms": 4.87937,
+          "output_ms": 0.85033,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.16408
+        },
+        "inference_ms": 1164.39,
+        "output_sha256": "e5117273315ddff2b5c539969f5452dc29f68a4146d8390022fc520e596fe4c7",
+        "fpga_jobs": 0,
+        "process_ms": 2166.840719999527
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "e5117273315ddff2b5c539969f5452dc29f68a4146d8390022fc520e596fe4c7",
+        "inference_ms": 1164.41,
+        "process_ms": 1847.1811100007471
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 144.92692,
+          "main_elapsed_ms": 2096.55755,
+          "model_load_ms": 688.89224,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.17488,
+              "input_dma_setup": 0.47031,
+              "output_dma_wait": 0.45771,
+              "dequantize": 2.93218,
+              "device_init": 0.48823,
+              "peak_scan": 4.06178,
+              "output_stage_copy": 2.74852,
+              "input_dma_wait": 1.76965,
+              "completion_wait": 0.64711,
+              "workspace": 2.12579,
+              "input_stage_copy": 2.446,
+              "upload": 5.06698,
+              "output_convert": 9.58065,
+              "pack_pad": 1.71957,
+              "configure": 6.30579,
+              "download": 3.65312,
+              "launch": 0.09987,
+              "adapter_total": 56.35084,
+              "quantize": 17.12575,
+              "output_dma_setup": 0.22786,
+              "bridge_total": 60.08876
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1110,
+            "output_polls": 255,
+            "compute_polls": 448,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.861,
+          "inference_ms": 1234.47031,
+          "selected_qk_ms": 60.91953,
+          "output_ms": 0.85598,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.22408
+        },
+        "inference_ms": 1234.47,
+        "output_sha256": "b04479d098bce7020b03f4e145e2a0a7cd5a18d2c485a4065ac6cf940b23bc76",
+        "fpga_jobs": 64,
+        "process_ms": 2166.2001300001066
+      }
+    },
+    "input": 17,
+    "image_sha256": "2555c943ac1c1881a0fa37bddc3da64d82ce093f3f431386094e287e215121ba",
+    "seed": 2026111117,
+    "scores": {
+      "cosine_similarity": 0.9999985169363994,
+      "rmse": 0.0014361879920026664,
+      "max_abs_error": 0.005853533744812012,
+      "cpu_top5": [
+        549,
+        539,
+        854,
+        904,
+        741
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.001760465223372968,
+      "fpga_top5": [
+        549,
+        539,
+        854,
+        904,
+        741
+      ]
+    },
+    "order": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ]
+  },
+  {
+    "runs": {
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "2c1f499b6c00587614fbf7e26130a9a46dcaa0b38703d53f59527faea2da4934",
+        "inference_ms": 1221.0,
+        "process_ms": 2200.833220000277
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 139.02069,
+          "main_elapsed_ms": 2211.8496,
+          "model_load_ms": 869.24237,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.80589
+          },
+          "input_copy_ms": 4.85533,
+          "inference_ms": 1175.26742,
+          "selected_qk_ms": 4.78601,
+          "output_ms": 0.85233,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.2984
+        },
+        "inference_ms": 1175.27,
+        "output_sha256": "5b63ab877d3738057c74eab54a538bfdc1ee014d908cfa452fa720df21302f2f",
+        "fpga_jobs": 0,
+        "process_ms": 2285.9352900004524
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "5b63ab877d3738057c74eab54a538bfdc1ee014d908cfa452fa720df21302f2f",
+        "inference_ms": 1186.64,
+        "process_ms": 2211.745009999504
+      },
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 145.02105,
+          "main_elapsed_ms": 2117.16177,
+          "model_load_ms": 686.61206,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.19086,
+              "input_dma_setup": 0.47535,
+              "output_dma_wait": 0.47379,
+              "dequantize": 2.95386,
+              "device_init": 0.58321,
+              "peak_scan": 4.17963,
+              "output_stage_copy": 2.77238,
+              "input_dma_wait": 1.79837,
+              "completion_wait": 0.65221,
+              "workspace": 2.33811,
+              "input_stage_copy": 2.58193,
+              "upload": 5.2399,
+              "output_convert": 11.19337,
+              "pack_pad": 2.18084,
+              "configure": 0.21584,
+              "download": 3.70618,
+              "launch": 0.1125,
+              "adapter_total": 53.94314,
+              "quantize": 18.01324,
+              "output_dma_setup": 0.23869,
+              "bridge_total": 58.3903
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1131,
+            "output_polls": 275,
+            "compute_polls": 424,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.85179,
+          "inference_ms": 1250.32698,
+          "selected_qk_ms": 59.43225,
+          "output_ms": 7.74487,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.28075
+        },
+        "inference_ms": 1250.33,
+        "output_sha256": "2c1f499b6c00587614fbf7e26130a9a46dcaa0b38703d53f59527faea2da4934",
+        "fpga_jobs": 64,
+        "process_ms": 2158.4272999998575
+      }
+    },
+    "input": 18,
+    "image_sha256": "5c3635209e9d39950b1de95d31ba52a863c3e330db70974d34579c4d2133ee40",
+    "seed": 2026111118,
+    "scores": {
+      "cosine_similarity": 0.9999959100848973,
+      "rmse": 0.002020019986901405,
+      "max_abs_error": 0.006553530693054199,
+      "cpu_top5": [
+        549,
+        904,
+        854,
+        741,
+        794
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0028628713924038493,
+      "fpga_top5": [
+        549,
+        904,
+        854,
+        741,
+        794
+      ]
+    },
+    "order": [
+      "dma_control",
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.82859,
+          "main_elapsed_ms": 1800.42793,
+          "model_load_ms": 395.52129,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.19634,
+              "input_dma_setup": 0.46905,
+              "output_dma_wait": 0.44975,
+              "dequantize": 2.82302,
+              "device_init": 0.49491,
+              "peak_scan": 4.0956,
+              "output_stage_copy": 2.69242,
+              "input_dma_wait": 1.78486,
+              "completion_wait": 0.64704,
+              "workspace": 2.18972,
+              "input_stage_copy": 2.43174,
+              "upload": 5.06894,
+              "output_convert": 9.5786,
+              "pack_pad": 1.76315,
+              "configure": 0.20599,
+              "download": 3.58856,
+              "launch": 0.1056,
+              "adapter_total": 50.21696,
+              "quantize": 17.0714,
+              "output_dma_setup": 0.2273,
+              "bridge_total": 53.89696
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1143,
+            "output_polls": 253,
+            "compute_polls": 435,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.88295,
+          "inference_ms": 1230.94696,
+          "selected_qk_ms": 54.79197,
+          "output_ms": 7.75306,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.23216
+        },
+        "inference_ms": 1230.95,
+        "output_sha256": "3e5177a5ad0fba179de0a48913d3ede81e9ce340b8a428e06826d1e39464f403",
+        "fpga_jobs": 64,
+        "process_ms": 1847.7973700000803
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.4542,
+          "main_elapsed_ms": 1735.00974,
+          "model_load_ms": 386.9816,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.85299
+          },
+          "input_copy_ms": 4.7681,
+          "inference_ms": 1181.47511,
+          "selected_qk_ms": 4.87148,
+          "output_ms": 0.8547,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.22152
+        },
+        "inference_ms": 1181.48,
+        "output_sha256": "bba70eb0fa0b35c6b66f54e16c20bf1d16f195296c4e12206344bbbcaa767b0a",
+        "fpga_jobs": 0,
+        "process_ms": 1775.6497400005173
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "bba70eb0fa0b35c6b66f54e16c20bf1d16f195296c4e12206344bbbcaa767b0a",
+        "inference_ms": 1228.7,
+        "process_ms": 1856.5741800002797
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "3e5177a5ad0fba179de0a48913d3ede81e9ce340b8a428e06826d1e39464f403",
+        "inference_ms": 1217.42,
+        "process_ms": 2831.7090099999405
+      }
+    },
+    "input": 19,
+    "image_sha256": "9abffecfd5cfb30fe0ec98cb4c9e3be67bf2a19f78ef21c7744da3316919af0b",
+    "seed": 2026111119,
+    "scores": {
+      "cosine_similarity": 0.9999944873621739,
+      "rmse": 0.0020977496920928413,
+      "max_abs_error": 0.008249282836914062,
+      "cpu_top5": [
+        549,
+        904,
+        892,
+        741,
+        921
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.003358602840226349,
+      "fpga_top5": [
+        549,
+        904,
+        892,
+        741,
+        921
+      ]
+    },
+    "order": [
+      "cpu_profile",
+      "dma_profile",
+      "cpu_control",
+      "dma_control"
+    ]
+  },
+  {
+    "runs": {
+      "dma_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 145.34299,
+          "main_elapsed_ms": 1973.8142,
+          "model_load_ms": 562.29129,
+          "offload": {
+            "ms": {
+              "scale_bound": 1.21712,
+              "input_dma_setup": 0.45618,
+              "output_dma_wait": 0.44856,
+              "dequantize": 2.82094,
+              "device_init": 0.48392,
+              "peak_scan": 4.12872,
+              "output_stage_copy": 2.74974,
+              "input_dma_wait": 1.77929,
+              "completion_wait": 0.65522,
+              "workspace": 2.11143,
+              "input_stage_copy": 2.44731,
+              "upload": 5.07316,
+              "output_convert": 9.60336,
+              "pack_pad": 1.75063,
+              "configure": 6.31991,
+              "download": 3.66797,
+              "launch": 0.10565,
+              "adapter_total": 56.54414,
+              "quantize": 17.17057,
+              "output_dma_setup": 0.23841,
+              "bridge_total": 60.21396
+            },
+            "output_bytes": 262144,
+            "quantized_values": 200704,
+            "input_descriptors": 128,
+            "cpu_execute_calls": 0,
+            "output_descriptors": 64,
+            "input_polls": 1137,
+            "output_polls": 256,
+            "compute_polls": 448,
+            "jobs": 64,
+            "input_bytes": 262144,
+            "cpu_execute_ms": 0
+          },
+          "input_copy_ms": 4.8805,
+          "inference_ms": 1230.9573,
+          "selected_qk_ms": 61.06743,
+          "output_ms": 7.71094,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.31512
+        },
+        "inference_ms": 1230.96,
+        "output_sha256": "01886e7965226a58bd00620cd09b362d45bd12e823ad296ff57d849b4a6d30cc",
+        "fpga_jobs": 64,
+        "process_ms": 2032.032099999924
+      },
+      "dma_control": {
+        "fpga_jobs": 64,
+        "exit_code": 0,
+        "output_sha256": "01886e7965226a58bd00620cd09b362d45bd12e823ad296ff57d849b4a6d30cc",
+        "inference_ms": 1223.66,
+        "process_ms": 1929.7165400002996
+      },
+      "cpu_control": {
+        "fpga_jobs": 0,
+        "exit_code": 0,
+        "output_sha256": "6af3c3f2984186004afa43964d62246096d25c1dbe9fc4c5df30c90714c66741",
+        "inference_ms": 1167.58,
+        "process_ms": 1808.7880900002347
+      },
+      "cpu_profile": {
+        "exit_code": 0,
+        "profile": {
+          "session_ms": 138.99048,
+          "main_elapsed_ms": 1978.9364,
+          "model_load_ms": 642.63548,
+          "offload": {
+            "ms": {
+              "scale_bound": 0,
+              "input_dma_setup": 0,
+              "output_dma_wait": 0,
+              "dequantize": 0,
+              "device_init": 0,
+              "peak_scan": 0,
+              "output_stage_copy": 0,
+              "input_dma_wait": 0,
+              "completion_wait": 0,
+              "workspace": 0,
+              "input_stage_copy": 0,
+              "upload": 0,
+              "output_convert": 0,
+              "pack_pad": 0,
+              "configure": 0,
+              "download": 0,
+              "launch": 0,
+              "adapter_total": 0,
+              "quantize": 0,
+              "output_dma_setup": 0,
+              "bridge_total": 0
+            },
+            "output_bytes": 0,
+            "quantized_values": 0,
+            "input_descriptors": 0,
+            "cpu_execute_calls": 64,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "output_polls": 0,
+            "compute_polls": 0,
+            "jobs": 0,
+            "input_bytes": 0,
+            "cpu_execute_ms": 8.76475
+          },
+          "input_copy_ms": 4.77892,
+          "inference_ms": 1169.09273,
+          "selected_qk_ms": 4.73841,
+          "output_ms": 0.88315,
+          "selected_qk_calls": 1,
+          "preprocess_ms": 22.24438
+        },
+        "inference_ms": 1169.09,
+        "output_sha256": "6af3c3f2984186004afa43964d62246096d25c1dbe9fc4c5df30c90714c66741",
+        "fpga_jobs": 0,
+        "process_ms": 2069.8476600000504
+      }
+    },
+    "input": 20,
+    "image_sha256": "f824e2612df8e6cfcecbd628f91a4da6920049a71ff5e96ea2abc54f0f915ae9",
+    "seed": 2026111120,
+    "scores": {
+      "cosine_similarity": 0.9999988489396556,
+      "rmse": 0.0010976587327471757,
+      "max_abs_error": 0.006966114044189453,
+      "cpu_top5": [
+        904,
+        549,
+        854,
+        794,
+        741
+      ],
+      "top1_agrees": true,
+      "top5_ranking_agrees": true,
+      "relative_l2": 0.0015474631093345995,
+      "fpga_top5": [
+        904,
+        549,
+        854,
+        794,
+        741
+      ]
+    },
+    "order": [
+      "dma_profile",
+      "cpu_control",
+      "dma_control",
+      "cpu_profile"
+    ]
+  }
+]

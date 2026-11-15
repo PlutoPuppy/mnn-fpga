@@ -1,0 +1,38 @@
+[
+  {
+    "runs": 1,
+    "mode": "cpu",
+    "output_sha256": "3e5b94e94c718252abfbb8a13f982e9fb20a1091c692462fab022e802892c400",
+    "jobs": 0
+  },
+  {
+    "runs": 2,
+    "mode": "cpu",
+    "output_sha256": "3e5b94e94c718252abfbb8a13f982e9fb20a1091c692462fab022e802892c400",
+    "jobs": 0
+  },
+  {
+    "runs": 3,
+    "mode": "cpu",
+    "output_sha256": "3e5b94e94c718252abfbb8a13f982e9fb20a1091c692462fab022e802892c400",
+    "jobs": 0
+  },
+  {
+    "runs": 1,
+    "mode": "pairs",
+    "output_sha256": "79e340c935d24203d819ce683f3c255b2ddc1007e53d45b4f01de00b9b7e451d",
+    "jobs": 437
+  },
+  {
+    "runs": 2,
+    "mode": "pairs",
+    "output_sha256": "79e340c935d24203d819ce683f3c255b2ddc1007e53d45b4f01de00b9b7e451d",
+    "jobs": 874
+  },
+  {
+    "runs": 3,
+    "mode": "pairs",
+    "output_sha256": "79e340c935d24203d819ce683f3c255b2ddc1007e53d45b4f01de00b9b7e451d",
+    "jobs": 1311
+  }
+]

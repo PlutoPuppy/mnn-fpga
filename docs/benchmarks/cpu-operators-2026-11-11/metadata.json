@@ -1,0 +1,62 @@
+{
+  "catalog_sha256": "09b665c6e54f511bc3d3f9105c01b853e6488cf646d613c77d9b03cd1b6258d7",
+  "fresh_process_per_inference": true,
+  "threads": 2,
+  "process_timer": "complete subprocess wall time including profile JSON serialization after inference",
+  "source_metadata": {
+    "board_wall_clock_may_be_incorrect": true,
+    "runner_sha256": "f63e46066913df315fc7fe4c1fabf7b079b8b0e24e9047a18d9924c468321fbd",
+    "fresh_process_per_inference": true,
+    "model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "compute_timer": "host start-to-done wall time includes MMIO polling and scheduling; no fabric cycle counter",
+    "actual_experiment_date": "2026-11-11",
+    "image_distribution": "independent uniform uint8 RGB 0..255, 224x224",
+    "mean": "0.485,0.456,0.406",
+    "operation": "/layers.1/blocks.0/attn/MatMul_output_0",
+    "platform": "Linux-4.5.0-00183-g4647b69-dirty-armv7l-with-Ubuntu-16.04-xenial",
+    "seed_base": 2026111100,
+    "threads": 2,
+    "operand_shapes": [
+      [
+        16,
+        4,
+        49,
+        32
+      ],
+      [
+        16,
+        4,
+        32,
+        49
+      ]
+    ],
+    "std": "0.229,0.224,0.225",
+    "modes": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ],
+    "programmed_bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+    "inputs": 20,
+    "cpu_state_before": {},
+    "cpu_state_after": {},
+    "warmup_inferences": 4,
+    "fpga_clock_mhz": 90,
+    "order": "four cyclic rotations, balanced positions for 20 inputs",
+    "session_warmup": 0
+  },
+  "actual_experiment_date": "2026-11-11",
+  "runner_sha256": "f538aa09fdb9c8e53c103d64a49524cbfe0a5ec894473c97cf319f44241861bf",
+  "model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+  "session_warmup": 0,
+  "operator_timer": "CPU synchronous before/after callback wall interval; descriptor capture excluded from op intervals",
+  "execution": "CPU only, all FPGA environment variables removed, no selected operation",
+  "cpu_state_before": {},
+  "cpu_state_after": {},
+  "warmup_inferences": 2,
+  "source_results": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "inputs": 20,
+  "operator_count": 339,
+  "order": "alternating CPU control/profile, balanced 10/10 for 20 inputs"
+}

@@ -1,0 +1,26 @@
+{
+  "images": 20,
+  "top1_agreement": 20,
+  "mean_cosine": 0.9976682726517268,
+  "fp32_correct": 16,
+  "corrected_correct": 16,
+  "fp32_mean_ms": 1163.676,
+  "corrected_mean_ms": 1098.4560000000001,
+  "fp32_median_ms": 1161.64,
+  "corrected_median_ms": 1082.585,
+  "fp32_sd_ms": 9.896001531719222,
+  "corrected_sd_ms": 43.40286970866523,
+  "paired_difference_ms": -65.22,
+  "paired_difference_ci95_ms": [
+    -81.84604999999999,
+    -44.27712500000011
+  ],
+  "latency_reduction_percent": 5.604652841512569,
+  "speedup_ratio": 1.059374248945793,
+  "corrected_faster_pairs": 18,
+  "fp32_process_mean_ms": 2261.139492499933,
+  "corrected_process_mean_ms": 1911.1890880001738,
+  "cpu_frequency_khz_before": null,
+  "cpu_frequency_khz_after": null,
+  "fpga_enabled": false
+}

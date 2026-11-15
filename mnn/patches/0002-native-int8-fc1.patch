@@ -1,0 +1,85 @@
+diff --git a/source/backend/cpu/CPUBackend.cpp b/source/backend/cpu/CPUBackend.cpp
+index f6db9c4..19158dc 100644
+--- a/source/backend/cpu/CPUBackend.cpp
++++ b/source/backend/cpu/CPUBackend.cpp
+@@ -7,6 +7,9 @@
+ //
+ 
+ #include "backend/cpu/CPUBackend.hpp"
++#ifdef MNN_FPGA_ENABLED
++#include "fpga_bridge.hpp"
++#endif
+ #include <cmath>
+ #include <mutex>
+ #include <unordered_map>
+@@ -48,7 +51,13 @@ void registerCPUOps();
+ ErrorCode CastWrapExecution::onExecute(const std::vector<Tensor*>& inputs, const std::vector<Tensor*>& outputs) {
+     auto convertType = mRunType == DataType_DT_INT8 ? CPUCastCreator::FlOAT_TO_INT8 : CPUCastCreator::INT8_TO_FlOAT;
+     auto cpuBackend = ((CPUBackend*)backend());
++#ifdef MNN_FPGA_ENABLED
++    const auto castStart = mnn_fpga_cast_profile_start();
++#endif
+     CPUCastCreator::cast(inputs[0], outputs[0], cpuBackend, convertType);
++#ifdef MNN_FPGA_ENABLED
++    mnn_fpga_cast_profile_end(castStart, mRunType == DataType_DT_INT8, inputs[0]->elementSize());
++#endif
+     return NO_ERROR;
+ }
+ void CPUBackend::computeDivideSizes(int size, int* dst, float avgDiv, int threads) const {
+diff --git a/source/backend/cpu/compute/ConvInt8TiledExecutor.cpp b/source/backend/cpu/compute/ConvInt8TiledExecutor.cpp
+index 2c93651..fa27658 100644
+--- a/source/backend/cpu/compute/ConvInt8TiledExecutor.cpp
++++ b/source/backend/cpu/compute/ConvInt8TiledExecutor.cpp
+@@ -6,6 +6,9 @@
+ //
+ 
+ #include "ConvInt8TiledExecutor.hpp"
++#ifdef MNN_FPGA_ENABLED
++#include "fpga_bridge.hpp"
++#endif
+ #include "ConvolutionTiledExecutor.hpp"
+ #include "core/Macro.h"
+ #include "core/BufferAllocator.hpp"
+@@ -2207,6 +2210,42 @@ static void _onlineReorderWeightKernelSumH8ToH32(float* dst, float* src, int blo
+ 
+ ErrorCode DenseConvInt8TiledExecutor::onExecute(const std::vector<Tensor*>& inputs,
+                                                 const std::vector<Tensor*>& outputs) {
++#ifdef MNN_FPGA_ENABLED
++    // Accept both framework-cast tensors and explicitly typed INT8 tensors.
++    // Both require one-byte signed INT8 storage and calibrated quant metadata.
++    const auto traceIn = TensorUtils::getDescribe(inputs[0]);
++    const auto traceOut = TensorUtils::getDescribe(outputs[0]);
++    MnnFpgaInt8Trace trace(inputs[0]->host<int8_t>(), outputs[0]->host<int8_t>(),
++        inputs[0]->batch(), inputs[0]->channel(), outputs[0]->channel(),
++        static_cast<CPUBackend*>(backend())->functions()->pack == 4 &&
++        (traceIn->applyQuant || inputs[0]->getType() == halide_type_of<int8_t>()) &&
++        (traceOut->applyQuant || outputs[0]->getType() == halide_type_of<int8_t>()) &&
++        traceIn->dimensionFormat == MNN_DATA_FORMAT_NC4HW4 && traceOut->dimensionFormat == MNN_DATA_FORMAT_NC4HW4 &&
++        CPUBackend::getBytes(backend(), inputs[0]) == 1 && CPUBackend::getBytes(backend(), outputs[0]) == 1 &&
++        inputs[0]->height() == 1 && inputs[0]->width() == 1 && outputs[0]->height() == 1 && outputs[0]->width() == 1);
++    if (mnn_fpga_linear_int8_active()) {
++        const auto input = inputs[0];
++        const auto output = outputs[0];
++        const auto inDesc = TensorUtils::getDescribe(input);
++        const auto outDesc = TensorUtils::getDescribe(output);
++        const auto cpu = static_cast<CPUBackend*>(backend());
++        if (inputs.size() != 1 || outputs.size() != 1 || cpu->functions()->pack != 4 ||
++            CPUBackend::getBytes(backend(), input) != 1 || CPUBackend::getBytes(backend(), output) != 1 ||
++            inDesc->dimensionFormat != MNN_DATA_FORMAT_NC4HW4 || outDesc->dimensionFormat != MNN_DATA_FORMAT_NC4HW4 ||
++            (!inDesc->applyQuant && input->getType() != halide_type_of<int8_t>()) ||
++            (!outDesc->applyQuant && output->getType() != halide_type_of<int8_t>()) ||
++            !inDesc->quantAttr || !outDesc->quantAttr ||
++            inDesc->quantAttr->type != DataType_DT_INT8 || outDesc->quantAttr->type != DataType_DT_INT8 ||
++            input->height() != 1 || input->width() != 1 || output->height() != 1 || output->width() != 1) {
++            MNN_ERROR("Native fc1 FPGA hook requires real INT8 NC4HW4, pack4, H=W=1\n");
++            return INVALID_VALUE;
++        }
++        const int done = mnn_fpga_try_linear_int8(input->host<int8_t>(), output->host<int8_t>(),
++            input->batch(), input->channel(), output->channel(), inDesc->quantAttr->scale,
++            outDesc->quantAttr->scale, inDesc->quantAttr->zero, outDesc->quantAttr->zero);
++        return done == 1 ? NO_ERROR : INVALID_VALUE;
++    }
++#endif
+     if (mResourceInt8->mWeightQuantInfoMode && !mResourceInt8->mCompactReady.load(std::memory_order_acquire)) {
+         return INVALID_VALUE;
+     }

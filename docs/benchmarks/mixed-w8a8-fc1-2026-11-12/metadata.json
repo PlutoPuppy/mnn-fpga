@@ -1,0 +1,116 @@
+{
+  "threads": 2,
+  "inference_timer": "runSession; excludes model/session load, weight decode/transpose/plan setup, preprocessing and output save",
+  "warmup_inferences": 10,
+  "operator_details": true,
+  "inputs": 20,
+  "modes": [
+    "fp32_control",
+    "full_cpu_control",
+    "full_fpga_control",
+    "hybrid_cpu_control",
+    "hybrid_fpga_control",
+    "fp32_profile",
+    "full_cpu_profile",
+    "full_fpga_profile",
+    "hybrid_cpu_profile",
+    "hybrid_fpga_profile"
+  ],
+  "fpga_clock_mhz": 90,
+  "N": 512,
+  "board_wall_clock_may_be_incorrect": true,
+  "source_metadata": {
+    "threads": 2,
+    "platform": "Linux-4.5.0-00183-g4647b69-dirty-armv7l-with-Ubuntu-16.04-xenial",
+    "model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "warmup_inferences": 4,
+    "inputs": 20,
+    "modes": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ],
+    "fpga_clock_mhz": 90,
+    "board_wall_clock_may_be_incorrect": true,
+    "cpu_state_before": {},
+    "operand_shapes": [
+      [
+        16,
+        4,
+        49,
+        32
+      ],
+      [
+        16,
+        4,
+        32,
+        49
+      ]
+    ],
+    "compute_timer": "host start-to-done wall time includes MMIO polling and scheduling; no fabric cycle counter",
+    "fresh_process_per_inference": true,
+    "seed_base": 2026111100,
+    "order": "four cyclic rotations, balanced positions for 20 inputs",
+    "cpu_state_after": {},
+    "mean": "0.485,0.456,0.406",
+    "std": "0.229,0.224,0.225",
+    "runner_sha256": "f63e46066913df315fc7fe4c1fabf7b079b8b0e24e9047a18d9924c468321fbd",
+    "session_warmup": 0,
+    "operation": "/layers.1/blocks.0/attn/MatMul_output_0",
+    "image_distribution": "independent uniform uint8 RGB 0..255, 224x224",
+    "programmed_bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+    "actual_experiment_date": "2026-11-11"
+  },
+  "hybrid_quantization": "Only selected fc1 and its two activation quantization records copied from calibrated model; other operators retain FP32 parameters",
+  "fresh_process_per_inference": true,
+  "measured_inferences": 200,
+  "full_quantization": "Corrected mixed precision:37 W8A8 convolutions,31 FP32 convolutions;37 explicit quantize/dequantize pairs; non-convolution arithmetic FP32",
+  "replacement": "INT8 convolution executor hook after MNN runtime casts; one selected fc1 only",
+  "K": 128,
+  "cpu_state_after": {},
+  "cpu_state_before": {},
+  "compute_timer": "Host FPGA start-to-done includes polling; no hardware cycle counter",
+  "runner_sha256": "79f1bf12509594bc65741d78d6b23dfbe4aa9cc987fd45d1615df58ad9419e0b",
+  "M": 784,
+  "models": {
+    "hybrid_cpu": {
+      "bytes": 26399956,
+      "file": "tiny-vit-fc1-w8a8.mnn",
+      "sha256": "5da72376879416206ccf736fb0c75545c83d721dec3a5e8d0fb789eccddaaa27"
+    },
+    "hybrid_fpga": {
+      "bytes": 26399956,
+      "file": "tiny-vit-fc1-w8a8.mnn",
+      "sha256": "5da72376879416206ccf736fb0c75545c83d721dec3a5e8d0fb789eccddaaa27"
+    },
+    "full_fpga": {
+      "bytes": 18748848,
+      "file": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+    },
+    "full_cpu": {
+      "bytes": 18748848,
+      "file": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+    },
+    "fp32": {
+      "bytes": 26602144,
+      "file": "tiny-vit.mnn",
+      "sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+    }
+  },
+  "session_warmup": 0,
+  "source_results": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "operation": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+  "families": [
+    "fp32",
+    "full_cpu",
+    "full_fpga",
+    "hybrid_cpu",
+    "hybrid_fpga"
+  ],
+  "order": "Ten cyclic Williams rows paired with reversals; 20 images balance pair precedence10/10 and each mode position2/20",
+  "programmed_bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+  "actual_experiment_date": "2026-11-12"
+}

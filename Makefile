@@ -6,11 +6,23 @@ VERILATOR ?= verilator
 BUILD_DIR ?= build/native
 RTL = rtl/systolic_pe.sv rtl/systolic_array.sv rtl/systolic_mmio.sv
 .PHONY: all sim lint clean test
-test: $(BUILD_DIR)/tiling_test
+test: $(BUILD_DIR)/tiling_test $(BUILD_DIR)/int8_requant_test $(BUILD_DIR)/native_int8_test $(BUILD_DIR)/nc4_dma_test
 	./$(BUILD_DIR)/tiling_test
-$(BUILD_DIR)/tiling_test: sw/tests/tiling_test.cpp sw/src/fpga_gemm.cpp sw/src/matmul_soc.cpp sw/include/fpga_gemm.hpp sw/include/matmul_soc.hpp
+	./$(BUILD_DIR)/int8_requant_test
+	./$(BUILD_DIR)/native_int8_test
+	./$(BUILD_DIR)/nc4_dma_test
+$(BUILD_DIR)/nc4_dma_test: sw/tests/nc4_dma_test.cpp sw/include/nc4_dma.hpp
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) sw/tests/tiling_test.cpp sw/src/fpga_gemm.cpp sw/src/matmul_soc.cpp -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $< -o $@
+$(BUILD_DIR)/native_int8_test: sw/tests/native_int8_test.cpp sw/src/matmul_soc.cpp sw/src/matmul_soc_native.cpp
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+$(BUILD_DIR)/tiling_test: sw/tests/tiling_test.cpp sw/src/fpga_gemm.cpp sw/src/matmul_soc.cpp sw/src/matmul_soc_native.cpp sw/include/fpga_gemm.hpp sw/include/matmul_soc.hpp sw/include/int8_requant.hpp sw/include/matmul_soc_profile.hpp
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) sw/tests/tiling_test.cpp sw/src/fpga_gemm.cpp sw/src/matmul_soc.cpp sw/src/matmul_soc_native.cpp -o $@
+$(BUILD_DIR)/int8_requant_test: sw/tests/int8_requant_test.cpp sw/include/int8_requant.hpp
+	mkdir -p $(BUILD_DIR)
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) sw/tests/int8_requant_test.cpp -o $@
 all: $(BUILD_DIR)/gemm_smoke_test
 $(BUILD_DIR)/socfpga_bridge_control: sw/src/socfpga_bridge_control.c
 	mkdir -p $(BUILD_DIR)

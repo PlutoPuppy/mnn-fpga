@@ -1,0 +1,897 @@
+{
+  "source": "https://s3.amazonaws.com/fast-ai-imageclas/imagenette2-160.tgz",
+  "archive_sha256": "64d0c4859f35a461889e0147755a999a48b49bf38a7e0f9bd27003f10db02fe5",
+  "selection_seed": 20261112,
+  "limitation": "Imagenette has only 10 ImageNet classes; preliminary calibration, not full ImageNet accuracy validation",
+  "resize": "RGB, PIL bilinear direct224x224; no crop",
+  "images": [
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_14506.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-00.png",
+      "sha256": "3e119bdd6611725de1dfe0cd48945376ce0ea54925037315d0f9e560605871ba"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_12446.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-01.png",
+      "sha256": "074ce2ecc55b9a30008d549dccf24925b672f989f26a2153a70fe657a306a640"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_6497.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-02.png",
+      "sha256": "46185af0024be73980a9871536fc1cf47262351f630626a0fb82dd3f457d8035"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/ILSVRC2012_val_00017699.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-03.png",
+      "sha256": "418bd9c3ca99e34890dd750a8df89dcd11bb387126eb476534403e9923bb0c9d"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_14027.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-04.png",
+      "sha256": "b7c84cb6918d5bbb140f1045961db299c6caa333a2465593e13abf2624497736"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_13059.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-05.png",
+      "sha256": "5c6616a4aedb1c72499ab388a04077ab557a683e2b16bfdd6b96afba78716a5e"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_2684.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-06.png",
+      "sha256": "ea3e703fb63307137033ef43fb3ee96efa53b021901319d5ed9fa72188ac5f8a"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_9135.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-07.png",
+      "sha256": "9d10c43eaa7a27e2d0725c38417d77e9d27d76603784833462f8590ebbef610f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_10373.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-08.png",
+      "sha256": "66d516993ab777f5e6c0f3144dd1e6c60f25d0ac28f7515649cdaceaba164eb4"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_5163.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-09.png",
+      "sha256": "4e1f9ef5cd4df8bb9faa41da7ece5abad60e7c59f7e81db6dbc54ed8d3d39fd1"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_4737.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-10.png",
+      "sha256": "b21f3b372dd178cea093d64c1c03974548314c150a42a218d3c869643e6a8bc4"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_13806.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-11.png",
+      "sha256": "f1d946eaa7d17eb504a7f8286b0177b082a812d1f4fdfc70d7b96127d3acf3e9"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n01440764/n01440764_19403.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n01440764-12.png",
+      "sha256": "90a215aa506a0f1761016d75ae7073b4302e3886e05653daaf94dc3458297f01"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n01440764/n01440764_21161.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n01440764-00.png",
+      "sha256": "baac4959e15829c3ddc83cb39d9805e99a70f0e27485e5d3d294a176a61a7d2c"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n01440764/n01440764_4942.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n01440764-01.png",
+      "sha256": "88b9b7e917a51e98d8e0c17e2b2375199b506dc2b0a5ee133ce5e1b5f0dc0bf3"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_7554.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-00.png",
+      "sha256": "c3fb61371a903ecd7760e66634ba5934fe6abb320205d0df3fa75e9268820d9f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_4103.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-01.png",
+      "sha256": "1f178e251e9e850be27a5760d22a188ddf8852d935b5acdb116ba3889c112e83"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_5389.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-02.png",
+      "sha256": "e97c2375eb28bc7a99f4e686dde26e0d34c38736cf70b712879ef059743df529"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_3065.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-03.png",
+      "sha256": "d2839150eb53348cdd9dbb0c88af4fdef624d858eebed26d6fdd0a9bf1ece7fb"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_2035.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-04.png",
+      "sha256": "01033491d3daa830dbff6d42a392a454ba6375a66469c73497e35aacf5c38f83"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_1106.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-05.png",
+      "sha256": "b4a91b1b95577c30710de43676986dac515fd33f246d023802d5433847edf584"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_1036.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-06.png",
+      "sha256": "5732197fdfa8da011391c5bada6f8f182743e93acce286660fabfebfb5064afc"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_895.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-07.png",
+      "sha256": "1d046ba677f9b68625ddaaab2c630068a8ff578260e1217081b5c2936aa3e790"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_1033.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-08.png",
+      "sha256": "f108dab9531bfb4c8a3612c633c271a754becc9b4df04fe3cea72ee9f6a255d1"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_3183.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-09.png",
+      "sha256": "ca3ef94eec08bfd69e479dc0b98c2c68150484ac580febe2fdfc58c4bb269ccb"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_5163.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-10.png",
+      "sha256": "707158add930d5482a3b131c2a1350e36a5901605cff9524be7a5ae536aab960"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_3867.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-11.png",
+      "sha256": "405a955f5644e777d4e0b01c4e65bbbdf4ed29a18695003a3808c19faccdf600"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02102040/n02102040_4434.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02102040-12.png",
+      "sha256": "1b0996ad521d03b6bb9c22aac8f0bc51b288ecb8c6a2b9ba00f7475dc581ef84"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n02102040/n02102040_981.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n02102040-00.png",
+      "sha256": "91cd47e559ee32f5039bad44de0f0e52c533abbb11cd881e1eb309bc5d100b31"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n02102040/n02102040_702.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n02102040-01.png",
+      "sha256": "a340e2b5728010e1d903a3c5c3afa3ffbc386f8fb8cf7b4d5c5c6f3a22228a6d"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_603.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-00.png",
+      "sha256": "ae93685dc898665ecb18e7324634079515cf33ae04acd9a3aee1a45ba2b07ffd"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_14304.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-01.png",
+      "sha256": "9d4efeb8083aa91e2e3f70d70aaa4b5f010f4db399ac073cd5c6d5c16c8c430d"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_587.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-02.png",
+      "sha256": "bd207a4ac64cbebaf7eff6d13237721cfcf523636466111432c9dc291e0c7971"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_10024.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-03.png",
+      "sha256": "89b0d331917d57abc05a2e987f83316f0d50c704b70fda06903f98f91fa3f7ce"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_19034.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-04.png",
+      "sha256": "c44ea6a218a018bd68974b2c5263dab736099b08fb6a31314aa592eb13a261b7"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_26283.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-05.png",
+      "sha256": "c983dad7324a87553c59a1c85a7a8c189d41b4eaaaa9368b4f7c941fdd9871a2"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_14709.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-06.png",
+      "sha256": "bd890fdf77e834dfea683b8099496afd3afe346b709380cbde38363bf0530c7a"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_13407.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-07.png",
+      "sha256": "2d4b4adff388a6a40cc25badbe4ff802a1dab0132a77fa84d5ae3dbe41c530dd"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_2147.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-08.png",
+      "sha256": "f1f5b34cb105ddc8ee4bf74a45439a0282a5436d3fecfff5a88618e771240068"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_7103.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-09.png",
+      "sha256": "04be222c09f812ff8cd87daaf46fdac64e7b01b0657f9245bf8ef610f522c6bc"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_14498.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-10.png",
+      "sha256": "ddcea03f90a9fe9775e15d75fdee889832b92f6bd9f874f0caa1385d1a9785fb"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_336.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-11.png",
+      "sha256": "4fcd4a66a4cc40ee05e26e09a0f793f0dcb75f3ac03ca13407eb7abd05aa81df"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n02979186/n02979186_9076.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n02979186-12.png",
+      "sha256": "5bc73ab9ef24e5d5bf9014f3b058692a2e787c52f4c9257d56883dd4ac8ea84a"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n02979186/n02979186_11881.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n02979186-00.png",
+      "sha256": "fc352ec499e4e3e2f698d32a7f127fed07a4eb759287a03d2cc58fb83f18219d"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n02979186/n02979186_280.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n02979186-01.png",
+      "sha256": "67a86aefb4262906ceb2018f8502e607bddcb25d6cb68418d53aacaaf7ef8c9c"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_5084.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-00.png",
+      "sha256": "13feedb0c9a5b652a4a0ab3cb543772a3a09a372f15379035583970f78147e09"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_21935.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-01.png",
+      "sha256": "0c36cd500c574b421b81342b607fb9d8d7b640b10439d1b53886817141f3aaf6"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_1428.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-02.png",
+      "sha256": "c47001dcee2644ef48408a694813009803924a2fefb7801e92ad65dfb9be6931"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_16044.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-03.png",
+      "sha256": "530ca35a25b0edd9586d921b1da40d29fb8169c8167f223328972b5e1060e092"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_27609.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-04.png",
+      "sha256": "dea9fb6caa650c96308c444918fdb21966e34e49057ff5cab0c5f41ec545fba0"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_16405.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-05.png",
+      "sha256": "60dadfaaf1fa7b3362dd8651bedfc0b371b00eaf0765bbab163c8200cd570f32"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_10533.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-06.png",
+      "sha256": "0da93dc0a6c519086c7da308d5a9820cfbd055a7edb7a3bb13d998175b9505f4"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_11713.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-07.png",
+      "sha256": "9dcb60df66df9bda42c1cabee5a4e0562bbb27523b462b8311bb0bc0c767d6e3"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_8115.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-08.png",
+      "sha256": "40c682dffa474c26e76c45b9cf3ffb342ff9b94da256eca8a2a6ba27a5e24ca8"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_1229.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-09.png",
+      "sha256": "54c938bb903525b86974b021c73ecf6359847a6c4c42a39d3e192ab835fbab05"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_7179.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-10.png",
+      "sha256": "a3a4306b4aa056f1759d104194c95e1e86e152d179a2146951aac3f8109338c5"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_2144.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-11.png",
+      "sha256": "0611ab7285a6a3cd761f04145493ebde60f11eddbc9865cbaf024b9947d5d5d0"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03000684/n03000684_21569.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03000684-12.png",
+      "sha256": "a629fc179fccbc3df232c3f2b29fa43006daeba3510e512a517da3744193e0f1"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03000684/n03000684_6460.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03000684-00.png",
+      "sha256": "40fc9de8e497165836d719b3b3a2d079b0b7909f639b286e67235e17d2962367"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03000684/n03000684_30141.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03000684-01.png",
+      "sha256": "10656229014c1f04f8fc142a6f80a380efe79b544c5d7c62ab01b2d9be3ff75a"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_6645.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-00.png",
+      "sha256": "f4590a4c03eb193a0c25bac01ead2db92e98bb4587d24fbeafd8a90acbb336c5"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_198.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-01.png",
+      "sha256": "5314bfb9207a6173bb95974b399e05639c6a3ce5a7b6ce7ffe1a011a64788330"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_20114.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-02.png",
+      "sha256": "b4fcf592c185d25d12cbce54621de379df257e3567264ecc8b110622bec5fa7c"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_10138.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-03.png",
+      "sha256": "ec8b623b8dafd66d501758133c86b1a670120b866f48faab395b6760151b9cb2"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_17008.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-04.png",
+      "sha256": "6d1cc32325ffa3f10a063eb037b3645192dbcd53733c8db1649ad666f90d5bd6"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_1309.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-05.png",
+      "sha256": "ce9e5b0f03bb48c482114ea60028097f07f06f4c66148a28271ce4b0b619f33e"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/ILSVRC2012_val_00042207.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-06.png",
+      "sha256": "e5ace95d6aaa888c4e6470ed6fab8c227e37e34143aa3433660a5bada35ae9b4"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_11949.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-07.png",
+      "sha256": "023a2cfa508923aa4d81b52e576166c41406f467951736f72cfc396cc203f989"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_10576.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-08.png",
+      "sha256": "532ed6489d4aeb39508a692d2408db6ca3e797f75c27ebae966e23a8dd63e54c"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_12109.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-09.png",
+      "sha256": "f6f178fbbadc27a18778e7449a9fd89422022e969c282de9f2021b8f35621514"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_4656.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-10.png",
+      "sha256": "3358826924678c8aaea5cab05808402d8e0258ba30584c35b64e5d752ec1a04f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_41135.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-11.png",
+      "sha256": "fb1aa7396d4cc258e342952dadafa2227843d6bc95313f06d52782500ba63528"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03028079/n03028079_37635.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03028079-12.png",
+      "sha256": "16d4c82b4910be63da53736b0fb14e5f688826ff2d0d3093735c5829b4e48df6"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03028079/n03028079_10590.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03028079-00.png",
+      "sha256": "d74344476c4d7a84d57888d3dd2787f8c3a999a57ed9bd8ca65e04dc8ba24409"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03028079/n03028079_10410.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03028079-01.png",
+      "sha256": "0c3d2c4cb56155eaded778ec6ea98a6a2bb8f5c082566d73ba110b16233dac57"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_34078.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-00.png",
+      "sha256": "c20cd25dbb2dfee44f63b9f45b4c192f2e0fa859191a14729ac9d60e8c223538"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_31534.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-01.png",
+      "sha256": "8fbed025a6d173fcea2a51afa63f9a4993a7ce5ae4dd2a5b8292e26acdc085ea"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_46945.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-02.png",
+      "sha256": "9f394aa4e81673bfc48ee682a2d78885cfe886f7d440a0b943d109006f2fb7e3"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_27838.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-03.png",
+      "sha256": "c53a5a6f3334e89db63b2a43e482f9b5140d2227d48a86b13beddadbd4d9d8f5"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_21984.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-04.png",
+      "sha256": "98c84eae758e6120606442702c0976f24ac5538bfdcfd9cf0e55dad87421968b"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_60955.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-05.png",
+      "sha256": "a071c0608b3a3bb0c27887ad4bc03b7f0d77421ffd4d28107bc9f710f84cce3c"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_30404.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-06.png",
+      "sha256": "cb0eaccef09970dc350895d688046560aa5e9f3134d89636d1184fb94336fb41"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_1919.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-07.png",
+      "sha256": "dc66425f059baa62aaa7942ddc0bf52bfe3b653c06a88faf1df5c02c0321ecea"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_26583.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-08.png",
+      "sha256": "12c4d27cbff20361d1e5ee5300a06a32eb944c8db0d731637ad8fad5f57d5706"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_36667.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-09.png",
+      "sha256": "60aa471b19eb5f41677e0cbd9802ec0a7985fbb4799679e32ddfb4fc6bf1fbd1"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_28795.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-10.png",
+      "sha256": "f758f0c69d6a9eb82bef9caeaf0b8d7cac3c80f180cfa4e08bdbb8d2c2b1c506"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/ILSVRC2012_val_00024837.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-11.png",
+      "sha256": "7a7fae5e70d6de74279fff80c2be54df10a9f98f9cf5992f6b94f7dcb325caea"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03394916/n03394916_36369.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03394916-12.png",
+      "sha256": "7474869cabffed97bd4372eb1d93ee6e2c9ccd7077d09176735bc2b4c1276c4c"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03394916/n03394916_43382.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03394916-00.png",
+      "sha256": "e779da3f42a97874b6319bcc7b597e7a10ad8fd53301c9fb9f4d3a170b4ed406"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03394916/n03394916_37161.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03394916-01.png",
+      "sha256": "1e12eada5f189ca4dfe26cd1159f4bfae09e2b75b69d7909865a0a6b9460b2b9"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_22709.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-00.png",
+      "sha256": "dc5da5e2c2d98ee09fc4db830da622ef9594ec3c81d8d5a0eb2543c30c8addf5"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_19355.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-01.png",
+      "sha256": "4e9b121d7f2767fc6bb7e7cd1f9d28126149181b0b6ef4e0ff3a104a04543dbe"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_877.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-02.png",
+      "sha256": "b635acbb42f820df09d902730158bccc6f6fb4946ecc8ee41bf7c6bb7b7db9ee"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/ILSVRC2012_val_00025416.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-03.png",
+      "sha256": "735908cd85e84d808db3b1b2866b83cb10dd5402ddbe943be7c1477d9ff9babf"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/ILSVRC2012_val_00013925.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-04.png",
+      "sha256": "936ba1fd7031720a3ad95112e25d4cb30ad74bd67368b1cad8efc2b063ae526a"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_5905.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-05.png",
+      "sha256": "b3b16eded75a3bd0db560280e03e9415baa7c4e5b17e22629e8ba596f8b48738"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_1718.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-06.png",
+      "sha256": "5dc277d5a8e0a9961152a2078aa76f62b4e2eec50ada7682cb51bf72b13a0b19"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_3845.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-07.png",
+      "sha256": "697e4568ace430b8a684ba206a7f8a07d6250395f2f8cac499a79b9da49c7b62"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_23888.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-08.png",
+      "sha256": "5d2bc37f26ab3e6798b0f86f56983a1ca4cceb9790fd36dca85be1c6dc74db74"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_1875.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-09.png",
+      "sha256": "8d6a2b74abbe926ee31042731b68d20cb30a3985d150198962120ba3d1a5ff1f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_27613.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-10.png",
+      "sha256": "a48b5d72036c86b715947b9ce838cb43229cc16d2bb9b5124cf196b4b23a18c0"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_19277.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-11.png",
+      "sha256": "1b22585c0c8700c4ce885c251d5dd0a7533b7c8df351404b721b05fa2f3178cc"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03417042/n03417042_27497.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03417042-12.png",
+      "sha256": "590add19d7d64b435709db6e4dad03da0674fe2a024e6a86170a83afb6618c7c"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03417042/n03417042_8891.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03417042-00.png",
+      "sha256": "e186a0b60206168c53dbc40c5a858e62996af6ca603037020bad20efad0353be"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03417042/n03417042_17862.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03417042-01.png",
+      "sha256": "b1b03f160e3e847483b4f9ec6b4b64a9844e2108b51d78eca33c67d9f821aa75"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_21045.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-00.png",
+      "sha256": "61cb3acf02e49d25415f6c671cdccfe6e7321e898a8abdd696434e5a760de448"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_7175.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-01.png",
+      "sha256": "bed35c09d6ce5df69f148d00a6fd573e0d11dcb326e9c78b9e5384a5bcada4c2"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_28064.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-02.png",
+      "sha256": "41a787cf59cbbe7cc0197ae22f4b2bf59ba5e617f60e634b9bd90b34c9a5188e"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_1255.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-03.png",
+      "sha256": "496b6f5d58475681261c36e1ba360889b53346bd21663cf9b772f7d5bfed0616"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_18918.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-04.png",
+      "sha256": "147522937fd0f30b23aafa0d6b16df435570066741e310a2fdddefde724eea61"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/ILSVRC2012_val_00040715.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-05.png",
+      "sha256": "f61ff14f6390fb5dbe318602867acdbe2fd4ddb399b8f95e51953fdbb05d7e44"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_18268.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-06.png",
+      "sha256": "d4bc4c263e6e15245e8c3c014cf2f906c2bec4f7f670117246b94f2630925ceb"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_24884.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-07.png",
+      "sha256": "0023f88d00d136ac89b916a4c0e103ac0df5ed5540b1584ae86fd94026993be8"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_13609.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-08.png",
+      "sha256": "9d88aae47d854effc25799f72e16693b1fa529f17552af979cd2b2e67d6032a5"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_5343.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-09.png",
+      "sha256": "488ddc2cd6d3e38dce8effb287e8d4984430c07a080dac4779e9b976aca8293f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_10387.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-10.png",
+      "sha256": "a0644d56ee683ed9714aa910e2935a00651d312dc66a365ae61237a1856a769b"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_14983.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-11.png",
+      "sha256": "30e21951c51e5d412ed03a7b054277bdb3785adfa1980b576ebb80d907f1b20f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03425413/n03425413_20423.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03425413-12.png",
+      "sha256": "15cd022a89c5decfece40f8f29040a005fae510716f06057c8fb9927721e74a9"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03425413/n03425413_20691.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03425413-00.png",
+      "sha256": "a8baae0750e332fb2ba349c4234f60186ebccb9e656f926a737cf84eabff3316"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03425413/n03425413_25410.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03425413-01.png",
+      "sha256": "ab485101901359fd659e343d1a9949a28a574b2f6dfeb6eccf561d35d987af26"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_18613.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-00.png",
+      "sha256": "68bca8ef546538122f12e2389a481f79e0805f9b376e6fdedecc6b619acf574e"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_36.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-01.png",
+      "sha256": "b14306ea831c6c00023a0b9f6cf045527ea465acf5b4f12e21a6e077caf1d11a"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_8986.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-02.png",
+      "sha256": "13c5ef15aa3fca5abe4559c363a0b472ddb0ec65e4be44737b5cf50defa552ad"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_9793.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-03.png",
+      "sha256": "3dac3e2109c896669732274ebc4046d771e17f7d488cdaa0274619acc7c7dee1"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_5504.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-04.png",
+      "sha256": "1b4448d8f9228a02771b14686601c2854c841e393ce03d9a93a8963acba9abfa"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_13257.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-05.png",
+      "sha256": "64efe8a8b4971eacb759d2bdaa8bb869e3a68e6d4954df1fdfc5cd11c20d790b"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_2605.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-06.png",
+      "sha256": "09df259c502a4a29363080a6bf66172babd7d539628a3ef4cf68f3412adf1e6f"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_8343.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-07.png",
+      "sha256": "5f03f602895bb84f5295b98dfcc5b4f512c70a039bf9ea2e605f387bafa5e25b"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_14689.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-08.png",
+      "sha256": "3955034add87616286d6519874532acb3b8973ced36c9b842054f0beabb35435"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_7729.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-09.png",
+      "sha256": "37e524dfc1eb9e015d04f48c4b0c23fa85fb75c919b7d50d6f5ef46107ed0113"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_10425.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-10.png",
+      "sha256": "a0bb20dd52aa66df1af1143642ea16e2e217692cfe0462e1f6ea3db9c2c9a906"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03445777/n03445777_9438.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03445777-11.png",
+      "sha256": "c704d56d6397fb07fbbe7f8978450579e901e029e42f47d1e7be808ce6e3a516"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03445777/n03445777_7711.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03445777-00.png",
+      "sha256": "c27005fcddebfececfd4ce2e2c2e0c159cc3c1ec3b058a6edc5d855a9f28059b"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03445777/n03445777_850.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03445777-01.png",
+      "sha256": "3b459e740fb8d1d624f3b45f316f4273d3ee6960000b9fc073901f23065f3159"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_1553.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-00.png",
+      "sha256": "08fae410b3e28049571ae2aa2d3aeca8615c5df407f6fe31ebabbb7b4f411f3a"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_42848.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-01.png",
+      "sha256": "87744e7e75b0e0351f554a181c046589a6ac9264d4feb6fb020a5af33906ce92"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_7294.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-02.png",
+      "sha256": "3e526b6ed5e4c624d03146615182a0a4e95dab3e78eba97eb7edc49201530e92"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_1446.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-03.png",
+      "sha256": "7e120702ff0d73fdeb556d15376e3ea64a0bbebb6a4391074de9b7494215395b"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_11109.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-04.png",
+      "sha256": "e923b79e7f5832289523fae74acbbd8f6f536846871f2e42da2aa1e360e8e87c"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_18898.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-05.png",
+      "sha256": "01bfc8885601deca4ef5ef6b26c15d37277c0c03c408a6c69dce2850c56e62d9"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/ILSVRC2012_val_00047705.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-06.png",
+      "sha256": "0626c486d1a09fdce77f09f3dde72bea8728b06d1e1650f5c5b36f38d6a86157"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_14703.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-07.png",
+      "sha256": "1c36152106b206d6a233b481913e24b5fdc230666145ffb5473850b75ddb18d2"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_3013.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-08.png",
+      "sha256": "e9493fefe433b025045dc9f138f6be9db4de46f41a81a9c5cee3977500a7adbe"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_24644.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-09.png",
+      "sha256": "358c47398ebf711d2b48fb997bc71c333b797e46ef62f1d5f61a7a244c4a64a3"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_31296.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-10.png",
+      "sha256": "38ac9f315f3623d2a80fa9268590d7712615199ede59e6c97e9da4d25a130e57"
+    },
+    {
+      "split": "train",
+      "source": "imagenette2-160/train/n03888257/n03888257_8148.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128\\n03888257-11.png",
+      "sha256": "040d44cb85d1a0b7cdbaa912aa1d1a73fdee750005c9a908e23b6032c7a2106b"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03888257/n03888257_22211.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03888257-00.png",
+      "sha256": "91174cd254e07eab273a02730103952ba7b2176df6f79d8c78a221b68d3673ed"
+    },
+    {
+      "split": "val",
+      "source": "imagenette2-160/val/n03888257/n03888257_5551.JPEG",
+      "file": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\validation-real-20\\n03888257-01.png",
+      "sha256": "f750325a04bd939a9447e297fd75efe5f9093502cfcb3a9c051536163d5747f2"
+    }
+  ]
+}

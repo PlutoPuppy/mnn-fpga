@@ -1,0 +1,810 @@
+{
+  "fp32_profile": {
+    "process_ms": 4357.895449997159,
+    "exit_code": 0,
+    "fpga_jobs": 0,
+    "operator_details": {
+      "categories": {
+        "LayerNorm": {
+          "calls": 21,
+          "ms": 8.075759999999999
+        },
+        "While": {
+          "calls": 22,
+          "ms": 86.61971999999999
+        },
+        "Reduction": {
+          "calls": 1,
+          "ms": 0.14439
+        },
+        "UnaryOp": {
+          "calls": 23,
+          "ms": 124.42907000000001
+        },
+        "BinaryOp": {
+          "calls": 40,
+          "ms": 39.359899999999996
+        },
+        "Convolution": {
+          "calls": 53,
+          "ms": 722.1058600000002
+        },
+        "Raster": {
+          "calls": 154,
+          "ms": 115.42577999999997
+        },
+        "Softmax": {
+          "calls": 10,
+          "ms": 29.045319999999993
+        },
+        "ConvolutionDepthwise": {
+          "calls": 15,
+          "ms": 41.18518000000001
+        }
+      },
+      "fc1_explicit_dequantize_calls": 0,
+      "fc1_explicit_quantize_ms": 0,
+      "fc1_explicit_dequantize_ms": 0,
+      "outside_operator_ms": 9.68988,
+      "fc1_explicit_quantize_calls": 0,
+      "sum_operator_ms": 1166.39098
+    },
+    "profile": {
+      "preprocess_ms": 30.27931,
+      "selected_qk_calls": 1,
+      "selected_operation_name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "input_copy_ms": 4.90504,
+      "linear_replacements": 0,
+      "output_ms": 0.81682,
+      "offload": {
+        "tile_m": 0,
+        "cpu_interval_overflow": 0,
+        "ms": {
+          "input_dma_setup": 0,
+          "quantize": 0,
+          "input_layout": 0,
+          "output_convert": 0,
+          "completion_wait": 0,
+          "launch": 0,
+          "input_dma_wait": 0,
+          "workspace": 0,
+          "download": 0,
+          "scale_bound": 0,
+          "output_layout": 0,
+          "pack_pad": 0,
+          "output_dma_setup": 0,
+          "configure": 0,
+          "bridge_total": 0,
+          "output_dma_wait": 0,
+          "upload": 0,
+          "int8_accumulate": 0,
+          "adapter_total": 0,
+          "input_stage_copy": 0,
+          "layout_allocate": 0,
+          "tile_plan": 0,
+          "int8_requantize": 0,
+          "device_init": 0,
+          "output_stage_copy": 0,
+          "peak_scan": 0,
+          "dequantize": 0
+        },
+        "cpu_execute_calls": 0,
+        "framework_casts": {
+          "dequantize_calls": 0,
+          "selected_dequantize_ms": 0,
+          "quantize_ms": 0,
+          "quantize_calls": 0,
+          "dequantize_ms": 0,
+          "dequantized_values": 0,
+          "quantized_values": 0,
+          "selected_quantize_ms": 0
+        },
+        "cpu_kernel_union_ms": 0,
+        "output_descriptors": 0,
+        "cpu_execute_union_ms": 0,
+        "input_bytes": 0,
+        "tile_n": 0,
+        "tile_k": 0,
+        "input_descriptors": 0,
+        "cpu_execute_ms": 0,
+        "cpu_kernel_calls": 0,
+        "output_polls": 0,
+        "int8_vectorized_values": 0,
+        "cpu_kernel_thread_ms": 0,
+        "input_polls": 0,
+        "jobs": 0,
+        "compute_polls": 0,
+        "quantized_values": 0,
+        "output_bytes": 0
+      },
+      "selected_operation_ms": 28.5123,
+      "main_elapsed_ms": 2661.692,
+      "model_load_ms": 1309.83761,
+      "session_ms": 139.46671,
+      "selected_qk_ms": 28.5123,
+      "linear_setup_ms": 0,
+      "inference_ms": 1176.08086
+    },
+    "inference_ms": 1176.08,
+    "output_sha256": "2fc51cd25ca1cdad1599bd5d944497218e019dc48a59690287a990c1739ea9c0"
+  },
+  "full_cpu_profile": {
+    "process_ms": 3460.6557400002202,
+    "exit_code": 0,
+    "fpga_jobs": 0,
+    "operator_details": {
+      "categories": {
+        "LayerNorm": {
+          "calls": 21,
+          "ms": 7.688070000000001
+        },
+        "While": {
+          "calls": 22,
+          "ms": 87.08235999999998
+        },
+        "Reduction": {
+          "calls": 1,
+          "ms": 0.14867
+        },
+        "FloatToInt8": {
+          "calls": 37,
+          "ms": 21.202429999999996
+        },
+        "UnaryOp": {
+          "calls": 23,
+          "ms": 124.15025999999999
+        },
+        "BinaryOp": {
+          "calls": 40,
+          "ms": 39.24201
+        },
+        "Convolution": {
+          "calls": 53,
+          "ms": 608.9666899999997
+        },
+        "Int8ToFloat": {
+          "calls": 37,
+          "ms": 14.60794
+        },
+        "Raster": {
+          "calls": 154,
+          "ms": 116.41634000000005
+        },
+        "Softmax": {
+          "calls": 10,
+          "ms": 29.301780000000004
+        },
+        "ConvolutionDepthwise": {
+          "calls": 15,
+          "ms": 40.79945000000001
+        }
+      },
+      "fc1_explicit_dequantize_calls": 1,
+      "fc1_explicit_quantize_ms": 0.94866,
+      "fc1_explicit_dequantize_ms": 1.65484,
+      "outside_operator_ms": 10.77872,
+      "fc1_explicit_quantize_calls": 1,
+      "sum_operator_ms": 1089.606
+    },
+    "profile": {
+      "preprocess_ms": 34.71004,
+      "selected_qk_calls": 1,
+      "selected_operation_name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "input_copy_ms": 4.80562,
+      "linear_replacements": 0,
+      "output_ms": 0.79391,
+      "offload": {
+        "tile_m": 0,
+        "cpu_interval_overflow": 0,
+        "ms": {
+          "input_dma_setup": 0,
+          "quantize": 0,
+          "input_layout": 0,
+          "output_convert": 0,
+          "completion_wait": 0,
+          "launch": 0,
+          "input_dma_wait": 0,
+          "workspace": 0,
+          "download": 0,
+          "scale_bound": 0,
+          "output_layout": 0,
+          "pack_pad": 0,
+          "output_dma_setup": 0,
+          "configure": 0,
+          "bridge_total": 0,
+          "output_dma_wait": 0,
+          "upload": 0,
+          "int8_accumulate": 0,
+          "adapter_total": 0,
+          "input_stage_copy": 0,
+          "layout_allocate": 0,
+          "tile_plan": 0,
+          "int8_requantize": 0,
+          "device_init": 0,
+          "output_stage_copy": 0,
+          "peak_scan": 0,
+          "dequantize": 0
+        },
+        "cpu_execute_calls": 0,
+        "framework_casts": {
+          "dequantize_calls": 0,
+          "selected_dequantize_ms": 0,
+          "quantize_ms": 0,
+          "quantize_calls": 0,
+          "dequantize_ms": 0,
+          "dequantized_values": 0,
+          "quantized_values": 0,
+          "selected_quantize_ms": 0
+        },
+        "cpu_kernel_union_ms": 0,
+        "output_descriptors": 0,
+        "cpu_execute_union_ms": 0,
+        "input_bytes": 0,
+        "tile_n": 0,
+        "tile_k": 0,
+        "input_descriptors": 0,
+        "cpu_execute_ms": 0,
+        "cpu_kernel_calls": 0,
+        "output_polls": 0,
+        "int8_vectorized_values": 0,
+        "cpu_kernel_thread_ms": 0,
+        "input_polls": 0,
+        "jobs": 0,
+        "compute_polls": 0,
+        "quantized_values": 0,
+        "output_bytes": 0
+      },
+      "selected_operation_ms": 21.38805,
+      "main_elapsed_ms": 2267.8592,
+      "model_load_ms": 913.70963,
+      "session_ms": 213.15958,
+      "selected_qk_ms": 21.38805,
+      "linear_setup_ms": 0,
+      "inference_ms": 1100.38472
+    },
+    "inference_ms": 1100.38,
+    "output_sha256": "b7c76f8a8c8892fdb6467fffd4b133908d293a806f04f3e27997c0949cb4a783"
+  },
+  "full_fpga_control": {
+    "process_ms": 1536.3569399996777,
+    "exit_code": 0,
+    "fpga_jobs": 28,
+    "inference_ms": 1102.51,
+    "output_sha256": "657fd8b57a4bc92bd0f8716f138f918bc96b2fdef094a11cba38d75e4ad75419",
+    "linear_setup": {
+      "tile_m": 128,
+      "per_channel_weight_scales": 512,
+      "accumulated_values": 401408,
+      "weight_setup_ms": 2.1144,
+      "result_bytes": 401408,
+      "cost_proxy_ns": 39592672,
+      "operand_bytes": 860160,
+      "tile_k": 128,
+      "weight_peak_scan_ms": 0,
+      "plan_selection_ms": 0.98795,
+      "K": 128,
+      "policy": "capacity",
+      "output_scale": 0.070453748107,
+      "M": 784,
+      "operand_format": "native_w8a8",
+      "ready": true,
+      "weight_values": 65536,
+      "jobs": 28,
+      "weight_quantize_ms": 0,
+      "input_scale": 0.0252977013588,
+      "tile_n": 128,
+      "N": 512
+    }
+  },
+  "hybrid_cpu_control": {
+    "fpga_jobs": 0,
+    "inference_ms": 1162.23,
+    "output_sha256": "3cdc659d5ec91aa2afa67bc0d06ece3abcb1632435baf65e6c7ca0c72cac6f84",
+    "process_ms": 2662.5059500001953,
+    "exit_code": 0
+  },
+  "hybrid_cpu_profile": {
+    "process_ms": 4256.0299200013105,
+    "exit_code": 0,
+    "fpga_jobs": 0,
+    "operator_details": {
+      "categories": {
+        "LayerNorm": {
+          "calls": 21,
+          "ms": 7.58351
+        },
+        "While": {
+          "calls": 22,
+          "ms": 87.67871
+        },
+        "Reduction": {
+          "calls": 1,
+          "ms": 0.13564
+        },
+        "FloatToInt8": {
+          "calls": 1,
+          "ms": 1.76872
+        },
+        "UnaryOp": {
+          "calls": 23,
+          "ms": 125.24972000000001
+        },
+        "BinaryOp": {
+          "calls": 40,
+          "ms": 41.80300000000001
+        },
+        "Convolution": {
+          "calls": 53,
+          "ms": 715.7326400000002
+        },
+        "Int8ToFloat": {
+          "calls": 1,
+          "ms": 2.6273
+        },
+        "Raster": {
+          "calls": 154,
+          "ms": 115.88831000000002
+        },
+        "Softmax": {
+          "calls": 10,
+          "ms": 29.016180000000002
+        },
+        "ConvolutionDepthwise": {
+          "calls": 15,
+          "ms": 41.36772
+        }
+      },
+      "fc1_explicit_dequantize_calls": 0,
+      "fc1_explicit_quantize_ms": 0,
+      "fc1_explicit_dequantize_ms": 0,
+      "outside_operator_ms": 9.66133,
+      "fc1_explicit_quantize_calls": 0,
+      "sum_operator_ms": 1168.85145
+    },
+    "profile": {
+      "preprocess_ms": 30.04528,
+      "selected_qk_calls": 1,
+      "selected_operation_name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "input_copy_ms": 4.84097,
+      "linear_replacements": 0,
+      "output_ms": 0.85506,
+      "offload": {
+        "tile_m": 0,
+        "cpu_interval_overflow": 0,
+        "ms": {
+          "input_dma_setup": 0,
+          "quantize": 0,
+          "input_layout": 0,
+          "output_convert": 0,
+          "completion_wait": 0,
+          "launch": 0,
+          "input_dma_wait": 0,
+          "workspace": 0,
+          "download": 0,
+          "scale_bound": 0,
+          "output_layout": 0,
+          "pack_pad": 0,
+          "output_dma_setup": 0,
+          "configure": 0,
+          "bridge_total": 0,
+          "output_dma_wait": 0,
+          "upload": 0,
+          "int8_accumulate": 0,
+          "adapter_total": 0,
+          "input_stage_copy": 0,
+          "layout_allocate": 0,
+          "tile_plan": 0,
+          "int8_requantize": 0,
+          "device_init": 0,
+          "output_stage_copy": 0,
+          "peak_scan": 0,
+          "dequantize": 0
+        },
+        "cpu_execute_calls": 0,
+        "framework_casts": {
+          "dequantize_calls": 1,
+          "selected_dequantize_ms": 0,
+          "quantize_ms": 1.75913,
+          "quantize_calls": 1,
+          "dequantize_ms": 2.61779,
+          "dequantized_values": 401408,
+          "quantized_values": 100352,
+          "selected_quantize_ms": 0
+        },
+        "cpu_kernel_union_ms": 0,
+        "output_descriptors": 0,
+        "cpu_execute_union_ms": 0,
+        "input_bytes": 0,
+        "tile_n": 0,
+        "tile_k": 0,
+        "input_descriptors": 0,
+        "cpu_execute_ms": 0,
+        "cpu_kernel_calls": 0,
+        "output_polls": 0,
+        "int8_vectorized_values": 0,
+        "cpu_kernel_thread_ms": 0,
+        "input_polls": 0,
+        "jobs": 0,
+        "compute_polls": 0,
+        "quantized_values": 0,
+        "output_bytes": 0
+      },
+      "selected_operation_ms": 21.4547,
+      "main_elapsed_ms": 2694.07148,
+      "model_load_ms": 1271.24178,
+      "session_ms": 208.18729,
+      "selected_qk_ms": 21.4547,
+      "linear_setup_ms": 0,
+      "inference_ms": 1178.51278
+    },
+    "inference_ms": 1178.51,
+    "output_sha256": "3cdc659d5ec91aa2afa67bc0d06ece3abcb1632435baf65e6c7ca0c72cac6f84"
+  },
+  "fp32_control": {
+    "fpga_jobs": 0,
+    "inference_ms": 1198.33,
+    "output_sha256": "2fc51cd25ca1cdad1599bd5d944497218e019dc48a59690287a990c1739ea9c0",
+    "process_ms": 1984.3972500020755,
+    "exit_code": 0
+  },
+  "full_fpga_profile": {
+    "process_ms": 2881.2987799974508,
+    "exit_code": 0,
+    "fpga_jobs": 28,
+    "operator_details": {
+      "categories": {
+        "LayerNorm": {
+          "calls": 21,
+          "ms": 7.673890000000002
+        },
+        "While": {
+          "calls": 22,
+          "ms": 86.70257999999998
+        },
+        "Reduction": {
+          "calls": 1,
+          "ms": 0.1382
+        },
+        "FloatToInt8": {
+          "calls": 37,
+          "ms": 21.174409999999998
+        },
+        "UnaryOp": {
+          "calls": 23,
+          "ms": 124.78046999999998
+        },
+        "BinaryOp": {
+          "calls": 40,
+          "ms": 39.767369999999985
+        },
+        "Convolution": {
+          "calls": 53,
+          "ms": 629.9483799999999
+        },
+        "Int8ToFloat": {
+          "calls": 37,
+          "ms": 14.94318
+        },
+        "Raster": {
+          "calls": 154,
+          "ms": 117.05598000000005
+        },
+        "Softmax": {
+          "calls": 10,
+          "ms": 29.182930000000002
+        },
+        "ConvolutionDepthwise": {
+          "calls": 15,
+          "ms": 40.81214000000001
+        }
+      },
+      "fc1_explicit_dequantize_calls": 1,
+      "fc1_explicit_quantize_ms": 0.88091,
+      "fc1_explicit_dequantize_ms": 1.75779,
+      "outside_operator_ms": 10.8565,
+      "fc1_explicit_quantize_calls": 1,
+      "sum_operator_ms": 1112.17953
+    },
+    "profile": {
+      "preprocess_ms": 30.05094,
+      "selected_qk_calls": 1,
+      "selected_operation_name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "input_copy_ms": 4.85618,
+      "linear_replacements": 1,
+      "output_ms": 0.82668,
+      "offload": {
+        "tile_m": 128,
+        "cpu_interval_overflow": 0,
+        "ms": {
+          "input_dma_setup": 0.40002,
+          "quantize": 0,
+          "input_layout": 0.62014,
+          "output_convert": 0,
+          "completion_wait": 2.92307,
+          "launch": 0.04588,
+          "input_dma_wait": 5.4278,
+          "workspace": 0.54673,
+          "download": 5.09438,
+          "scale_bound": 4.78978,
+          "output_layout": 2.7279,
+          "pack_pad": 6.19487,
+          "output_dma_setup": 0.18703,
+          "configure": 0.09829,
+          "bridge_total": 39.13908,
+          "output_dma_wait": 0.62618,
+          "upload": 13.96797,
+          "int8_accumulate": 0,
+          "adapter_total": 38.64294,
+          "input_stage_copy": 7.90552,
+          "layout_allocate": 0.65326,
+          "tile_plan": 0,
+          "int8_requantize": 4.85703,
+          "device_init": 0.38621,
+          "output_stage_copy": 4.15164,
+          "peak_scan": 0,
+          "dequantize": 0
+        },
+        "cpu_execute_calls": 0,
+        "framework_casts": {
+          "dequantize_calls": 0,
+          "selected_dequantize_ms": 0,
+          "quantize_ms": 0,
+          "quantize_calls": 0,
+          "dequantize_ms": 0,
+          "dequantized_values": 0,
+          "quantized_values": 0,
+          "selected_quantize_ms": 0
+        },
+        "cpu_kernel_union_ms": 0,
+        "output_descriptors": 52,
+        "cpu_execute_union_ms": 0,
+        "input_bytes": 860160,
+        "tile_n": 128,
+        "tile_k": 128,
+        "input_descriptors": 108,
+        "cpu_execute_ms": 0,
+        "cpu_kernel_calls": 0,
+        "output_polls": 383,
+        "int8_vectorized_values": 401408,
+        "cpu_kernel_thread_ms": 0,
+        "input_polls": 3604,
+        "jobs": 28,
+        "compute_polls": 2157,
+        "quantized_values": 0,
+        "output_bytes": 401408
+      },
+      "selected_operation_ms": 43.35918,
+      "main_elapsed_ms": 1827.38493,
+      "model_load_ms": 460.17961,
+      "session_ms": 202.51095,
+      "selected_qk_ms": 43.35918,
+      "linear_setup_ms": 5.3924,
+      "inference_ms": 1123.03603
+    },
+    "inference_ms": 1123.04,
+    "output_sha256": "657fd8b57a4bc92bd0f8716f138f918bc96b2fdef094a11cba38d75e4ad75419",
+    "linear_setup": {
+      "tile_m": 128,
+      "per_channel_weight_scales": 512,
+      "accumulated_values": 401408,
+      "weight_setup_ms": 2.22297,
+      "result_bytes": 401408,
+      "cost_proxy_ns": 39592672,
+      "operand_bytes": 860160,
+      "tile_k": 128,
+      "weight_peak_scan_ms": 0,
+      "plan_selection_ms": 1.02538,
+      "K": 128,
+      "policy": "capacity",
+      "output_scale": 0.070453748107,
+      "M": 784,
+      "operand_format": "native_w8a8",
+      "ready": true,
+      "weight_values": 65536,
+      "jobs": 28,
+      "weight_quantize_ms": 0,
+      "input_scale": 0.0252977013588,
+      "tile_n": 128,
+      "N": 512
+    }
+  },
+  "full_cpu_control": {
+    "fpga_jobs": 0,
+    "inference_ms": 1136.28,
+    "output_sha256": "b7c76f8a8c8892fdb6467fffd4b133908d293a806f04f3e27997c0949cb4a783",
+    "process_ms": 2333.811169999535,
+    "exit_code": 0
+  },
+  "hybrid_fpga_profile": {
+    "process_ms": 4261.730390000594,
+    "exit_code": 0,
+    "fpga_jobs": 28,
+    "operator_details": {
+      "categories": {
+        "LayerNorm": {
+          "calls": 21,
+          "ms": 7.50778
+        },
+        "While": {
+          "calls": 22,
+          "ms": 87.54541000000003
+        },
+        "Reduction": {
+          "calls": 1,
+          "ms": 0.14426
+        },
+        "FloatToInt8": {
+          "calls": 1,
+          "ms": 1.5652
+        },
+        "UnaryOp": {
+          "calls": 23,
+          "ms": 125.59309
+        },
+        "BinaryOp": {
+          "calls": 40,
+          "ms": 39.8692
+        },
+        "Convolution": {
+          "calls": 53,
+          "ms": 737.0643000000001
+        },
+        "Int8ToFloat": {
+          "calls": 1,
+          "ms": 2.59084
+        },
+        "Raster": {
+          "calls": 154,
+          "ms": 114.94763
+        },
+        "Softmax": {
+          "calls": 10,
+          "ms": 29.174619999999997
+        },
+        "ConvolutionDepthwise": {
+          "calls": 15,
+          "ms": 41.155330000000006
+        }
+      },
+      "fc1_explicit_dequantize_calls": 0,
+      "fc1_explicit_quantize_ms": 0,
+      "fc1_explicit_dequantize_ms": 0,
+      "outside_operator_ms": 9.58445,
+      "fc1_explicit_quantize_calls": 0,
+      "sum_operator_ms": 1187.15766
+    },
+    "profile": {
+      "preprocess_ms": 36.3359,
+      "selected_qk_calls": 1,
+      "selected_operation_name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "input_copy_ms": 4.87924,
+      "linear_replacements": 1,
+      "output_ms": 0.86478,
+      "offload": {
+        "tile_m": 128,
+        "cpu_interval_overflow": 0,
+        "ms": {
+          "input_dma_setup": 0.39588,
+          "quantize": 0,
+          "input_layout": 0.54939,
+          "output_convert": 0,
+          "completion_wait": 2.92259,
+          "launch": 0.04629,
+          "input_dma_wait": 5.46808,
+          "workspace": 0.5597,
+          "download": 5.07181,
+          "scale_bound": 4.80552,
+          "output_layout": 3.08727,
+          "pack_pad": 5.47471,
+          "output_dma_setup": 0.1864,
+          "configure": 0.09599,
+          "bridge_total": 38.71988,
+          "output_dma_wait": 0.63289,
+          "upload": 14.05431,
+          "int8_accumulate": 0,
+          "adapter_total": 38.11008,
+          "input_stage_copy": 7.9558,
+          "layout_allocate": 0.76159,
+          "tile_plan": 0,
+          "int8_requantize": 4.93597,
+          "device_init": 0.50087,
+          "output_stage_copy": 4.12863,
+          "peak_scan": 0,
+          "dequantize": 0
+        },
+        "cpu_execute_calls": 0,
+        "framework_casts": {
+          "dequantize_calls": 1,
+          "selected_dequantize_ms": 0,
+          "quantize_ms": 1.5555,
+          "quantize_calls": 1,
+          "dequantize_ms": 2.58096,
+          "dequantized_values": 401408,
+          "quantized_values": 100352,
+          "selected_quantize_ms": 0
+        },
+        "cpu_kernel_union_ms": 0,
+        "output_descriptors": 52,
+        "cpu_execute_union_ms": 0,
+        "input_bytes": 860160,
+        "tile_n": 128,
+        "tile_k": 128,
+        "input_descriptors": 108,
+        "cpu_execute_ms": 0,
+        "cpu_kernel_calls": 0,
+        "output_polls": 366,
+        "int8_vectorized_values": 401408,
+        "cpu_kernel_thread_ms": 0,
+        "input_polls": 3548,
+        "jobs": 28,
+        "compute_polls": 2171,
+        "quantized_values": 0,
+        "output_bytes": 401408
+      },
+      "selected_operation_ms": 43.40434,
+      "main_elapsed_ms": 2490.8788,
+      "model_load_ms": 1089.45895,
+      "session_ms": 148.67125,
+      "selected_qk_ms": 43.40434,
+      "linear_setup_ms": 5.19133,
+      "inference_ms": 1196.74211
+    },
+    "inference_ms": 1196.74,
+    "output_sha256": "d06651ca06e41d6a05c13c8bb960bacd06211ed110b5e6aee98fdde93816af4f",
+    "linear_setup": {
+      "tile_m": 128,
+      "per_channel_weight_scales": 512,
+      "accumulated_values": 401408,
+      "weight_setup_ms": 2.23086,
+      "result_bytes": 401408,
+      "cost_proxy_ns": 39592672,
+      "operand_bytes": 860160,
+      "tile_k": 128,
+      "weight_peak_scan_ms": 0,
+      "plan_selection_ms": 1.02734,
+      "K": 128,
+      "policy": "capacity",
+      "output_scale": 0.070453748107,
+      "M": 784,
+      "operand_format": "native_w8a8",
+      "ready": true,
+      "weight_values": 65536,
+      "jobs": 28,
+      "weight_quantize_ms": 0,
+      "input_scale": 0.0252977013588,
+      "tile_n": 128,
+      "N": 512
+    }
+  },
+  "hybrid_fpga_control": {
+    "process_ms": 2405.2919400019164,
+    "exit_code": 0,
+    "fpga_jobs": 28,
+    "inference_ms": 1192.34,
+    "output_sha256": "d06651ca06e41d6a05c13c8bb960bacd06211ed110b5e6aee98fdde93816af4f",
+    "linear_setup": {
+      "tile_m": 128,
+      "per_channel_weight_scales": 512,
+      "accumulated_values": 401408,
+      "weight_setup_ms": 2.22291,
+      "result_bytes": 401408,
+      "cost_proxy_ns": 39592672,
+      "operand_bytes": 860160,
+      "tile_k": 128,
+      "weight_peak_scan_ms": 0,
+      "plan_selection_ms": 1.02909,
+      "K": 128,
+      "policy": "capacity",
+      "output_scale": 0.070453748107,
+      "M": 784,
+      "operand_format": "native_w8a8",
+      "ready": true,
+      "weight_values": 65536,
+      "jobs": 28,
+      "weight_quantize_ms": 0,
+      "input_scale": 0.0252977013588,
+      "tile_n": 128,
+      "N": 512
+    }
+  }
+}

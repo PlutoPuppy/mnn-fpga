@@ -1,0 +1,173 @@
+{
+  "date": "2026-11-12",
+  "accel_revision": "16cd018cc6648aa9571eb891ddc34da1e7e5acfb",
+  "soc_revision": "b3ea448a36a5db7bd301173d4e5fff027eca2382",
+  "files": [
+    {
+      "upstream_path": "rdl/ctrl_reg.sv/ctrl_rf_rf.sv",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "d671bfec6aecad8c233282fb0d41f989b94f4fb6d6c60ea6b98db20ae196b1f3",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/accel_top.sv",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "75d67c26bd022a3a2a4c5e341633a6638c33546acd5b7eeec84eb4456cd416d6",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/buf_addr_remap.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "3c065e61f0c3e5f0ce29b9ee1a88b8d5d4d7120fd24b92a9b73d8c7a33c254f7",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/input_buffer_32_bank.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "9ac5db536cffee40acb04cdbef2c5dabe86a97f7b135230944d882ba842196f4",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/input_dispatch.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "01b3586a6ddaf7db3100c755e41bf5b03a4dc998eba8171ae100b1aef03766ed",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/output_buffer_32_bank.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "78a5335a79c30f355ed9a4c1d31f85bbecedf6e12f438399eca513f6f47bf1a8",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/output_loader.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "ae1616cf45d2cc318403bd3d7aa182f694d8a882fc1c678b6f63a1a93db2d318",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/pe.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "3c0fc8b3c753034561f7dad299ee8f42e694be3eaa9413975e919bb95ed88889",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/pe_array.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "45a5ca826a5b8ddba4076f9589828711da6e3187b8533ef0c10119c77db1dd55",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/sync_fifo.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "7347c1f73e9d1971b3f7f16cb3c87a1ec7076bc5e9c3ca795233b8529513bb8e",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/weight_buffer_32_bank.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "f9aaba3c1d953ccdfab505e04abc48428dca8ecf497177fbd5febfe9f1adbcc8",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/weight_ctrl.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "998622c62413ef614ee4ccda03595b692c60bb6b3f9a55f1d79d94f2b03337c4",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    },
+    {
+      "upstream_path": "rtl/weight_loader.v",
+      "matches_soc_core_ignoring_final_whitespace": true,
+      "normalized_sha256": "e96d4945c6911f1fc330425e4432030b4832af6903a3ca47d8aef7aec780a144",
+      "matches_90mhz_build_core_ignoring_final_whitespace": true
+    }
+  ],
+  "register_offsets": {
+    "CONTROL": "0x0",
+    "WEIGHT_ROWS": "0x10",
+    "WEIGHT_COLS": "0x20",
+    "INPUT_MAX_ADDR": "0x30",
+    "INPUT_COLS": "0x40",
+    "STATUS": "0x50",
+    "OUTPUT_SCALE": "0x60",
+    "TILE_CFG": "0x70",
+    "TILED_MAT_DIM": "0x80"
+  },
+  "bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+  "capacity_examples": [
+    {
+      "M": 128,
+      "K": 128,
+      "N": 128,
+      "weight_bank_bytes": 1024,
+      "input_bank_bytes": 1024,
+      "output_bank_bytes": 1024,
+      "shape_and_capacity_valid": true
+    },
+    {
+      "M": 64,
+      "K": 256,
+      "N": 64,
+      "weight_bank_bytes": 1024,
+      "input_bank_bytes": 1024,
+      "output_bank_bytes": 256,
+      "shape_and_capacity_valid": true
+    },
+    {
+      "M": 256,
+      "K": 64,
+      "N": 256,
+      "weight_bank_bytes": 1024,
+      "input_bank_bytes": 1024,
+      "output_bank_bytes": 4096,
+      "shape_and_capacity_valid": true
+    },
+    {
+      "M": 25,
+      "K": 16,
+      "N": 32,
+      "weight_bank_bytes": 32,
+      "input_bank_bytes": 32,
+      "output_bank_bytes": 64,
+      "shape_and_capacity_valid": true
+    },
+    {
+      "M": 20,
+      "K": 32,
+      "N": 18,
+      "weight_bank_bytes": 64,
+      "input_bank_bytes": 64,
+      "output_bank_bytes": 64,
+      "shape_and_capacity_valid": true
+    },
+    {
+      "M": 128,
+      "K": 128,
+      "N": 192,
+      "weight_bank_bytes": 1024,
+      "input_bank_bytes": 1536,
+      "output_bank_bytes": 1536,
+      "shape_and_capacity_valid": false
+    },
+    {
+      "M": 16,
+      "K": 17,
+      "N": 16,
+      "weight_bank_bytes": 32,
+      "input_bank_bytes": 32,
+      "output_bank_bytes": 16,
+      "shape_and_capacity_valid": false
+    },
+    {
+      "M": 1,
+      "K": 1280,
+      "N": 1,
+      "weight_bank_bytes": 1280,
+      "input_bank_bytes": 1280,
+      "output_bank_bytes": 16,
+      "shape_and_capacity_valid": false
+    }
+  ],
+  "runtime_hardware_test_performed": false,
+  "simulation_run_performed": false
+}

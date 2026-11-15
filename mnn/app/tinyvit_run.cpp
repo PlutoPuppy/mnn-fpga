@@ -2,6 +2,10 @@
 #include <MNN/Tensor.hpp>
 #include "fpga_bridge.hpp"
 #include "image_input.hpp"
+#include "operator_profile.hpp"
+#include "linear_override.hpp"
+#include "quantized_linear.hpp"
+#include "native_linear.hpp"
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -25,7 +29,10 @@ namespace {
 struct Options {
     std::string model,image,raw,output,dump;
     std::string fpga_op;
-    bool list_ops=false;
+    std::string profile_ops;
+    std::string native_allowlist;
+    bool native_int8=false,native_pairs=false,native_plan=false;
+    bool list_ops=false,profile=false,fpga_linear=false,fpga_linear_int8=false;
     int width=0,height=0,threads=2,runs=1,warmup=0,resize_short=0,topk=5;
     bool zeros=false,mean_set=false,std_set=false,require_fpga=false;
     std::array<float,3> mean{0,0,0},stddev{1,1,1};
@@ -34,7 +41,13 @@ const char* usage=R"(Usage: tinyvit_run --model tiny-vit.mnn --height H --width 
     (--image image.jpg --mean R,G,B --std R,G,B | --input-f32 input.f32 | --zeros)
     [--resize-short N] [--threads N] [--runs N] [--warmup N]
     [--output-dir DIR] [--dump-input input.f32] [--topk N] [--require-fpga]
-    [--list-ops] [--fpga-op EXACT_RUNTIME_NAME]
+    [--list-ops] [--fpga-op EXACT_RUNTIME_NAME] [--profile] [--profile-ops FILE.json]
+    [--fpga-linear]  Replace the supported fc1 convolution selected by --fpga-op.
+    [--fpga-linear-int8]  Replace native W8A8 fc1 inside the INT8 executor.
+    [--fpga-native-int8] [--fpga-native-pairs] [--native-allowlist FILE]
+        NI82 bitstream: replace supported static W8A8 linear operations,
+        optionally keep verified MLP hidden tensors on FPGA using local DMA.
+    [--native-plan]  Validate native candidates/LUTs on CPU without hardware.
 
 Loads the full model from disk. Requires one NCHW FP32 RGB input, batch 1.
 Image: decode RGB, bilinear resize, normalize (pixel/255 - mean)/std.
@@ -73,10 +86,18 @@ Options parse(int argc,char** argv) {
         if(key=="--zeros") {o.zeros=true; continue;}
         if(key=="--require-fpga") {o.require_fpga=true; continue;}
         if(key=="--list-ops") {o.list_ops=true; continue;}
+        if(key=="--profile") {o.profile=true; continue;}
+        if(key=="--fpga-linear") {o.fpga_linear=true; continue;}
+        if(key=="--fpga-linear-int8") {o.fpga_linear_int8=true; continue;}
+        if(key=="--fpga-native-int8") {o.native_int8=true;continue;}
+        if(key=="--fpga-native-pairs") {o.native_pairs=true;continue;}
+        if(key=="--native-plan") {o.native_plan=true;continue;}
         if(i+1==argc) throw std::runtime_error("Missing value for "+key);
         const std::string value=argv[++i];
         if(key=="--model") o.model=value;
         else if(key=="--fpga-op") o.fpga_op=value;
+        else if(key=="--profile-ops") o.profile_ops=value;
+        else if(key=="--native-allowlist") o.native_allowlist=value;
         else if(key=="--image") o.image=value;
         else if(key=="--input-f32") o.raw=value;
         else if(key=="--output-dir") o.output=value;
@@ -93,6 +114,12 @@ Options parse(int argc,char** argv) {
         else throw std::runtime_error("Unknown option: "+key);
     }
     if(o.model.empty() || !o.height || !o.width) throw std::runtime_error("--model, --height and --width are required");
+    if((o.fpga_linear || o.fpga_linear_int8) && (o.fpga_op.empty() || !o.require_fpga))
+        throw std::runtime_error("Linear offload requires --fpga-op and --require-fpga");
+    if(o.fpga_linear && o.fpga_linear_int8) throw std::runtime_error("Choose FP32 or native INT8 linear offload");
+    if(o.native_int8 && (!o.require_fpga || o.fpga_linear || o.fpga_linear_int8 || !o.fpga_op.empty()))
+        throw std::runtime_error("NI82 requires --require-fpga and cannot mix legacy selectors");
+    if(o.native_pairs && !o.native_int8 && !o.native_plan)throw std::runtime_error("Resident pairs require native mode");
     if(int(o.zeros)+int(!o.image.empty())+int(!o.raw.empty())!=1)
         throw std::runtime_error("Choose exactly one of --image, --input-f32, or --zeros");
     if(!o.image.empty() && (!o.mean_set || !o.std_set))
@@ -129,6 +156,10 @@ void save(const std::string& path,const float* data,size_t count) {
 int main(int argc,char** argv) {
     try {
         const auto o=parse(argc,argv);
+        using Clock=std::chrono::steady_clock;
+        const auto process_start=Clock::now();
+        auto elapsed=[](Clock::time_point start) {return std::chrono::duration<double,std::milli>(Clock::now()-start).count();};
+        const auto preprocess_start=Clock::now();
         const uint16_t endian=1;
         if(*reinterpret_cast<const unsigned char*>(&endian)!=1 || sizeof(float)!=4 ||
            !std::numeric_limits<float>::is_iec559) throw std::runtime_error("Requires little-endian IEEE FP32 host");
@@ -143,8 +174,12 @@ int main(int argc,char** argv) {
         }
         for(float v:data) if(!std::isfinite(v)) throw std::runtime_error("Input contains NaN/Inf");
         if(!o.dump.empty()) save(o.dump,data.data(),data.size());
+        const double preprocess_ms=elapsed(preprocess_start);
+        const auto load_start=Clock::now();
         std::unique_ptr<MNN::Interpreter> net(MNN::Interpreter::createFromFile(o.model.c_str()));
         if(!net) throw std::runtime_error("Cannot load MNN model: "+o.model);
+        const double load_ms=elapsed(load_start);
+        const auto session_start=Clock::now();
         net->setSessionMode(MNN::Interpreter::Session_Resize_Defer);
         MNN::ScheduleConfig config; config.type=MNN_FORWARD_CPU; config.numThread=o.threads;
         MNN::BackendConfig backend; backend.precision=MNN::BackendConfig::Precision_High;
@@ -166,10 +201,21 @@ int main(int argc,char** argv) {
         int resize_status=-1;
         if(!net->getSessionInfo(session,MNN::Interpreter::RESIZE_STATUS,&resize_status) || resize_status!=0)
             throw std::runtime_error("Model cannot resize to requested input dimensions");
+        const double session_ms=elapsed(session_start);
+        const auto input_start=Clock::now();
         MNN::Tensor host(input,MNN::Tensor::CAFFE);
         if(size_t(host.elementSize())!=data.size() || !host.host<float>()) throw std::runtime_error("Input allocation mismatch");
         std::copy(data.begin(),data.end(),host.host<float>());
         if(!input->copyFromHostTensor(&host)) throw std::runtime_error("Cannot upload input tensor");
+        const double input_ms=elapsed(input_start);
+        double linear_setup_ms=0;
+        if(o.fpga_linear) linear_setup_ms=prepare_linear_override(*net,o.fpga_op);
+        if(o.fpga_linear_int8) linear_setup_ms=prepare_quantized_linear(*net,o.fpga_op);
+        size_t native_count=0;
+        if(o.native_int8 || o.native_plan) {
+            const auto start=Clock::now();native_count=prepare_native_linears(*net,o.native_allowlist,o.native_pairs,o.native_plan);
+            linear_setup_ms=elapsed(start);if(o.native_plan)return 0;
+        }
         std::cout<<"Model: "<<o.model<<"\nInput: "<<inputs.begin()->first<<' '<<shape(host)<<" FP32 NCHW\n";
         if(o.zeros) std::cout<<"Input mode: synthetic zeros (smoke test only)\n";
         else if(!o.raw.empty()) std::cout<<"Input mode: already-preprocessed FP32 tensor\n";
@@ -179,6 +225,15 @@ int main(int argc,char** argv) {
         }
         std::set<std::string> seen_ops;
         bool target_seen=false;
+        bool timing_target=false;
+        Clock::time_point target_start;
+        double target_ms=0;
+        unsigned target_calls=0;
+        std::vector<MNN::Tensor*> linear_inputs;
+        unsigned linear_replacements=0;
+        unsigned long int8_calls_before=0;
+        operator_profile::Profiler op_profiler;
+        if(!o.profile_ops.empty()) op_profiler.reset();
         auto before_op=[&](const std::vector<MNN::Tensor*>& tensors,const MNN::OperatorInfo* info) {
             const std::string name=info->name();
             if(o.list_ops && seen_ops.insert(name).second) {
@@ -186,25 +241,60 @@ int main(int argc,char** argv) {
                 for(auto* tensor:tensors) std::cout<<' '<<shape(*tensor);
                 std::cout<<'\n';
             }
-            const bool match=!o.fpga_op.empty() && name==o.fpga_op;
+            const bool match=o.native_int8?mnn_fpga_select_native(name):(!o.fpga_op.empty() && name==o.fpga_op);
             target_seen=target_seen || match;
             mnn_fpga_select_operation(match);
+            if(o.profile && match) {timing_target=true;target_start=Clock::now();}
+            if(!o.profile_ops.empty()) op_profiler.before(tensors,info);
+            if(match && (o.fpga_linear_int8 || o.native_int8)) int8_calls_before=mnn_fpga_completed_int8_operations();
+            if(o.native_int8 && mnn_fpga_native_skip(name))return false;
+            if(match && o.fpga_linear) {linear_inputs=tensors;return false;}
             return true;
         };
-        auto after_op=[](const std::vector<MNN::Tensor*>&,const MNN::OperatorInfo*) {
+        auto after_op=[&](const std::vector<MNN::Tensor*>& tensors,const MNN::OperatorInfo* info) {
+            if((o.fpga_linear_int8 && info->name()==o.fpga_op) || (o.native_int8 && mnn_fpga_select_native(info->name()))) {
+                if(mnn_fpga_completed_int8_operations()!=int8_calls_before+1) {
+                    std::cerr<<"Native INT8 fc1 hook did not execute exactly once\n";return false;
+                }
+                ++linear_replacements;
+            }
+            if(o.fpga_linear && info->name()==o.fpga_op) {
+                if(!execute_linear_override(linear_inputs,tensors)) return false;
+                ++linear_replacements;
+            }
+            if(!o.profile_ops.empty()) op_profiler.after(tensors,info);
+            if(timing_target) {target_ms+=elapsed(target_start);++target_calls;timing_target=false;}
             mnn_fpga_select_operation(false);return true;
         };
         auto run=[&] {
-            auto rc=(o.list_ops || !o.fpga_op.empty())
+            auto rc=(o.list_ops || !o.fpga_op.empty() || !o.profile_ops.empty() || o.native_int8)
                 ? net->runSessionWithCallBackInfo(session,before_op,after_op,true)
                 : net->runSession(session);
             mnn_fpga_select_operation(false);
             if(rc!=MNN::NO_ERROR) throw std::runtime_error("MNN runSession failed, code "+std::to_string(int(rc)));
         };
-        for(int i=0;i<o.warmup;++i) run();
+        // This graph may reuse the input allocation for intermediate values.
+        // Restore the host image before each subsequent invocation, outside
+        // the inference timer, just as a caller supplying a new image must.
+        bool input_used=false;
+        double repeat_input_ms=0;
+        auto prepare_run=[&] {
+            if(input_used) {
+                const auto start=Clock::now();
+                if(!input->copyFromHostTensor(&host)) throw std::runtime_error("Cannot refresh input tensor");
+                repeat_input_ms+=elapsed(start);
+            }
+            input_used=true;
+        };
+        for(int i=0;i<o.warmup;++i) {prepare_run();run();}
         const auto before=mnn_fpga_completed_jobs();
+        mnn_fpga_profile_reset(o.profile);
+        target_ms=0;target_calls=0;
+        linear_replacements=0;
+        if(!o.profile_ops.empty()) op_profiler.reset();
         double total=0;
         for(int i=0;i<o.runs;++i) {
+            prepare_run();
             auto start=std::chrono::steady_clock::now(); run();
             double ms=std::chrono::duration<double,std::milli>(std::chrono::steady_clock::now()-start).count();
             total+=ms; std::cout<<"Inference "<<i+1<<": "<<ms<<" ms\n";
@@ -213,6 +303,13 @@ int main(int argc,char** argv) {
         if(!o.fpga_op.empty() && !target_seen) throw std::runtime_error("Selected runtime operation was not found: "+o.fpga_op);
         std::cout<<"Mean inference: "<<total/o.runs<<" ms (excludes loading/preprocessing/output copy)\nFPGA submissions: "<<offloads<<'\n';
         if(o.require_fpga && !offloads) throw std::runtime_error("No FPGA submissions; CPU inference is not FPGA offload");
+        if(o.native_int8) {
+            if(linear_replacements!=native_count*unsigned(o.runs))throw std::runtime_error("Native multi-operation replacement count mismatch");
+            std::cout<<"Native replacements: "<<linear_replacements<<"\nNATIVE_JSON "<<mnn_fpga_native_json()<<'\n';
+        }
+        if((o.fpga_linear || o.fpga_linear_int8) && linear_replacements!=unsigned(o.runs)) throw std::runtime_error("fc1 replacement count mismatch");
+        if(o.fpga_linear || o.fpga_linear_int8) std::cout<<"Linear replacements: "<<linear_replacements<<"\nLINEAR_SETUP_JSON "<<mnn_fpga_linear_setup_json()<<'\n';
+        const auto output_start=Clock::now();
         std::ofstream manifest;
         if(!o.output.empty()) {
             std::filesystem::create_directories(o.output);
@@ -251,6 +348,18 @@ int main(int argc,char** argv) {
             ++index;
         }
         if(manifest.is_open()) {manifest<<"\n]}\n"; manifest.close(); if(!manifest) throw std::runtime_error("Cannot finish output manifest");}
+        if(o.profile) {
+            const double output_ms=elapsed(output_start);
+            std::cout<<std::setprecision(12)<<"PROFILE_JSON {\"preprocess_ms\":"<<preprocess_ms
+                <<",\"model_load_ms\":"<<load_ms<<",\"session_ms\":"<<session_ms<<",\"input_copy_ms\":"<<input_ms
+                <<",\"repeat_input_copy_ms\":"<<repeat_input_ms
+                <<",\"inference_ms\":"<<total<<",\"selected_qk_ms\":"<<target_ms<<",\"selected_qk_calls\":"<<target_calls
+                <<",\"selected_operation_ms\":"<<target_ms<<",\"selected_operation_name\":"<<json(o.fpga_op)
+                <<",\"linear_setup_ms\":"<<linear_setup_ms<<",\"linear_replacements\":"<<linear_replacements
+                <<",\"output_ms\":"<<output_ms<<",\"main_elapsed_ms\":"<<elapsed(process_start)
+                <<",\"offload\":"<<mnn_fpga_profile_json()<<"}\n";
+        }
+        if(!o.profile_ops.empty()) op_profiler.save(o.profile_ops,o.model,total,o.runs);
         return 0;
     } catch(const std::exception& e) {std::cerr<<"ERROR: "<<e.what()<<"\nUse --help for usage.\n"; return 1;}
 }

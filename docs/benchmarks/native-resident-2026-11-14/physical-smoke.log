@@ -1,0 +1,12 @@
+sudo: unable to resolve host DE1_SoC: Connection refused
+PASS maximum 64KB output canvas with M1105 K16 N128, jobs=3
+PASS native 37x32 x 32x160 jobs=2 tile=512x32x128 B_capacity=65536 ms=0.25725
+PASS native 37x64 x 64x160 jobs=2 tile=256x64x128 B_capacity=65536 ms=0.36068
+PASS native 37x128 x 128x160 jobs=2 tile=128x128x128 B_capacity=65536 ms=0.57794
+PASS native 37x160 x 160x160 jobs=2 tile=96x160x128 B_capacity=65536 ms=0.69156
+PASS native 37x512 x 512x160 jobs=4 tile=32x512x128 B_capacity=65536 ms=1.90919
+PASS native 37x640 x 640x160 jobs=6 tile=16x640x96 B_capacity=65536 ms=2.35292
+PASS native 37x1024 x 1024x160 jobs=9 tile=16x1024x64 B_capacity=65536 ms=4.64925
+PASS resident MLP 135x128 -> 512 -> 128 jobs=13 local_bytes=73728 avoided=147456
+PASS resident MLP 135x160 -> 640 -> 160 jobs=28 local_bytes=184320 avoided=184320
+PASS physical NI82 matrix and FPGA-resident MLP checks

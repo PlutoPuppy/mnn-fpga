@@ -1,0 +1,28 @@
+{
+  "modes": [
+    "fp32",
+    "cpu",
+    "all",
+    "pairs"
+  ],
+  "warmup": 0,
+  "cpu_state_after": {},
+  "runner_sha256": "1e031cdc6a66df9f1be9d120268478e81dcf8d7c3ff2ad4046680bd5206de9b0",
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "clock_mhz": 90,
+  "input_kind": "uniform random RGB images",
+  "threads": 2,
+  "bitstream_sha256": "ff58e98c77d5471a02939c27d8cf1a044f25414a1c4190ee0fedef9d6019c5ad",
+  "abi": "NI82",
+  "profile_runs_separate": true,
+  "fresh_process": true,
+  "date": "2026-11-14",
+  "models": {
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "inputs": 20,
+  "cpu_state_before": {},
+  "runner": "tinyvit_native_v10",
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded"
+}

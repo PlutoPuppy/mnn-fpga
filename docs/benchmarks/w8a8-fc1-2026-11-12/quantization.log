@@ -1,0 +1,145 @@
+MNN loaded E:\Quartus\Quartus-lite-23.1std.1.993-windows\components\tinyvit\git-repo\mnn-fpga\build\mnn-w8a8-python\MNN\__init__.py
+The device supports: i8sdot:0, fp16:0, i8mm: 0, sve2: 0, sme2: 0, perfCores: 0
+[11:44:18] @ 1740: >>> modelFile: E:\Quartus\Quartus-lite-23.1std.1.993-windows\components\tinyvit\git-repo\mnn-fpga\build\mnn-w8a8-tools\tiny-vit-fp32.mnn
+[11:44:18] @ 1741: >>> preTreatConfig: E:\Quartus\Quartus-lite-23.1std.1.993-windows\components\tinyvit\git-repo\mnn-fpga\build\mnn-w8a8-tools\quantization.json
+[11:44:18] @ 1742: >>> dstFile: E:\Quartus\Quartus-lite-23.1std.1.993-windows\components\tinyvit\git-repo\mnn-fpga\build\mnn-w8a8-tools\tiny-vit-w8a8-kl.mnn
+[11:44:18] @ 1770: Calibrate the feature and quantize model...
+[11:44:18] @ 512: Use feature quantization method: KL
+[11:44:18] @ 513: Use weight quantization method: MAX_ABS
+[11:44:18] @ 533: feature_clamp_value: 127
+[11:44:18] @ 534: weight_clamp_value: 127
+[11:44:18] @ 538: winogradOpt only be available under EMA
+[11:44:18] @ 137: used dataset num: 128
+[11:44:18] @ 1122: fake quant weights done.
+
+CollectFeatureDistribution: 0.78 %
+CollectFeatureDistribution: 1.56 %
+CollectFeatureDistribution: 2.34 %
+CollectFeatureDistribution: 3.12 %
+CollectFeatureDistribution: 3.91 %
+CollectFeatureDistribution: 4.69 %
+CollectFeatureDistribution: 5.47 %
+CollectFeatureDistribution: 6.25 %
+CollectFeatureDistribution: 7.03 %
+CollectFeatureDistribution: 7.81 %
+CollectFeatureDistribution: 8.59 %
+CollectFeatureDistribution: 9.38 %
+CollectFeatureDistribution: 10.16 %
+CollectFeatureDistribution: 10.94 %
+CollectFeatureDistribution: 11.72 %
+CollectFeatureDistribution: 12.50 %
+CollectFeatureDistribution: 13.28 %
+CollectFeatureDistribution: 14.06 %
+CollectFeatureDistribution: 14.84 %
+CollectFeatureDistribution: 15.62 %
+CollectFeatureDistribution: 16.41 %
+CollectFeatureDistribution: 17.19 %
+CollectFeatureDistribution: 17.97 %
+CollectFeatureDistribution: 18.75 %
+CollectFeatureDistribution: 19.53 %
+CollectFeatureDistribution: 20.31 %
+CollectFeatureDistribution: 21.09 %
+CollectFeatureDistribution: 21.88 %
+CollectFeatureDistribution: 22.66 %
+CollectFeatureDistribution: 23.44 %
+CollectFeatureDistribution: 24.22 %
+CollectFeatureDistribution: 25.00 %
+CollectFeatureDistribution: 25.78 %
+CollectFeatureDistribution: 26.56 %
+CollectFeatureDistribution: 27.34 %
+CollectFeatureDistribution: 28.12 %
+CollectFeatureDistribution: 28.91 %
+CollectFeatureDistribution: 29.69 %
+CollectFeatureDistribution: 30.47 %
+CollectFeatureDistribution: 31.25 %
+CollectFeatureDistribution: 32.03 %
+CollectFeatureDistribution: 32.81 %
+CollectFeatureDistribution: 33.59 %
+CollectFeatureDistribution: 34.38 %
+CollectFeatureDistribution: 35.16 %
+CollectFeatureDistribution: 35.94 %
+CollectFeatureDistribution: 36.72 %
+CollectFeatureDistribution: 37.50 %
+CollectFeatureDistribution: 38.28 %
+CollectFeatureDistribution: 39.06 %
+CollectFeatureDistribution: 39.84 %
+CollectFeatureDistribution: 40.62 %
+CollectFeatureDistribution: 41.41 %
+CollectFeatureDistribution: 42.19 %
+CollectFeatureDistribution: 42.97 %
+CollectFeatureDistribution: 43.75 %
+CollectFeatureDistribution: 44.53 %
+CollectFeatureDistribution: 45.31 %
+CollectFeatureDistribution: 46.09 %
+CollectFeatureDistribution: 46.88 %
+CollectFeatureDistribution: 47.66 %
+CollectFeatureDistribution: 48.44 %
+CollectFeatureDistribution: 49.22 %
+CollectFeatureDistribution: 50.00 %
+CollectFeatureDistribution: 50.78 %
+CollectFeatureDistribution: 51.56 %
+CollectFeatureDistribution: 52.34 %
+CollectFeatureDistribution: 53.12 %
+CollectFeatureDistribution: 53.91 %
+CollectFeatureDistribution: 54.69 %
+CollectFeatureDistribution: 55.47 %
+CollectFeatureDistribution: 56.25 %
+CollectFeatureDistribution: 57.03 %
+CollectFeatureDistribution: 57.81 %
+CollectFeatureDistribution: 58.59 %
+CollectFeatureDistribution: 59.38 %
+CollectFeatureDistribution: 60.16 %
+CollectFeatureDistribution: 60.94 %
+CollectFeatureDistribution: 61.72 %
+CollectFeatureDistribution: 62.50 %
+CollectFeatureDistribution: 63.28 %
+CollectFeatureDistribution: 64.06 %
+CollectFeatureDistribution: 64.84 %
+CollectFeatureDistribution: 65.62 %
+CollectFeatureDistribution: 66.41 %
+CollectFeatureDistribution: 67.19 %
+CollectFeatureDistribution: 67.97 %
+CollectFeatureDistribution: 68.75 %
+CollectFeatureDistribution: 69.53 %
+CollectFeatureDistribution: 70.31 %
+CollectFeatureDistribution: 71.09 %
+CollectFeatureDistribution: 71.88 %
+CollectFeatureDistribution: 72.66 %
+CollectFeatureDistribution: 73.44 %
+CollectFeatureDistribution: 74.22 %
+CollectFeatureDistribution: 75.00 %
+CollectFeatureDistribution: 75.78 %
+CollectFeatureDistribution: 76.56 %
+CollectFeatureDistribution: 77.34 %
+CollectFeatureDistribution: 78.12 %
+CollectFeatureDistribution: 78.91 %
+CollectFeatureDistribution: 79.69 %
+CollectFeatureDistribution: 80.47 %
+CollectFeatureDistribution: 81.25 %
+CollectFeatureDistribution: 82.03 %
+CollectFeatureDistribution: 82.81 %
+CollectFeatureDistribution: 83.59 %
+CollectFeatureDistribution: 84.38 %
+CollectFeatureDistribution: 85.16 %
+CollectFeatureDistribution: 85.94 %
+CollectFeatureDistribution: 86.72 %
+CollectFeatureDistribution: 87.50 %
+CollectFeatureDistribution: 88.28 %
+CollectFeatureDistribution: 89.06 %
+CollectFeatureDistribution: 89.84 %
+CollectFeatureDistribution: 90.62 %
+CollectFeatureDistribution: 91.41 %
+CollectFeatureDistribution: 92.19 %
+CollectFeatureDistribution: 92.97 %
+CollectFeatureDistribution: 93.75 %
+CollectFeatureDistribution: 94.53 %
+CollectFeatureDistribution: 95.31 %
+CollectFeatureDistribution: 96.09 %
+CollectFeatureDistribution: 96.88 %
+CollectFeatureDistribution: 97.66 %
+CollectFeatureDistribution: 98.44 %
+CollectFeatureDistribution: 99.22 %
+CollectFeatureDistribution: 100.00 %QUANTIZATION_COMPLETE 128.02133020000474 10686388 d4d6bb729e25cd56d9ea5546a2b3a737af0678e497ffd8ae57c12b4377ef0277
+
+[11:46:26] @ 1778: Quantize model done!
+The device supports: i8sdot:0, fp16:0, i8mm: 0, sve2: 0, sme2: 0, perfCores: 0

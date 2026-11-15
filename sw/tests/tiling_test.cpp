@@ -11,36 +11,44 @@
 void require(bool ok,const char* message) {if(!ok) throw std::runtime_error(message);}
 struct Soc : fpga::MatmulSocIo {
     std::map<unsigned,uint32_t> regs;
-    std::array<int8_t,256> a{},b{},c{};
+    std::array<int8_t,16384> a{},b{};
+    std::array<int8_t,65536> c{};
     size_t jobs=0,fail_at=0;
     bool busy=false;
     uint32_t read(unsigned off) override {return off==0x50 ? (busy ? 1u : 2u) : regs[off];}
     void write(unsigned off,uint32_t v) override {
         regs[off]=v;
         if(off) return;
-        require(v==1 && regs[0x10]==16 && regs[0x20]==16 && regs[0x30]==16 &&
-            regs[0x40]==16 && regs[0x70]==0 && regs[0x80]==16,"wrong register programming");
+        const auto m=regs[0x10],k=regs[0x20],n=regs[0x40];
+        require(v==1 && m && k && n && m%16==0 && n%16==0 && k%16==0 &&
+            n<=1008 && m*k<=16384 && k*n<=16384 && m*n<=65536 &&
+            regs[0x30]==n && regs[0x70]==0 && regs[0x80]==n,"wrong register programming");
         ++jobs;
         if(fail_at==jobs) throw std::runtime_error("injected device failure");
-        for(unsigned i=0;i<16;++i) for(unsigned j=0;j<16;++j) {
+        for(unsigned i=0;i<m;++i) for(unsigned j=0;j<n;++j) {
+            int value=0;
+            for(unsigned band=0;band<k;band+=16) {
             int64_t sum=0;
-            for(unsigned p=0;p<16;++p) sum+=int(a[i*16+p])*int(b[p*16+j]);
+            for(unsigned p=band;p<band+16;++p) sum+=int(a[i*k+p])*int(b[p*n+j]);
             // Explicit floor division, matching RTL arithmetic shift for negatives.
             const int64_t prod=sum*regs[0x60];
             const int scaled=int(prod>=0 ? prod/65536 : -((-prod+65535)/65536));
             require(scaled>=-128 && scaled<=127,"requantization saturated");
-            c[i*16+j]=int8_t(scaled);
+            value+=scaled;
+            require(value>=-128 && value<=127,"band accumulation saturated");
+            }
+            c[i*n+j]=int8_t(value);
         }
     }
     void write_beat(unsigned off,const Beat& data) override {
-        require(regs[0x20]==16 && regs[0x30]==16,"dimensions must precede buffers");
+        require(regs[0x20] && regs[0x30],"dimensions must precede buffers");
         require(off%16==0,"unaligned beat");
         auto& dst=off<0x5000 ? a:b;
         const unsigned idx=off-(off<0x5000 ? 0x1000:0x5000);
-        require(idx<256,"buffer overrun");std::copy(data.begin(),data.end(),dst.begin()+idx);
+        require(idx+16<=16384,"buffer overrun");std::copy(data.begin(),data.end(),dst.begin()+idx);
     }
     Beat read_beat(unsigned off) override {
-        require(off>=0x9000 && off<0x9100 && off%16==0,"bad output access");
+        require(off>=0x9000 && off<0x19000 && off%16==0,"bad output access");
         Beat out{};std::copy_n(c.begin()+off-0x9000,16,out.begin());return out;
     }
 };
@@ -85,20 +93,119 @@ void problem(size_t m,size_t n,size_t k,bool ta,bool tb,bool tc) {
         require(c[tc ? j*m+i:i*n+j]==exact[i*n+j],"legacy result mismatch");
     Soc soc;
     const auto stats=fpga::matmul_soc_gemm(soc,aa.data(),bb.data(),c.data(),m,n,k,ta,tb,tc,bias.data());
-    require(stats.submissions==jobs && soc.jobs==jobs,"wrong soc submission count");
+    const auto batched_jobs=((m+255)/256)*((n+255)/256)*((k+63)/64);
+    require(stats.submissions==batched_jobs && soc.jobs==batched_jobs,"wrong soc submission count");
+    require(stats.quantized_values==m*k+k*n,"operands were not prepared once");
     double max_error=0;
     for(size_t i=0;i<m;++i) for(size_t j=0;j<n;++j)
         max_error=std::max(max_error,std::abs(double(c[tc ? j*m+i:i*n+j])-exact[i*n+j]-bias[j]));
     // Conservative absolute bound for these bounded test operands, including
     // per-block floor error and input quantization. This is not a model accuracy threshold.
-    require(max_error<2.5*((k+15)/16),"soc approximation outside error bound");
+    const double sa=6.0/127,sb=4.0/127;
+    double bound=k*(6*sb/2+4*sa/2+sa*sb/4);
+    for(size_t p=0;p<k;p+=64) {
+        const auto kr=std::min(size_t(64),k-p),bands=(kr+15)/16;
+        const auto q=std::min(size_t(65535),(127-bands)*65536/(kr*127*127));
+        bound+=bands*sa*sb*65536/q;
+    }
+    require(max_error<=bound,"soc approximation outside analytical error bound");
 }
 int main() {
     try {
+        for(const auto policy:{fpga::MatmulSocTilePolicy::Fixed64,fpga::MatmulSocTilePolicy::Capacity}) {
+            const size_t m=17,n=31,k=129;
+            fpga::MatmulSocOperand a,b;a.rows=m;a.cols=k;b.rows=k;b.cols=n;
+            a.values.resize(m*k);b.values.resize(k*n);
+            for(size_t i=0;i<a.values.size();++i) a.values[i]=int8_t(int(i%15)-7);
+            for(size_t i=0;i<b.values.size();++i) b.values[i]=int8_t(int(i%19)-9);
+            fpga::MatmulSocInt8Requantization rq;rq.multiplier.resize(n);rq.bias_q16.resize(n);
+            for(size_t j=0;j<n;++j) {rq.multiplier[j]=.002*(j+1);rq.bias_q16[j]=int64_t(std::llround((.37*(j%3)-.25)*65536));}
+            const auto plan=fpga::plan_matmul_soc(m,n,k,policy);Soc reference,device;
+            std::vector<float> full(m*n);std::vector<int8_t> result(m*n,-99);
+            fpga::matmul_soc_gemm_prepared(reference,a,b,full.data(),false,nullptr,std::chrono::milliseconds(1000),&plan);
+            fpga::MatmulSocProfile timing;device.profile=&timing;
+            auto stats=fpga::matmul_soc_gemm_int8(device,a,b,result.data(),rq,plan);
+            require(stats.submissions==plan.jobs && stats.quantized_values==0,"native INT8 job/quantization count");
+            require(stats.operand_bytes==plan.operand_bytes && stats.result_bytes==plan.result_bytes,"native INT8 traffic mismatch");
+            for(size_t i=0;i<m;++i) for(size_t j=0;j<n;++j) {
+                const int expected=std::max(-127,std::min(127,int(std::round(full[i*n+j]*rq.multiplier[j]+double(rq.bias_q16[j])/65536))));
+                require(std::abs(int(result[i*n+j])-expected)<=1,"native INT8 per-channel reconstruction differs from float oracle");
+            }
+            require(!timing.ns[fpga::MatmulSocProfile::quantize] && !timing.ns[fpga::MatmulSocProfile::dequantize] &&
+                    !timing.ns[fpga::MatmulSocProfile::output_convert],"native INT8 unexpectedly used FP32 phases");
+            const auto jobs=device.jobs;auto invalid=rq;invalid.multiplier[0]=0;
+            try {fpga::matmul_soc_gemm_int8(device,a,b,result.data(),invalid,plan);throw 1;}
+            catch(const std::invalid_argument&) {}
+            require(device.jobs==jobs,"invalid INT8 scales touched device");
+            Soc failed;failed.fail_at=1;result.assign(m*n,-99);
+            try {fpga::matmul_soc_gemm_int8(failed,a,b,result.data(),rq,plan);throw 1;}
+            catch(const std::runtime_error&) {}
+            for(int v:result) require(v==-99,"INT8 failure partially published result");
+        }
+        {
+            const auto fixed=fpga::plan_matmul_soc(784,512,128);
+            const auto capacity=fpga::plan_matmul_soc(784,512,128,fpga::MatmulSocTilePolicy::Capacity);
+            require(fixed.jobs==16 && fixed.tile_k==64,"fixed policy changed");
+            require(capacity.tile_k==128 && capacity.cost_proxy_ns<fixed.cost_proxy_ns,"capacity policy did not explore K>64");
+            for(const auto& shape:std::vector<std::array<size_t,3>>{{128,128,128},{64,64,256},{49,49,128},{784,512,128}}) {
+                const auto m=shape[0],n=shape[1],k=shape[2];
+                auto plan=fpga::plan_matmul_soc(m,n,k,fpga::MatmulSocTilePolicy::Capacity);
+                require(plan.tile_m*plan.tile_k<=16384 && plan.tile_k*plan.tile_n<=16384 &&
+                        plan.tile_m*plan.tile_n<=65536 && plan.tile_n<=1008,"tile plan overflows banks/register");
+                fpga::MatmulSocOperand a,b;a.rows=m;a.cols=k;b.rows=k;b.cols=n;
+                a.values.assign(m*k,1);b.values.assign(k*n,1);
+                std::vector<float> out(m*n,-999);Soc device;
+                const auto stats=fpga::matmul_soc_gemm_prepared(device,a,b,out.data(),false,nullptr,std::chrono::milliseconds(1000),&plan);
+                require(stats.submissions==plan.jobs && stats.operand_bytes==plan.operand_bytes && stats.result_bytes==plan.result_bytes,
+                        "planned jobs/traffic differ from execution");
+                // Independent closed form for constant operands: each band
+                // floors 16*scale/65536; reserve avoids output saturation.
+                double expected=0;
+                for(size_t p=0;p<k;p+=plan.tile_k) {
+                    const auto kr=std::min(plan.tile_k,k-p),kp=(kr+15)/16*16,bands=kp/16;
+                    const auto scale=std::min(size_t(65535),(127-bands)*65536/kr);
+                    expected+=double(bands*((16*scale)/65536))*65536.0/scale;
+                }
+                for(float v:out) require(std::abs(v-expected)<1e-3,"capacity GEMM differs from closed-form band arithmetic");
+                auto invalid=plan;invalid.tile_k=1024;invalid.tile_m=256;
+                const auto before=device.jobs;
+                try {fpga::matmul_soc_gemm_prepared(device,a,b,out.data(),false,nullptr,std::chrono::milliseconds(1000),&invalid);throw 1;}
+                catch(const std::invalid_argument&) {}
+                require(device.jobs==before,"invalid capacity plan touched hardware");
+            }
+        }
         for(bool ta:{false,true}) for(bool tb:{false,true}) for(bool tc:{false,true}) {
             problem(16,16,16,ta,tb,tc);problem(32,48,64,ta,tb,tc);problem(17,31,33,ta,tb,tc);
         }
         problem(272,16,16,false,false,false); // exceeds the physical canvas; host tiles it
+        problem(49,49,32,false,true,false); // actual first-QK head: one job
+        problem(256,256,64,false,false,false); // fills all operand/output banks
+        problem(17,31,65,false,false,false); // reduction-panel tail
+        problem(17,272,65,false,true,true); // column panel and reduction tails
+        {
+            std::vector<float> x(49*32,1),y(32*49,-1),out(49*49);
+            const auto qa=fpga::prepare_matmul_soc_operand(x.data(),49,32);
+            const auto qb=fpga::prepare_matmul_soc_operand(y.data(),32,49);
+            Soc prepared;
+            const auto stats=fpga::matmul_soc_gemm_prepared(prepared,qa,qb,out.data());
+            require(stats.submissions==1 && stats.quantized_values==0,"prepared INT8 API requantized or fragmented operands");
+            require(stats.operand_bytes==4096 && stats.result_bytes==4096,"wrong batched payload size");
+            for(float v:out) require(std::abs(v+32)<1,"prepared INT8 reconstruction mismatch");
+            auto invalid=qa;invalid.scale=0;
+            try {fpga::matmul_soc_gemm_prepared(prepared,invalid,qb,out.data());throw 1;}
+            catch(const std::invalid_argument&) {}
+            require(prepared.jobs==1,"invalid prepared operand touched hardware");
+            Soc profiled;fpga::MatmulSocProfile profile;
+            profiled.profile=&profile;
+            std::vector<float> measured(out.size());
+            fpga::matmul_soc_gemm(profiled,x.data(),y.data(),measured.data(),49,49,32);
+            require(measured==out,"profiling changed numerical output");
+            require(profile.jobs==1 && profile.input_bytes==4096 && profile.output_bytes==4096 &&
+                    profile.quantized_values==3136 && profile.compute_polls==1,"incorrect profile counters");
+            uint64_t stages=0;
+            for(int phase=0;phase<=fpga::MatmulSocProfile::output_convert;++phase) stages+=profile.ns[phase];
+            require(stages<=profile.ns[fpga::MatmulSocProfile::adapter_total],"profile stages exceed adapter total");
+        }
         Soc soc;std::vector<float> a(256,0),b(256,0),c(256,-99);
         fpga::matmul_soc_gemm(soc,a.data(),b.data(),c.data(),16,16,16);
         for(float v:c) require(v==0,"zero GEMM mismatch");
@@ -109,15 +216,15 @@ int main() {
         require(soc.jobs==before,"nonfinite input touched hardware");
         Legacy legacy;
         require(!fpga::exact_float_gemm(legacy,a.data(),b.data(),c.data(),16,16,16) && !legacy.jobs,"legacy nonfinite submitted");
-        a.assign(512,1);b.assign(512,1);c.assign(256,-99);
+        a.assign(16*65,1);b.assign(65*16,1);c.assign(256,-99);
         Soc failing;failing.fail_at=2;
-        try {fpga::matmul_soc_gemm(failing,a.data(),b.data(),c.data(),16,16,32);throw 1;}
+        try {fpga::matmul_soc_gemm(failing,a.data(),b.data(),c.data(),16,16,65);throw 1;}
         catch(const std::runtime_error&) {}
         for(float v:c) require(v==-99,"failure partially published output");
         Soc busy;busy.busy=true;
         try {fpga::matmul_soc_gemm(busy,a.data(),b.data(),c.data(),16,16,32);throw 1;}
         catch(const std::runtime_error&) {}
         require(!busy.jobs,"busy device submitted");
-        std::cout<<"PASS: tiling, transpose, tails, >256 rows, quantized hardware model, zero/nonfinite, failure atomicity, busy\n";
+        std::cout<<"PASS: larger hardware blocks, prepared INT8, transpose, tails, full canvas, >256 rows, banded quantization, failure atomicity, busy\n";
     } catch(const std::exception& e) {std::cerr<<e.what()<<'\n';return 1;}
 }

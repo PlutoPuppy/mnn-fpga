@@ -1,0 +1,56 @@
+{
+  "runner_sha256": "8b786537139d779fca0e05773060b148668403e794a5aebc5af7fa52ee629cce",
+  "fresh_process_per_inference": true,
+  "inputs": 20,
+  "session_warmup": 0,
+  "warmup_inferences": 2,
+  "cpu_execute_timer": "operand packing, kernels, output unpack, thread synchronization; union of overlapping intervals",
+  "original_metadata": {
+    "seed_base": null,
+    "board_wall_clock_may_be_incorrect": true,
+    "std": null,
+    "runner_sha256": "f63e46066913df315fc7fe4c1fabf7b079b8b0e24e9047a18d9924c468321fbd",
+    "fresh_process_per_inference": true,
+    "inputs": 20,
+    "mean": null,
+    "modes": [
+      "cpu_control",
+      "dma_control",
+      "cpu_profile",
+      "dma_profile"
+    ],
+    "operand_shapes": [
+      [
+        16,
+        4,
+        49,
+        32
+      ],
+      [
+        16,
+        4,
+        32,
+        49
+      ]
+    ],
+    "input_mode": "zero_fp32",
+    "order_design": "williams",
+    "order": "Williams design balances positions, pair precedence and directed neighbors",
+    "actual_experiment_date": "2026-11-11",
+    "cpu_state_before": {},
+    "programmed_bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+    "fpga_clock_mhz": 90,
+    "operation": "/layers.1/blocks.0/attn/MatMul_output_0",
+    "session_warmup": 0,
+    "image_distribution": "all-zero model input, 1x3x224x224 FP32",
+    "warmup_inferences": 4,
+    "cpu_state_after": {},
+    "platform": "Linux-4.5.0-00183-g4647b69-dirty-armv7l-with-Ubuntu-16.04-xenial",
+    "threads": 2,
+    "model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "compute_timer": "host start-to-done wall time includes MMIO polling and scheduling; no fabric cycle counter"
+  },
+  "kernel_timer": "only MNNPackedMatMul / MNNPackedMatMulRemain calls, FP32; union of overlapping intervals across threads",
+  "model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+  "threads": 2
+}

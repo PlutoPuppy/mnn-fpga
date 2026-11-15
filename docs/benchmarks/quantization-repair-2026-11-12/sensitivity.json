@@ -1,0 +1,488 @@
+{
+  "images": [
+    "n01440764-00.png",
+    "n02979186-00.png",
+    "n03028079-00.png",
+    "n03417042-00.png",
+    "n03445777-00.png"
+  ],
+  "elapsed_seconds": 106.11012506484985,
+  "rows": [
+    {
+      "index": 0,
+      "name": "/patch_embed/seq/seq.0/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.99633353963433,
+      "min_cosine": 0.9918924816917561
+    },
+    {
+      "index": 1,
+      "name": "/patch_embed/seq/seq.2/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9965224990260744,
+      "min_cosine": 0.9945368792028317
+    },
+    {
+      "index": 2,
+      "name": "/layers.0/blocks.0/conv1/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.9298019589394905,
+      "min_cosine": 0.8569951184420421
+    },
+    {
+      "index": 3,
+      "name": "/layers.0/blocks.0/conv2/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9657234858345822,
+      "min_cosine": 0.9381148599970744
+    },
+    {
+      "index": 4,
+      "name": "/layers.0/blocks.0/conv3/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9988330652879679,
+      "min_cosine": 0.9969367026022563
+    },
+    {
+      "index": 5,
+      "name": "/layers.0/blocks.1/conv1/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.9776943706580313,
+      "min_cosine": 0.9478428277041702
+    },
+    {
+      "index": 6,
+      "name": "/layers.0/blocks.1/conv2/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.9527640294785182,
+      "min_cosine": 0.865254573133537
+    },
+    {
+      "index": 7,
+      "name": "/layers.0/blocks.1/conv3/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.9996666672974683,
+      "min_cosine": 0.9989922616334681
+    },
+    {
+      "index": 8,
+      "name": "/layers.0/downsample/conv1/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.9977770897827426,
+      "min_cosine": 0.9961906607606378
+    },
+    {
+      "index": 9,
+      "name": "/layers.0/downsample/conv2/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.997301794612091,
+      "min_cosine": 0.9936677246550348
+    },
+    {
+      "index": 10,
+      "name": "/layers.0/downsample/conv3/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9996755663591813,
+      "min_cosine": 0.9992150872793718
+    },
+    {
+      "index": 11,
+      "name": "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.999557127245024,
+      "min_cosine": 0.9989673465078578
+    },
+    {
+      "index": 12,
+      "name": "/layers.1/blocks.0/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999636116938723,
+      "min_cosine": 0.9999499029568054
+    },
+    {
+      "index": 13,
+      "name": "/layers.1/blocks.0/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9998111926699694,
+      "min_cosine": 0.999646249488307
+    },
+    {
+      "index": 14,
+      "name": "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999145277492761,
+      "min_cosine": 0.9998641997364954
+    },
+    {
+      "index": 15,
+      "name": "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9997891630111434,
+      "min_cosine": 0.9997217463895544
+    },
+    {
+      "index": 16,
+      "name": "/layers.1/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999826976271722,
+      "min_cosine": 0.9999583558875291
+    },
+    {
+      "index": 17,
+      "name": "/layers.1/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999832681700414,
+      "min_cosine": 0.999971867984236
+    },
+    {
+      "index": 18,
+      "name": "/layers.1/blocks.1/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9998981328862346,
+      "min_cosine": 0.9998198298471341
+    },
+    {
+      "index": 19,
+      "name": "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999744085461988,
+      "min_cosine": 0.9999598376630107
+    },
+    {
+      "index": 20,
+      "name": "/layers.1/blocks.1/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9998832964219471,
+      "min_cosine": 0.999772475243397
+    },
+    {
+      "index": 21,
+      "name": "/layers.1/downsample/conv1/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9994250428186937,
+      "min_cosine": 0.9985612806231765
+    },
+    {
+      "index": 22,
+      "name": "/layers.1/downsample/conv2/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.997074100839771,
+      "min_cosine": 0.9940801789786943
+    },
+    {
+      "index": 23,
+      "name": "/layers.1/downsample/conv3/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.999280537536276,
+      "min_cosine": 0.9987465388944404
+    },
+    {
+      "index": 24,
+      "name": "/layers.2/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999851975525896,
+      "min_cosine": 0.999981681737383
+    },
+    {
+      "index": 25,
+      "name": "/layers.2/blocks.0/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999718565223483,
+      "min_cosine": 0.9999553786798279
+    },
+    {
+      "index": 26,
+      "name": "/layers.2/blocks.0/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9997944652598377,
+      "min_cosine": 0.9994757751242744
+    },
+    {
+      "index": 27,
+      "name": "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999679952785059,
+      "min_cosine": 0.999954442936934
+    },
+    {
+      "index": 28,
+      "name": "/layers.2/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999063963219802,
+      "min_cosine": 0.9998018100487794
+    },
+    {
+      "index": 29,
+      "name": "/layers.2/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999921124599238,
+      "min_cosine": 0.9999809122512275
+    },
+    {
+      "index": 30,
+      "name": "/layers.2/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999777258603384,
+      "min_cosine": 0.9999535447416116
+    },
+    {
+      "index": 31,
+      "name": "/layers.2/blocks.1/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9999034393873474,
+      "min_cosine": 0.9998393709317807
+    },
+    {
+      "index": 32,
+      "name": "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.999942617373032,
+      "min_cosine": 0.9999153839449827
+    },
+    {
+      "index": 33,
+      "name": "/layers.2/blocks.1/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999189122470306,
+      "min_cosine": 0.9998195608998666
+    },
+    {
+      "index": 34,
+      "name": "/layers.2/blocks.2/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999878234209003,
+      "min_cosine": 0.9999805054427313
+    },
+    {
+      "index": 35,
+      "name": "/layers.2/blocks.2/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999578561205545,
+      "min_cosine": 0.9999372773870926
+    },
+    {
+      "index": 36,
+      "name": "/layers.2/blocks.2/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9999015485819924,
+      "min_cosine": 0.9998695293698416
+    },
+    {
+      "index": 37,
+      "name": "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999609603241166,
+      "min_cosine": 0.9999324485883182
+    },
+    {
+      "index": 38,
+      "name": "/layers.2/blocks.2/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999054056125203,
+      "min_cosine": 0.9998584403187755
+    },
+    {
+      "index": 39,
+      "name": "/layers.2/blocks.3/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999840386396228,
+      "min_cosine": 0.9999761153345098
+    },
+    {
+      "index": 40,
+      "name": "/layers.2/blocks.3/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999768600294603,
+      "min_cosine": 0.9999571939182266
+    },
+    {
+      "index": 41,
+      "name": "/layers.2/blocks.3/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9998821234789684,
+      "min_cosine": 0.9997560503816122
+    },
+    {
+      "index": 42,
+      "name": "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999598741661903,
+      "min_cosine": 0.9999363665794022
+    },
+    {
+      "index": 43,
+      "name": "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 4,
+      "mean_cosine": 0.999179747651664,
+      "min_cosine": 0.9986991114827454
+    },
+    {
+      "index": 44,
+      "name": "/layers.2/blocks.4/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999704549090165,
+      "min_cosine": 0.9999037325389387
+    },
+    {
+      "index": 45,
+      "name": "/layers.2/blocks.4/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999781748292029,
+      "min_cosine": 0.9999546334959803
+    },
+    {
+      "index": 46,
+      "name": "/layers.2/blocks.4/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9998969760492253,
+      "min_cosine": 0.9997757391469413
+    },
+    {
+      "index": 47,
+      "name": "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999272519465888,
+      "min_cosine": 0.9998503819638817
+    },
+    {
+      "index": 48,
+      "name": "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9996708136922934,
+      "min_cosine": 0.9994838866023082
+    },
+    {
+      "index": 49,
+      "name": "/layers.2/blocks.5/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999798570539383,
+      "min_cosine": 0.9999707141247187
+    },
+    {
+      "index": 50,
+      "name": "/layers.2/blocks.5/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999806020446906,
+      "min_cosine": 0.9999733579777444
+    },
+    {
+      "index": 51,
+      "name": "/layers.2/blocks.5/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9999101172288155,
+      "min_cosine": 0.9998750536396052
+    },
+    {
+      "index": 52,
+      "name": "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999599154271632,
+      "min_cosine": 0.9999314488126146
+    },
+    {
+      "index": 53,
+      "name": "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.999407438221289,
+      "min_cosine": 0.9992167108980927
+    },
+    {
+      "index": 54,
+      "name": "/layers.2/downsample/conv1/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9988796188746525,
+      "min_cosine": 0.9985075629035738
+    },
+    {
+      "index": 55,
+      "name": "/layers.2/downsample/conv2/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9954786309055541,
+      "min_cosine": 0.9922284148509766
+    },
+    {
+      "index": 56,
+      "name": "/layers.2/downsample/conv3/c/Conv_output_0",
+      "agreement": 4,
+      "mean_cosine": 0.9944604212674267,
+      "min_cosine": 0.9928742761879005
+    },
+    {
+      "index": 57,
+      "name": "/layers.3/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999586330932587,
+      "min_cosine": 0.9999433762607599
+    },
+    {
+      "index": 58,
+      "name": "/layers.3/blocks.0/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9999257786512123,
+      "min_cosine": 0.9998931881731548
+    },
+    {
+      "index": 59,
+      "name": "/layers.3/blocks.0/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9994030485765742,
+      "min_cosine": 0.999221154337172
+    },
+    {
+      "index": 60,
+      "name": "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 4,
+      "mean_cosine": 0.9973674046692309,
+      "min_cosine": 0.9959158896630382
+    },
+    {
+      "index": 61,
+      "name": "/layers.3/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 1,
+      "mean_cosine": 0.4120891658348172,
+      "min_cosine": 0.2765541109416965
+    },
+    {
+      "index": 62,
+      "name": "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "agreement": 4,
+      "mean_cosine": 0.9393310820933207,
+      "min_cosine": 0.8883941443329644
+    },
+    {
+      "index": 63,
+      "name": "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9992091084168987,
+      "min_cosine": 0.9988950268902079
+    },
+    {
+      "index": 64,
+      "name": "/layers.3/blocks.1/local_conv/c/Conv_output_0",
+      "agreement": 5,
+      "mean_cosine": 0.9975085425899355,
+      "min_cosine": 0.9962427036493711
+    },
+    {
+      "index": 65,
+      "name": "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9998614665648198,
+      "min_cosine": 0.9998216656064217
+    },
+    {
+      "index": 66,
+      "name": "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9966447257119617,
+      "min_cosine": 0.9952667572112696
+    },
+    {
+      "index": 67,
+      "name": "output__matmul_converted",
+      "agreement": 5,
+      "mean_cosine": 0.9995119061436544,
+      "min_cosine": 0.9993975596821856
+    }
+  ]
+}

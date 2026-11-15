@@ -5,6 +5,15 @@ For the friend's **16x16 matmul-soc array / 256x256 INT8 output canvas**, see
 an explicit approximate FP32 path, and named-operation selection in TinyViT.
 The original INT32 register interface described below remains a separate target.
 
+The [fc1 capacity-aware experiment](docs/tinyvit-fc1-capacity-benchmark.md)
+adds an opt-in tile planner and measures one MLP projection on 20 random images
+at 90 MHz, including CPU comparison, phase timing and numerical limitations.
+
+The [W8A8 fc1 experiment](docs/tinyvit-w8a8-fc1-benchmark.md) adds calibrated
+MNN models and a native INT8 executor hook, with 200 measured runs on the same
+20 random inputs. It separates CPU quantization gains, FPGA overhead and
+numerical limitations.
+
 HPS Linux submits a signed INT8 **16×16 matrix multiplication** to the FPGA
 and reads 256 INT32 results. Target: DE1-SoC **5CSEMA5F31C6N**, Quartus Prime
 Lite **23.1std**. The Quartus device picker typically omits ordering suffix N.
@@ -96,8 +105,22 @@ integer matrices on that hardware, or approximate FP32 tiling on matmul-soc.
 
 The full [TinyViT graph](docs/tiny-vit.mnn.svg) needs further work: ordinary
 float activations still require accuracy validation of the new quantization
-policy. M/N/K tiling is implemented; DMA, interrupts and performance tuning
-remain future work. See the integration guide for current board-test evidence.
+policy. M/N/K tiling and real DMA are implemented; interrupts and performance
+tuning remain future work. The [20-input timing diagnosis](docs/tinyvit-qk-dma-timing-diagnosis.md)
+compares CPU matrix kernels, FPGA execution, conversion and transfer costs.
+The [whole-model CPU profile](docs/tinyvit-cpu-operator-profile.md) ranks all
+runtime operators and identifies larger static-weight projection candidates.
+The [quantization accuracy repair](docs/tinyvit-quantization-accuracy-repair.md)
+adds a validated mixed-precision model with 37 W8A8 convolutions and preserves
+sensitive layers in FP32. Its model accuracy checks are separate from the
+legacy FPGA arithmetic mismatch.
+The [corrected-model FC1 experiment](docs/tinyvit-mixed-w8a8-fc1-benchmark.md)
+reports the new 20-random-input CPU/FPGA comparison and full timing breakdown.
+The [native resident offload report](docs/tinyvit-native-resident-offload.md)
+documents the newer NI82 datapath, full INT32 reductions, 30 supported INT8
+linear operations and four MLP pairs whose hidden activations stay on FPGA.
+It includes measured inference and cold-start costs on the qualified 90 MHz
+image, plus a measured layer-selection policy.
 
 ## Current limits
 
@@ -108,6 +131,8 @@ remain future work. See the integration guide for current board-test evidence.
   kernel build tree are still external to this repository.
 - Quartus fitting, bridge/boot setup, kernel compatibility, and physical board
   execution must be checked in your board environment.
-- This version prioritizes correctness: each INT8 element uses one MMIO word.
+- The original `systolic_mmio` target prioritizes correctness: each INT8
+  element uses one MMIO word. The separate matmul-soc integration now supports
+  [prepared INT8, larger hardware jobs and real DMA](docs/matmul-soc-batched-int8-dma.md).
   Lane-parallel buffer reads may synthesize into registers/muxes. Check resource
   use and timing before optimizing memory banking or DMA.

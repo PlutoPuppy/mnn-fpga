@@ -1,0 +1,8 @@
+sudo: unable to resolve host DE1_SoC: Connection refused
+PASS cpu runs=1 jobs=0; final output matches fresh reference
+PASS cpu runs=2 jobs=0; final output matches fresh reference
+PASS cpu runs=3 jobs=0; final output matches fresh reference
+PASS pairs runs=1 jobs=437; final output matches fresh reference
+PASS pairs runs=2 jobs=874; final output matches fresh reference
+PASS pairs runs=3 jobs=1311; final output matches fresh reference
+PASS six session-reuse cases, twelve inferences

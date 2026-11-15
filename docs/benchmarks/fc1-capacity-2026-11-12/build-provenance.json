@@ -1,0 +1,33 @@
+{
+  "mnn_base": "2c3f5b21a223734e5db7da4ef7b492bc02cafcf5",
+  "compiler": "Zig0.13.0, arm-linux-musleabihf, cortex_a9",
+  "build_type": "Release, -O3 -DNDEBUG, static MNN, thread pool enabled, ARM82 disabled",
+  "application_checks": "-Wall -Wextra -Werror; diagnostic also -fno-rtti",
+  "source_hashes_note": "Working tree at report generation; comments/documentation may postdate build. Exact tested binaries identified below.",
+  "working_tree_source_sha256": {
+    "mnn/app/tinyvit_run.cpp": "fbbd115b5771705f8613f63b0fad927e06c4c4ea9f7be6153f706f1ad26f86fe",
+    "mnn/app/linear_override.cpp": "c2efc62ff83b021bcc47ca6b207c3c893f6a87f16d69aa108334ce5b9aa16a96",
+    "mnn/app/linear_override.hpp": "003034c9ca4747a584c2e7a0fbfe08f225ce54e99179cbf74833454db644bdd6",
+    "mnn/app/fc1_numeric_check.cpp": "c6bde8d64448639f08e2ae982dbc002401f8b80e3b7ef61a90a8cccb7c76203f",
+    "mnn/app/CMakeLists.txt": "30dce96b3476dc469d911ce834febce571eeda6dabb2f94c14c25a0d06d817e6",
+    "mnn/fpga_bridge.cpp": "8278512282592fdb8324833709750d3639cffb37dffbd645293e3613d3bd7e35",
+    "mnn/fpga_bridge.hpp": "969972e9a949aef66ad6d386f29f2c65c265e73eb6e0716f0462d32ab405e248",
+    "sw/include/matmul_soc.hpp": "90d1d71af2c255239e343b080a43ea45d18bb5d6d397fc17d0c18515151f4002",
+    "sw/include/matmul_soc_profile.hpp": "0599ba2168f467867f6f18cb30563d3fa6ac21eb00ae40423d15ce7e22dad47f",
+    "sw/include/matmul_soc_uio.hpp": "57580d28447fe0aa96251e491194312aeb887a9f059762d5fb7c4fbb6b2344f2",
+    "sw/src/matmul_soc.cpp": "7ff02a7d6341c59557b7c6621c1b1fe9cef9bed2e05763a322832c186f9fc7f8",
+    "sw/src/matmul_soc_uio.cpp": "73a2494ad793a4e08147a16cfece2db3d5d795369f1ae1c616dd7efd9b825a1c",
+    "sw/tests/tiling_test.cpp": "639332cc88a14fd7357206975f7a2f9db08f27f45a1d7462c2faabe7ad23ad50",
+    "sw/src/matmul_soc_shape_smoke.cpp": "7dd1d2055ac0cb2a4ae87f2d123530ff9b9f06686f4020e4deb206b84c6dab20",
+    "mnn/app/benchmark_fc1_capacity.py": "beca8a0b597347d26e2ac8e7cf587b9a3971330a446690c750869df193cd42dc",
+    "mnn/app/summarize_fc1_capacity.py": "50e65e71015759c5595c6473b15f21ed8ee8c1da9fb701d4c1f4e1b5d84293a2",
+    "mnn/app/plot_fc1_capacity.py": "eab06965ff2904778dc15c73c4c2afc5fad31c97ae3bb3af8ac8640b0abbc13b",
+    "platform/arm-zig-windows.cmake": "dcfdf41043d568ac328a4b056aabd8d954962b4ada18d9ff940b7a8ecf951db6"
+  },
+  "tested_binaries": {
+    "tinyvit_fc1_capacity_v2": "cc7487f1b5598561f32c965cc8372f711fa5bc5dd9f057c796b211910027dbd6",
+    "fc1_numeric_check_v2": "5463a4f724ce4a75d7b41bda6842421125ed9aced35e0414b2fddf93f32e2db7",
+    "matmul_soc_capacity_smoke": "29df2cf0a5031a5eb2797c33a58fdbfe5e455ef70bfe760835661957e991341e",
+    "matmul-soc-90mhz.sof": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058"
+  }
+}

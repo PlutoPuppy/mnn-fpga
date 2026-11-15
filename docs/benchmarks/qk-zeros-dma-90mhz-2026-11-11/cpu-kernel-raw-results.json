@@ -1,0 +1,1462 @@
+[
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 1,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1309.96,
+        "process_ms": 2252.042320000328
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.55634,
+          "selected_qk_ms": 5.22948,
+          "inference_ms": 1158.62208,
+          "session_ms": 129.49964,
+          "main_elapsed_ms": 1731.19731,
+          "offload": {
+            "cpu_execute_union_ms": 5.16709,
+            "cpu_kernel_thread_ms": 5.79639,
+            "cpu_kernel_union_ms": 4.12049,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.69845,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.92167,
+          "model_load_ms": 434.63086,
+          "output_ms": 0.78346
+        },
+        "inference_ms": 1158.62,
+        "process_ms": 1769.266389999757
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 2,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1202.13,
+        "process_ms": 1623.8924099998258
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.50232,
+          "selected_qk_ms": 5.26476,
+          "inference_ms": 1154.32153,
+          "session_ms": 129.39116,
+          "main_elapsed_ms": 1530.57117,
+          "offload": {
+            "cpu_execute_union_ms": 5.20929,
+            "cpu_kernel_thread_ms": 5.8519,
+            "cpu_kernel_union_ms": 4.16781,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.7721,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.89068,
+          "model_load_ms": 230.89997,
+          "output_ms": 8.37861
+        },
+        "inference_ms": 1154.32,
+        "process_ms": 1569.3057099997532
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 3,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1193.07,
+        "process_ms": 1828.8894800007256
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.49826,
+          "selected_qk_ms": 5.43356,
+          "inference_ms": 1158.66976,
+          "session_ms": 130.12951,
+          "main_elapsed_ms": 1666.55276,
+          "offload": {
+            "cpu_execute_union_ms": 5.38138,
+            "cpu_kernel_thread_ms": 5.88333,
+            "cpu_kernel_union_ms": 4.18806,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 10.10088,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.84099,
+          "model_load_ms": 369.26485,
+          "output_ms": 0.86308
+        },
+        "inference_ms": 1158.67,
+        "process_ms": 1712.1858299997257
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 4,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1158.41,
+        "process_ms": 1946.0953300003894
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.50289,
+          "selected_qk_ms": 5.23022,
+          "inference_ms": 1159.92357,
+          "session_ms": 136.71024,
+          "main_elapsed_ms": 1800.24335,
+          "offload": {
+            "cpu_execute_union_ms": 5.17013,
+            "cpu_kernel_thread_ms": 5.86805,
+            "cpu_kernel_union_ms": 4.15823,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.71483,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.92423,
+          "model_load_ms": 495.00388,
+          "output_ms": 0.88132
+        },
+        "inference_ms": 1159.92,
+        "process_ms": 1845.3184600002714
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 5,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1154.67,
+        "process_ms": 1926.8718999992416
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.50464,
+          "selected_qk_ms": 5.27684,
+          "inference_ms": 1161.39384,
+          "session_ms": 129.22905,
+          "main_elapsed_ms": 1759.30974,
+          "offload": {
+            "cpu_execute_union_ms": 5.22317,
+            "cpu_kernel_thread_ms": 5.81643,
+            "cpu_kernel_union_ms": 4.13036,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.73308,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.84601,
+          "model_load_ms": 460.39513,
+          "output_ms": 0.74519
+        },
+        "inference_ms": 1161.39,
+        "process_ms": 1797.6390399999218
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 6,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1215.18,
+        "process_ms": 1653.3161600000312
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.50338,
+          "selected_qk_ms": 5.29058,
+          "inference_ms": 1161.33632,
+          "session_ms": 129.37068,
+          "main_elapsed_ms": 1624.87423,
+          "offload": {
+            "cpu_execute_union_ms": 5.24031,
+            "cpu_kernel_thread_ms": 5.80672,
+            "cpu_kernel_union_ms": 4.15503,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.75678,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.84508,
+          "model_load_ms": 325.81177,
+          "output_ms": 0.82366
+        },
+        "inference_ms": 1161.34,
+        "process_ms": 1694.2030799982604
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 7,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1199.21,
+        "process_ms": 1854.4879800010676
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.53919,
+          "selected_qk_ms": 5.29109,
+          "inference_ms": 1157.40424,
+          "session_ms": 129.26301,
+          "main_elapsed_ms": 1538.96682,
+          "offload": {
+            "cpu_execute_union_ms": 5.24412,
+            "cpu_kernel_thread_ms": 5.81734,
+            "cpu_kernel_union_ms": 4.11376,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.77211,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.83424,
+          "model_load_ms": 232.93982,
+          "output_ms": 11.80046
+        },
+        "inference_ms": 1157.4,
+        "process_ms": 1576.9679999993969
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 8,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1185.91,
+        "process_ms": 1835.321179998573
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.54665,
+          "selected_qk_ms": 5.29319,
+          "inference_ms": 1171.62738,
+          "session_ms": 129.02756,
+          "main_elapsed_ms": 1540.44069,
+          "offload": {
+            "cpu_execute_union_ms": 5.21396,
+            "cpu_kernel_thread_ms": 5.77663,
+            "cpu_kernel_union_ms": 4.11711,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.75772,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.83441,
+          "model_load_ms": 231.35273,
+          "output_ms": 0.80044
+        },
+        "inference_ms": 1171.63,
+        "process_ms": 1578.781149999486
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 9,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1156.62,
+        "process_ms": 1809.3572099987796
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.79168,
+          "selected_qk_ms": 5.31014,
+          "inference_ms": 1170.8668,
+          "session_ms": 138.47125,
+          "main_elapsed_ms": 1576.13967,
+          "offload": {
+            "cpu_execute_union_ms": 5.24773,
+            "cpu_kernel_thread_ms": 5.86244,
+            "cpu_kernel_union_ms": 4.1215,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.84484,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.97388,
+          "model_load_ms": 249.77854,
+          "output_ms": 9.05668
+        },
+        "inference_ms": 1170.87,
+        "process_ms": 1617.4952399996982
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 10,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1159.54,
+        "process_ms": 1831.3868999994156
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.57782,
+          "selected_qk_ms": 5.2771,
+          "inference_ms": 1188.39888,
+          "session_ms": 129.13137,
+          "main_elapsed_ms": 1574.93822,
+          "offload": {
+            "cpu_execute_union_ms": 5.19528,
+            "cpu_kernel_thread_ms": 5.77817,
+            "cpu_kernel_union_ms": 4.1128,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.73325,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.84879,
+          "model_load_ms": 248.88376,
+          "output_ms": 0.8361
+        },
+        "inference_ms": 1188.4,
+        "process_ms": 1614.1303799995512
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 11,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1154.79,
+        "process_ms": 1710.8966800005874
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.54147,
+          "selected_qk_ms": 5.20612,
+          "inference_ms": 1170.82163,
+          "session_ms": 129.7063,
+          "main_elapsed_ms": 1542.0621,
+          "offload": {
+            "cpu_execute_union_ms": 5.15564,
+            "cpu_kernel_thread_ms": 5.79127,
+            "cpu_kernel_union_ms": 4.1282,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.65909,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.88903,
+          "model_load_ms": 233.17116,
+          "output_ms": 0.75105
+        },
+        "inference_ms": 1170.82,
+        "process_ms": 1623.260090000258
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 12,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1165.72,
+        "process_ms": 1744.5104100006574
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.50558,
+          "selected_qk_ms": 16.93576,
+          "inference_ms": 1181.99336,
+          "session_ms": 128.79369,
+          "main_elapsed_ms": 1694.29647,
+          "offload": {
+            "cpu_execute_union_ms": 6.60808,
+            "cpu_kernel_thread_ms": 5.93643,
+            "cpu_kernel_union_ms": 4.25324,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 12.42253,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.84843,
+          "model_load_ms": 362.35236,
+          "output_ms": 13.53736
+        },
+        "inference_ms": 1181.99,
+        "process_ms": 1732.8190199987148
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 13,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1152.83,
+        "process_ms": 1793.8728000008268
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.59968,
+          "selected_qk_ms": 5.27253,
+          "inference_ms": 1163.76365,
+          "session_ms": 128.90425,
+          "main_elapsed_ms": 1580.5647,
+          "offload": {
+            "cpu_execute_union_ms": 5.22991,
+            "cpu_kernel_thread_ms": 5.84044,
+            "cpu_kernel_union_ms": 4.14453,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.80432,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.88584,
+          "model_load_ms": 279.38315,
+          "output_ms": 0.80052
+        },
+        "inference_ms": 1163.76,
+        "process_ms": 1667.0503799996368
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 14,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1173.79,
+        "process_ms": 1844.5968400010315
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.49043,
+          "selected_qk_ms": 5.22032,
+          "inference_ms": 1194.74104,
+          "session_ms": 128.98497,
+          "main_elapsed_ms": 1683.33535,
+          "offload": {
+            "cpu_execute_union_ms": 5.14341,
+            "cpu_kernel_thread_ms": 5.81638,
+            "cpu_kernel_union_ms": 4.17495,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.73242,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.89644,
+          "model_load_ms": 351.1623,
+          "output_ms": 0.80851
+        },
+        "inference_ms": 1194.74,
+        "process_ms": 1721.8366899996909
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 15,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1170.96,
+        "process_ms": 1851.5920600002573
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 5.0377,
+          "selected_qk_ms": 5.37283,
+          "inference_ms": 1191.93303,
+          "session_ms": 129.17165,
+          "main_elapsed_ms": 1714.29859,
+          "offload": {
+            "cpu_execute_union_ms": 5.3023,
+            "cpu_kernel_thread_ms": 5.82391,
+            "cpu_kernel_union_ms": 4.16907,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.84874,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.81173,
+          "model_load_ms": 384.37826,
+          "output_ms": 0.76149
+        },
+        "inference_ms": 1191.93,
+        "process_ms": 1759.818759999689
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 16,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1176.47,
+        "process_ms": 1774.8639499986893
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.60787,
+          "selected_qk_ms": 5.24684,
+          "inference_ms": 1182.64592,
+          "session_ms": 128.99253,
+          "main_elapsed_ms": 1647.26142,
+          "offload": {
+            "cpu_execute_union_ms": 5.16014,
+            "cpu_kernel_thread_ms": 5.79124,
+            "cpu_kernel_union_ms": 4.13862,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.65992,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.92803,
+          "model_load_ms": 327.00881,
+          "output_ms": 0.82233
+        },
+        "inference_ms": 1182.65,
+        "process_ms": 1717.8852599990933
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 17,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1170.18,
+        "process_ms": 1846.8559100001585
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.51752,
+          "selected_qk_ms": 5.32809,
+          "inference_ms": 1227.18786,
+          "session_ms": 129.38179,
+          "main_elapsed_ms": 1706.44483,
+          "offload": {
+            "cpu_execute_union_ms": 5.24799,
+            "cpu_kernel_thread_ms": 5.84732,
+            "cpu_kernel_union_ms": 4.20286,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.72035,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.88856,
+          "model_load_ms": 341.36782,
+          "output_ms": 0.82062
+        },
+        "inference_ms": 1227.19,
+        "process_ms": 1778.9872599987575
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 18,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1169.56,
+        "process_ms": 1842.7514499999234
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 5.0064,
+          "selected_qk_ms": 5.22146,
+          "inference_ms": 1184.49403,
+          "session_ms": 129.98989,
+          "main_elapsed_ms": 1970.56592,
+          "offload": {
+            "cpu_execute_union_ms": 5.14327,
+            "cpu_kernel_thread_ms": 5.78638,
+            "cpu_kernel_union_ms": 4.14767,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.71927,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.80297,
+          "model_load_ms": 647.1243,
+          "output_ms": 0.82817
+        },
+        "inference_ms": 1184.49,
+        "process_ms": 2028.182600000946
+      }
+    }
+  },
+  {
+    "order": [
+      "control",
+      "profile"
+    ],
+    "input": 19,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1152.62,
+        "process_ms": 1673.5453000001144
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.55722,
+          "selected_qk_ms": 5.27043,
+          "inference_ms": 1174.2171,
+          "session_ms": 129.35927,
+          "main_elapsed_ms": 1555.11405,
+          "offload": {
+            "cpu_execute_union_ms": 5.17973,
+            "cpu_kernel_thread_ms": 5.80834,
+            "cpu_kernel_union_ms": 4.18863,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.71148,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.8263,
+          "model_load_ms": 232.4002,
+          "output_ms": 11.44383
+        },
+        "inference_ms": 1174.22,
+        "process_ms": 1593.983130000197
+      }
+    }
+  },
+  {
+    "order": [
+      "profile",
+      "control"
+    ],
+    "input": 20,
+    "image_sha256": "ad8c5f4d30e45b2a50f7f4d1f347f64d613c6fbcd92c54ca746ab077f402d8cc",
+    "seed": null,
+    "runs": {
+      "control": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "inference_ms": 1155.77,
+        "process_ms": 1730.2319600003102
+      },
+      "profile": {
+        "output_sha256": "2ddf6697b353bc9f041bbd0cabff1fe50300b99727ada71c388e18311a505f5b",
+        "profile": {
+          "input_copy_ms": 4.56698,
+          "selected_qk_ms": 5.33239,
+          "inference_ms": 1172.7859,
+          "session_ms": 129.94331,
+          "main_elapsed_ms": 1787.09888,
+          "offload": {
+            "cpu_execute_union_ms": 5.25524,
+            "cpu_kernel_thread_ms": 5.91183,
+            "cpu_kernel_union_ms": 4.22245,
+            "cpu_interval_overflow": 0,
+            "quantized_values": 0,
+            "compute_polls": 0,
+            "cpu_execute_calls": 64,
+            "ms": {
+              "output_dma_wait": 0,
+              "peak_scan": 0,
+              "download": 0,
+              "device_init": 0,
+              "dequantize": 0,
+              "input_dma_setup": 0,
+              "bridge_total": 0,
+              "output_dma_setup": 0,
+              "scale_bound": 0,
+              "pack_pad": 0,
+              "quantize": 0,
+              "input_dma_wait": 0,
+              "configure": 0,
+              "output_stage_copy": 0,
+              "input_stage_copy": 0,
+              "completion_wait": 0,
+              "adapter_total": 0,
+              "workspace": 0,
+              "upload": 0,
+              "launch": 0,
+              "output_convert": 0
+            },
+            "cpu_execute_ms": 9.7923,
+            "input_descriptors": 0,
+            "jobs": 0,
+            "cpu_kernel_calls": 320,
+            "output_polls": 0,
+            "output_bytes": 0,
+            "output_descriptors": 0,
+            "input_polls": 0,
+            "input_bytes": 0
+          },
+          "selected_qk_calls": 1,
+          "preprocess_ms": 2.84891,
+          "model_load_ms": 475.87539,
+          "output_ms": 0.82462
+        },
+        "inference_ms": 1172.79,
+        "process_ms": 1826.7397399995389
+      }
+    }
+  }
+]

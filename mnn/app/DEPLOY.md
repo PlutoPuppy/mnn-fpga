@@ -63,7 +63,7 @@ measured results. This is not image-classification accuracy validation.
 ## One selected operation on matmul-soc
 
 Rebuild with the updated MNN patch. The friend's hardware has an INT8 output
-format; this path quantizes FP32 tiles and is approximate. Read
+format; this path prepares INT8 operands from FP32 and is approximate. Read
 [the integration guide](../../docs/matmul-soc-integration.md) and load the
 matching FPGA image before accessing it. The connected board lacks UIO, so
 the explicit prototype `/dev/mem` path requires root:
@@ -73,15 +73,17 @@ Follow the integration guide's **tested boot sequence** before these commands.
 The sequence retains the accelerator without changing saved boot settings.
 
 ```sh
-sudo ./matmul_soc_smoke --devmem
-sudo env MNN_MATMUL_SOC_DEVMEM=1 ./tinyvit_offload \
-  --model tiny-vit.mnn --height 224 --width 224 --zeros --threads 2 \
-  --fpga-op /layers.3/blocks.1/attn/MatMul_output_0 --require-fpga \
+sudo ./matmul_soc_smoke_batched --devmem --dma
+sudo env MNN_MATMUL_SOC_DEVMEM=1 MNN_MATMUL_SOC_DMA=1 ./tinyvit_offload_batched \
+  --model tiny-vit.mnn --height 224 --width 224 --input-f32 input.f32 --threads 2 \
+  --fpga-op /layers.1/blocks.0/attn/MatMul_output_0 --require-fpga \
   --output-dir outputs/fpga-one-op
 ```
 
-That runtime operation multiplies ten 49x32 matrices by 32x49 matrices.
-The tiler submits 320 independent 16x16x16 jobs, including zero-padded edges.
+That first QK operation multiplies 64 head/window pairs of 49x32 and 32x49
+matrices. The batched runner submits 64 larger jobs and lets hardware handle
+the internal 16x16 tiling. Omit `MNN_MATMUL_SOC_DMA` to use bulk PIO instead.
+See [the prepared-INT8 and DMA guide](../../docs/matmul-soc-batched-int8-dma.md).
 Other operations stay on the CPU. For another export, run `--list-ops` first
 and choose its actual operation name. `--require-fpga` fails on CPU-only
 execution; model success alone does not prove an offload.

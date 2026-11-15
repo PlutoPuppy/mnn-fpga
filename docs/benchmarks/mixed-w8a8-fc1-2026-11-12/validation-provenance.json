@@ -1,0 +1,45 @@
+{
+  "experiment_date": "2026-11-12",
+  "measured_inferences": 200,
+  "separate_warmups": 10,
+  "raw_output_hashes_verified": 200,
+  "fp32_prior_output_hashes_match": 20,
+  "control_profile_output_hash_pairs_match": 100,
+  "raw_archive_sha256": "bbb0a3f02e8dddea0699f99806df8044b76e4a0e52091eea9244f4f6fc92fb87",
+  "deployed_harness_sha256": "311ae2ce63c403fb8b51f995bad3617959d6839d36e81a00fdb8735fb7942448",
+  "analyzer_sha256": "25894c514e04d92e51d8ac7a7cb17210c5e71cabaad6e392fde33235762382e1",
+  "plot_sha256": "7c0e9b580292e1ba4a18b78e80e414fb6a90516bf91f27a0fb2804177a4b6fc1",
+  "runner_sha256": "79f1bf12509594bc65741d78d6b23dfbe4aa9cc987fd45d1615df58ad9419e0b",
+  "models": {
+    "hybrid_cpu": {
+      "bytes": 26399956,
+      "file": "tiny-vit-fc1-w8a8.mnn",
+      "sha256": "5da72376879416206ccf736fb0c75545c83d721dec3a5e8d0fb789eccddaaa27"
+    },
+    "hybrid_fpga": {
+      "bytes": 26399956,
+      "file": "tiny-vit-fc1-w8a8.mnn",
+      "sha256": "5da72376879416206ccf736fb0c75545c83d721dec3a5e8d0fb789eccddaaa27"
+    },
+    "full_fpga": {
+      "bytes": 18748848,
+      "file": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+    },
+    "full_cpu": {
+      "bytes": 18748848,
+      "file": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+    },
+    "fp32": {
+      "bytes": 26602144,
+      "file": "tiny-vit.mnn",
+      "sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+    }
+  },
+  "bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+  "operator_details": true,
+  "no_hardware_reprogramming_during_experiment": true,
+  "fpga_jobs_per_inference": 28,
+  "note": "Random-input timing and output-agreement experiment; FPGA arithmetic still fails numerical equivalence."
+}

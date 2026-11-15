@@ -1,0 +1,23 @@
+{
+  "format": "RGB",
+  "mean": [
+    123.675,
+    116.28,
+    103.53
+  ],
+  "normal": [
+    0.017124753831663668,
+    0.01750700280112045,
+    0.017429193899782137
+  ],
+  "width": 224,
+  "height": 224,
+  "path": "E:\\Quartus\\Quartus-lite-23.1std.1.993-windows\\components\\tinyvit\\git-repo\\mnn-fpga\\build\\mnn-w8a8-tools\\calibration-128",
+  "used_image_num": 128,
+  "feature_quantize_method": "KL",
+  "weight_quantize_method": "MAX_ABS",
+  "quant_bits": 8,
+  "feature_clamp_value": 127,
+  "weight_clamp_value": 127,
+  "debug": false
+}

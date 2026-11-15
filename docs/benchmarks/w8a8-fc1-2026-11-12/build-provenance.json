@@ -1,0 +1,57 @@
+{
+  "mnn_source_base": "2c3f5b21a223734e5db7da4ef7b492bc02cafcf5",
+  "quantizer": "MNN3.6.2 Windows cp310 wheel",
+  "compiler": "Zig0.13.0, ARMv7 musleabihf Cortex-A9, Release-O3 static, MNN thread pool ON, ARM82 OFF",
+  "application_checks": "-Wall -Wextra -Werror; MNN core has an existing %lu/size_t debug-print warning",
+  "tested_runner_sha256": "233af95ef5de385b0f694273a69e78b9340ad36b3031924b452b2cf0b561e151",
+  "loaded_sof_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058",
+  "models": {
+    "tiny-vit-fp32.mnn": {
+      "bytes": 26602144,
+      "sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+    },
+    "tiny-vit-w8a8-kl.mnn": {
+      "bytes": 10686388,
+      "sha256": "d4d6bb729e25cd56d9ea5546a2b3a737af0678e497ffd8ae57c12b4377ef0277"
+    },
+    "tiny-vit-fc1-w8a8.mnn": {
+      "bytes": 26399956,
+      "sha256": "5da72376879416206ccf736fb0c75545c83d721dec3a5e8d0fb789eccddaaa27"
+    }
+  },
+  "source_sha256": {
+    "Makefile": "2062651a65cbdce298b40394fffdae8c4671b01b905167b97aa4d1f8746d155b",
+    "sw/include/matmul_soc.hpp": "99d38d8353d2e18d3a365b4e3abb7c2be4f0abe4f87ea7979d674bc003286325",
+    "sw/include/matmul_soc_profile.hpp": "45c95d427d16083b3178727f36cf09789b4df996caae4491473fc625a2060738",
+    "sw/include/int8_requant.hpp": "c01efc987ed58fa6e5b4f24d6494970e406ac4f19ae839284529263182809119",
+    "sw/src/matmul_soc.cpp": "ce8450bcae7369ea97171d6c6189ec8c6d4fbde13073b7f1d55d27d798472349",
+    "sw/src/matmul_soc_uio.cpp": "73a2494ad793a4e08147a16cfece2db3d5d795369f1ae1c616dd7efd9b825a1c",
+    "sw/tests/tiling_test.cpp": "c01e57617b98c246070cd2668f04f184f6409d37ba3021f8480d8d0249aee5fd",
+    "sw/tests/int8_requant_test.cpp": "97ccc1c5ed166c19da2c300a404ab23d3081f8c25cac863809f381f976b8dfdd",
+    "mnn/fpga_bridge.cpp": "e9ae9d7e7c2e034987945893b1f7af8521fe2e31cf1cfbf4162c2746b07c9a28",
+    "mnn/fpga_bridge.hpp": "e9ad65ddff03ea42c1837027c910a955a44343180b36b918b59de61b65e61cac",
+    "mnn/app/tinyvit_run.cpp": "c9b22cab8ee457be0b638f480e093c725d4f4b3e8b20a32528bdfcc5df980bdf",
+    "mnn/app/quantized_linear.cpp": "c01ec1638eb0cfc9302d609b1994b59ca22d3050447b3b9a13b7c48f9e94a2df",
+    "mnn/app/quantized_linear.hpp": "5636f805f099806a087edd3658f759a014658332873569f0662d2c9e9a6b426d",
+    "mnn/app/CMakeLists.txt": "f9db63ac05758befd5142159540b241781d823786c2a2d8ac5a1ba45ae3e95a7",
+    "mnn/app/quantize_tinyvit_w8a8.py": "983f6a527a1a63351f126b878b45c2f4a754501f2e1b414a6cfb6c7b601ad304",
+    "mnn/app/prepare_tinyvit_calibration.py": "cb341b06f69407a7fbdec603115139def34e24b846e864bea1611ecb580a8c15",
+    "mnn/app/create_fc1_quantized_model.cpp": "2eab94b8833b3b2cf0d81b99a530c4744b5f29e108a9baa7dbf4a7cf4af2ecb5",
+    "mnn/app/check_fc1_w8a8_numeric.py": "aeb3c842af73222bf5302ef79ff056b2cdd0283b3d212d523db431f79c721783",
+    "mnn/app/benchmark_fc1_w8a8.py": "1680073d099e23e4eda54ef7068097ece3b17000c76fc1cc36ae2b7935e3ed44",
+    "mnn/app/summarize_fc1_w8a8.py": "a7aa7179362d5132e1b7ae21b1227aecbb892fe64fae41f824ddcf060e3f7986",
+    "mnn/app/plot_fc1_w8a8.py": "4504e0bfabdca62f1898ceb71471d8fbbb4623ff899d199709cc915f1bd5664a",
+    "mnn/patches/0002-native-int8-fc1.patch": "2ac70c0695b32e2fa4f9f2888fb1ffa2c4efd2e17de848a09059a325d5ae3d3e"
+  },
+  "source_note": "Working tree at report generation; benchmark-tested runner identified by its exact hash",
+  "neon_check": {
+    "sha256": "67e7e364ce161aeb43eaeb8aff6fa5bbfc1e973c831152b3c8d32282a4bfcd67",
+    "result": "PASS ARM NEON and scalar requantization: all INT8 codes, signed ties, clamps, tails, full fc1 length"
+  },
+  "host_versions": {
+    "numpy": "2.2.6",
+    "Pillow": "11.3.0"
+  },
+  "numeric_capture_runner_sha256": "25d4d940beea39efbf9ab10a1a8da1a02302910b98d89e6ec9db3352fabfe6b1",
+  "numeric_capture_note": "Diagnostic v2 has the same integer arithmetic; measured v4 adds profiling counters/framework-cast timers. All4 final image01 score hashes equal the archived diagnostic outputs."
+}

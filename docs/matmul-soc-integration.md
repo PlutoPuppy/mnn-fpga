@@ -1,8 +1,18 @@
 # One TinyViT MatMul on matmul-soc
 
-Inspected upstream commit `4b749cedf88742dc999267999cd234186eb26bf7`
-from <https://github.com/j3rryhu/matmul-soc>. Local inspection checkout:
-`build/matmul-soc` (ignored by Git). No upstream RTL has been copied or changed.
+Update 2026-11-11: a separate 90 MHz build with the corrected constraints
+passed all 88 reported STA checks and physical board validation. Ten fresh
+TinyViT processes produced bit-identical scores to the saved 80 MHz results.
+See [90 MHz verification](matmul-soc-90mhz-verification.md) for the profile,
+reports and the session-reuse limitation found during testing.
+
+Latest inspected upstream commit: `b3ea448a36a5db7bd301173d4e5fff027eca2382`
+from <https://github.com/j3rryhu/matmul-soc>. It adds benchmark programs and a
+SignalTap change over `4b749cedf88742dc999267999cd234186eb26bf7`; accelerator
+RTL and the ABI are unchanged. The local inspection checkout `build/matmul-soc`
+remains at that older revision. No upstream RTL has been copied or changed.
+See [larger jobs, prepared INT8 and DMA](matmul-soc-batched-int8-dma.md) for
+the current driver and deployment commands.
 
 ## Quartus project and hardware contract
 
@@ -73,9 +83,11 @@ Use this tested temporary sequence; no saved environment or SD files change:
    This uses the existing board handoff and boots Linux without `callscript`,
    retaining the accelerator. Do not run the normal `bootcmd` for this test.
 4. Log in as ubuntu, enter `/home/ubuntu/tinyvit`, and run
-   `sudo ./matmul_soc_smoke --devmem`. All six cases must pass with 48 jobs.
-5. Run the selected-operation command below. The tested operation reports
-   320 FPGA submissions. After another normal boot, repeat this sequence.
+   `sudo ./matmul_soc_smoke_batched --devmem` (or add `--dma`). The current
+   suite has 14 cases and 18 jobs; the preserved original suite had 48 jobs.
+5. Run the selected-operation command below. The new batched runner reports
+   64 jobs for first QK, or 10 for the later layer-3 QK. The preserved original
+   runner used 2048/320 respectively. After normal boot, repeat this sequence.
 
 The isolated upstream Quartus project is `%TEMP%/mnn-matmul-soc/adder_prototype.qpf`.
 Generated deploy artifacts are under `build/matmul-soc-deploy`; the original
@@ -120,28 +132,42 @@ against the friend's bitstream; those belong to a different ABI.
 
 ## Tiling and numeric behavior
 
-`fpga::matmul_soc_gemm` computes `[M,K] * [K,N]` using independent zero-padded
-16x16x16 jobs. M/N/K may be arbitrary positive dimensions, including tails and
-sizes exceeding 256. Transposed A/B and transposed output layouts are supported;
-an optional column bias is added on the host. Each job uses a 16x16 output
-canvas at its origin. This first implementation trades throughput for simple
-correctness: it does not use DMA or retain multiple output tiles in the canvas.
+The current driver batches `[M,K] * [K,N]` into hardware jobs of up to
+`[256,64] * [64,256]`. Hardware manages its own 16x16 row/column tiling and
+16-wide reduction bands inside each job. Host panels handle larger matrices
+and zero-pad tails. A 49x32 by 32x49 product now needs one job instead of 32.
+The first QK operation has 64 head/window products, so it needs 64 jobs.
 
-Each operand tile is symmetrically quantized with scale `max(abs(x))/127`
-(zero tile scale = 1), nearest rounding with ties away from zero. A row-L1
-bound times B's maximum magnitude chooses a nonzero hardware output scale
-that avoids saturation. The INT8 result is dequantized with the **actual
-encoded** Q0.16 multiplier. Reduction tiles accumulate in host double precision,
-then convert to FP32. Hardware `use_prev_out` is always zero: its saturating
-INT8 accumulation would lose precision across reduction blocks. Output is
-published only after the whole operation succeeds.
+`prepare_matmul_soc_operand` creates a dense row-major INT8 operand and one
+symmetric scale `max(abs(x))/127` (zero scale is represented by 1). Preparation
+validates finite values and rounds ties away from zero. The FP32 adapter
+prepares each complete operand once, not repeatedly for every output tile.
+Callers with prepared signed INT8 activations can call
+`matmul_soc_gemm_prepared` directly with their scales and skip FP32 conversion.
+For this FP32 TinyViT model, Q/K are dynamic activations and still require
+runtime preparation; they are not static weights that can be prepared offline.
+
+A row-L1 bound times B's maximum magnitude chooses the Q0.16 output multiplier.
+Rounding headroom accounts for the hardware flooring and accumulating each
+16-wide band into INT8. The result is dequantized using the actual encoded
+multiplier. Reduction panels beyond 64 elements are accumulated in host double
+precision; optional bias and transposed output remain supported. `use_prev_out`
+is zero between host panels. Output is published only after all jobs succeed.
+
+PIO remains the default transport. Bulk PIO uses full 128-bit NEON beats with
+ordering barriers around each whole image. `MNN_MATMUL_SOC_DMA=1` together
+with `MNN_MATMUL_SOC_DEVMEM=1` selects the tested DMA prototype: DMA0 moves
+operands from excluded DDR into the accelerator; DMA1 moves results back.
+This mode checks the board-specific staging range for Linux resource overlap.
+See [the batching, INT8 and DMA guide](matmul-soc-batched-int8-dma.md).
 
 This is an **approximation**, including operand rounding and a downward floor
 error in each output block. Quantization is opt-in through a distinct device
 environment variable and operation selection. Model accuracy is not yet
 established. Compare output scores and accuracy on representative images before
 using this path for anything beyond an integration experiment. No speedup is
-claimed; per-tile MMIO can be much slower than NEON CPU multiplication.
+claimed by the interface itself; measure the complete model for the selected
+transport and quantization policy.
 
 The original INT32 hardware also now has `fpga::exact_float_gemm`: integral
 INT8-valued FP32 operands, arbitrary M/N tails, transpose support, and K<=1024

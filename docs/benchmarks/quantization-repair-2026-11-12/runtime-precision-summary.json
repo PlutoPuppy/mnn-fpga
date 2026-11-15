@@ -1,0 +1,31 @@
+{
+  "int8_convolutions": 37,
+  "fp32_convolutions": 31,
+  "operator_counts": {
+    "Raster": 154,
+    "Convolution": 53,
+    "UnaryOp": 23,
+    "ConvolutionDepthwise": 15,
+    "BinaryOp": 40,
+    "LayerNorm": 21,
+    "While": 22,
+    "Softmax": 10,
+    "FloatToInt8": 37,
+    "Int8ToFloat": 37,
+    "Reduction": 1
+  },
+  "operator_ms": {
+    "Raster": 124.51876,
+    "Convolution": 619.71491,
+    "UnaryOp": 124.42457,
+    "ConvolutionDepthwise": 44.87386,
+    "BinaryOp": 39.02513999999999,
+    "LayerNorm": 7.71652,
+    "While": 84.31258,
+    "Softmax": 28.936349999999997,
+    "FloatToInt8": 20.819970000000005,
+    "Int8ToFloat": 14.779030000000002,
+    "Reduction": 0.16199
+  },
+  "note": "One diagnostic profile, with native tensor tracing; not a paired performance benchmark. Explicit conversion times are included in inference."
+}

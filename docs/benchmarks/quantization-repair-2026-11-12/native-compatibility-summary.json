@@ -1,0 +1,9 @@
+{
+  "cpu_top1": 0,
+  "fpga_top1": 63,
+  "relative_l2": 1.4529830963044525,
+  "cosine": 0.33268137112781365,
+  "fpga_jobs": 28,
+  "linear_replacements": 1,
+  "offload_ms": 43.25622
+}

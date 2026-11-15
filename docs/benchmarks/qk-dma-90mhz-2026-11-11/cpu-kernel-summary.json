@@ -1,0 +1,94 @@
+{
+  "inputs": 20,
+  "measured_inferences": 40,
+  "warmup_inferences": 2,
+  "kernel_calls_per_inference": 320,
+  "cpu_ms": {
+    "cpu_execute_ms": {
+      "mean": 9.8427385,
+      "median": 9.785045,
+      "stddev": 0.2338293830141746,
+      "minimum": 9.64229,
+      "maximum": 10.6277
+    },
+    "cpu_execute_union_ms": {
+      "mean": 5.2993345000000005,
+      "median": 5.224315000000001,
+      "stddev": 0.20602966369139533,
+      "minimum": 5.14079,
+      "maximum": 5.97898
+    },
+    "cpu_kernel_thread_ms": {
+      "mean": 5.8599675,
+      "median": 5.8130749999999995,
+      "stddev": 0.18790900905197364,
+      "minimum": 5.75136,
+      "maximum": 6.62693
+    },
+    "cpu_kernel_union_ms": {
+      "mean": 4.1935975,
+      "median": 4.165134999999999,
+      "stddev": 0.14648867327778003,
+      "minimum": 4.06973,
+      "maximum": 4.7429
+    },
+    "selected_qk_ms": {
+      "mean": 5.3583565,
+      "median": 5.27778,
+      "stddev": 0.21756070335655742,
+      "minimum": 5.19784,
+      "maximum": 6.05472
+    }
+  },
+  "fpga_completion_ms": {
+    "mean": 0.657222,
+    "median": 0.6521349999999999,
+    "stddev": 0.017193732823940606,
+    "minimum": 0.64415,
+    "maximum": 0.72217
+  },
+  "cpu_kernel_union_over_fpga_completion_ratio": 6.380792943632441,
+  "cpu_qk_over_fpga_completion_ratio_original": 7.336710426613838,
+  "instrumentation_inference": {
+    "cpu": {
+      "mean": 1165.5205,
+      "median": 1162.865,
+      "stddev": 15.059008660669045,
+      "minimum": 1152.55,
+      "maximum": 1222.73
+    },
+    "dma": {
+      "mean": 1182.528,
+      "median": 1163.5349999999999,
+      "stddev": 45.91367352806904,
+      "minimum": 1152.94,
+      "maximum": 1334.4
+    },
+    "added_ms": {
+      "mean": 17.007500000000014,
+      "median": 5.204999999999927,
+      "stddev": 48.88158213855627,
+      "minimum": -55.77999999999997,
+      "maximum": 161.32000000000016
+    },
+    "latency_increase_pct": 1.4592192930111427,
+    "cpu_over_dma_ratio": 0.9856176767061753,
+    "paired_bootstrap_95_ci_added_ms": [
+      -1.6095000000000255,
+      39.6070000000002
+    ],
+    "paired_bootstrap_95_ci_increase_pct": [
+      -0.13810619890467715,
+      3.401722272499437
+    ],
+    "dma_faster_inputs": 8,
+    "dma_slower_inputs": 12
+  },
+  "qk_wall_without_any_packed_kernel": {
+    "mean": 1.164759,
+    "median": 1.141515,
+    "stddev": 0.09715181792052661,
+    "minimum": 1.0268000000000006,
+    "maximum": 1.4781700000000004
+  }
+}

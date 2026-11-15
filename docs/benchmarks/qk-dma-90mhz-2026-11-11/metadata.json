@@ -1,0 +1,43 @@
+{
+  "compute_timer": "host start-to-done wall time includes MMIO polling and scheduling; no fabric cycle counter",
+  "modes": [
+    "cpu_control",
+    "dma_control",
+    "cpu_profile",
+    "dma_profile"
+  ],
+  "cpu_state_before": {},
+  "mean": "0.485,0.456,0.406",
+  "session_warmup": 0,
+  "platform": "Linux-4.5.0-00183-g4647b69-dirty-armv7l-with-Ubuntu-16.04-xenial",
+  "fresh_process_per_inference": true,
+  "seed_base": 2026111100,
+  "operation": "/layers.1/blocks.0/attn/MatMul_output_0",
+  "runner_sha256": "f63e46066913df315fc7fe4c1fabf7b079b8b0e24e9047a18d9924c468321fbd",
+  "warmup_inferences": 4,
+  "actual_experiment_date": "2026-11-11",
+  "fpga_clock_mhz": 90,
+  "inputs": 20,
+  "operand_shapes": [
+    [
+      16,
+      4,
+      49,
+      32
+    ],
+    [
+      16,
+      4,
+      32,
+      49
+    ]
+  ],
+  "image_distribution": "independent uniform uint8 RGB 0..255, 224x224",
+  "model_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+  "cpu_state_after": {},
+  "board_wall_clock_may_be_incorrect": true,
+  "std": "0.229,0.224,0.225",
+  "threads": 2,
+  "order": "four cyclic rotations, balanced positions for 20 inputs",
+  "programmed_bitstream_sha256": "0af66d4d24302b1ff9bb960ab189d41850603be1e8fd16edae29206fedfea058"
+}

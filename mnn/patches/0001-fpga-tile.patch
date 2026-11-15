@@ -33,7 +33,7 @@
      execute(APtr, BPtr, CPtr, biasPtr);
      return NO_ERROR;
  }
-@@ -169,4 +188,14 @@
+@@ -169,4 +188,15 @@
  void CPUMatMul::execute(const float* APtr, const float* BPtr, float* CPtr, const float* biasPtr) {
 +#ifdef MNN_FPGA_ENABLED
 +    // execute() also serves geometry-lowered batched MatMul commands. Its
@@ -44,10 +44,28 @@
 +                            mTransposeA, mTransposeB, !mTransposeC, biasPtr)) {
 +        return;
 +    }
++    MnnFpgaCpuProfileScope cpu_profile_scope;
 +#endif
      mA = APtr;
      mB = BPtr;
      mC = CPtr;
+@@ -263,11 +293,16 @@ void CPUMatMul::execute(const float* APtr, const float* BPtr, float* CPtr, const
+                 if (core->matmulBytes != 0) {
+                     core->MNNFp32ToLowp((const float*)TA, (int16_t*)TA, eP * lAlign);
+                 }
++                {
++#ifdef MNN_FPGA_ENABLED
++                MnnFpgaCpuKernelProfileScope kernel_profile_scope;
++#endif
+                 if (xC == eP) {
+                     core->MNNPackedMatMul((float*)TC, (float*)TA, (float*)TB, parameters, postPtr, biasPtr, nullptr, nullptr);
+                 } else {
+                     core->MNNPackedMatMulRemain((float*)TC, (float*)TA, (float*)TB, xC, parameters, postPtr, biasPtr, nullptr, nullptr);
+                 }
++                }
+                 if (mTransposeC) {
+                     int offsets[] = {
+                         eP, // src area
 --- a/source/backend/cpu/CMakeLists.txt
 +++ b/source/backend/cpu/CMakeLists.txt
 @@ -6,6 +6,9 @@

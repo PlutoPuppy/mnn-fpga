@@ -116,6 +116,11 @@ Speedup is `CPU-only time / offload time`. Time reduction is
 | Synthetic zeros | 1265.17 | 1192.56 | 72.61 | 1.0609x | 5.74% |
 | Nonuniform synthetic tensor | 1230.07 | 1263.35 | -33.28 | 0.9737x | -2.71% |
 
+A later [20-repetition zero-input test](tinyvit-qk-zero-input-diagnosis.md)
+of the **first QK** on the current 90 MHz DMA path measured a **4.84% inference
+slowdown**, with offload slower in all 20 pairs. The historical 5.74% row above
+used a different selected operation and is not evidence of a first-QK speedup.
+
 The second case took 2.71% longer with offload. These are separate single-run
 observations, not a controlled repeated benchmark; no timing variance or
 confidence interval was measured. The evidence does not support a reliable
@@ -204,6 +209,11 @@ The earlier build reported -0.515 ns setup slack and was not programmed.
 Investigation found the project referenced an old exported SDC with fixed PLL
 dividers that constrained the core at 100 MHz. The final profile replaces it
 with a 50 MHz board reference and clocks derived from the regenerated PLL.
+The earlier failure is therefore not evidence that a correctly constrained
+90 MHz implementation cannot meet timing. A later fresh 90 MHz build passed
+STA and physical board validation on 2026-11-11; see the
+[90 MHz verification report](matmul-soc-90mhz-verification.md), including a
+session-reuse issue discovered during repeated-inference checks.
 
 The profile also corrects placeholder HPS DDR geometry from 8-bit,
 row12/column8 to the board's 32-bit, row15/column10 configuration. Existing
@@ -280,7 +290,9 @@ The present implementation proves that the full-model dispatch, tiling,
 hardware interface and result reintegration work. To evaluate acceleration:
 
 1. Repeat CPU and offload runs on identical inputs with warm-up, alternating
-   modes and reporting median, mean, minimum and variability.
+   modes and reporting median, mean, minimum and variability. First resolve
+   the session-reuse output drift found in the later 90 MHz validation;
+   until then, use fresh processes for numerical comparisons.
 2. Profile the selected CPU MatMul and separately measure quantization, writes,
    FPGA execution/polling, reads and host accumulation.
 3. Measure potential improvements from operand reuse, fewer submissions,

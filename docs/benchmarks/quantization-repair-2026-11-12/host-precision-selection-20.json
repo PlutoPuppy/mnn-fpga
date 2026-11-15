@@ -1,0 +1,602 @@
+{
+  "images": 20,
+  "summary": {
+    "tiny-vit-fp32.mnn": {
+      "top1_agreement": 20,
+      "mean_cosine": 1.0,
+      "mean_relative_l2": 0.0
+    },
+    "tiny-vit-islands-safe-0.9995.mnn": {
+      "top1_agreement": 19,
+      "mean_cosine": 0.9950526879851255,
+      "mean_relative_l2": 0.09708347583215204
+    },
+    "tiny-vit-islands-safe-0.9998.mnn": {
+      "top1_agreement": 20,
+      "mean_cosine": 0.9976826332711501,
+      "mean_relative_l2": 0.06652982363096067
+    }
+  },
+  "rows": [
+    {
+      "image": "n01440764-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 99.45470000093337
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9930568671453336,
+          "relative_l2": 0.1178210194568735,
+          "max_abs": 0.44802126288414,
+          "host_inference_ms": 90.74139999574982
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9969366651336142,
+          "relative_l2": 0.07828644121907948,
+          "max_abs": 0.4032435417175293,
+          "host_inference_ms": 90.8452000003308
+        }
+      }
+    },
+    {
+      "image": "n01440764-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 81.18180000747088
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.9935713042611032,
+          "relative_l2": 0.11635555336841806,
+          "max_abs": 0.40856127440929413,
+          "host_inference_ms": 112.48260000138544
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 0,
+          "agrees": true,
+          "cosine": 0.997739366792463,
+          "relative_l2": 0.06723548324264754,
+          "max_abs": 0.23125648498535156,
+          "host_inference_ms": 94.5897000055993
+        }
+      }
+    },
+    {
+      "image": "n02102040-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 85.74539999244735
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 0.9928801589406737,
+          "relative_l2": 0.12129796261149554,
+          "max_abs": 0.6214190721511841,
+          "host_inference_ms": 99.93719999329187
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 0.9952594940279343,
+          "relative_l2": 0.09834132133752818,
+          "max_abs": 0.34679532051086426,
+          "host_inference_ms": 100.53830000106245
+        }
+      }
+    },
+    {
+      "image": "n02102040-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 90.32699999806937
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 0.993159337616663,
+          "relative_l2": 0.11809218998464212,
+          "max_abs": 0.6839841604232788,
+          "host_inference_ms": 103.14899998775218
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 217,
+          "agrees": true,
+          "cosine": 0.9974492642593169,
+          "relative_l2": 0.0714798715429313,
+          "max_abs": 0.32933855056762695,
+          "host_inference_ms": 104.50549999950454
+        }
+      }
+    },
+    {
+      "image": "n02979186-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 86.58869999635499
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.9971089579516984,
+          "relative_l2": 0.07604543003933945,
+          "max_abs": 0.28331685811281204,
+          "host_inference_ms": 105.83539999788627
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.9979463289092121,
+          "relative_l2": 0.06424163281403486,
+          "max_abs": 0.2846015691757202,
+          "host_inference_ms": 94.7528999968199
+        }
+      }
+    },
+    {
+      "image": "n02979186-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 90.73180000996217
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.9973759576015542,
+          "relative_l2": 0.07325153231043005,
+          "max_abs": 0.3279244899749756,
+          "host_inference_ms": 96.97230000165291
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 482,
+          "agrees": true,
+          "cosine": 0.9989592989055065,
+          "relative_l2": 0.04639160807689831,
+          "max_abs": 0.1868809461593628,
+          "host_inference_ms": 90.63760000572074
+        }
+      }
+    },
+    {
+      "image": "n03000684-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 491,
+          "agrees": true,
+          "cosine": 0.9999999999999999,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 86.14549999765586
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 491,
+          "agrees": true,
+          "cosine": 0.9971377427098351,
+          "relative_l2": 0.07591833839615236,
+          "max_abs": 0.4251675009727478,
+          "host_inference_ms": 105.37189999013208
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 491,
+          "agrees": true,
+          "cosine": 0.9983127662094365,
+          "relative_l2": 0.058346790808606386,
+          "max_abs": 0.2976837158203125,
+          "host_inference_ms": 90.37309999985155
+        }
+      }
+    },
+    {
+      "image": "n03000684-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 726,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 72.768800004269
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 726,
+          "agrees": true,
+          "cosine": 0.9865915248819461,
+          "relative_l2": 0.16451614259101488,
+          "max_abs": 0.9435950517654419,
+          "host_inference_ms": 89.62179999798536
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 726,
+          "agrees": true,
+          "cosine": 0.9943413777087767,
+          "relative_l2": 0.10912360636336144,
+          "max_abs": 0.5182163715362549,
+          "host_inference_ms": 109.33700000168756
+        }
+      }
+    },
+    {
+      "image": "n03028079-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 497,
+          "agrees": true,
+          "cosine": 0.9999999999999999,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 96.40330000547692
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 497,
+          "agrees": true,
+          "cosine": 0.9969531782336009,
+          "relative_l2": 0.07811803976214958,
+          "max_abs": 0.31260791420936584,
+          "host_inference_ms": 97.03980000631418
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 497,
+          "agrees": true,
+          "cosine": 0.9984293035621804,
+          "relative_l2": 0.057409007901063756,
+          "max_abs": 0.281463623046875,
+          "host_inference_ms": 98.45780000614468
+        }
+      }
+    },
+    {
+      "image": "n03028079-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 727,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 98.81779999705032
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 727,
+          "agrees": true,
+          "cosine": 0.9946948263032221,
+          "relative_l2": 0.10289452180810296,
+          "max_abs": 0.602027416229248,
+          "host_inference_ms": 97.01979999954347
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 727,
+          "agrees": true,
+          "cosine": 0.9964171164648724,
+          "relative_l2": 0.08510547127375087,
+          "max_abs": 0.6192045211791992,
+          "host_inference_ms": 107.71750001003966
+        }
+      }
+    },
+    {
+      "image": "n03394916-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 88.02219999779481
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 0.9966258497588075,
+          "relative_l2": 0.0823504160733841,
+          "max_abs": 0.3346862122416496,
+          "host_inference_ms": 87.8320000047097
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 0.9985228643110003,
+          "relative_l2": 0.05490612823916741,
+          "max_abs": 0.1896255873143673,
+          "host_inference_ms": 105.57620000327006
+        }
+      }
+    },
+    {
+      "image": "n03394916-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 87.92510000057518
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 0.9945496454156086,
+          "relative_l2": 0.10441553037567508,
+          "max_abs": 0.4118891954421997,
+          "host_inference_ms": 120.83350001194049
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 566,
+          "agrees": true,
+          "cosine": 0.9981017017574885,
+          "relative_l2": 0.0621638876602489,
+          "max_abs": 0.18116170167922974,
+          "host_inference_ms": 94.19309999793768
+        }
+      }
+    },
+    {
+      "image": "n03417042-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 82.67409999098163
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9973543884896937,
+          "relative_l2": 0.07278797205234584,
+          "max_abs": 0.2682286500930786,
+          "host_inference_ms": 96.27090000140015
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9983228661989024,
+          "relative_l2": 0.057896867740388526,
+          "max_abs": 0.2378818392753601,
+          "host_inference_ms": 83.64820000133477
+        }
+      }
+    },
+    {
+      "image": "n03417042-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 1.0000000000000002,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 196.31300000764895
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9961938023740307,
+          "relative_l2": 0.08918849724779902,
+          "max_abs": 0.5283200740814209,
+          "host_inference_ms": 90.36539999942761
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 569,
+          "agrees": true,
+          "cosine": 0.9982760076382845,
+          "relative_l2": 0.05898665873296931,
+          "max_abs": 0.3202338218688965,
+          "host_inference_ms": 108.03979999036528
+        }
+      }
+    },
+    {
+      "image": "n03425413-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9999999999999998,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 97.36480000719894
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9963108905044741,
+          "relative_l2": 0.08582150978317934,
+          "max_abs": 0.3671404793858528,
+          "host_inference_ms": 88.7838000053307
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9985698490718589,
+          "relative_l2": 0.053724808474322344,
+          "max_abs": 0.21352040767669678,
+          "host_inference_ms": 91.21339999546763
+        }
+      }
+    },
+    {
+      "image": "n03425413-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 78.32269999198616
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9962112388728706,
+          "relative_l2": 0.08706273119222158,
+          "max_abs": 0.3793065547943115,
+          "host_inference_ms": 92.1978999977
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 571,
+          "agrees": true,
+          "cosine": 0.9980451238176986,
+          "relative_l2": 0.06440431894086242,
+          "max_abs": 0.2906804084777832,
+          "host_inference_ms": 108.71340001176577
+        }
+      }
+    },
+    {
+      "image": "n03445777-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 429,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 97.12130000116304
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 429,
+          "agrees": true,
+          "cosine": 0.9974199365754862,
+          "relative_l2": 0.07457421340125737,
+          "max_abs": 0.25492024421691895,
+          "host_inference_ms": 109.86159999447409
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 429,
+          "agrees": true,
+          "cosine": 0.998603596107246,
+          "relative_l2": 0.05284635319748154,
+          "max_abs": 0.3475799560546875,
+          "host_inference_ms": 95.11149999161717
+        }
+      }
+    },
+    {
+      "image": "n03445777-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 574,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 99.42519999458455
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 574,
+          "agrees": true,
+          "cosine": 0.9982025700458452,
+          "relative_l2": 0.05993173351578802,
+          "max_abs": 0.1536693572998047,
+          "host_inference_ms": 91.96739998878911
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 574,
+          "agrees": true,
+          "cosine": 0.9993786319092299,
+          "relative_l2": 0.03544940035323949,
+          "max_abs": 0.12789541482925415,
+          "host_inference_ms": 99.00279999419581
+        }
+      }
+    },
+    {
+      "image": "n03888257-00.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 701,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 85.36530000856146
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 701,
+          "agrees": true,
+          "cosine": 0.9940442131244722,
+          "relative_l2": 0.10983971962002081,
+          "max_abs": 0.4191688299179077,
+          "host_inference_ms": 118.02779999561608
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 701,
+          "agrees": true,
+          "cosine": 0.997184119047952,
+          "relative_l2": 0.0750313116130375,
+          "max_abs": 0.30516836047172546,
+          "host_inference_ms": 86.04559999366757
+        }
+      }
+    },
+    {
+      "image": "n03888257-01.png",
+      "models": {
+        "tiny-vit-fp32.mnn": {
+          "top1": 417,
+          "agrees": true,
+          "cosine": 1.0,
+          "relative_l2": 0.0,
+          "max_abs": 0.0,
+          "host_inference_ms": 78.64080001309048
+        },
+        "tiny-vit-islands-safe-0.9995.mnn": {
+          "top1": 701,
+          "agrees": false,
+          "cosine": 0.9916113688955899,
+          "relative_l2": 0.13138646305275128,
+          "max_abs": 0.45685815811157227,
+          "host_inference_ms": 102.13020000082906
+        },
+        "tiny-vit-islands-safe-0.9998.mnn": {
+          "top1": 417,
+          "agrees": true,
+          "cosine": 0.9968569235900292,
+          "relative_l2": 0.07922550308759412,
+          "max_abs": 0.3935621380805969,
+          "host_inference_ms": 78.90329998917878
+        }
+      }
+    }
+  ]
+}

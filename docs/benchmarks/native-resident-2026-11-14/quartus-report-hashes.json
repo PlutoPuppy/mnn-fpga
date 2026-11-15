@@ -1,0 +1,10 @@
+{
+  "adder_prototype.sta.rpt": {
+    "bytes": 12108461,
+    "sha256": "bc7b0a34cf4f66babb92657522155fdb60e6069efbacb34ed34c9e239f20b349"
+  },
+  "adder_prototype.fit.rpt": {
+    "bytes": 7311904,
+    "sha256": "c3abdf62f8a2ecb6a6f25406f90dde91f6137fce8028a3148e47f6288c8d7acc"
+  }
+}
