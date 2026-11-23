@@ -1,0 +1,8 @@
+{
+  "status": 0,
+  "runner_sha256": "e38415e1885bfc8c4f154f4cb86488a2416d4f73fb318de6c9016460d4a39988",
+  "output_sha256": "9a97561b48affef18e7c1ba8f4a4e036caad76937b462e313c759abc4ad31b4f",
+  "matches": "final-random20 input-01 no_park_control",
+  "command": "sudo -n ./run_inference.sh /home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20/images/random-01.ppm --output-dir package-smoke",
+  "board_directory": "/home/ubuntu/tinyvit/tinyvit-optimized-90mhz-v25"
+}

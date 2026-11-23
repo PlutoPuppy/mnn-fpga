@@ -1,0 +1,9 @@
+{
+  "passed": true,
+  "mean_cosine": 0.9975168317993546,
+  "reference_accuracy": 0.765,
+  "images": 200,
+  "top1_agreement": 0.99,
+  "fpga_accuracy": 0.765,
+  "accuracy_drop": 0.0
+}

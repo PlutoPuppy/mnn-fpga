@@ -1,0 +1,85 @@
+{
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "compressed_profiles": true,
+  "threads": 2,
+  "fresh_process": true,
+  "warmup": 1,
+  "timing": "One timed forward after one untimed forward on the same initialized session per image",
+  "profile_runs_separate": false,
+  "runner_sha256": "1f84da5f895c14de1fe8d2451036bf763e4244b9998a79a90b2945d5360e6ab6",
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "projection_range_hashes": {
+    "projection-nine.tsv": "43b2b4e2268b7b91ec4387234774ea35a6b8dfac83a44a1177bee55ca578b3bc"
+  },
+  "cpu_state_before": {},
+  "configurations": {
+    "previous": {
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "offload": true,
+      "pairs": true,
+      "runner": "tinyvit_native_v35",
+      "environment": {
+        "MNN_MATMUL_SOC_FAST_POLL": "1",
+        "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+        "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+        "MNN_MATMUL_SOC_DMA_CHAIN": "1",
+        "MNN_MATMUL_SOC_REUSE_A": "1"
+      },
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ],
+      "projection_ranges": "projection-nine.tsv",
+      "pair_count": 4,
+      "operations": 30
+    },
+    "fp32": {
+      "model": "tiny-vit.mnn",
+      "offload": false,
+      "runner": "tinyvit_native_v27",
+      "pairs": false
+    },
+    "optimized": {
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "offload": true,
+      "pairs": true,
+      "runner": "tinyvit_native_v35",
+      "environment": {
+        "MNN_MATMUL_SOC_PIPELINE_C": "1",
+        "MNN_MATMUL_SOC_FAST_POLL": "1",
+        "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+        "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+        "MNN_MATMUL_SOC_DMA_CHAIN": "1",
+        "MNN_MATMUL_SOC_REUSE_A": "1"
+      },
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ],
+      "projection_ranges": "projection-nine.tsv",
+      "pair_count": 4,
+      "operations": 30
+    }
+  },
+  "modes": [
+    "fp32",
+    "optimized"
+  ],
+  "date": "2026-11-21",
+  "inputs": 20,
+  "input_kind": "uniform random RGB images",
+  "board_utc": "2016-02-11T16:40:50Z",
+  "clock_mhz": 90,
+  "cpu_state_after": {},
+  "runner": "tinyvit_native_v35",
+  "runners": {
+    "tinyvit_native_v35": "1f84da5f895c14de1fe8d2451036bf763e4244b9998a79a90b2945d5360e6ab6",
+    "tinyvit_native_v27": "6d27713df9848534a7c7ccecdefcbcc09b250561899e2381c86700d28df81e55"
+  },
+  "models": {
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+  },
+  "bitstream_sha256": "842117565822d0f4a7e38baeb12a7cc7ba8005bdf13e16299de6edaa08d58332",
+  "abi": "NI83"
+}

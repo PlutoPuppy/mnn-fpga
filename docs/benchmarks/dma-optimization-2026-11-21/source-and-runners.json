@@ -1,0 +1,67 @@
+{
+  "sw/include/matmul_soc.hpp": {
+    "bytes": 4970,
+    "sha256": "f3eea60967c101ffb2921e9337c8639f9367d3b4a1c050f3e958ad732cb00ab3",
+    "lf_sha256": "f3eea60967c101ffb2921e9337c8639f9367d3b4a1c050f3e958ad732cb00ab3"
+  },
+  "sw/include/matmul_soc_uio.hpp": {
+    "bytes": 2281,
+    "sha256": "ccdfe4741ef47bff0c29bf678d89b03bde850dcd89175dc1d1d0816c5671c664",
+    "lf_sha256": "ccdfe4741ef47bff0c29bf678d89b03bde850dcd89175dc1d1d0816c5671c664"
+  },
+  "sw/src/matmul_soc_native.cpp": {
+    "bytes": 13915,
+    "sha256": "e7c0c0e2e4aa3b45054eb9ef0f060cf6951cb638e82590504c00b153e6b1237f",
+    "lf_sha256": "56326000ce66f0a4180bb4c800bc9efff32b9a7444ab895f141d3f6f717dc855"
+  },
+  "sw/src/matmul_soc_uio.cpp": {
+    "bytes": 15959,
+    "sha256": "f0cae1b8f1bdfa059979adbc8916a2cb1d2da6cd3e85d9a213e675fa71f627e8",
+    "lf_sha256": "f0cae1b8f1bdfa059979adbc8916a2cb1d2da6cd3e85d9a213e675fa71f627e8"
+  },
+  "sw/tests/native_int8_test.cpp": {
+    "bytes": 12565,
+    "sha256": "2299185410bb56f8e900cffb4f7f28573716af9b600723ccb6aa30bf0fabc07f",
+    "lf_sha256": "ade6c41414e8250fd4fe0ada277cdeec51ae55e7c0254a2dfd52fef51e979447"
+  },
+  "mnn/app/benchmark_native_int8.py": {
+    "bytes": 11963,
+    "sha256": "7da9416a4c279c18632bb87318b7c73a7898d110275ab295df9cec2aaa65b323",
+    "lf_sha256": "7da9416a4c279c18632bb87318b7c73a7898d110275ab295df9cec2aaa65b323"
+  },
+  "mnn/app/benchmark_optimized_accuracy.py": {
+    "bytes": 10578,
+    "sha256": "0199cd568628a70600dec84196a3e54277748eefed641fe36d5a69a80e0cc77a",
+    "lf_sha256": "0199cd568628a70600dec84196a3e54277748eefed641fe36d5a69a80e0cc77a"
+  },
+  "mnn/app/summarize_tinyvit_optimization.py": {
+    "bytes": 7136,
+    "sha256": "f556fd7ecfebb7951ae56a326f0b8b124d03815ed9c9f760c71fb7dd0d01d8d1",
+    "lf_sha256": "f556fd7ecfebb7951ae56a326f0b8b124d03815ed9c9f760c71fb7dd0d01d8d1"
+  },
+  "mnn/app/plot_native_int8.py": {
+    "bytes": 5641,
+    "sha256": "fbba6ca43832424dd530de57c4fe051ae09ebb7c5ea5b6296334725e281b897f",
+    "lf_sha256": "fbba6ca43832424dd530de57c4fe051ae09ebb7c5ea5b6296334725e281b897f"
+  },
+  "build/matmul-soc-deploy/tinyvit_native_v25": {
+    "bytes": 2529368,
+    "sha256": "e38415e1885bfc8c4f154f4cb86488a2416d4f73fb318de6c9016460d4a39988"
+  },
+  "build/matmul-soc-deploy/tinyvit_native_v26": {
+    "bytes": 2530520,
+    "sha256": "1526812699147ed1ba89a2978d8b09f373b3bec0fb2069bb97ea245eea2de06a"
+  },
+  "build/matmul-soc-deploy/tinyvit_native_v27": {
+    "bytes": 2531640,
+    "sha256": "6d27713df9848534a7c7ccecdefcbcc09b250561899e2381c86700d28df81e55"
+  },
+  "build/matmul-soc-deploy/matmul-soc-native-ni83-90mhz.sof": {
+    "bytes": 7432941,
+    "sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447"
+  },
+  "build/dma-optimization/native_smoke_v27": {
+    "bytes": 442680,
+    "sha256": "fc0f505f2079014d5feb8700186abe3f2d145f7573f1f0792a05dff576d32836"
+  }
+}

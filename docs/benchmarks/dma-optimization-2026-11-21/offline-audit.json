@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "raw_timing_outputs_verified": 160,
+  "new_accuracy_outputs_verified": 220,
+  "random_inputs_identical_to_v25": 20,
+  "labeled_fpga_outputs_identical_to_v25": 200,
+  "fpga_top1_correct": 153,
+  "fp32_top1_correct": 153,
+  "matching_fp32_top1": 198,
+  "mean_cosine": 0.9975168317993546
+}

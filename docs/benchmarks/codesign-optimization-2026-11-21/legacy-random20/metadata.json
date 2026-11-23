@@ -1,0 +1,81 @@
+{
+  "models": {
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+  },
+  "cpu_state_before": {},
+  "cpu_state_after": {},
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "profile_runs_separate": true,
+  "runner": "tinyvit_native_v34",
+  "board_utc": "2016-02-11T16:29:06Z",
+  "runners": {
+    "tinyvit_native_v34": "445ec3a01bdc34bf738bb6abea218a4082a548cadd314f24e9555f36fd3f7df1",
+    "tinyvit_native_v27": "6d27713df9848534a7c7ccecdefcbcc09b250561899e2381c86700d28df81e55"
+  },
+  "configurations": {
+    "optimized": {
+      "pairs": true,
+      "offload": true,
+      "pair_count": 4,
+      "environment": {
+        "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+        "MNN_MATMUL_SOC_FAST_POLL": "1",
+        "MNN_MATMUL_SOC_REUSE_A": "1",
+        "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1"
+      },
+      "projection_ranges": "projection-nine.tsv",
+      "operations": 30,
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ],
+      "runner": "tinyvit_native_v34",
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn"
+    },
+    "baseline": {
+      "pairs": true,
+      "offload": true,
+      "pair_count": 4,
+      "environment": {
+        "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+        "MNN_MATMUL_SOC_FAST_POLL": "1",
+        "MNN_MATMUL_SOC_REUSE_A": "1",
+        "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1"
+      },
+      "operations": 30,
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ],
+      "runner": "tinyvit_native_v27",
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn"
+    },
+    "fp32": {
+      "pairs": false,
+      "offload": false,
+      "runner": "tinyvit_native_v27",
+      "model": "tiny-vit.mnn"
+    }
+  },
+  "fresh_process": true,
+  "date": "2026-11-21",
+  "projection_range_hashes": {
+    "projection-nine.tsv": "43b2b4e2268b7b91ec4387234774ea35a6b8dfac83a44a1177bee55ca578b3bc"
+  },
+  "clock_mhz": 90,
+  "inputs": 20,
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "runner_sha256": "445ec3a01bdc34bf738bb6abea218a4082a548cadd314f24e9555f36fd3f7df1",
+  "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+  "input_kind": "uniform random RGB images",
+  "modes": [
+    "fp32",
+    "baseline",
+    "optimized"
+  ],
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded",
+  "abi": "NI83",
+  "threads": 2,
+  "warmup": 0
+}

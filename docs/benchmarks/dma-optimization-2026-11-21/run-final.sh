@@ -1,0 +1,2 @@
+cd /home/ubuntu/tinyvit
+sudo -n nohup sh -c 'python3 benchmark_dma_v27.py --output-dir dma-final-random20 --runner tinyvit_native_v27 --inputs 20 --experiment-date 2026-11-21 --bitstream-sha256 f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447 --configurations dma-final-config.json --modes fp32,baseline,optimized,poll_batch --abi NI83 && python3 final_dma_accuracy.py --date 2026-11-21 --bitstream f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447; echo DMA_FINAL_STATUS=$?' > dma-final.log 2>&1 </dev/null &

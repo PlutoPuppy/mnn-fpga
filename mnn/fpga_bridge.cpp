@@ -2,6 +2,10 @@
 #include "uio.hpp"
 #include "matmul_soc_uio.hpp"
 #include "matmul_soc_native.hpp"
+#include "backend/cpu/CPUBackend.hpp"
+#include "backend/cpu/compute/CommonOptFunction.h"
+#include "core/TensorUtils.hpp"
+#include "core/Session.hpp"
 #include <atomic>
 #include <cstdio>
 #include <cstdlib>
@@ -11,10 +15,61 @@
 #include <iomanip>
 #include <algorithm>
 #include <cmath>
+#include <cstring>
 #include <limits>
 #include <fstream>
 #include <map>
 #include <set>
+#if defined(__arm__) && defined(__ARM_NEON)
+#include <arm_neon.h>
+#endif
+
+MnnCpuPoolInfo mnn_cpu_pool_info(const MNN::Tensor* owner) {
+    auto* backend=MNN::TensorUtils::getDescribeOrigin(owner)->getBackend();
+    if(!backend || backend->type()!=MNN_FORWARD_CPU)throw std::runtime_error("Attention requires CPU-owned tensors");
+    auto* cpu=static_cast<MNN::CPUBackend*>(backend);MnnCpuPoolInfo info;
+    info.configured_threads=cpu->threadNumber();
+#ifdef MNN_USE_THREAD_POOL
+    info.available_workers=cpu->threadPool()?cpu->threadPool()->numberThread():1;
+    info.task_index=cpu->taskIndex();
+#endif
+    return info;
+}
+int mnn_cpu_parallel_threads(const MNN::Tensor* owner,int requested) {
+    return std::max(1,std::min(requested,mnn_cpu_pool_info(owner).available_workers));
+}
+void mnn_cpu_parallel(const MNN::Tensor* owner,int tasks,const std::function<void(int)>& work) {
+#ifdef MNN_USE_THREAD_POOL
+    auto* backend=static_cast<MNN::CPUBackend*>(MNN::TensorUtils::getDescribeOrigin(owner)->getBackend());
+    // Fallback tensor ownership does not imply that its runtime is currently
+    // active. Enter it explicitly so enqueue has a live work index.
+    const auto* runtime=backend->getRuntime();runtime->onConcurrencyBegin();
+    struct End {const MNN::Runtime* runtime;~End(){runtime->onConcurrencyEnd();}} end{runtime};
+    MNN::ThreadPool::TASK task{work,tasks};backend->enqueue(task);
+#else
+    (void)owner;for(int i=0;i<tasks;++i)work(i);
+#endif
+}
+void mnn_cpu_softmax(float* destination,const float* source,size_t count) {
+    float maximum=source[0];size_t i=0;
+#if defined(__arm__) && defined(__ARM_NEON)
+    auto peaks=vdupq_n_f32(maximum);
+    for(;i+4<=count;i+=4)peaks=vmaxq_f32(peaks,vld1q_f32(source+i));
+    const auto half=vmax_f32(vget_low_f32(peaks),vget_high_f32(peaks));
+    maximum=vget_lane_f32(vpmax_f32(half,half),0);
+#endif
+    for(;i<count;++i)maximum=std::max(maximum,source[i]);
+    float parameters[4]={1,0,-maximum,0};MNNExp(destination,source,parameters,count);
+    const float reciprocal=1.0f/parameters[3];
+    i=0;
+#if defined(__arm__) && defined(__ARM_NEON)
+    for(;i+4<=count;i+=4)vst1q_f32(destination+i,vmulq_n_f32(vld1q_f32(destination+i),reciprocal));
+#endif
+    for(;i<count;++i)destination[i]*=reciprocal;
+}
+void mnn_cpu_gelu(float* destination,const float* source,size_t count) {
+    MNNGeluCommon(destination,source,count);
+}
 
 namespace {
 std::atomic<unsigned long> completed{0};
@@ -66,6 +121,7 @@ struct NativeContext {
     std::set<std::string> skipped;
 };
 struct NativeState {
+    struct Verification {std::string name;uint64_t elements=0,mismatches=0,over_one=0,sum_abs=0;unsigned maximum=0;};
     std::vector<NativeContext> contexts;
     std::map<std::string,int> names;
     int active=-1,pending=-1;
@@ -73,9 +129,20 @@ struct NativeState {
     std::vector<int8_t> output;
     uint64_t local_bytes=0,hidden_bytes_avoided=0;
     uint64_t fused_pairs=0,skipped_ops=0;
+    std::vector<Verification> verification;
+    const MNN::Runtime* cpu_runtime=nullptr;
+    bool park_workers=false;
+    uint64_t parked_calls=0;
 };
 NativeState& natives(){static NativeState state;return state;}
 }
+void mnn_fpga_bind_native_session(const MNN::Session* session,bool park_workers) {
+    auto& state=natives();const auto& runtimes=session->getRuntime().first;
+    const auto cpu=runtimes.find(MNN_FORWARD_CPU);
+    if(cpu==runtimes.end())throw std::runtime_error("Native scheduling requires a CPU session runtime");
+    state.cpu_runtime=cpu->second.get();state.park_workers=park_workers;
+}
+unsigned long mnn_fpga_native_parked_calls(){return natives().parked_calls;}
 std::uint64_t mnn_fpga_cpu_profile_start() {
     if(!profiling || !selected.load()) return 0;
     return std::chrono::duration_cast<std::chrono::nanoseconds>(fpga::ProfileClock::now().time_since_epoch()).count();
@@ -95,6 +162,7 @@ extern "C" void mnn_fpga_profile_reset(bool enabled) {
     std::lock_guard<std::mutex> lock(device_mutex);
     profile={};cast_profile={};profiling=enabled;
     natives().local_bytes=0;natives().hidden_bytes_avoided=0;natives().fused_pairs=0;natives().skipped_ops=0;
+    natives().verification.clear();natives().parked_calls=0;
     cpu_execute_ns=0;cpu_execute_calls=0;
     cpu_execute_intervals.count=0;cpu_kernel_intervals.count=0;
     if(soc_device) soc_device->profile=enabled ? &profile:nullptr;
@@ -261,6 +329,236 @@ bool mnn_fpga_prepare_linear_int8(const int8_t* weights,const float* scales,cons
     } catch(const std::exception& e) {std::fprintf(stderr,"MNN native INT8 prepare: %s\n",e.what());return false;}
 }
 bool mnn_fpga_linear_int8_active() {return selected.load() && ((linear_ready && linear_int8) || natives().active>=0);}
+bool mnn_fpga_native_active() {return selected.load() && natives().active>=0;}
+struct MnnFpgaProjection::State {
+    struct Column {size_t index;std::vector<float> weights;};
+    fpga::NativeInt8Weights weights;
+    fpga::MatmulSocInt8Requantization requant;
+    std::vector<float> weight_scale,weight_sum,bias,output_scale,output_center;
+    std::vector<int8_t> input,packed,result;
+    std::vector<Column> fp32_columns;
+    std::vector<float> fp32_values;
+};
+MnnFpgaProjection::MnnFpgaProjection(const float* weights,const float* bias,size_t k,size_t n,
+                                     const std::vector<float>& low,const std::vector<float>& high,
+                                     const std::vector<size_t>& fp32_columns)
+    : state_(new State) {
+    std::lock_guard<std::mutex> lock(device_mutex);
+    if(!soc_device || soc_failed || !weights || !k || !n || k%4 || n%4 || low.size()!=n || high.size()!=n)
+        throw std::invalid_argument("Invalid native projection preparation");
+    auto& s=*state_;
+    s.weight_scale.resize(n);s.weight_sum.resize(n);s.bias.resize(n);
+    s.output_scale.resize(n);s.output_center.resize(n);
+    s.requant.multiplier.assign(n,0.0001);s.requant.bias_q16.resize(n);
+    std::vector<int8_t> quantized(k*n);
+    for(size_t j=0;j<n;++j) {
+        if(!std::isfinite(low[j]) || !std::isfinite(high[j]) || high[j]<low[j])
+            throw std::invalid_argument("Invalid calibrated output range");
+        s.output_center[j]=(low[j]+high[j])*0.5f;
+        s.output_scale[j]=std::max(1e-6f,(high[j]-low[j])*(1.05f/254));
+        s.bias[j]=bias ? bias[j] : 0;
+        float peak=0;
+        for(size_t i=0;i<k;++i)peak=std::max(peak,std::abs(weights[j*k+i]));
+        const float scale=std::max(1e-9f,peak/127);
+        int sum=0;
+        for(size_t i=0;i<k;++i) {
+            const auto value=int(std::lround(weights[j*k+i]/scale));
+            quantized[j*k+i]=int8_t(value);sum+=value;
+        }
+        s.weight_scale[j]=scale;s.weight_sum[j]=float(sum)*scale;
+    }
+    for(const auto j:fp32_columns) {
+        if(j>=n)throw std::invalid_argument("Invalid FP32 projection column");
+        s.fp32_columns.push_back({j,std::vector<float>(weights+j*k,weights+(j+1)*k)});
+    }
+    s.weights=fpga::prepare_native_int8(*soc_device,quantized.data(),k,n,s.requant);
+}
+MnnFpgaProjection::~MnnFpgaProjection()=default;
+void MnnFpgaProjection::run(const MNN::Tensor* input,const MNN::Tensor* output,size_t rows,int threads) {
+    std::lock_guard<std::mutex> lock(device_mutex);
+    if(!soc_device || soc_failed)throw std::runtime_error("Native projection device unavailable");
+    auto& s=*state_;
+    const size_t k=s.weights.k,n=s.weights.n;
+    const size_t values=rows*k;
+    s.input.resize(values);s.result.resize(rows*n);
+    auto* timing=profiling ? &profile : nullptr;
+    soc_device->profile=timing;
+    const auto adapter_start=fpga::profile_now(timing);
+    fpga::ProfileSteps timer(timing);
+    const float* source=input->host<float>();
+    const bool planar_input=input->batch()==1;
+    const auto input_format=MNN::TensorUtils::getDescribe(input)->dimensionFormat;
+    const auto output_format=MNN::TensorUtils::getDescribe(output)->dimensionFormat;
+    const bool row_major=!planar_input && input_format==MNN::MNN_DATA_FORMAT_NCHW &&
+        output_format==MNN::MNN_DATA_FORMAT_NCHW && k%16==0 && n%16==0;
+    // Spatial callbacks can be owned by MNN's fallback runtime. Keep their
+    // conversion on the invoking thread to avoid nesting the two CPU pools.
+    const int tasks=planar_input ? 1 : mnn_cpu_parallel_threads(input,threads);
+    auto run=[&](const std::function<void(int)>& work) {
+        if(tasks==1)work(0);else mnn_cpu_parallel(input,tasks,work);
+    };
+    std::vector<float> lows(tasks),highs(tasks);
+    const size_t chunk=(values+size_t(tasks)*4-1)/(size_t(tasks)*4)*4;
+    run([&](int task) {
+        const size_t first=std::min(values,size_t(task)*chunk),last=std::min(values,first+chunk);
+        float low=0,high=0;
+        size_t i=first;
+#if defined(__arm__) && defined(__ARM_NEON)
+        auto a=vdupq_n_f32(0),b=a;
+        for(;i+4<=last;i+=4) {
+            const auto x=vld1q_f32(source+i);a=vminq_f32(a,x);b=vmaxq_f32(b,x);
+        }
+        float av[4],bv[4];vst1q_f32(av,a);vst1q_f32(bv,b);
+        low=*std::min_element(av,av+4);high=*std::max_element(bv,bv+4);
+#endif
+        for(;i<last;++i) {low=std::min(low,source[i]);high=std::max(high,source[i]);}
+        lows[task]=low;highs[task]=high;
+    });
+    const float low=*std::min_element(lows.begin(),lows.end()),high=*std::max_element(highs.begin(),highs.end());
+    const float center=(high+low)*0.5f,scale=std::max(1e-6f,(high-low)/254),inverse=1/scale;
+    timer.end(fpga::MatmulSocProfile::peak_scan);
+    run([&](int task) {
+        const size_t first=std::min(values,size_t(task)*chunk),last=std::min(values,first+chunk);
+        size_t i=first;
+#if defined(__arm__) && defined(__ARM_NEON)
+        const auto mid=vdupq_n_f32(center),zero=vdupq_n_f32(0),half=vdupq_n_f32(0.5f),neg=vnegq_f32(half);
+        auto quant=[&](const float* p) {
+            const auto x=vmulq_n_f32(vsubq_f32(vld1q_f32(p),mid),inverse);
+            const auto rounded=vcvtq_s32_f32(vaddq_f32(x,vbslq_f32(vcgeq_f32(x,zero),half,neg)));
+            return vqmovn_s32(rounded);
+        };
+        for(;i+8<=last;i+=8) {
+            const auto packed=vqmovn_s16(vcombine_s16(quant(source+i),quant(source+i+4)));
+            vst1_s8(s.input.data()+i,vmax_s8(packed,vdup_n_s8(-127)));
+        }
+#endif
+        for(;i<last;++i) {
+            const float x=(source[i]-center)*inverse;
+            const int q=int(x+(x>=0 ? 0.5f : -0.5f));
+            s.input[i]=int8_t(std::max(-127,std::min(127,q)));
+        }
+    });
+    timer.end(fpga::MatmulSocProfile::quantize);
+    const int8_t* operand=s.input.data();
+    if(!row_major && input_format==MNN::MNN_DATA_FORMAT_NCHW) {
+        s.packed.resize(values);
+        const bool planar=input->batch()==1;
+        run([&](int task) {
+            for(size_t j=size_t(task)*4;j<k;j+=size_t(tasks)*4) {
+                int8_t* p=s.packed.data()+j*rows;
+                if(planar) {
+                    const auto* a=s.input.data()+j*rows;
+                    size_t i=0;
+#if defined(__arm__) && defined(__ARM_NEON)
+                    for(;i+8<=rows;i+=8) {
+                        const int8x8x4_t group{{vld1_s8(a+i),vld1_s8(a+rows+i),vld1_s8(a+2*rows+i),vld1_s8(a+3*rows+i)}};
+                        vst4_s8(p+4*i,group);
+                    }
+#endif
+                    for(;i<rows;++i)for(size_t lane=0;lane<4;++lane)p[4*i+lane]=a[lane*rows+i];
+                } else {
+                    for(size_t i=0;i<rows;++i)std::memcpy(p+4*i,s.input.data()+i*k+j,4);
+                }
+            }
+        });
+        operand=s.packed.data();
+    }
+    timer.end(fpga::MatmulSocProfile::input_layout);
+    for(size_t j=0;j<n;++j) {
+        s.requant.multiplier[j]=std::max(1.0/16777216,double(scale)*s.weight_scale[j]/s.output_scale[j]);
+        const auto b=(double(s.bias[j])+double(center)*s.weight_sum[j]-s.output_center[j])/s.output_scale[j]*65536;
+        if(!std::isfinite(b) || std::abs(b)>2147483647.0)throw std::runtime_error("Projection bias is outside Q16 range");
+        s.requant.bias_q16[j]=std::llround(b);
+    }
+    fpga::set_native_int8_parameters(s.weights,s.requant);
+    timer.end(fpga::MatmulSocProfile::configure);
+    const auto stats=fpga::native_int8_linear(*soc_device,s.weights,operand,s.result.data(),rows,row_major);
+    timer.reset();
+    float* dest=output->host<float>();
+    const bool nc4=output_format==MNN::MNN_DATA_FORMAT_NC4HW4;
+    const bool planar=output->batch()==1;
+    s.fp32_values.resize(s.fp32_columns.size()*rows);
+    for(size_t i=0;i<s.fp32_columns.size();++i) {
+        const auto& col=s.fp32_columns[i];
+        for(size_t r=0;r<rows;++r) {
+            float sum=0;
+            for(size_t j=0;j<k;++j) {
+                const size_t index=input_format==MNN::MNN_DATA_FORMAT_NC4HW4 ? (j/4*rows+r)*4+j%4 :
+                                   planar_input ? j*rows+r : r*k+j;
+                sum+=source[index]*col.weights[j];
+            }
+            s.fp32_values[i*rows+r]=sum+s.bias[col.index];
+        }
+    }
+    run([&](int task) {
+        if(row_major) {
+            const size_t first=rows*size_t(task)/size_t(tasks),last=rows*size_t(task+1)/size_t(tasks);
+            for(size_t r=first;r<last;++r) {
+                size_t j=0;
+#if defined(__arm__) && defined(__ARM_NEON)
+                for(;j+8<=n;j+=8) {
+                    const auto x=vmovl_s8(vld1_s8(s.result.data()+r*n+j));
+                    const auto a=vcvtq_f32_s32(vmovl_s16(vget_low_s16(x)));
+                    const auto b=vcvtq_f32_s32(vmovl_s16(vget_high_s16(x)));
+                    vst1q_f32(dest+r*n+j,vmlaq_f32(vld1q_f32(s.output_center.data()+j),a,vld1q_f32(s.output_scale.data()+j)));
+                    vst1q_f32(dest+r*n+j+4,vmlaq_f32(vld1q_f32(s.output_center.data()+j+4),b,vld1q_f32(s.output_scale.data()+j+4)));
+                }
+#endif
+                for(;j<n;++j)dest[r*n+j]=float(s.result[r*n+j])*s.output_scale[j]+s.output_center[j];
+            }
+            return;
+        }
+        for(size_t j=size_t(task)*4;j<n;j+=size_t(tasks)*4) {
+            const auto* bytes=s.result.data()+j*rows;auto* floats=dest+j*rows;
+            size_t i=0;
+#if defined(__arm__) && defined(__ARM_NEON)
+            const auto scales=vld1q_f32(s.output_scale.data()+j),centers=vld1q_f32(s.output_center.data()+j);
+            for(; (nc4 || !planar) && i+8<=4*rows;i+=8) {
+                const auto x=vmovl_s8(vld1_s8(bytes+i));
+                const auto a=vcvtq_f32_s32(vmovl_s16(vget_low_s16(x)));
+                const auto b=vcvtq_f32_s32(vmovl_s16(vget_high_s16(x)));
+                auto* target=nc4 ? floats+i : dest+(i/4)*n+j;
+                vst1q_f32(target,vmlaq_f32(centers,a,scales));
+                vst1q_f32(target+(nc4 ? 4 : n),vmlaq_f32(centers,b,scales));
+            }
+            if(!nc4 && planar)for(;i+32<=4*rows;i+=32) {
+                const auto group=vld4_s8(bytes+i);
+                for(size_t lane=0;lane<4;++lane) {
+                    const auto x=vmovl_s8(group.val[lane]);
+                    const auto a=vcvtq_f32_s32(vmovl_s16(vget_low_s16(x)));
+                    const auto b=vcvtq_f32_s32(vmovl_s16(vget_high_s16(x)));
+                    const auto offset=vdupq_n_f32(s.output_center[j+lane]);
+                    const float scale_out=s.output_scale[j+lane];
+                    auto* target=floats+lane*rows+i/4;
+                    vst1q_f32(target,vmlaq_n_f32(offset,a,scale_out));
+                    vst1q_f32(target+4,vmlaq_n_f32(offset,b,scale_out));
+                }
+            }
+#endif
+            for(;i<4*rows;++i) {
+                const size_t lane=i%4,r=i/4;
+                const float value=float(bytes[i])*s.output_scale[j+lane]+s.output_center[j+lane];
+                if(nc4)floats[i]=value;
+                else if(planar)floats[lane*rows+r]=value;
+                else dest[r*n+j+lane]=value;
+            }
+        }
+    });
+    for(size_t i=0;i<s.fp32_columns.size();++i) {
+        const size_t j=s.fp32_columns[i].index;
+        for(size_t r=0;r<rows;++r) {
+            const size_t index=nc4 ? (j/4*rows+r)*4+j%4 : planar ? j*rows+r : r*n+j;
+            dest[index]=s.fp32_values[i*rows+r];
+        }
+    }
+    timer.end(fpga::MatmulSocProfile::dequantize);
+    if(timing) {
+        timing->jobs+=stats.submissions;timing->input_bytes+=stats.operand_bytes;
+        timing->output_bytes+=stats.result_bytes;timing->quantized_values+=values;
+    }
+    fpga::profile_add(timing,fpga::MatmulSocProfile::adapter_total,adapter_start);
+    completed.fetch_add(stats.submissions);
+}
 unsigned long mnn_fpga_completed_int8_operations() {return completed_int8.load();}
 void mnn_fpga_register_native(const std::string& name,const int8_t* weights,const float* scales,
     const float* bias,size_t k,size_t n,float si,float so) {
@@ -307,7 +605,8 @@ bool mnn_fpga_native_skip(const std::string& name) {
 size_t mnn_fpga_native_count(){return natives().contexts.size();}
 const char* mnn_fpga_native_json() {
     auto& state=natives();static std::string result;std::ostringstream out;
-    out<<"{\"abi\":\"NI82\",\"operations\":"<<state.contexts.size()<<",\"local_feedback_bytes\":"<<state.local_bytes
+    const bool extended=!state.contexts.empty() && state.contexts.front().weights.operand_a_bytes==32768;
+    out<<"{\"abi\":\""<<(extended?"NI83":"NI82")<<"\",\"operations\":"<<state.contexts.size()<<",\"local_feedback_bytes\":"<<state.local_bytes
        <<",\"hidden_roundtrip_bytes_avoided\":"<<state.hidden_bytes_avoided
        <<",\"fused_pairs\":"<<state.fused_pairs<<",\"skipped_runtime_operations\":"<<state.skipped_ops
        <<",\"pending\":"<<state.pending<<",\"layers\":[";
@@ -315,9 +614,34 @@ const char* mnn_fpga_native_json() {
         const auto& c=state.contexts[i];const auto& w=c.weights;if(i)out<<',';
         out<<"{\"name\":\""<<c.name<<"\",\"K\":"<<w.k<<",\"N\":"<<w.n
            <<",\"tile_m\":"<<w.tile_m<<",\"tile_n\":"<<w.tile_n<<",\"tile_k\":"<<w.kp
+           <<",\"operand_a_bytes\":"<<w.operand_a_bytes<<",\"operand_b_offset\":"<<w.operand_b_offset
            <<",\"operand_b_bytes\":"<<w.operand_b_bytes<<",\"fused_second\":"<<c.second<<'}';
     }
+    out<<"],\"verification\":[";
+    for(size_t i=0;i<state.verification.size();++i) {
+        const auto& v=state.verification[i];if(i)out<<',';
+        out<<"{\"name\":\""<<v.name<<"\",\"elements\":"<<v.elements<<",\"mismatches\":"<<v.mismatches
+           <<",\"over_one\":"<<v.over_one<<",\"sum_abs\":"<<v.sum_abs<<",\"maximum\":"<<v.maximum<<'}';
+    }
     out<<"]}";result=out.str();return result.c_str();
+}
+int mnn_fpga_verify_native(const int8_t* input,const int8_t* cpu_output,size_t m,size_t k,size_t n) {
+    auto& state=natives();
+    if(state.active<0 || !input || !cpu_output || !m || !n)return -1;
+    const auto& context=state.contexts.at(size_t(state.active));
+    if(context.second>=0)return -1;
+    std::vector<int8_t> actual(m*n);
+    if(mnn_fpga_try_linear_int8(input,actual.data(),m,k,n,context.input_scale,context.output_scale,0,0)!=1)return -1;
+    NativeState::Verification v;v.name=context.name;v.elements=m*n;
+    for(size_t i=0;i<actual.size();++i) {
+        const unsigned d=unsigned(std::abs(int(actual[i])-int(cpu_output[i])));
+        v.mismatches+=d!=0;v.over_one+=d>1;v.sum_abs+=d;v.maximum=std::max(v.maximum,d);
+    }
+    state.verification.push_back(std::move(v));return 1;
+}
+bool mnn_fpga_native_verification_ok() {
+    const auto& values=natives().verification;
+    return !values.empty() && std::all_of(values.begin(),values.end(),[](const NativeState::Verification& v){return v.over_one==0;});
 }
 namespace {
 void trace_tensor(const char* prefix,const char* suffix,const int8_t* packed,size_t m,size_t channels) {
@@ -346,6 +670,14 @@ int mnn_fpga_try_linear_int8(const int8_t* input,int8_t* output,size_t m,size_t 
             if(!selected.load() || soc_failed || !soc_device || !input || !output || !m ||
                k!=context.weights.k || n!=context.weights.n || si!=context.input_scale || so!=context.output_scale || zi || zo)
                 throw std::runtime_error("Native multi-operation tensor contract mismatch");
+            // Restore the session runtime before returning to MNN, including
+            // error exits. No CPU-pool tasks are pending inside this hook.
+            struct Pause {
+                const MNN::Runtime* runtime;
+                explicit Pause(const MNN::Runtime* r):runtime(r){if(runtime)runtime->onConcurrencyEnd();}
+                ~Pause(){if(runtime)runtime->onConcurrencyBegin();}
+            } pause(state.park_workers && state.pending<0?state.cpu_runtime:nullptr);
+            if(pause.runtime)++state.parked_calls;
             soc_device->profile=timing;fpga::MatmulSocStats stats;
             if(state.pending>=0) {
                 if(state.active!=state.pending || m!=state.pending_rows || state.output.size()!=m*n)

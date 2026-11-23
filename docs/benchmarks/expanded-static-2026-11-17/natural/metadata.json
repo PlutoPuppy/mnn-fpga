@@ -1,0 +1,78 @@
+{
+  "modes": [
+    "fp32",
+    "cpu",
+    "pairs",
+    "transformer_cpu",
+    "transformer_fpga",
+    "static_cpu",
+    "static_fpga"
+  ],
+  "board_utc": "2016-02-11T16:42:41Z",
+  "fresh_process": true,
+  "threads": 2,
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+  "cpu_state_before": {},
+  "models": {
+    "tiny-vit-mixed-w8a8-all-static.mnn": "e30022757743bbd4d6a3b7f55aea40318996ae294b0ca7a3761636a8e9920fe7",
+    "tiny-vit-mixed-w8a8-all-transformer.mnn": "da21ca755de73ebb3f14ff1c5e8e72d984521c2fa2784b87da65aa596341b406",
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "configurations": {
+    "cpu": {
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "offload": false,
+      "pairs": false
+    },
+    "transformer_cpu": {
+      "model": "tiny-vit-mixed-w8a8-all-transformer.mnn",
+      "offload": false,
+      "pairs": false
+    },
+    "static_fpga": {
+      "pair_count": 10,
+      "model": "tiny-vit-mixed-w8a8-all-static.mnn",
+      "operations": 51,
+      "offload": true,
+      "pairs": true
+    },
+    "pairs": {
+      "pair_count": 4,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "operations": 30,
+      "offload": true,
+      "pairs": true
+    },
+    "transformer_fpga": {
+      "pair_count": 10,
+      "model": "tiny-vit-mixed-w8a8-all-transformer.mnn",
+      "operations": 40,
+      "offload": true,
+      "pairs": true
+    },
+    "static_cpu": {
+      "model": "tiny-vit-mixed-w8a8-all-static.mnn",
+      "offload": false,
+      "pairs": false
+    },
+    "fp32": {
+      "model": "tiny-vit.mnn",
+      "offload": false,
+      "pairs": false
+    }
+  },
+  "inputs": 20,
+  "warmup": 0,
+  "runner_sha256": "7a44a387a9e41cb61877d9268eded119a36ed9fe17b4d661978117ee41fc3925",
+  "date": "2026-11-17",
+  "runner": "tinyvit_native_v12",
+  "abi": "NI83",
+  "input_kind": "natural images",
+  "cpu_state_after": {},
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded",
+  "profile_runs_separate": true,
+  "clock_mhz": 90
+}

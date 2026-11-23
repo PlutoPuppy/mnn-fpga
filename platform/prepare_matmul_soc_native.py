@@ -3,7 +3,8 @@
 
 The native ABI accumulates the full reduction in INT32, then applies one
 per-channel Q24 multiplier and Q16 bias. It is intentionally distinct from
-the older per-band INT8 ABI; its capability word is NI82 at offset0x90.
+the older per-band INT8 ABI; its capability word is NI82 at offset0x90,
+or NI83 with the optional 32-KiB A operand bank.
 """
 import argparse
 import hashlib
@@ -27,6 +28,7 @@ def main():
     p = argparse.ArgumentParser(description=__doc__)
     p.add_argument('--friend-root', type=pathlib.Path, required=True)
     p.add_argument('--output', type=pathlib.Path, required=True)
+    p.add_argument('--extended-a', action='store_true', help='NI83: 32 KiB A bank, K up to2048, B write base0x9000')
     a = p.parse_args()
     source, output = a.friend_root.resolve(), a.output.resolve()
     repo = pathlib.Path(__file__).resolve().parent.parent
@@ -76,6 +78,14 @@ def main():
     if text.count('input_max_addr[IBUF_BANK_ADDR_WIDTH-1:0]') != 3:
         raise ValueError('Unsupported input extent wiring')
     text = text.replace('input_max_addr[IBUF_BANK_ADDR_WIDTH-1:0]', 'input_extent')
+    if a.extended_a:
+        text = replace_once(text, "32'h4e493832", "32'h4e493833")
+        text = replace_once(text, "32'h01181080", "32'h03181080")
+        text = replace_once(text, "WBUF_BASE = 32'h0000_1000, WBUF_SIZE = 32'h0000_4000",
+                            "WBUF_BASE = 32'h0000_1000, WBUF_SIZE = 32'h0000_8000")
+        text = replace_once(text, "IBUF_BASE = 32'h0000_5000, IBUF_SIZE = 32'h0001_0000",
+                            "IBUF_BASE = 32'h0000_9000, IBUF_SIZE = 32'h0001_0000")
+        text = replace_once(text, 'localparam int WBUF_BANK_ADDR_WIDTH = 10;', 'localparam int WBUF_BANK_ADDR_WIDTH = 11;')
     top.write_text(text, encoding='utf-8')
     # The old 128-bit x64 write port already uses four wide RAM blocks per
     # bank. x256 fills their depth while retaining the same read latency.
@@ -91,6 +101,18 @@ def main():
         if count != 1:
             raise ValueError('Unsupported input buffer IP pattern: '+old)
     ibuf.write_text(text, encoding='utf-8')
+    if a.extended_a:
+        wbuf = output/'weight_buffer.v'
+        text = wbuf.read_text(encoding='utf-8')
+        for old, new in [(r'(\binput\s+)\[9:0\](\s+rdaddress;)',r'\g<1>[10:0]\2'),
+                         (r'(\binput\s+)\[5:0\](\s+wraddress;)',r'\g<1>[6:0]\2'),
+                         (r'(\.numwords_a\s*=\s*)64\b',r'\g<1>128'),
+                         (r'(\.numwords_b\s*=\s*)1024\b',r'\g<1>2048'),
+                         (r'(\.widthad_a\s*=\s*)6\b',r'\g<1>7'),
+                         (r'(\.widthad_b\s*=\s*)10\b',r'\g<1>11')]:
+            text, count = re.subn(old,new,text)
+            if count != 1:raise ValueError('Unsupported weight buffer IP pattern: '+old)
+        wbuf.write_text(text,encoding='utf-8')
     shutil.copy2(repo/'rtl/matmul_soc/output_loader_native.sv', output/'matmul_accel/output_loader_native.sv')
     control = output/'matmul_accel/weight_ctrl.v'
     text = control.read_text(encoding='utf-8')
@@ -161,8 +183,11 @@ def main():
                  operand_a_bytes=16384, operand_b_bytes=65536, output_bytes=65536,
                  source=str(source),
                  sources={str(f.relative_to(output)): hashlib.sha256(f.read_bytes()).hexdigest()
-                          for f in (top, control, ibuf, output/'matmul_accel/output_loader_native.sv', qsys, qsf, output/'matmul_soc.sdc')
+                          for f in (top, control, ibuf, output/'matmul_accel/output_loader_native.sv', qsys, qsf, output/'mnn_matmul_soc.sdc')
                           if f.is_file()})
+    if a.extended_a:
+        proof.update(abi='NI83',capability=0x4e493833,operand_a_bytes=32768,operand_b_offset=0x9000,max_reduction=2048)
+        proof['sources']['weight_buffer.v']=hashlib.sha256((output/'weight_buffer.v').read_bytes()).hexdigest()
     (output/'native-abi.json').write_text(json.dumps(proof, indent=2)+'\n')
     print('Prepared native W8A8 project:', output)
 

@@ -29,7 +29,7 @@ $(BUILD_DIR)/socfpga_bridge_control: sw/src/socfpga_bridge_control.c
 	$(CC) $(CFLAGS) $< -o $@
 $(BUILD_DIR)/matmul_soc_smoke: sw/src/matmul_soc_smoke.cpp sw/src/matmul_soc.cpp sw/src/matmul_soc_uio.cpp sw/include/matmul_soc.hpp sw/include/matmul_soc_uio.hpp
 	mkdir -p $(BUILD_DIR)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) sw/src/matmul_soc_smoke.cpp sw/src/matmul_soc.cpp sw/src/matmul_soc_uio.cpp -o $@
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -pthread sw/src/matmul_soc_smoke.cpp sw/src/matmul_soc.cpp sw/src/matmul_soc_uio.cpp -o $@
 build:
 	mkdir -p build
 $(BUILD_DIR)/gemm_smoke_test: sw/src/gemm_smoke_test.cpp sw/src/fpga_gemm.cpp sw/src/uio.cpp sw/include/fpga_gemm.hpp sw/include/uio.hpp sw/tests/test_vectors.hpp

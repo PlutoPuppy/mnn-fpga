@@ -1,0 +1,85 @@
+{
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "input_kind": "uniform random RGB images",
+  "configurations": {
+    "previous": {
+      "pair_count": 4,
+      "environment": {
+        "MNN_MATMUL_SOC_FAST_POLL": "1"
+      },
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "operations": 30,
+      "pairs": true,
+      "offload": true,
+      "runner": "tinyvit_native_v22",
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ]
+    },
+    "no_park": {
+      "pair_count": 4,
+      "environment": {
+        "MNN_MATMUL_SOC_FAST_POLL": "1"
+      },
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "operations": 30,
+      "pairs": true,
+      "offload": true,
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ]
+    },
+    "optimized": {
+      "pair_count": 4,
+      "environment": {
+        "MNN_MATMUL_SOC_FAST_POLL": "1"
+      },
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "operations": 30,
+      "pairs": true,
+      "offload": true,
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon",
+        "--park-fpga-workers"
+      ]
+    },
+    "fp32": {
+      "pairs": false,
+      "offload": false,
+      "model": "tiny-vit.mnn"
+    }
+  },
+  "cpu_state_after": {},
+  "fresh_process": true,
+  "warmup": 0,
+  "board_utc": "2016-02-11T18:35:09Z",
+  "threads": 2,
+  "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+  "profile_runs_separate": true,
+  "clock_mhz": 90,
+  "runner_sha256": "e38415e1885bfc8c4f154f4cb86488a2416d4f73fb318de6c9016460d4a39988",
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "date": "2026-11-21",
+  "runner": "tinyvit_native_v25",
+  "modes": [
+    "fp32",
+    "previous",
+    "no_park",
+    "optimized"
+  ],
+  "models": {
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+  },
+  "abi": "NI83",
+  "runners": {
+    "tinyvit_native_v22": "a2140f5054a31aa5f3271576d51a51c8c6ee4857b81c6e08ae7da671cd9a4f6b",
+    "tinyvit_native_v25": "e38415e1885bfc8c4f154f4cb86488a2416d4f73fb318de6c9016460d4a39988"
+  },
+  "inputs": 20,
+  "cpu_state_before": {},
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded"
+}

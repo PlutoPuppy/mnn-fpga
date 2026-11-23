@@ -1,5 +1,18 @@
 #pragma once
 #include <cstddef>
+#include <functional>
+#include <memory>
+namespace MNN { class Tensor; class Session; }
+// Reuse the owning CPU backend's pool inside a synchronous runner callback.
+int mnn_cpu_parallel_threads(const MNN::Tensor* owner,int requested);
+void mnn_cpu_parallel(const MNN::Tensor* owner,int tasks,const std::function<void(int)>& work);
+void mnn_cpu_softmax(float* destination,const float* source,size_t count);
+void mnn_cpu_gelu(float* destination,const float* source,size_t count);
+struct MnnCpuPoolInfo {int configured_threads=1,available_workers=1,task_index=-1;};
+MnnCpuPoolInfo mnn_cpu_pool_info(const MNN::Tensor* owner);
+void mnn_fpga_bind_native_session(const MNN::Session* session,bool park_workers);
+unsigned long mnn_fpga_native_parked_calls();
+#include <cstddef>
 #include <cstdint>
 #include <string>
 #include <vector>
@@ -23,6 +36,7 @@ void mnn_fpga_record_linear_layout(uint64_t allocation_ns,uint64_t input_ns,uint
 bool mnn_fpga_prepare_linear_int8(const int8_t* weights_oi,const float* weight_scales,
     const float* bias,size_t m,size_t k,size_t n,float input_scale,float output_scale,int minimum,int maximum);
 bool mnn_fpga_linear_int8_active();
+bool mnn_fpga_native_active();
 // Native MNN NC4HW4 bytes, pack=4, H=W=1. 1=completed, -1=device/contract error.
 int mnn_fpga_try_linear_int8(const int8_t* input,int8_t* output,size_t m,size_t k,size_t n,
     float input_scale,float output_scale,float input_zero,float output_zero);
@@ -37,6 +51,22 @@ bool mnn_fpga_select_native(const std::string& name);
 bool mnn_fpga_native_skip(const std::string& name);
 size_t mnn_fpga_native_count();
 const char* mnn_fpga_native_json();
+// Diagnostic only: run FPGA with the same input as a completed CPU operator;
+// preserve CPU graph output and record per-code differences. No resident fusion.
+int mnn_fpga_verify_native(const int8_t* input,const int8_t* cpu_output,size_t m,size_t k,size_t n);
+bool mnn_fpga_native_verification_ok();
+// Keeps the original graph's FP32 tensor boundary around one quantized GEMM.
+class MnnFpgaProjection {
+public:
+    MnnFpgaProjection(const float* weights_oi,const float* bias,size_t k,size_t n,
+                      const std::vector<float>& minimum,const std::vector<float>& maximum,
+                      const std::vector<size_t>& fp32_columns);
+    ~MnnFpgaProjection();
+    void run(const MNN::Tensor* input,const MNN::Tensor* output,size_t rows,int threads);
+private:
+    struct State;
+    std::unique_ptr<State> state_;
+};
 uint64_t mnn_fpga_cast_profile_start();
 void mnn_fpga_cast_profile_end(uint64_t start,bool quantize,size_t values);
 // Optional diagnostic dumps; disabled unless selected and MNN_INT8_TRACE is set.

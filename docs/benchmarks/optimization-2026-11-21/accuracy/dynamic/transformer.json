@@ -1,0 +1,243 @@
+{
+  "passed": true,
+  "summary": {
+    "images": 20,
+    "top1_agreement": 1.0,
+    "mean_cosine": 0.9968775738444743,
+    "mean_relative_l2": 0.07850332594258035,
+    "reference_accuracy": 0.8,
+    "candidate_accuracy": 0.8,
+    "accuracy_drop": 0.0
+  },
+  "thresholds": {
+    "min_agreement": 0.95,
+    "min_cosine": 0.995,
+    "max_accuracy_drop": 0.01
+  },
+  "reference_sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+  "candidate_sha256": "ee0c2674259c144d2856f6c3894e80b9df3aafda81bc9a4cbe95b132a8e800e1",
+  "mnn_version": "unknown",
+  "candidate_memory_low": true,
+  "rows": [
+    {
+      "image": "n01440764-00.png",
+      "reference_top1": 0,
+      "candidate_top1": 0,
+      "agrees": true,
+      "cosine": 0.9947999030061104,
+      "relative_l2": 0.10263492953822353,
+      "label": 0,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n01440764-01.png",
+      "reference_top1": 0,
+      "candidate_top1": 0,
+      "agrees": true,
+      "cosine": 0.9973413706647721,
+      "relative_l2": 0.07306006206145826,
+      "label": 0,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n02102040-00.png",
+      "reference_top1": 217,
+      "candidate_top1": 217,
+      "agrees": true,
+      "cosine": 0.9955170107219314,
+      "relative_l2": 0.09643826045295693,
+      "label": 217,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n02102040-01.png",
+      "reference_top1": 217,
+      "candidate_top1": 217,
+      "agrees": true,
+      "cosine": 0.9973605130301882,
+      "relative_l2": 0.07266004940620771,
+      "label": 217,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n02979186-00.png",
+      "reference_top1": 482,
+      "candidate_top1": 482,
+      "agrees": true,
+      "cosine": 0.996783942431691,
+      "relative_l2": 0.08019364031468529,
+      "label": 482,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n02979186-01.png",
+      "reference_top1": 482,
+      "candidate_top1": 482,
+      "agrees": true,
+      "cosine": 0.9981370024230557,
+      "relative_l2": 0.06211514984515544,
+      "label": 482,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03000684-00.png",
+      "reference_top1": 491,
+      "candidate_top1": 491,
+      "agrees": true,
+      "cosine": 0.9971980709588353,
+      "relative_l2": 0.07585238147068002,
+      "label": 491,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03000684-01.png",
+      "reference_top1": 726,
+      "candidate_top1": 726,
+      "agrees": true,
+      "cosine": 0.9946834797026615,
+      "relative_l2": 0.10297952267438362,
+      "label": 491,
+      "reference_correct": false,
+      "candidate_correct": false
+    },
+    {
+      "image": "n03028079-00.png",
+      "reference_top1": 497,
+      "candidate_top1": 497,
+      "agrees": true,
+      "cosine": 0.9966514394548729,
+      "relative_l2": 0.08177168221823433,
+      "label": 497,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03028079-01.png",
+      "reference_top1": 727,
+      "candidate_top1": 727,
+      "agrees": true,
+      "cosine": 0.9955817500262392,
+      "relative_l2": 0.09443574933528846,
+      "label": 497,
+      "reference_correct": false,
+      "candidate_correct": false
+    },
+    {
+      "image": "n03394916-00.png",
+      "reference_top1": 566,
+      "candidate_top1": 566,
+      "agrees": true,
+      "cosine": 0.9979979375101214,
+      "relative_l2": 0.06553004422142458,
+      "label": 566,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03394916-01.png",
+      "reference_top1": 566,
+      "candidate_top1": 566,
+      "agrees": true,
+      "cosine": 0.9968360227980145,
+      "relative_l2": 0.07948553485452861,
+      "label": 566,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03417042-00.png",
+      "reference_top1": 569,
+      "candidate_top1": 569,
+      "agrees": true,
+      "cosine": 0.9980399250889619,
+      "relative_l2": 0.06335867920804825,
+      "label": 569,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03417042-01.png",
+      "reference_top1": 569,
+      "candidate_top1": 569,
+      "agrees": true,
+      "cosine": 0.9968471565146406,
+      "relative_l2": 0.08198380248038385,
+      "label": 569,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03425413-00.png",
+      "reference_top1": 571,
+      "candidate_top1": 571,
+      "agrees": true,
+      "cosine": 0.9970996284718612,
+      "relative_l2": 0.0768707267081962,
+      "label": 571,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03425413-01.png",
+      "reference_top1": 571,
+      "candidate_top1": 571,
+      "agrees": true,
+      "cosine": 0.9979701835037676,
+      "relative_l2": 0.06419372168798837,
+      "label": 571,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03445777-00.png",
+      "reference_top1": 429,
+      "candidate_top1": 429,
+      "agrees": true,
+      "cosine": 0.9976608671226302,
+      "relative_l2": 0.07122108160418998,
+      "label": 574,
+      "reference_correct": false,
+      "candidate_correct": false
+    },
+    {
+      "image": "n03445777-01.png",
+      "reference_top1": 574,
+      "candidate_top1": 574,
+      "agrees": true,
+      "cosine": 0.9989451950123918,
+      "relative_l2": 0.04632929881382832,
+      "label": 574,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03888257-00.png",
+      "reference_top1": 701,
+      "candidate_top1": 701,
+      "agrees": true,
+      "cosine": 0.9966643672030744,
+      "relative_l2": 0.08236469250284643,
+      "label": 701,
+      "reference_correct": true,
+      "candidate_correct": true
+    },
+    {
+      "image": "n03888257-01.png",
+      "reference_top1": 417,
+      "candidate_top1": 417,
+      "agrees": true,
+      "cosine": 0.9954357112436631,
+      "relative_l2": 0.09658750945289851,
+      "label": 701,
+      "reference_correct": false,
+      "candidate_correct": false
+    }
+  ]
+}

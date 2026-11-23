@@ -75,7 +75,7 @@ size_t prepare_native_linears(const MNN::Interpreter& net,const std::string& all
         const auto* c=op->main_as_Convolution2D();if(!c || !c->common() || !c->quanParameter())continue;
         const auto* p=c->common();
         if(p->group()!=1 || p->kernelX()!=1 || p->kernelY()!=1 || p->strideX()!=1 || p->strideY()!=1 ||
-           p->dilateX()!=1 || p->dilateY()!=1 || p->relu() || p->relu6() || p->inputCount()<=0 || p->inputCount()>1024 ||
+           p->dilateX()!=1 || p->dilateY()!=1 || p->relu() || p->relu6() || p->inputCount()<=0 || p->inputCount()>2048 ||
            p->inputCount()%4 || p->outputCount()<=0 || p->outputCount()>4096 || p->outputCount()%4 ||
            !op->inputIndexes() || op->inputIndexes()->size()!=1 || !op->outputIndexes() || op->outputIndexes()->size()!=1)continue;
         const auto qi=quant.find(op->inputIndexes()->Get(0)),qo=quant.find(op->outputIndexes()->Get(0));

@@ -1,0 +1,50 @@
+{
+  "fp32": {
+    "model": "tiny-vit.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "cpu": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "pairs": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4
+  },
+  "transformer_cpu": {
+    "model": "tiny-vit-mixed-w8a8-all-transformer.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "transformer_fpga": {
+    "model": "tiny-vit-mixed-w8a8-all-transformer.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 40,
+    "pair_count": 10
+  },
+  "static_cpu": {
+    "model": "tiny-vit-mixed-w8a8-all-static.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "static_fpga": {
+    "model": "tiny-vit-mixed-w8a8-all-static.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 51,
+    "pair_count": 10
+  },
+  "static_unfused": {
+    "model": "tiny-vit-mixed-w8a8-all-static.mnn",
+    "offload": true,
+    "pairs": false,
+    "operations": 51,
+    "pair_count": 0
+  }
+}

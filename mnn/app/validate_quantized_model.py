@@ -22,6 +22,7 @@ def main():
     parser.add_argument('--manifest', type=pathlib.Path, help='JSON containing images: [{file, label}]')
     parser.add_argument('--output', type=pathlib.Path, required=True)
     parser.add_argument('--python-path', type=pathlib.Path)
+    parser.add_argument('--memory-low', action='store_true', help='Use dynamic CPU quantization for the candidate')
     parser.add_argument('--min-agreement', type=float, default=.95)
     parser.add_argument('--min-cosine', type=float, default=.995)
     parser.add_argument('--max-accuracy-drop', type=float, default=.01)
@@ -51,7 +52,10 @@ def main():
     for path in (args.reference, args.candidate):
         net = MNN.Interpreter(str(path.resolve()))
         net.setSessionMode(7)  # Session_Resize_Defer for this dynamic graph.
-        session = net.createSession({'backend': 'CPU', 'numThread': 2, 'precision': 'high'})
+        config = {'backend': 'CPU', 'numThread': 2, 'precision': 'high'}
+        if args.memory_low and len(models) == 1:
+            config['memory'] = 2
+        session = net.createSession(config)
         inp = net.getSessionInput(session)
         net.resizeTensor(inp, (1, 3, 224, 224))
         net.resizeSession(session)
@@ -102,7 +106,7 @@ def main():
                   min_cosine=args.min_cosine, max_accuracy_drop=args.max_accuracy_drop),
                   reference_sha256=hashlib.sha256(args.reference.read_bytes()).hexdigest(),
                   candidate_sha256=hashlib.sha256(args.candidate.read_bytes()).hexdigest(),
-                  mnn_version=getattr(MNN, '__version__', 'unknown'), rows=rows)
+                  mnn_version=getattr(MNN, '__version__', 'unknown'), candidate_memory_low=args.memory_low, rows=rows)
     args.output.parent.mkdir(parents=True, exist_ok=True)
     args.output.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(dict(passed=passed, **summary), indent=2))

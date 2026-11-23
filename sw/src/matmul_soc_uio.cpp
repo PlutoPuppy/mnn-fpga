@@ -4,10 +4,15 @@
 #include "matmul_soc_uio.hpp"
 #include "nc4_dma.hpp"
 #include <algorithm>
+#include <condition_variable>
 #include <fstream>
 #include <cstdio>
+#include <cstdlib>
+#include <cstring>
+#include <mutex>
 #include <sstream>
 #include <stdexcept>
+#include <thread>
 #include <fcntl.h>
 #include <sys/file.h>
 #include <sys/mman.h>
@@ -30,7 +35,90 @@ void check(unsigned off,bool buffer) {
                : (off%16 || off>0xb0)) throw std::out_of_range("Invalid matmul-soc offset");
 }
 }
+struct MatmulSocUio::OutputReader {
+    struct Tile {
+        int8_t* target;
+        const volatile int8_t* source;
+        size_t rows, first, column, count, columns, pitch;
+        bool measure;
+    };
+
+    OutputReader() : worker([this] { copy_loop(); }) {}
+
+    ~OutputReader() {
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            stopping=true;
+        }
+        scheduled.notify_one();
+        worker.join();
+    }
+
+    void submit(const Tile& tile) {
+        {
+            std::lock_guard<std::mutex> lock(mutex);
+            work=tile;
+            pending=true;
+        }
+        scheduled.notify_one();
+    }
+
+    uint64_t finish() {
+        std::unique_lock<std::mutex> lock(mutex);
+        completed.wait(lock,[this] { return !pending; });
+        const uint64_t elapsed=copy_ns;
+        copy_ns=0;
+        return elapsed;
+    }
+
+private:
+    void copy_loop() {
+        std::unique_lock<std::mutex> lock(mutex);
+        for (;;) {
+            scheduled.wait(lock,[this] { return pending || stopping; });
+            if (stopping && !pending) return;
+            const Tile tile=work;
+            lock.unlock();
+            const auto start=tile.measure ? ProfileClock::now() : ProfileClock::time_point{};
+            barrier();
+            nc4_dma::unpack(tile.target,tile.source,tile.rows,tile.first,tile.column,
+                            tile.count,tile.columns,tile.pitch);
+            barrier();
+            const uint64_t elapsed=tile.measure ? std::chrono::duration_cast<std::chrono::nanoseconds>(
+                ProfileClock::now()-start).count() : 0;
+            lock.lock();
+            copy_ns=elapsed;
+            pending=false;
+            completed.notify_one();
+        }
+    }
+
+    std::mutex mutex;
+    std::condition_variable scheduled, completed;
+    Tile work{};
+    uint64_t copy_ns=0;
+    bool pending=false, stopping=false;
+    std::thread worker;
+};
+
 MatmulSocUio::MatmulSocUio(const std::string& path,bool devmem,bool dma) {
+    const auto* fast=std::getenv("MNN_MATMUL_SOC_FAST_POLL");
+    fast_poll=fast && std::strcmp(fast,"1")==0;
+    const auto* stream=std::getenv("MNN_MATMUL_SOC_STREAM_STAGE");
+    stream_stage_=stream && std::strcmp(stream,"1")==0;
+    const auto* reuse=std::getenv("MNN_MATMUL_SOC_REUSE_A");
+    reuse_native_activations=reuse && std::strcmp(reuse,"1")==0;
+    const auto* live=std::getenv("MNN_MATMUL_SOC_LIVE_ROWS");
+    transfer_live_rows=live && std::strcmp(live,"1")==0;
+    const auto* batch=std::getenv("MNN_MATMUL_SOC_DMA_POLL_BATCH");
+    batch_dma_poll_=batch && std::strcmp(batch,"1")==0;
+    const auto* chain=std::getenv("MNN_MATMUL_SOC_DMA_CHAIN");
+    chain_requested_=chain && std::strcmp(chain,"1")==0;
+    const auto* direct_a=std::getenv("MNN_MATMUL_SOC_DIRECT_A");
+    const auto* direct_c=std::getenv("MNN_MATMUL_SOC_DIRECT_C");
+    direct_a_=direct_a && std::strcmp(direct_a,"1")==0;
+    direct_c_=direct_c && std::strcmp(direct_c,"1")==0;
+    if(stream_stage_)stage_cache_.resize(65536+15);
 #if !defined(__arm__) || !defined(__ARM_NEON)
     (void)path;(void)devmem;(void)dma;
     throw std::runtime_error("matmul-soc PIO requires ARMv7 NEON 128-bit device accesses");
@@ -53,7 +141,14 @@ MatmulSocUio::MatmulSocUio(const std::string& path,bool devmem,bool dma) {
     void* p=mmap(nullptr,span,PROT_READ|PROT_WRITE,MAP_SHARED,fd_,devmem ? 0xc0000000ULL : 0);
     if (p==MAP_FAILED) {close(fd_);fd_=-1;throw std::runtime_error("Cannot map matmul-soc UIO");}
     base_=static_cast<volatile uint8_t*>(p);
-    try { if(dma) enable_dma(); }
+    try {
+        if(dma) enable_dma();
+#if defined(__arm__) && defined(__ARM_NEON)
+        const auto* pipeline=std::getenv("MNN_MATMUL_SOC_PIPELINE_C");
+        if(dma_ && !direct_c_ && !stream_stage_ && pipeline && std::strcmp(pipeline,"1")==0)
+            output_reader_.reset(new OutputReader);
+#endif
+    }
     catch(...) {
         if(dma_regs_) munmap(const_cast<uint32_t*>(dma_regs_),4096);
         if(staging_) munmap(const_cast<uint8_t*>(staging_),staging_span_);
@@ -63,6 +158,7 @@ MatmulSocUio::MatmulSocUio(const std::string& path,bool devmem,bool dma) {
 #endif
 }
 MatmulSocUio::~MatmulSocUio() {
+    output_reader_.reset();
     if(dma_) {
         dma_regs_[6]=0;dma_regs_[14]=0;if(native_checked_)dma_regs_[22]=0;barrier();
     }
@@ -70,6 +166,18 @@ MatmulSocUio::~MatmulSocUio() {
     if(staging_) munmap(const_cast<uint8_t*>(staging_),staging_span_);
     if (base_) munmap(const_cast<uint8_t*>(base_),span);
     if (fd_>=0) close(fd_);
+}
+
+void MatmulSocUio::collect_output_copy() noexcept {
+    const uint64_t ns=output_reader_->finish();
+    if(profile)profile->ns[MatmulSocProfile::output_stage_copy]+=ns;
+}
+
+void MatmulSocUio::finish_output_reads() noexcept {
+    if(!output_reader_)return;
+    const auto start=profile_now(profile);
+    collect_output_copy();
+    profile_add(profile,MatmulSocProfile::download,start);
 }
 void MatmulSocUio::enable_dma() {
     // Board-specific opt-in: Linux must exclude the entire staging window.
@@ -101,21 +209,37 @@ void MatmulSocUio::dma_transfer(unsigned engine,uint32_t source,uint32_t destina
     // This DMA emits ONE burst per descriptor. Its burstcount register is
     // generated from maxBurstSize, and length/16 is assigned without a clamp.
     // Exceeding that limit can wrap the counter to zero and wedge a transfer.
-    const size_t descriptor_bytes=native_checked_ ? (engine==2?256:2048):8192;
+    const size_t descriptor_bytes=chain_enabled_ ? 65536 : native_checked_ ? (engine==2?256:2048):8192;
+    const uint32_t control=(1u<<3)|(1u<<7)|(1u<<11)|(chain_enabled_ ? (1u<<13) : 0);
+    const bool fast=fast_poll && native_checked_;
+    const bool batch_poll=fast && batch_dma_poll_;
+    const auto transfer_deadline=batch_poll ? std::chrono::steady_clock::now()+std::chrono::seconds(1)
+                                            : std::chrono::steady_clock::time_point{};
+    if(fast){regs[6]=0;barrier();}
     for(size_t off=0;off<bytes;off+=descriptor_bytes) {
         ProfileSteps timer(profile);
         const auto count=uint32_t(std::min(descriptor_bytes,bytes-off));
-        regs[6]=0;regs[3]=0;regs[0]=0;barrier();
+        if(!fast){regs[6]=0;regs[3]=0;}
+        regs[0]=0;barrier();
         regs[1]=source+uint32_t(off);regs[2]=destination+uint32_t(off);regs[3]=count;
-        barrier();regs[6]=(1u<<3)|(1u<<7)|(1u<<11);barrier();
+        barrier();regs[6]=control;barrier();
         timer.end(engine==2 ? MatmulSocProfile::local_dma_setup:
                   engine ? MatmulSocProfile::output_dma_setup:MatmulSocProfile::input_dma_setup);
-        const auto deadline=std::chrono::steady_clock::now()+std::chrono::milliseconds(1000);
+        const auto deadline=batch_poll ? transfer_deadline : std::chrono::steady_clock::now()+std::chrono::seconds(1);
+        unsigned polls=0;
         for(;;) {
-            barrier();const auto status=regs[0];barrier();
+            // GO is ordered before polling, and stop/barrier orders the
+            // completed transfer before CPU or accelerator access to data.
+            if(!batch_poll) barrier();
+            const auto status=regs[0];
+            if(!batch_poll) barrier();
             if(profile) {if(engine==2)++profile->local_polls;else if(engine) ++profile->output_polls;else ++profile->input_polls;}
+            if(chain_enabled_ && (status&4u)) {
+                regs[6]=0;barrier();
+                throw std::runtime_error("DMA chain rejected transfer address or length");
+            }
             if(status&1u) break;
-            if(std::chrono::steady_clock::now()>=deadline) {
+            if((!fast || (++polls&63u)==0) && std::chrono::steady_clock::now()>=deadline) {
                 std::ostringstream message;
                 message<<"DMA"<<engine<<" timeout: source=0x"<<std::hex<<(source+off)
                        <<" destination=0x"<<(destination+off)<<std::dec<<" bytes="<<count
@@ -203,11 +327,22 @@ void MatmulSocUio::read_buffer(unsigned off,int8_t* data,size_t bytes) {
 }
 void MatmulSocUio::native_check() {
     if(native_checked_)return;
-    if(!dma_ || read(0x90)!=0x4e493832)throw std::runtime_error("Native NI82 DMA ABI required");
+    const auto version=read(0x90);
+    if(!dma_ || (version!=0x4e493832 && version!=0x4e493833))throw std::runtime_error("Native NI82/NI83 DMA ABI required");
     const auto format=read(0xa0);
-    if((format&0x00ffffffu)!=0x00181080u || (format&0xfe000000u))throw std::runtime_error("Unsupported NI82 format word");
+    if((version==0x4e493833 && format!=0x03181080u) ||
+       (version==0x4e493832 && (format&0xfeffffffu)!=0x00181080u))throw std::runtime_error("Unsupported native format word");
+    if(version==0x4e493833){native_a_capacity_=32768;native_b_offset_=0x9000;}
     native_b_capacity_=(format&0x01000000)?65536:16384;
     if(dma_regs_[16]&2u)throw std::runtime_error("Native local DMA busy");
+    if(chain_requested_) {
+        barrier();
+        for(unsigned engine=0;engine<3;++engine)
+            if(dma_regs_[8*engine+4]!=0x444d4331u)
+                throw std::runtime_error("DMA chain requested but FPGA is missing DMC1 capability");
+        barrier();
+        chain_enabled_=true;
+    }
     native_checked_=true;
 }
 MatmulSocIo::CachedBuffer MatmulSocUio::cache_buffer(const int8_t* data,size_t bytes) {
@@ -229,19 +364,28 @@ void MatmulSocUio::write_cached(unsigned off,const CachedBuffer& c) {
     native_check();
     if(c.owner!=this || c.physical<0x30020000 || !c.size || c.size%16 ||
        uint64_t(c.physical)+c.size>0x30000000ULL+cache_next_ ||
-       off!=0x5000 || c.size>native_b_capacity_)throw std::invalid_argument("Invalid native weight cache descriptor");
+       off!=native_b_offset_ || c.size>native_b_capacity_)throw std::invalid_argument("Invalid native weight cache descriptor");
     dma_transfer(0,c.physical,off,c.size);
 }
 void MatmulSocUio::write_nc4(unsigned off,const int8_t* data,size_t rows,size_t channels,
     size_t first,size_t count,size_t mp,size_t kp) {
     native_check();
     if(off!=0x1000 || !data || !count || first+count>rows || count>mp || channels>kp ||
-       channels%4 || mp%16 || kp%16 || mp*kp>16384)throw std::invalid_argument("Invalid native NC4 input");
+       channels%4 || mp%16 || kp%16 || mp*kp>native_a_capacity_)throw std::invalid_argument("Invalid native NC4 input");
 #if defined(__arm__) && defined(__ARM_NEON)
+    // Padded M rows only contribute to their own discarded output rows.
+    // Keep all K lanes of every live row, including the required zero tail.
+    const size_t transfer_rows=transfer_live_rows ? count : mp;
     const auto start=profile_now(profile);barrier();
-    nc4_dma::pack(reinterpret_cast<volatile int8_t*>(staging_),data,rows,channels,first,count,mp,kp);
+    auto* target=reinterpret_cast<volatile int8_t*>(direct_a_ ? base_+off : staging_);
+    if(stream_stage_) {
+        auto* cached=reinterpret_cast<int8_t*>((reinterpret_cast<uintptr_t>(stage_cache_.data())+15)&~uintptr_t(15));
+        nc4_dma::pack(cached,data,rows,channels,first,count,transfer_rows,kp);
+        for(size_t i=0;i<transfer_rows*kp;i+=16)
+            nc4_dma::store(target+i,vld1q_u32(reinterpret_cast<uint32_t*>(cached+i)));
+    } else nc4_dma::pack(target,data,rows,channels,first,count,transfer_rows,kp);
     barrier();profile_add(profile,MatmulSocProfile::input_stage_copy,start);
-    dma_transfer(0,0x30000000,off,mp*kp);
+    if(!direct_a_) dma_transfer(0,0x30000000,off,transfer_rows*kp);
 #else
     MatmulSocIo::write_nc4(off,data,rows,channels,first,count,mp,kp);
 #endif
@@ -249,13 +393,26 @@ void MatmulSocUio::write_nc4(unsigned off,const int8_t* data,size_t rows,size_t 
 void MatmulSocUio::read_nc4(unsigned off,int8_t* data,size_t rows,size_t channels,
     size_t first,size_t column,size_t count,size_t columns,size_t mp,size_t np) {
     native_check();
-    if(!data || first+count>rows || column+columns>channels || count>mp || columns>np ||
+    if(!data || !count || !columns || first+count>rows || column+columns>channels || count>mp || columns>np ||
        column%4 || columns%4 || !mp || !np || mp%16 || np%16 || off%16 || off<0x9000 || off>=0x19000 || mp*np>0x19000-off)
         throw std::invalid_argument("Invalid native NC4 output");
 #if defined(__arm__) && defined(__ARM_NEON)
-    dma_transfer(1,off,0x30010000,mp*np);
+    // The previous tile can unpack during the following upload and GEMM.
+    // Wait before reusing the DMA destination at the next readback.
+    if(output_reader_)collect_output_copy();
+    if(!direct_c_) dma_transfer(1,off,0x30010000,(transfer_live_rows ? count : mp)*np);
+    const auto* source=reinterpret_cast<const volatile int8_t*>(direct_c_ ? base_+off : staging_+0x10000);
+    if(output_reader_) {
+        output_reader_->submit({data,source,rows,first,column,count,columns,np,profile!=nullptr});
+        return;
+    }
     const auto start=profile_now(profile);barrier();
-    nc4_dma::unpack(data,reinterpret_cast<const volatile int8_t*>(staging_+0x10000),rows,first,column,count,columns,np);
+    if(stream_stage_) {
+        auto* cached=reinterpret_cast<int8_t*>((reinterpret_cast<uintptr_t>(stage_cache_.data())+15)&~uintptr_t(15));
+        for(size_t i=0;i<mp*np;i+=16)
+            vst1q_u32(reinterpret_cast<uint32_t*>(cached+i),nc4_dma::load(source+i));
+        nc4_dma::unpack(data,cached,rows,first,column,count,columns,np);
+    } else nc4_dma::unpack(data,source,rows,first,column,count,columns,np);
     barrier();profile_add(profile,MatmulSocProfile::output_stage_copy,start);
 #else
     MatmulSocIo::read_nc4(off,data,rows,channels,first,column,count,columns,mp,np);
@@ -264,7 +421,39 @@ void MatmulSocUio::read_nc4(unsigned off,int8_t* data,size_t rows,size_t channel
 void MatmulSocUio::feedback(unsigned source,unsigned destination,size_t bytes) {
     native_check();
     if(source<0x9000 || source%16 || destination!=0x1000 || !bytes || bytes%16 ||
-       bytes>16384 || source+bytes>0x18000)throw std::invalid_argument("Invalid resident feedback span");
+       bytes>native_a_capacity_ || source+bytes>0x18000)throw std::invalid_argument("Invalid resident feedback span");
     dma_transfer(2,source,destination,bytes);
+}
+void MatmulSocUio::write_rows(unsigned off,const int8_t* data,size_t rows,size_t width,size_t padded) {
+    native_check();
+    if(off!=0x1000 || !data || !rows || rows>padded || !width || width%16 || padded>native_a_capacity_/width)
+        throw std::invalid_argument("Invalid native row-major input");
+#if defined(__arm__) && defined(__ARM_NEON)
+    const auto start=profile_now(profile);barrier();
+    auto* target=reinterpret_cast<volatile int8_t*>(direct_a_ ? base_+off : staging_);
+    const size_t active_bytes=rows*width,total_bytes=(transfer_live_rows ? rows : padded)*width;
+    for(size_t i=0;i<active_bytes;i+=16)
+        nc4_dma::store(target+i,vreinterpretq_u32_s8(vld1q_s8(data+i)));
+    for(size_t i=active_bytes;i<total_bytes;i+=16)nc4_dma::store(target+i,vdupq_n_u32(0));
+    barrier();profile_add(profile,MatmulSocProfile::input_stage_copy,start);
+    if(!direct_a_)dma_transfer(0,0x30000000,off,total_bytes);
+#else
+    MatmulSocIo::write_rows(off,data,rows,width,padded);
+#endif
+}
+void MatmulSocUio::read_rows(unsigned off,int8_t* data,size_t rows,size_t width,size_t stride,size_t padded) {
+    native_check();
+    if(off!=0x9000 || !data || !rows || rows>padded || !width || width%16 || stride<width || padded>65536/width)
+        throw std::invalid_argument("Invalid native row-major output");
+#if defined(__arm__) && defined(__ARM_NEON)
+    if(!direct_c_)dma_transfer(1,off,0x30010000,(transfer_live_rows ? rows : padded)*width);
+    const auto start=profile_now(profile);barrier();
+    const auto* source=reinterpret_cast<const volatile int8_t*>(direct_c_ ? base_+off : staging_+0x10000);
+    for(size_t r=0;r<rows;++r)for(size_t j=0;j<width;j+=16)
+        vst1q_s8(data+r*stride+j,vreinterpretq_s8_u32(nc4_dma::load(source+r*width+j)));
+    barrier();profile_add(profile,MatmulSocProfile::output_stage_copy,start);
+#else
+    MatmulSocIo::read_rows(off,data,rows,width,stride,padded);
+#endif
 }
 }

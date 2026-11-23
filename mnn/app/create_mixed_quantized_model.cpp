@@ -47,8 +47,8 @@ void describe(MNN::NetT& net, int index, const MNN::TensorQuantInfoT& quant) {
 
 int main(int argc, char** argv) {
     try {
-        if (argc != 5) throw std::runtime_error(
-            "Usage: create_mixed_quantized_model FP32.mnn CALIBRATED.mnn ALLOWLIST.txt NEW_OUTPUT.mnn");
+        if (argc != 5 && argc != 6) throw std::runtime_error(
+            "Usage: create_mixed_quantized_model FP32.mnn CALIBRATED.mnn ALLOWLIST.txt NEW_OUTPUT.mnn [WEIGHT_ONLY_ALLOWLIST.txt]");
         if (std::ifstream(argv[4], std::ios::binary)) throw std::runtime_error("Output already exists");
         auto original = load(argv[1]);
         auto quantized = load(argv[2]);
@@ -69,6 +69,18 @@ int main(int argc, char** argv) {
             if (!allowed.insert(line).second) throw std::runtime_error("Duplicate allowlist entry");
         }
         if (allowed.empty()) throw std::runtime_error("Empty allowlist");
+        std::set<std::string> weightOnly, weightReplaced;
+        if (argc == 6) {
+            std::ifstream weights(argv[5]);
+            if (!weights) throw std::runtime_error("Cannot open weight-only allowlist");
+            while (std::getline(weights, line)) {
+                if (!line.empty() && line.back() == '\r') line.pop_back();
+                if (line.empty() || line.front() == '#') continue;
+                if (allowed.count(line) || !weightOnly.insert(line).second)
+                    throw std::runtime_error("Overlapping or duplicate weight-only entry");
+            }
+            if (weightOnly.empty()) throw std::runtime_error("Empty weight-only allowlist");
+        }
         std::map<int, MNN::TensorQuantInfoT> scales;
         for (const auto& d : quantized->extraTensorDescribe) {
             if (d->quantInfo && !scales.emplace(d->index, *d->quantInfo).second)
@@ -89,6 +101,22 @@ int main(int argc, char** argv) {
             if (op->name != src->name || op->type != src->type || op->inputIndexes != src->inputIndexes ||
                 op->outputIndexes != src->outputIndexes) throw std::runtime_error("Operator graph mismatch");
             if (!allowed.count(op->name)) {
+                if (weightOnly.count(op->name)) {
+                    auto* dst = op->main.AsConvolution2D();
+                    const auto* srcConv = src->main.AsConvolution2D();
+                    if (op->type != MNN::OpType_Convolution || !dst || !dst->common || !srcConv ||
+                        !srcConv->quanParameter || !srcConv->weight.empty() || !dst->external.empty() ||
+                        !srcConv->external.empty() || !src->externalPath.empty() || !op->externalPath.empty() ||
+                        dst->common->kernelX != 1 || dst->common->kernelY != 1 || dst->common->group != 1 ||
+                        op->inputIndexes.size() != 1 || op->outputIndexes.size() != 1 ||
+                        !weightReplaced.insert(op->name).second)
+                        throw std::runtime_error("Weight-only policy requires static pointwise convolutions");
+                    // Preserve original FP32 bias and graph boundaries. Memory_Low
+                    // selects MNN's dynamic activation quantization at execution.
+                    dst->quanParameter.reset(new MNN::IDSTQuanT(*srcConv->quanParameter));
+                    dst->quanParameter->has_scaleInt = false;
+                    dst->weight.clear();
+                }
                 graph.emplace_back(std::move(op));
                 continue;
             }
@@ -118,6 +146,7 @@ int main(int argc, char** argv) {
             graph.emplace_back(cast(quantOutput, output, false, qo.scale, name + "/dequantize"));
         }
         if (replaced != allowed) throw std::runtime_error("Allowlist contains missing operators");
+        if (weightReplaced != weightOnly) throw std::runtime_error("Weight-only allowlist contains missing operators");
         original->oplists = std::move(graph);
         original->tensorNumber = static_cast<int>(original->tensorName.size());
         flatbuffers::FlatBufferBuilder builder;
@@ -126,7 +155,8 @@ int main(int argc, char** argv) {
         out.write(reinterpret_cast<const char*>(builder.GetBufferPointer()), builder.GetSize());
         if (!out) throw std::runtime_error("Cannot write output model");
         std::cout << "PASS: " << replaced.size() << " W8A8 convolutions, " << replaced.size() * 2
-                  << " explicit conversion boundaries; " << builder.GetSize() << " bytes\n";
+                  << " explicit conversion boundaries; " << weightReplaced.size() << " weight-only operators; "
+                  << builder.GetSize() << " bytes\n";
     } catch (const std::exception& e) {
         std::cerr << "ERROR " << e.what() << '\n';
         return 1;

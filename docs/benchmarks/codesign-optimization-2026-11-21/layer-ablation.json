@@ -1,0 +1,672 @@
+{
+  "single_04": {
+    "operations": [
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9975775217936635,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9967151077894287,
+        "agreement": true,
+        "inference_ms": 886.817
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9977522901004084,
+        "agreement": true,
+        "inference_ms": 916.035
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9983004397834417,
+        "agreement": true,
+        "inference_ms": 896.377
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9980838154142091,
+        "agreement": true,
+        "inference_ms": 900.641
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9971524562378529,
+        "agreement": true,
+        "inference_ms": 888.395
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9974610214366404,
+        "agreement": true,
+        "inference_ms": 889.831
+      }
+    ],
+    "inference_ms": 896.3493333333333
+  },
+  "single_03": {
+    "operations": [
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9974397672337819,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9967269882236084,
+        "agreement": true,
+        "inference_ms": 914.665
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9976913133225054,
+        "agreement": true,
+        "inference_ms": 889.138
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9974029319573355,
+        "agreement": true,
+        "inference_ms": 890.978
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9980078437552755,
+        "agreement": true,
+        "inference_ms": 915.346
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9967614808519966,
+        "agreement": true,
+        "inference_ms": 888.661
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9980480452919699,
+        "agreement": true,
+        "inference_ms": 890.897
+      }
+    ],
+    "inference_ms": 898.2808333333334
+  },
+  "single_01": {
+    "operations": [
+      "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9976851431592494,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.996270056550971,
+        "agreement": true,
+        "inference_ms": 904.009
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9981309232138592,
+        "agreement": true,
+        "inference_ms": 878.48
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9981269366088575,
+        "agreement": true,
+        "inference_ms": 882.646
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9979458937205605,
+        "agreement": true,
+        "inference_ms": 886.267
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9976181533641043,
+        "agreement": true,
+        "inference_ms": 878.031
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9980188954971438,
+        "agreement": true,
+        "inference_ms": 879.565
+      }
+    ],
+    "inference_ms": 884.833
+  },
+  "no_fc2": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.997067735512188,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9954140668379976,
+        "agreement": true,
+        "inference_ms": 873.019
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9972836357305858,
+        "agreement": true,
+        "inference_ms": 872.374
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9961880277719976,
+        "agreement": true,
+        "inference_ms": 906.185
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9977172315353429,
+        "agreement": true,
+        "inference_ms": 888.278
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9984281429553388,
+        "agreement": true,
+        "inference_ms": 876.991
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9973753082418652,
+        "agreement": true,
+        "inference_ms": 889.097
+      }
+    ],
+    "inference_ms": 884.324
+  },
+  "single_06": {
+    "operations": [
+      "/layers.3/blocks.0/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9778945024464915,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9672077953767169,
+        "agreement": true,
+        "inference_ms": 889.343
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9887060724629329,
+        "agreement": true,
+        "inference_ms": 912.211
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9762370424780138,
+        "agreement": true,
+        "inference_ms": 890.286
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9817712843416683,
+        "agreement": true,
+        "inference_ms": 889.108
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9800601185928854,
+        "agreement": true,
+        "inference_ms": 889.215
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9733847014267316,
+        "agreement": true,
+        "inference_ms": 887.73
+      }
+    ],
+    "inference_ms": 892.9821666666667
+  },
+  "no_stage3_fc2": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9966125520085726,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9958537045547102,
+        "agreement": true,
+        "inference_ms": 851.394
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9973960179777249,
+        "agreement": true,
+        "inference_ms": 840.771
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9970296713131829,
+        "agreement": true,
+        "inference_ms": 937.967
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9982279476231793,
+        "agreement": true,
+        "inference_ms": 877.577
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9955070352423226,
+        "agreement": true,
+        "inference_ms": 848.413
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9956609353403154,
+        "agreement": true,
+        "inference_ms": 840.658
+      }
+    ],
+    "inference_ms": 866.13
+  },
+  "single_07": {
+    "operations": [
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.997506834823929,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9967785839662848,
+        "agreement": true,
+        "inference_ms": 893.335
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9977290387819905,
+        "agreement": true,
+        "inference_ms": 893.202
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.997673016735,
+        "agreement": true,
+        "inference_ms": 893.665
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.998078393705566,
+        "agreement": true,
+        "inference_ms": 892.968
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9970366744139603,
+        "agreement": true,
+        "inference_ms": 894.371
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9977453013407727,
+        "agreement": true,
+        "inference_ms": 893.04
+      }
+    ],
+    "inference_ms": 893.4301666666667
+  },
+  "single_02": {
+    "operations": [
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9979356780084591,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.997136035724094,
+        "agreement": true,
+        "inference_ms": 888.919
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9977557065336816,
+        "agreement": true,
+        "inference_ms": 888.58
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9979377585069588,
+        "agreement": true,
+        "inference_ms": 890.066
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9983198411225451,
+        "agreement": true,
+        "inference_ms": 895.069
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.998190443879106,
+        "agreement": true,
+        "inference_ms": 901.282
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9982742822843687,
+        "agreement": true,
+        "inference_ms": 912.891
+      }
+    ],
+    "inference_ms": 896.1345
+  },
+  "single_00": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9975467486849767,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9960488388539903,
+        "agreement": true,
+        "inference_ms": 884.907
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9978165933773188,
+        "agreement": true,
+        "inference_ms": 887.77
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9975046115565694,
+        "agreement": true,
+        "inference_ms": 888.744
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.997630076286229,
+        "agreement": true,
+        "inference_ms": 887.436
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9986679712904539,
+        "agreement": true,
+        "inference_ms": 889.726
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9976124007452991,
+        "agreement": true,
+        "inference_ms": 886.626
+      }
+    ],
+    "inference_ms": 887.5348333333334
+  },
+  "single_09": {
+    "operations": [
+      "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9966590414043843,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9944094151614765,
+        "agreement": true,
+        "inference_ms": 889.644
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9974793066926007,
+        "agreement": true,
+        "inference_ms": 897.57
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.996166113735771,
+        "agreement": true,
+        "inference_ms": 890.362
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9976466060507907,
+        "agreement": true,
+        "inference_ms": 889.213
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9969982547808045,
+        "agreement": true,
+        "inference_ms": 890.637
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9972545520048629,
+        "agreement": true,
+        "inference_ms": 889.282
+      }
+    ],
+    "inference_ms": 891.1179999999999
+  },
+  "no_stage1_fc2": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.977762230518703,
+    "agree": 5,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9689324976605429,
+        "agreement": true,
+        "inference_ms": 872.155
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9845736690565612,
+        "agreement": true,
+        "inference_ms": 845.956
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9771370756923862,
+        "agreement": true,
+        "inference_ms": 846.018
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9807638022505828,
+        "agreement": true,
+        "inference_ms": 846.714
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.981368416953237,
+        "agreement": false,
+        "inference_ms": 857.855
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.973797921498908,
+        "agreement": true,
+        "inference_ms": 846.352
+      }
+    ],
+    "inference_ms": 852.5083333333333
+  },
+  "single_05": {
+    "operations": [
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9972868054154909,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9965244266004941,
+        "agreement": true,
+        "inference_ms": 895.646
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9975935116030032,
+        "agreement": true,
+        "inference_ms": 887.624
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9971526985428754,
+        "agreement": true,
+        "inference_ms": 886.616
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9981643258738572,
+        "agreement": true,
+        "inference_ms": 887.396
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9966884115420126,
+        "agreement": true,
+        "inference_ms": 888.33
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9975974583307027,
+        "agreement": true,
+        "inference_ms": 889.921
+      }
+    ],
+    "inference_ms": 889.2555
+  },
+  "single_08": {
+    "operations": [
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9973308206039443,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9966668085747017,
+        "agreement": true,
+        "inference_ms": 888.791
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9975446857978545,
+        "agreement": true,
+        "inference_ms": 891.8
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9973558641841671,
+        "agreement": true,
+        "inference_ms": 891.134
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.9981242693968356,
+        "agreement": true,
+        "inference_ms": 893.076
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9966817118321807,
+        "agreement": true,
+        "inference_ms": 925.813
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9976115838379263,
+        "agreement": true,
+        "inference_ms": 889.301
+      }
+    ],
+    "inference_ms": 896.6525
+  },
+  "no_stage3_b0_fc2": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "cosine": 0.9958598671490949,
+    "agree": 6,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "cosine": 0.9945306077869149,
+        "agreement": true,
+        "inference_ms": 835.745
+      },
+      {
+        "image": "n02979186-00.png",
+        "cosine": 0.9967418617943932,
+        "agreement": true,
+        "inference_ms": 838.186
+      },
+      {
+        "image": "n03028079-00.png",
+        "cosine": 0.9963070770486657,
+        "agreement": true,
+        "inference_ms": 834.36
+      },
+      {
+        "image": "n03417042-00.png",
+        "cosine": 0.997484857095579,
+        "agreement": true,
+        "inference_ms": 835.022
+      },
+      {
+        "image": "n03445777-00.png",
+        "cosine": 0.9950618548254706,
+        "agreement": true,
+        "inference_ms": 834.544
+      },
+      {
+        "image": "n03888257-00.png",
+        "cosine": 0.9950329443435462,
+        "agreement": true,
+        "inference_ms": 836.404
+      }
+    ],
+    "inference_ms": 835.7101666666667
+  }
+}

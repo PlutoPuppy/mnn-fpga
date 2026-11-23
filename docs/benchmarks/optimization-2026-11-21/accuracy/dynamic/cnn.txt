@@ -1,0 +1,13 @@
+/patch_embed/seq/seq.0/c/Conv_output_0
+/patch_embed/seq/seq.2/c/Conv_output_0
+/layers.0/blocks.0/conv1/c/Conv_output_0
+/layers.0/blocks.0/conv3/c/Conv_output_0
+/layers.0/blocks.1/conv1/c/Conv_output_0
+/layers.0/blocks.1/conv3/c/Conv_output_0
+/layers.0/downsample/conv1/c/Conv_output_0
+/layers.0/downsample/conv3/c/Conv_output_0
+/layers.1/downsample/conv1/c/Conv_output_0
+/layers.1/downsample/conv3/c/Conv_output_0
+/layers.2/downsample/conv1/c/Conv_output_0
+/layers.2/downsample/conv3/c/Conv_output_0
+output__matmul_converted

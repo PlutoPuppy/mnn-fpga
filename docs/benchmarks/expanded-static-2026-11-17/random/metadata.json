@@ -1,0 +1,86 @@
+{
+  "profile_runs_separate": true,
+  "runner": "tinyvit_native_v12",
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "board_utc": "2016-02-11T16:31:22Z",
+  "clock_mhz": 90,
+  "warmup": 0,
+  "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+  "fresh_process": true,
+  "threads": 2,
+  "input_kind": "uniform random RGB images",
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded",
+  "abi": "NI83",
+  "inputs": 20,
+  "cpu_state_before": {},
+  "configurations": {
+    "cpu": {
+      "offload": false,
+      "pairs": false,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn"
+    },
+    "transformer_cpu": {
+      "offload": false,
+      "pairs": false,
+      "model": "tiny-vit-mixed-w8a8-all-transformer.mnn"
+    },
+    "static_fpga": {
+      "pair_count": 10,
+      "operations": 51,
+      "offload": true,
+      "pairs": true,
+      "model": "tiny-vit-mixed-w8a8-all-static.mnn"
+    },
+    "fp32": {
+      "offload": false,
+      "pairs": false,
+      "model": "tiny-vit.mnn"
+    },
+    "static_cpu": {
+      "offload": false,
+      "pairs": false,
+      "model": "tiny-vit-mixed-w8a8-all-static.mnn"
+    },
+    "static_unfused": {
+      "pair_count": 0,
+      "operations": 51,
+      "offload": true,
+      "pairs": false,
+      "model": "tiny-vit-mixed-w8a8-all-static.mnn"
+    },
+    "pairs": {
+      "pair_count": 4,
+      "operations": 30,
+      "offload": true,
+      "pairs": true,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn"
+    },
+    "transformer_fpga": {
+      "pair_count": 10,
+      "operations": 40,
+      "offload": true,
+      "pairs": true,
+      "model": "tiny-vit-mixed-w8a8-all-transformer.mnn"
+    }
+  },
+  "modes": [
+    "fp32",
+    "cpu",
+    "pairs",
+    "transformer_cpu",
+    "transformer_fpga",
+    "static_cpu",
+    "static_fpga",
+    "static_unfused"
+  ],
+  "models": {
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+    "tiny-vit-mixed-w8a8-all-static.mnn": "e30022757743bbd4d6a3b7f55aea40318996ae294b0ca7a3761636a8e9920fe7",
+    "tiny-vit-mixed-w8a8-all-transformer.mnn": "da21ca755de73ebb3f14ff1c5e8e72d984521c2fa2784b87da65aa596341b406"
+  },
+  "date": "2026-11-17",
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "runner_sha256": "7a44a387a9e41cb61877d9268eded119a36ed9fe17b4d661978117ee41fc3925",
+  "cpu_state_after": {}
+}

@@ -1,0 +1,60 @@
+[13081.633979] sysrq: SysRq : Emergency Remount R/O
+[13081.850023] EXT4-fs (mmcblk0p2): re-mounted. Opts: (null)
+[13081.860897] Emergency Remount complete
+[13082.293827] sysrq: SysRq : Resetting
+[13082.297417] CPU1: stopping
+[13082.300121] CPU: 1 PID: 446 Comm: kswapd0 Not tainted 4.5.0-00183-g4647b69-dirty #52
+[13082.307828] Hardware name: Altera SOCFPGA
+[13082.311848] [<c0018ac4>] (unwind_backtrace) from [<c00144f8>] (show_stack+0x20/0x24)
+[13082.319568] [<c00144f8>] (show_stack) from [<c037ada0>] (dump_stack+0x98/0xac)
+[13082.326764] [<c037ada0>] (dump_stack) from [<c0016fb4>] (handle_IPI+0x1c0/0x2c8)
+[13082.334129] [<c0016fb4>] (handle_IPI) from [<c000951c>] (gic_handle_irq+0x94/0x98)
+[13082.341667] [<c000951c>] (gic_handle_irq) from [<c0015094>] (__irq_svc+0x54/0x70)
+[13082.349114] Exception stack(0xce8fde58 to 0xce8fdea0)
+[13082.354144] de40:                                                       c0ba9c40 c0ba9efc
+[13082.362286] de60: 00000004 00000010 00000000 c0ba9efc c0ba9c40 00000000 00000000 00000000
+[13082.370428] de80: 0000078b ce8fdebc ce8fdec0 ce8fdeac c00f856c c00f2ab0 600e0113 ffffffff
+[13082.378579] [<c0015094>] (__irq_svc) from [<c00f2ab0>] (zone_reclaimable_pages+0x10/0x74)
+[13082.386727] [<c00f2ab0>] (zone_reclaimable_pages) from [<c00f856c>] (kswapd+0x54c/0x9e0)
+[13082.394789] [<c00f856c>] (kswapd) from [<c0044888>] (kthread+0xf0/0x108)
+[13082.401465] [<c0044888>] (kthread) from [<c000fbf8>] (ret_from_fork+0x14/0x3c)
+
+U-Boot SPL 2013.01.01 (Oct 12 2016 - 10:38:03)
+BOARD : Altera SOCFPGA Cyclone V Board
+CLOCK: EOSC1 clock 25000 KHz
+CLOCK: EOSC2 clock 25000 KHz
+CLOCK: F2S_SDR_REF clock 0 KHz
+CLOCK: F2S_PER_REF clock 0 KHz
+CLOCK: MPU clock 925 MHz
+CLOCK: DDR clock 400 MHz
+CLOCK: UART clock 100000 KHz
+CLOCK: MMC clock 50000 KHz
+CLOCK: QSPI clock 3613 KHz
+RESET: WARM
+INFO : Watchdog enabled
+SDRAM: Initializing MMR registers
+SDRAM: Calibrating PHY
+SEQ.C: Preparing to start memory calibration
+SEQ.C: CALIBRATION PASSED
+SDRAM: 1024 MiB
+ALTERA DWMMC: 0
+
+
+U-Boot 2013.01.01 (Oct 12 2016 - 10:40:34)
+
+CPU   : Altera SOCFPGA Platform
+BOARD : Altera SOCFPGA Cyclone V Board
+I2C:   ready
+DRAM:  1 GiB
+MMC:   ALTERA DWMMC: 0
+*** Warning - bad CRC, using default environment
+
+In:    serial
+Out:   serial
+Err:   serial
+Skipped ethaddr assignment due to invalid EMAC address in EEPROM
+Net:   mii0
+Warning: failed to set MAC address
+
+Hit any key to stop autoboot:  5  0 
+SOCFPGA_CYCLONE5 # 

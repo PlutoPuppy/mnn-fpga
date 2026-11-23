@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Fresh-process paired native-NI82 benchmark; preserves outputs and raw logs.
+"""Fresh-process paired NI82/NI83 benchmark; preserves outputs and raw logs.
 
-Run on HPS after physical NI82 matrix tests pass. Random images are reused from
+Run on HPS after physical native matrix tests pass. Random images are reused from
 the earlier experiment, with their original SHA256 verified before each run.
 """
 import argparse
+import gzip
 import json
 import os
 import pathlib
@@ -21,10 +22,14 @@ def main():
     p.add_argument('--output-dir', required=True)
     p.add_argument('--runner', required=True)
     p.add_argument('--inputs', type=int, default=20)
+    p.add_argument('--resume', action='store_true', help='Continue a verified partial run')
+    p.add_argument('--compress-profiles', action='store_true', help='Save operator profiles using less disk space')
     p.add_argument('--experiment-date', help='Host-supplied YYYY-MM-DD; board clock may be incorrect')
     p.add_argument('--bitstream-sha256', default='not-used')
     p.add_argument('--allowlist', help='Optional measured policy, adds selective and selective_pairs modes')
     p.add_argument('--modes', default='fp32,cpu,all,pairs')
+    p.add_argument('--configurations', type=pathlib.Path, help='JSON mapping extra mode names to model/offload/pairs/counts')
+    p.add_argument('--abi', choices=('NI82','NI83'), default='NI82')
     p.add_argument('--natural-images', help='Optional directory of natural RGB images instead of the earlier random set')
     a = p.parse_args()
     if os.geteuid() != 0 or not 1 <= a.inputs <= 20:
@@ -32,13 +37,38 @@ def main():
     board = pathlib.Path(a.board_dir).resolve()
     source = pathlib.Path(a.source_results).resolve()
     out = pathlib.Path(os.path.abspath(a.output_dir))
-    out.mkdir(parents=True, exist_ok=False)
+    if not a.resume:
+        out.mkdir(parents=True, exist_ok=False)
     modes = a.modes.split(',')
-    if any(m not in ('fp32', 'cpu', 'all', 'pairs', 'selective', 'selective_pairs') for m in modes):
+    model = 'tiny-vit-mixed-w8a8-accuracy.mnn'
+    configurations={m:dict(model='tiny-vit.mnn' if m=='fp32' else model,
+        offload=m not in ('fp32','cpu'),pairs='pairs' in m) for m in ('fp32','cpu','all','pairs','selective','selective_pairs')}
+    if a.configurations:
+        extra=json.loads(a.configurations.read_text())
+        for name,cfg in extra.items():
+            if not re.fullmatch('[a-z][a-z0-9_]*',name) or not isinstance(cfg.get('model'),str):p.error('Invalid configuration')
+            if not isinstance(cfg.get('offload'),bool) or not isinstance(cfg.get('pairs'),bool):p.error('Explicit offload/pairs flags required')
+            if cfg['pairs'] and not cfg['offload']:p.error('Resident pairs require offload')
+            if 'runner' in cfg and (not isinstance(cfg['runner'],str) or not re.fullmatch('[a-zA-Z][a-zA-Z0-9_.-]*',cfg['runner'])):
+                p.error('Configuration runner must be a filename')
+            valid_flags={'--fused-attention','--gelu-neon','--gelu-lookup','--gelu-polynomial','--memory-low','--park-fpga-workers'}
+            if not isinstance(cfg.get('flags',[]),list) or any(f not in valid_flags for f in cfg.get('flags',[])):
+                p.error('Unsupported optimization flag')
+            valid_env={'MNN_MATMUL_SOC_FAST_POLL','MNN_MATMUL_SOC_STREAM_STAGE',
+                       'MNN_MATMUL_SOC_REUSE_A','MNN_MATMUL_SOC_LIVE_ROWS',
+                       'MNN_MATMUL_SOC_DMA_POLL_BATCH','MNN_MATMUL_SOC_DIRECT_A','MNN_MATMUL_SOC_DIRECT_C',
+                       'MNN_MATMUL_SOC_DMA_CHAIN','MNN_MATMUL_SOC_PIPELINE_C'}
+            if not isinstance(cfg.get('environment',{}),dict) or any(k not in valid_env or v not in ('0','1') for k,v in cfg.get('environment',{}).items()):
+                p.error('Unsupported optimization environment')
+            if 'projection_ranges' in cfg and (not cfg['offload'] or
+                    not isinstance(cfg['projection_ranges'],str) or not re.fullmatch(r'[a-zA-Z0-9_.-]+\.tsv',cfg['projection_ranges'])):
+                p.error('Use an FPGA mode and a projection range filename')
+            configurations[name]=cfg
+    if len(set(modes))!=len(modes) or any(m not in configurations for m in modes):
         p.error('Unknown benchmark mode')
     if any(m.startswith('selective') for m in modes) and not a.allowlist:
         p.error('Selective mode requires allowlist')
-    hardware = any(m not in ('fp32', 'cpu') for m in modes)
+    hardware = any(configurations[m]['offload'] for m in modes)
     if hardware and not re.fullmatch('[0-9a-f]{64}',a.bitstream_sha256):
         p.error('Hardware benchmark requires the programmed SOF SHA256')
     if a.natural_images:
@@ -52,30 +82,65 @@ def main():
     for k in list(environment):
         if k.startswith('MNN_FPGA') or k.startswith('MNN_MATMUL_SOC') or k == 'MNN_INT8_TRACE':
             environment.pop(k)
-    model = 'tiny-vit-mixed-w8a8-accuracy.mnn'
     metadata = dict(date=a.experiment_date, board_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
                     order_design='Williams rows, including reversed rows for odd configuration counts',
                     inputs=a.inputs, modes=modes, threads=2,
                     runner=a.runner, runner_sha256=sha(board/a.runner),
-                    bitstream_sha256=a.bitstream_sha256, clock_mhz=90 if hardware else None, abi='NI82' if hardware else 'not-used',
-                    models={m: sha(board/m) for m in ('tiny-vit.mnn', model)},
+                    runners={n:sha(board/n) for n in {configurations[m].get('runner',a.runner) for m in modes}},
+                    bitstream_sha256=a.bitstream_sha256, clock_mhz=90 if hardware else None, abi=a.abi if hardware else 'not-used',
+                    configurations={m:configurations[m] for m in modes},
+                    models={m: sha(board/m) for m in set(configurations[x]['model'] for x in modes)},
                     profile_runs_separate=True, fresh_process=True, warmup=0,
+                    compressed_profiles=a.compress_profiles,
                     source=str(source), cpu_state_before=cpu_state(),
                     timing='Inference excludes load/session/cache/LUT setup; process wall and setup also recorded')
     metadata['input_kind']='natural images' if a.natural_images else 'uniform random RGB images'
+    if any('projection_ranges' in configurations[m] for m in modes):
+        metadata['projection_range_hashes'] = {f: sha(board/f) for f in
+            {configurations[m]['projection_ranges'] for m in modes if 'projection_ranges' in configurations[m]}}
+    rows = []
+    if a.resume:
+        recorded = json.loads((out/'metadata.json').read_text())
+        for key in metadata.keys() - {'board_utc', 'cpu_state_before'}:
+            if metadata[key] != recorded.get(key):
+                raise ValueError('Cannot resume with changed metadata: ' + key)
+        metadata = recorded
+        rows = json.loads((out/'results.json').read_text())
+        if len(rows) >= len(original):
+            raise ValueError('The benchmark has already completed')
+        for row, entry in zip(rows, original):
+            if (row['input'], row['image_sha256']) != (entry['input'], entry['image_sha256']):
+                raise ValueError('Saved input order differs from the manifest')
+            for name, run in row['runs'].items():
+                target = out / ('input-%02d' % row['input']) / name
+                if sha(target/'output_0.f32') != run['output_sha256']:
+                    raise ValueError('Saved score hash mismatch in ' + str(target))
+        unfinished = out / ('input-%02d' % original[len(rows)]['input'])
+        if unfinished.exists():
+            count = len(list(out.glob(unfinished.name + '-interrupted-*')))
+            unfinished.rename(out / (unfinished.name + '-interrupted-%02d' % count))
+        metadata.setdefault('resume_checkpoints', []).append(len(rows))
+        print('RESUMING', len(rows), '/', len(original), flush=True)
+    else:
+        (out/'results.json').write_text('[]\n')
     (out/'metadata.json').write_text(json.dumps(metadata, indent=2))
 
     def execute(mode, image, label, profiled):
         target = out/label/(mode+('_profile' if profiled else '_control'))
         target.mkdir(parents=True)
-        command = [str(board/a.runner), '--model', str(board/('tiny-vit.mnn' if mode == 'fp32' else model)),
+        cfg=configurations[mode]
+        command = [str(board/cfg.get('runner',a.runner)), '--model', str(board/cfg['model']),
                    '--height', '224', '--width', '224', '--image', str(image), '--mean', MEAN, '--std', STD,
                    '--threads', '2', '--runs', '1', '--output-dir', str(target)]
+        if 'projection_ranges' in cfg:
+            command += ['--native-projections', str(board/cfg['projection_ranges'])]
         env = dict(environment)
-        if mode not in ('fp32', 'cpu'):
+        command += cfg.get('flags',[])
+        env.update(cfg.get('environment',{}))
+        if cfg['offload']:
             env.update(MNN_MATMUL_SOC_DEVMEM='1', MNN_MATMUL_SOC_DMA='1')
             command += ['--fpga-native-int8', '--require-fpga']
-            if 'pairs' in mode:
+            if cfg['pairs']:
                 command += ['--fpga-native-pairs']
             if mode.startswith('selective'):
                 command += ['--native-allowlist', str(pathlib.Path(a.allowlist).resolve())]
@@ -83,7 +148,7 @@ def main():
             command += ['--profile', '--profile-ops', str(target/'operators.json')]
         with (target/'run.log').open('w') as log:
             start = time.perf_counter()
-            result = subprocess.run(command, env=env, cwd=str(board), stdout=log, stderr=subprocess.STDOUT)
+            result = subprocess.run(command, env=env, cwd=str(board), stdout=log, stderr=subprocess.STDOUT, timeout=60)
             wall_ms = (time.perf_counter()-start)*1000
         text = (target/'run.log').read_text()
         if result.returncode:
@@ -95,21 +160,33 @@ def main():
         assert len(values) == 1000 and all(__import__('math').isfinite(x) for x in values)
         record = dict(inference_ms=float(timing[0]), process_wall_ms=wall_ms, jobs=int(jobs[0]),
                       output_sha256=sha(target/'output_0.f32'), command=command)
-        if mode not in ('fp32', 'cpu'):
+        for label in ('ATTENTION','GELU','PARK','PROJECTION'):
+            details=re.findall('^'+label+'_JSON (.+)$',text,re.M)
+            if details:record[label.lower()]=json.loads(details[0])
+        if 'projection_ranges' in cfg:
+            assert 'projection' in record and all(x['calls']==1 for x in record['projection']['operations'])
+        if cfg['offload']:
             native = re.findall(r'^NATIVE_JSON (.+)$', text, re.M)
             assert len(native) == 1 and record['jobs'] > 0
             record['native'] = json.loads(native[0])
             assert record['native']['pending'] == -1
+            assert record['native']['abi']==a.abi
+            if 'operations' in cfg:assert record['native']['operations']==cfg['operations']
+            if 'pair_count' in cfg:assert record['native']['fused_pairs']==cfg['pair_count']
         else:
             assert record['jobs'] == 0
         if profiled:
             record['profile'] = json.loads(re.findall(r'^PROFILE_JSON (.+)$', text, re.M)[0])
             if 'native' in record:
                 assert record['profile']['offload']['local_bytes'] == record['native']['local_feedback_bytes']
+            if a.compress_profiles:
+                path = target/'operators.json'
+                (target/'operators.json.gz').write_bytes(gzip.compress(path.read_bytes(), compresslevel=1))
+                path.unlink()
         return record, values
 
-    rows = []
-    for position,entry in enumerate(original):
+    for position in range(len(rows),len(original)):
+        entry = original[position]
         i = entry['input']
         image = pathlib.Path(entry['image_path']) if 'image_path' in entry else source/'images'/('random-%02d.ppm' % i)
         assert sha(image) == entry['image_sha256']
@@ -129,6 +206,10 @@ def main():
         for mode in modes:
             assert runs[mode+'_control']['output_sha256'] == runs[mode+'_profile']['output_sha256']
         checks = {}
+        if 'fp32' in modes:
+            for mode in modes:
+                if mode != 'fp32':
+                    checks[mode+'_vs_fp32'] = compare(outputs['fp32_control'], outputs[mode+'_control'])
         if 'cpu' in modes:
             for mode in modes:
                 if mode != 'cpu':
@@ -136,9 +217,22 @@ def main():
         if 'all' in modes and 'pairs' in modes:
             checks['pairs_vs_all'] = compare(outputs['all_control'], outputs['pairs_control'])
             assert runs['all_control']['output_sha256'] == runs['pairs_control']['output_sha256'], 'Resident fusion changed output bytes'
+        for mode in modes:
+            cfg=configurations[mode]
+            for reference in modes:
+                other=configurations[reference]
+                if mode==reference or cfg['model']!=other['model']:continue
+                if cfg['offload'] and not other['offload']:
+                    checks[mode+'_vs_'+reference]=compare(outputs[reference+'_control'],outputs[mode+'_control'])
+                if cfg['offload'] and cfg['pairs'] and other['offload'] and not other['pairs']:
+                    assert runs[mode+'_control']['output_sha256']==runs[reference+'_control']['output_sha256'],'Resident fusion changed output bytes'
         rows.append(dict(input=i, seed=entry['seed'], image_sha256=entry['image_sha256'], image_path=str(image),
                          order=order, runs=runs, scores=checks))
-        (out/'results.json').write_text(json.dumps(rows, indent=2))
+        checkpoint = out/'results.next.json'
+        checkpoint.write_text(json.dumps(rows, indent=2))
+        checkpoint.replace(out/'results.json')
+        if len(rows) % 2 == 0:
+            os.sync()
         print('INPUT %02d ' % i+'; '.join('%s %.3f ms' % (m, runs[m+'_control']['inference_ms']) for m in modes), flush=True)
     metadata['cpu_state_after'] = cpu_state()
     (out/'metadata.json').write_text(json.dumps(metadata, indent=2))

@@ -1,0 +1,47 @@
+{
+  "models": {
+    "fp32": {
+      "file": "tiny-vit.mnn",
+      "size": 26602144,
+      "sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+      "native_operations": 0,
+      "resident_pairs": 0
+    },
+    "validated": {
+      "file": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "size": 18748848,
+      "sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+      "native_operations": 30,
+      "resident_pairs": 4,
+      "policy": "mnn/app/tinyvit_w8a8_accuracy_allowlist.txt",
+      "quantized_convolutions": 37,
+      "policy_entries_sha256": "7ee04294e619d0e77199ae0859f609c2bfd125dcbda02c479c09272597d5302b"
+    },
+    "transformer": {
+      "file": "tiny-vit-mixed-w8a8-all-transformer.mnn",
+      "size": 12592968,
+      "sha256": "da21ca755de73ebb3f14ff1c5e8e72d984521c2fa2784b87da65aa596341b406",
+      "native_operations": 40,
+      "resident_pairs": 10,
+      "policy": "mnn/app/tinyvit_w8a8_all_transformer_allowlist.txt",
+      "quantized_convolutions": 47,
+      "policy_entries_sha256": "6dc365c3a08d79bbc4415cf3e5f592c80bacb599808601fd44a8baf3312eca60"
+    },
+    "static": {
+      "file": "tiny-vit-mixed-w8a8-all-static.mnn",
+      "size": 10783236,
+      "sha256": "e30022757743bbd4d6a3b7f55aea40318996ae294b0ca7a3761636a8e9920fe7",
+      "native_operations": 51,
+      "resident_pairs": 10,
+      "policy": "mnn/app/tinyvit_w8a8_all_static_allowlist.txt",
+      "quantized_convolutions": 58,
+      "policy_entries_sha256": "74b9d79783a196121a41b9767185611021c960faf0f1b0dbb7e502fbbd033c30"
+    }
+  },
+  "calibrated_source": {
+    "sha256": "d4d6bb729e25cd56d9ea5546a2b3a737af0678e497ffd8ae57c12b4377ef0277",
+    "size": 10686388
+  },
+  "source_repo_commit": "4b749cedf88742dc999267999cd234186eb26bf7",
+  "new_models_accuracy_gate_passed": false
+}

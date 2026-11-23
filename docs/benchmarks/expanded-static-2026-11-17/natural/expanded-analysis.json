@@ -1,0 +1,727 @@
+{
+  "additional_paired_comparisons": {
+    "transformer_fpga_vs_pairs": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -92.25915,
+        "median": -88.71749999999997,
+        "sd": 19.151400490976886,
+        "minimum": -129.3520000000001,
+        "maximum": -59.93299999999999
+      },
+      "delta_percent": -9.317918261328707,
+      "speedup": 1.102753687196785,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -100.56685000000002,
+        -84.39390000000002
+      ]
+    },
+    "static_fpga_vs_pairs": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -73.8506,
+        "median": -73.12049999999999,
+        "sd": 26.555258780215475,
+        "minimum": -114.88400000000001,
+        "maximum": 19.940000000000055
+      },
+      "delta_percent": -7.458705769022167,
+      "speedup": 1.0805986757696047,
+      "faster": 19,
+      "delta_ms_bootstrap_95": [
+        -83.9138,
+        -61.18674999999999
+      ]
+    },
+    "static_fpga_vs_transformer_fpga": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 18.40855,
+        "median": 17.23399999999998,
+        "sd": 25.207111054902967,
+        "minimum": -22.49000000000001,
+        "maximum": 109.01600000000008
+      },
+      "delta_percent": 2.0502534311733545,
+      "speedup": 0.9799093744283925,
+      "faster": 2,
+      "delta_ms_bootstrap_95": [
+        9.088199999999995,
+        30.50465000000002
+      ]
+    }
+  },
+  "pipeline_ms": {
+    "fp32": {
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.37727,
+        "median": 44.89727499999999,
+        "sd": 1.2275965464872276,
+        "minimum": 44.285750000000014,
+        "maximum": 48.50028000000001
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 82.6860265,
+        "median": 81.57987999999999,
+        "sd": 3.5995440579523037,
+        "minimum": 81.07533000000001,
+        "maximum": 97.04048999999999
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 8.462867,
+        "median": 8.466795000000001,
+        "sd": 0.09290353197636911,
+        "minimum": 8.31152,
+        "maximum": 8.6384
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 110.30147399999998,
+        "median": 109.68455000000003,
+        "sd": 1.8362695808060485,
+        "minimum": 108.19686999999999,
+        "maximum": 115.14650999999995
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.94662,
+        "median": 27.62567,
+        "sd": 0.9687165472173133,
+        "minimum": 27.449519999999993,
+        "maximum": 31.695360000000004
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 666.7100019999999,
+        "median": 664.7443749999998,
+        "sd": 5.696729822955722,
+        "minimum": 660.57109,
+        "maximum": 681.4659299999997
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 119.9943525,
+        "median": 118.9281,
+        "sd": 2.616026328287521,
+        "minimum": 118.30657000000002,
+        "maximum": 129.16555000000005
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.03564850000001,
+        "median": 83.72077499999999,
+        "sd": 1.1397748954221059,
+        "minimum": 83.00009999999999,
+        "maximum": 87.43063000000001
+      }
+    },
+    "cpu": {
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 20.21014,
+        "median": 20.200059999999993,
+        "sd": 0.1949736022348202,
+        "minimum": 19.878490000000003,
+        "maximum": 20.603050000000007
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 14.325114,
+        "median": 14.314505,
+        "sd": 0.07714836808998192,
+        "minimum": 14.199080000000002,
+        "maximum": 14.464719999999996
+      },
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.1911425,
+        "median": 44.98283000000001,
+        "sd": 0.8032374215954535,
+        "minimum": 44.62791,
+        "maximum": 48.19836
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 81.040084,
+        "median": 80.951495,
+        "sd": 0.47999541516889094,
+        "minimum": 80.34793999999998,
+        "maximum": 82.54214
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 9.711233,
+        "median": 9.69303,
+        "sd": 0.1026089244143689,
+        "minimum": 9.59155,
+        "maximum": 9.96725
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 110.60604250000002,
+        "median": 110.09409500000001,
+        "sd": 1.8027212210342183,
+        "minimum": 108.80053000000002,
+        "maximum": 115.95259000000006
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.9764965,
+        "median": 27.655075,
+        "sd": 0.8534138224262346,
+        "minimum": 27.403769999999998,
+        "maximum": 30.993109999999994
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 553.6375009999999,
+        "median": 552.7227399999999,
+        "sd": 3.482525871704887,
+        "minimum": 550.2087700000003,
+        "maximum": 564.1656500000001
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 120.153146,
+        "median": 119.461375,
+        "sd": 2.272536590456162,
+        "minimum": 118.21780999999999,
+        "maximum": 128.10575000000003
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.2994915,
+        "median": 84.00703500000002,
+        "sd": 0.8663881454349784,
+        "minimum": 83.32825999999999,
+        "maximum": 86.35523
+      }
+    },
+    "pairs": {
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 13.6840615,
+        "median": 13.487575,
+        "sd": 0.4166082603000851,
+        "minimum": 13.337150000000005,
+        "maximum": 15.078650000000003
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 11.7377755,
+        "median": 11.702000000000002,
+        "sd": 0.21213934034211898,
+        "minimum": 11.51655,
+        "maximum": 12.40263
+      },
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.238628500000004,
+        "median": 45.22516999999999,
+        "sd": 0.5435671732301542,
+        "minimum": 44.24842,
+        "maximum": 46.469820000000006
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 82.384383,
+        "median": 81.12804000000003,
+        "sd": 2.7731939795441605,
+        "minimum": 80.50842999999998,
+        "maximum": 90.04743999999998
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 10.030053,
+        "median": 10.023675,
+        "sd": 0.09718653129014587,
+        "minimum": 9.86435,
+        "maximum": 10.18602
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 102.3342615,
+        "median": 101.99269999999994,
+        "sd": 1.3747616651059766,
+        "minimum": 100.66943000000003,
+        "maximum": 107.10640999999994
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.663857999999998,
+        "median": 27.653435,
+        "sd": 0.08444416907357413,
+        "minimum": 27.538459999999997,
+        "maximum": 27.81547
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 540.960457,
+        "median": 538.3642049999999,
+        "sd": 9.478295505338918,
+        "minimum": 536.10949,
+        "maximum": 579.6088100000002
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 109.5599345,
+        "median": 105.36985999999999,
+        "sd": 8.840434013855988,
+        "minimum": 104.50502999999999,
+        "maximum": 136.60087000000001
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.38828000000001,
+        "median": 84.24672000000001,
+        "sd": 0.5245853905002646,
+        "minimum": 83.69696000000002,
+        "maximum": 85.83780000000002
+      }
+    },
+    "transformer_cpu": {
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 29.7762545,
+        "median": 29.165405,
+        "sd": 1.6691625979403237,
+        "minimum": 28.831750000000003,
+        "maximum": 34.541579999999996
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 17.1442845,
+        "median": 17.049809999999997,
+        "sd": 0.3033370311173782,
+        "minimum": 16.883550000000007,
+        "maximum": 18.09166
+      },
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.277655499999995,
+        "median": 45.09739999999999,
+        "sd": 0.7870084186901822,
+        "minimum": 44.56979999999998,
+        "maximum": 48.20500000000002
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 81.23848749999999,
+        "median": 80.908825,
+        "sd": 1.199147048960328,
+        "minimum": 80.44974000000002,
+        "maximum": 85.99466000000001
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 10.231241,
+        "median": 10.216245,
+        "sd": 0.09840117387511195,
+        "minimum": 10.09313,
+        "maximum": 10.43804
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 111.288063,
+        "median": 110.37402999999998,
+        "sd": 2.96485561990196,
+        "minimum": 109.19552999999996,
+        "maximum": 122.08009000000004
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 28.062691,
+        "median": 27.776775,
+        "sd": 1.0465503828991312,
+        "minimum": 27.519000000000002,
+        "maximum": 31.591730000000005
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 498.34236150000004,
+        "median": 495.1818800000001,
+        "sd": 8.71261300631038,
+        "minimum": 492.94760000000014,
+        "maximum": 530.4097199999999
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 120.0917675,
+        "median": 118.84848499999998,
+        "sd": 4.704520388312853,
+        "minimum": 118.21383,
+        "maximum": 139.71918
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.408479,
+        "median": 83.56388999999999,
+        "sd": 3.1537290315766775,
+        "minimum": 82.53837999999998,
+        "maximum": 96.78169000000005
+      }
+    },
+    "transformer_fpga": {
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 15.0868775,
+        "median": 14.654589999999999,
+        "sd": 1.4366856718846608,
+        "minimum": 14.39629,
+        "maximum": 20.70624999999999
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 11.2255465,
+        "median": 11.144609999999997,
+        "sd": 0.2888375485372358,
+        "minimum": 10.956759999999997,
+        "maximum": 12.12433
+      },
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.239898,
+        "median": 44.996405,
+        "sd": 0.899712562155854,
+        "minimum": 44.31146999999999,
+        "maximum": 47.818909999999995
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 82.64643650000001,
+        "median": 81.15480500000001,
+        "sd": 4.679945158811915,
+        "minimum": 80.68920000000001,
+        "maximum": 99.48603
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 10.0080525,
+        "median": 9.80226,
+        "sd": 0.8871004058218046,
+        "minimum": 9.67791,
+        "maximum": 13.76436
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 92.593198,
+        "median": 92.03724999999997,
+        "sd": 1.9591426730631065,
+        "minimum": 90.78352000000005,
+        "maximum": 99.11171999999998
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 28.12581,
+        "median": 27.711955000000003,
+        "sd": 1.2042177304527788,
+        "minimum": 27.54351,
+        "maximum": 32.416
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 512.5569785,
+        "median": 510.86454000000003,
+        "sd": 4.736513878172303,
+        "minimum": 509.19897999999984,
+        "maximum": 529.3042399999999
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 89.00483,
+        "median": 88.46096999999997,
+        "sd": 1.9072929187946575,
+        "minimum": 88.03722999999998,
+        "maximum": 95.68662000000003
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.3429365,
+        "median": 84.107845,
+        "sd": 1.0497077342177559,
+        "minimum": 83.56654,
+        "maximum": 88.38663999999999
+      }
+    },
+    "static_cpu": {
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 70.34314850000001,
+        "median": 69.8894,
+        "sd": 1.1527724710968243,
+        "minimum": 69.50558000000001,
+        "maximum": 73.94224
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 37.307569,
+        "median": 37.17173500000001,
+        "sd": 0.37201907893774044,
+        "minimum": 36.99941,
+        "maximum": 38.37193000000002
+      },
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.9517245,
+        "median": 45.461714999999984,
+        "sd": 1.4974288162871363,
+        "minimum": 44.77973999999998,
+        "maximum": 50.95970999999999
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 82.0822175,
+        "median": 81.32527999999999,
+        "sd": 3.6300496550581998,
+        "minimum": 80.63609999999998,
+        "maximum": 97.40687
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 10.778817,
+        "median": 10.77139,
+        "sd": 0.15190047081109226,
+        "minimum": 10.55625,
+        "maximum": 11.17391
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 111.319812,
+        "median": 110.95815500000005,
+        "sd": 1.4579088350084901,
+        "minimum": 109.39029,
+        "maximum": 113.94462
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.772869,
+        "median": 27.684399999999997,
+        "sd": 0.3364570333388182,
+        "minimum": 27.50947,
+        "maximum": 29.006700000000006
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 434.1381215,
+        "median": 431.43021999999996,
+        "sd": 8.444809123132977,
+        "minimum": 428.81193,
+        "maximum": 467.20797
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 120.8401655,
+        "median": 118.93729500000002,
+        "sd": 5.377810170894225,
+        "minimum": 118.49770999999997,
+        "maximum": 142.03512999999998
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.00576050000001,
+        "median": 83.81239500000001,
+        "sd": 0.5451837932629463,
+        "minimum": 83.22935000000003,
+        "maximum": 85.34418
+      }
+    },
+    "static_fpga": {
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 55.7039405,
+        "median": 55.390100000000004,
+        "sd": 0.9439580871185822,
+        "minimum": 55.04354999999999,
+        "maximum": 58.84135999999999
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 31.702458999999998,
+        "median": 31.12946,
+        "sd": 1.0958760562452203,
+        "minimum": 30.98747000000001,
+        "maximum": 34.815090000000005
+      },
+      "Other CPU/operator scopes": {
+        "n": 20,
+        "mean": 45.6018135,
+        "median": 45.468540000000004,
+        "sd": 0.5557726022609807,
+        "minimum": 45.02177,
+        "maximum": 46.98793999999998
+      },
+      "Other convolutions": {
+        "n": 20,
+        "mean": 82.16835900000001,
+        "median": 81.22434500000001,
+        "sd": 2.8805308049182816,
+        "minimum": 80.65050000000001,
+        "maximum": 92.74148000000001
+      },
+      "Outside operator callbacks": {
+        "n": 20,
+        "mean": 10.319896,
+        "median": 10.24849,
+        "sd": 0.25551681471913074,
+        "minimum": 10.1092,
+        "maximum": 11.31155
+      },
+      "Raster": {
+        "n": 20,
+        "mean": 93.19886249999999,
+        "median": 92.07287500000001,
+        "sd": 4.04657704338378,
+        "minimum": 91.29776999999999,
+        "maximum": 109.7343299999999
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.7690755,
+        "median": 27.724774999999998,
+        "sd": 0.15403523508309697,
+        "minimum": 27.545240000000007,
+        "maximum": 28.076499999999996
+      },
+      "Static linear callbacks (all 51)": {
+        "n": 20,
+        "mean": 476.633962,
+        "median": 474.509905,
+        "sd": 4.398444214326605,
+        "minimum": 473.62643000000014,
+        "maximum": 490.3312299999999
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 91.5934445,
+        "median": 88.810555,
+        "sd": 7.980518379632843,
+        "minimum": 88.36684999999999,
+        "maximum": 123.51318
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.317413,
+        "median": 84.15257500000001,
+        "sd": 1.291466639914324,
+        "minimum": 83.25381999999999,
+        "maximum": 89.39258000000002
+      }
+    }
+  },
+  "extra_11_operators": [
+    {
+      "name": "output__matmul_converted",
+      "M": 1,
+      "K": 320,
+      "N": 1000,
+      "transformer_cpu_scope_ms": 1.5741755,
+      "static_cpu_scope_ms": 0.4644555,
+      "static_fpga_scope_ms": 4.555299,
+      "delta_vs_transformer": 2.9811235
+    },
+    {
+      "name": "/layers.2/downsample/conv3/c/Conv_output_0",
+      "M": 49,
+      "K": 320,
+      "N": 320,
+      "transformer_cpu_scope_ms": 3.3749595,
+      "static_cpu_scope_ms": 2.591536,
+      "static_fpga_scope_ms": 2.859704,
+      "delta_vs_transformer": -0.5152555000000003
+    },
+    {
+      "name": "/layers.1/downsample/conv3/c/Conv_output_0",
+      "M": 196,
+      "K": 160,
+      "N": 160,
+      "transformer_cpu_scope_ms": 2.947192,
+      "static_cpu_scope_ms": 1.6170545,
+      "static_fpga_scope_ms": 2.4108225,
+      "delta_vs_transformer": -0.5363694999999997
+    },
+    {
+      "name": "/layers.2/downsample/conv1/c/Conv_output_0",
+      "M": 196,
+      "K": 160,
+      "N": 320,
+      "transformer_cpu_scope_ms": 5.9144185,
+      "static_cpu_scope_ms": 3.738619,
+      "static_fpga_scope_ms": 4.0826235,
+      "delta_vs_transformer": -1.8317949999999996
+    },
+    {
+      "name": "/layers.1/downsample/conv1/c/Conv_output_0",
+      "M": 784,
+      "K": 128,
+      "N": 160,
+      "transformer_cpu_scope_ms": 8.971103,
+      "static_cpu_scope_ms": 5.2297270000000005,
+      "static_fpga_scope_ms": 6.9346305,
+      "delta_vs_transformer": -2.0364724999999995
+    },
+    {
+      "name": "/layers.0/downsample/conv1/c/Conv_output_0",
+      "M": 3136,
+      "K": 64,
+      "N": 128,
+      "transformer_cpu_scope_ms": 14.09306,
+      "static_cpu_scope_ms": 10.157833,
+      "static_fpga_scope_ms": 11.3220005,
+      "delta_vs_transformer": -2.7710595
+    },
+    {
+      "name": "/layers.0/downsample/conv3/c/Conv_output_0",
+      "M": 784,
+      "K": 128,
+      "N": 128,
+      "transformer_cpu_scope_ms": 7.1114375,
+      "static_cpu_scope_ms": 4.262484,
+      "static_fpga_scope_ms": 4.322252,
+      "delta_vs_transformer": -2.7891855000000003
+    },
+    {
+      "name": "/layers.0/blocks.1/conv1/c/Conv_output_0",
+      "M": 3136,
+      "K": 64,
+      "N": 256,
+      "transformer_cpu_scope_ms": 27.99309,
+      "static_cpu_scope_ms": 19.556595,
+      "static_fpga_scope_ms": 22.8948775,
+      "delta_vs_transformer": -5.098212499999999
+    },
+    {
+      "name": "/layers.0/blocks.0/conv1/c/Conv_output_0",
+      "M": 3136,
+      "K": 64,
+      "N": 256,
+      "transformer_cpu_scope_ms": 28.4878395,
+      "static_cpu_scope_ms": 19.22672,
+      "static_fpga_scope_ms": 22.849105,
+      "delta_vs_transformer": -5.638734499999998
+    },
+    {
+      "name": "/layers.0/blocks.1/conv3/c/Conv_output_0",
+      "M": 3136,
+      "K": 256,
+      "N": 64,
+      "transformer_cpu_scope_ms": 30.7925425,
+      "static_cpu_scope_ms": 16.0132965,
+      "static_fpga_scope_ms": 22.154291999999998,
+      "delta_vs_transformer": -8.638250500000002
+    },
+    {
+      "name": "/layers.0/blocks.0/conv3/c/Conv_output_0",
+      "M": 3136,
+      "K": 256,
+      "N": 64,
+      "transformer_cpu_scope_ms": 31.445488,
+      "static_cpu_scope_ms": 16.1425995,
+      "static_fpga_scope_ms": 22.2107575,
+      "delta_vs_transformer": -9.234730500000001
+    }
+  ]
+}

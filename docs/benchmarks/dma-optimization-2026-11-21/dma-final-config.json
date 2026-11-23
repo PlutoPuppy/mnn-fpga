@@ -1,0 +1,65 @@
+{
+  "fp32": {
+    "model": "tiny-vit.mnn",
+    "offload": false,
+    "pairs": false,
+    "runner": "tinyvit_native_v25"
+  },
+  "baseline": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v25",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "0",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "0"
+    }
+  },
+  "optimized": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "0",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "0"
+    }
+  },
+  "poll_batch": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "0"
+    }
+  }
+}

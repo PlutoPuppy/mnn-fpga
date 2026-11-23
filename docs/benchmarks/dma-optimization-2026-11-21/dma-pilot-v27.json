@@ -1,0 +1,122 @@
+{
+  "earlier": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v26",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "0",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "0"
+    }
+  },
+  "schedule": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "0",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "0"
+    }
+  },
+  "poll": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "0"
+    }
+  },
+  "direct_a": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+      "MNN_MATMUL_SOC_DIRECT_A": "1",
+      "MNN_MATMUL_SOC_DIRECT_C": "0"
+    }
+  },
+  "direct_c": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "1"
+    }
+  },
+  "direct_ac": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v27",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+      "MNN_MATMUL_SOC_DIRECT_A": "1",
+      "MNN_MATMUL_SOC_DIRECT_C": "1"
+    }
+  }
+}

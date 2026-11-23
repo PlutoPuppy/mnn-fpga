@@ -1,0 +1,86 @@
+{
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "fresh_process": true,
+  "bitstream_sha256": "842117565822d0f4a7e38baeb12a7cc7ba8005bdf13e16299de6edaa08d58332",
+  "date": "2026-11-21",
+  "abi": "NI83",
+  "inputs": 20,
+  "runner": "tinyvit_native_v35",
+  "modes": [
+    "fp32",
+    "previous",
+    "optimized"
+  ],
+  "input_kind": "uniform random RGB images",
+  "clock_mhz": 90,
+  "compressed_profiles": true,
+  "warmup": 0,
+  "cpu_state_after": {},
+  "board_utc": "2016-02-11T16:40:50Z",
+  "projection_range_hashes": {
+    "projection-nine.tsv": "43b2b4e2268b7b91ec4387234774ea35a6b8dfac83a44a1177bee55ca578b3bc"
+  },
+  "models": {
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded",
+  "runner_sha256": "1f84da5f895c14de1fe8d2451036bf763e4244b9998a79a90b2945d5360e6ab6",
+  "profile_runs_separate": true,
+  "threads": 2,
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "cpu_state_before": {},
+  "configurations": {
+    "previous": {
+      "projection_ranges": "projection-nine.tsv",
+      "environment": {
+        "MNN_MATMUL_SOC_DMA_CHAIN": "1",
+        "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+        "MNN_MATMUL_SOC_FAST_POLL": "1",
+        "MNN_MATMUL_SOC_REUSE_A": "1",
+        "MNN_MATMUL_SOC_LIVE_ROWS": "1"
+      },
+      "operations": 30,
+      "pairs": true,
+      "pair_count": 4,
+      "runner": "tinyvit_native_v35",
+      "offload": true,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ]
+    },
+    "fp32": {
+      "runner": "tinyvit_native_v27",
+      "offload": false,
+      "model": "tiny-vit.mnn",
+      "pairs": false
+    },
+    "optimized": {
+      "projection_ranges": "projection-nine.tsv",
+      "environment": {
+        "MNN_MATMUL_SOC_PIPELINE_C": "1",
+        "MNN_MATMUL_SOC_FAST_POLL": "1",
+        "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+        "MNN_MATMUL_SOC_DMA_CHAIN": "1",
+        "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+        "MNN_MATMUL_SOC_REUSE_A": "1"
+      },
+      "operations": 30,
+      "pairs": true,
+      "pair_count": 4,
+      "runner": "tinyvit_native_v35",
+      "offload": true,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ]
+    }
+  },
+  "runners": {
+    "tinyvit_native_v35": "1f84da5f895c14de1fe8d2451036bf763e4244b9998a79a90b2945d5360e6ab6",
+    "tinyvit_native_v27": "6d27713df9848534a7c7ccecdefcbcc09b250561899e2381c86700d28df81e55"
+  }
+}

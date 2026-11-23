@@ -1,0 +1,52 @@
+{
+  "fp32": {
+    "file": "tiny-vit-fp32.mnn",
+    "size": 26602144,
+    "sha256": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "validated": {
+    "file": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "size": 18748848,
+    "sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf"
+  },
+  "calibrated": {
+    "file": "tiny-vit-w8a8-kl.mnn",
+    "size": 10686388,
+    "sha256": "d4d6bb729e25cd56d9ea5546a2b3a737af0678e497ffd8ae57c12b4377ef0277"
+  },
+  "tiny-vit-hybrid-linear": {
+    "file": "tiny-vit-hybrid-linear.mnn",
+    "size": 10773112,
+    "sha256": "00e87d0ae4d251ed1934cc9711339cf6709a79ec3f4ae31169cf50fc37c378e3"
+  },
+  "tiny-vit-hybrid-spatial": {
+    "file": "tiny-vit-hybrid-spatial.mnn",
+    "size": 16934208,
+    "sha256": "bb8559071cc8f7c424c8e658e1f0fe66c240bdb58bc2dab4ea1a9056294252c7"
+  },
+  "tiny-vit-hybrid-transformer": {
+    "file": "tiny-vit-hybrid-transformer.mnn",
+    "size": 12587764,
+    "sha256": "ee0c2674259c144d2856f6c3894e80b9df3aafda81bc9a4cbe95b132a8e800e1"
+  },
+  "tiny-vit-hybrid-cnn": {
+    "file": "tiny-vit-hybrid-cnn.mnn",
+    "size": 16877300,
+    "sha256": "902847d47183b7fdad4769d861e1fb69d11b2c931094f60f76849ff19cb77eed"
+  },
+  "tiny-vit-hybrid-transformer-blocks": {
+    "file": "tiny-vit-hybrid-transformer-blocks.mnn",
+    "size": 12394916,
+    "sha256": "56066fff06f3738996b22d30b505954ca7a982de98e24d55744c568853023636"
+  },
+  "tiny-vit-hybrid-transformer-down": {
+    "file": "tiny-vit-hybrid-transformer-down.mnn",
+    "size": 11921660,
+    "sha256": "b14a9184058106d7b8acd06ce61729dc732cfb7b69f8857e7c3b40f64c51182d"
+  },
+  "tiny-vit-hybrid-transformer-nohead": {
+    "file": "tiny-vit-hybrid-transformer-nohead.mnn",
+    "size": 11728812,
+    "sha256": "1e9816f8ffb60251a489ffb1c1b9ca9658dafa33260d67467216c00233299c52"
+  }
+}

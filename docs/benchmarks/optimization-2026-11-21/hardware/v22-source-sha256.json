@@ -1,0 +1,16 @@
+{
+  "mnn/app/tinyvit_run.cpp": "9291d1af05e52198fd616b095fd47824f6d58881c25ff792148d8702d1e52c72",
+  "mnn/app/fused_attention_kernel.cpp": "be8598e6635b2639d1422c0260b143ae3acde186fa65b5f5bd5ab51fde028bd0",
+  "mnn/app/fused_attention_kernel.hpp": "362e3233c6118f6bcc531cf8cf7a3bc44ddc754ea4e36ff47506c34dc8cdfdcf",
+  "mnn/app/fused_attention_regions.cpp": "ad808cc79e89e5a5b8ef83eec59b3ba83846453bb7e2a84211adae8962a6c02b",
+  "mnn/app/gelu_lookup.cpp": "33d3c2d594984effc5bb785c9f7b26fc00f73920e5dba5c7e42f818ac67701db",
+  "mnn/app/gelu_lookup_kernel.cpp": "97721e9a7509f2d29a5e51631097806ad464b4d88d6a07cea8f29abbcd201042",
+  "mnn/app/gelu_reciprocal_arm32.S": "32265d67a80b5f4bd3ca7e6558596cf6466362993cb71321c1a0210a02e72048",
+  "mnn/app/CMakeLists.txt": "e80a34a336cc6533ba4811de15827e23837e311dd9ec2a32126b9c90fca666cc",
+  "mnn/fpga_bridge.cpp": "d9c28e7288a8beec1f8e0450833249c048c6a6c1a198caae56944ada6be0e0ed",
+  "mnn/fpga_bridge.hpp": "269a1424a8da7e98e2c8b4ff8ef7904c416a9cec609b748463bd223fc0b2b66d",
+  "sw/src/matmul_soc_uio.cpp": "dc8d0d49fe5027f2603e8553e4f359423ad964114fd3a31ec84b9cc4c6c78749",
+  "sw/src/matmul_soc_native.cpp": "13693214be9c6d05e90515616c6938fb6f6b2a927ca52c24a1db39aa2aaeb657",
+  "sw/include/matmul_soc_uio.hpp": "c581d2c2b493ab68f92ca0ef78d7e47f25be4601f2e2026dbeffe60777bfb746",
+  "sw/include/matmul_soc.hpp": "452b0b8eddbce61043f33174d114747881b13b83508b52d56fa9bc765f0d32bf"
+}

@@ -3,9 +3,12 @@
 #include "fpga_bridge.hpp"
 #include "image_input.hpp"
 #include "operator_profile.hpp"
+#include "fused_attention_regions.hpp"
+#include "gelu_lookup.hpp"
 #include "linear_override.hpp"
 #include "quantized_linear.hpp"
 #include "native_linear.hpp"
+#include "native_projection.hpp"
 #include <algorithm>
 #include <array>
 #include <chrono>
@@ -31,7 +34,14 @@ struct Options {
     std::string fpga_op;
     std::string profile_ops;
     std::string native_allowlist;
-    bool native_int8=false,native_pairs=false,native_plan=false;
+    std::string projection_ranges;
+    bool verify_projections=false;
+    bool native_int8=false,native_pairs=false,native_plan=false,native_verify=false;
+    bool fused_attention=false,verify_attention=false;
+    bool gelu_lookup=false,verify_gelu=false,gelu_neon=false;
+    bool gelu_polynomial=false;
+    bool memory_low=false;
+    bool park_workers=false;
     bool list_ops=false,profile=false,fpga_linear=false,fpga_linear_int8=false;
     int width=0,height=0,threads=2,runs=1,warmup=0,resize_short=0,topk=5;
     bool zeros=false,mean_set=false,std_set=false,require_fpga=false;
@@ -48,6 +58,18 @@ const char* usage=R"(Usage: tinyvit_run --model tiny-vit.mnn --height H --width 
         NI82 bitstream: replace supported static W8A8 linear operations,
         optionally keep verified MLP hidden tensors on FPGA using local DMA.
     [--native-plan]  Validate native candidates/LUTs on CPU without hardware.
+    [--native-verify] Compare unfused FPGA operators to CPU on identical inputs.
+    [--native-projections RANGES.tsv] Quantize selected FP32 pointwise convolutions for native FPGA execution.
+    [--verify-native-projections] Compare those projections while preserving CPU outputs.
+    [--fused-attention] Tiled CPU attention without intermediate graph copies.
+    [--verify-attention] Mirror tiled attention against the original CPU region.
+    [--gelu-lookup] Interpolate the model's FP32 GELU using its sampled curve.
+    [--verify-gelu] Compare lookup GELU while preserving original CPU outputs.
+    [--gelu-neon] Accelerate the original GELU polynomial with vector reciprocals.
+    [--verify-gelu-neon] Mirror vector-reciprocal GELU against the original CPU.
+    [--gelu-polynomial] Use a bounded division-free FP32 GELU approximation.
+    [--memory-low] Enable MNN dynamic activation quantization for weight-only operators.
+    [--park-fpga-workers] Park idle MNN CPU workers during synchronous native FPGA calls.
 
 Loads the full model from disk. Requires one NCHW FP32 RGB input, batch 1.
 Image: decode RGB, bilinear resize, normalize (pixel/255 - mean)/std.
@@ -92,12 +114,24 @@ Options parse(int argc,char** argv) {
         if(key=="--fpga-native-int8") {o.native_int8=true;continue;}
         if(key=="--fpga-native-pairs") {o.native_pairs=true;continue;}
         if(key=="--native-plan") {o.native_plan=true;continue;}
+        if(key=="--native-verify") {o.native_verify=true;continue;}
+        if(key=="--verify-native-projections") {o.verify_projections=true;continue;}
+        if(key=="--fused-attention") {o.fused_attention=true;continue;}
+        if(key=="--verify-attention") {o.fused_attention=true;o.verify_attention=true;continue;}
+        if(key=="--gelu-lookup") {o.gelu_lookup=true;continue;}
+        if(key=="--verify-gelu") {o.gelu_lookup=true;o.verify_gelu=true;continue;}
+        if(key=="--gelu-neon") {o.gelu_lookup=true;o.gelu_neon=true;continue;}
+        if(key=="--verify-gelu-neon") {o.gelu_lookup=true;o.gelu_neon=true;o.verify_gelu=true;continue;}
+        if(key=="--gelu-polynomial") {o.gelu_lookup=true;o.gelu_polynomial=true;continue;}
+        if(key=="--memory-low") {o.memory_low=true;continue;}
+        if(key=="--park-fpga-workers") {o.park_workers=true;continue;}
         if(i+1==argc) throw std::runtime_error("Missing value for "+key);
         const std::string value=argv[++i];
         if(key=="--model") o.model=value;
         else if(key=="--fpga-op") o.fpga_op=value;
         else if(key=="--profile-ops") o.profile_ops=value;
         else if(key=="--native-allowlist") o.native_allowlist=value;
+        else if(key=="--native-projections") o.projection_ranges=value;
         else if(key=="--image") o.image=value;
         else if(key=="--input-f32") o.raw=value;
         else if(key=="--output-dir") o.output=value;
@@ -120,6 +154,13 @@ Options parse(int argc,char** argv) {
     if(o.native_int8 && (!o.require_fpga || o.fpga_linear || o.fpga_linear_int8 || !o.fpga_op.empty()))
         throw std::runtime_error("NI82 requires --require-fpga and cannot mix legacy selectors");
     if(o.native_pairs && !o.native_int8 && !o.native_plan)throw std::runtime_error("Resident pairs require native mode");
+    if(o.native_verify && (!o.native_int8 || o.native_pairs || o.native_plan))throw std::runtime_error("Native verification requires unfused native execution");
+    if(!o.projection_ranges.empty() && (!o.native_int8 || o.native_verify || o.native_plan))
+        throw std::runtime_error("Native projections require ordinary native FPGA execution");
+    if(o.verify_projections && o.projection_ranges.empty())throw std::runtime_error("Projection verification requires ranges");
+    if(o.park_workers && (!o.native_int8 || o.native_verify || o.native_plan))
+        throw std::runtime_error("Worker parking requires ordinary native FPGA execution");
+    if(o.gelu_neon && o.gelu_polynomial)throw std::runtime_error("Choose one GELU approximation");
     if(int(o.zeros)+int(!o.image.empty())+int(!o.raw.empty())!=1)
         throw std::runtime_error("Choose exactly one of --image, --input-f32, or --zeros");
     if(!o.image.empty() && (!o.mean_set || !o.std_set))
@@ -183,6 +224,7 @@ int main(int argc,char** argv) {
         net->setSessionMode(MNN::Interpreter::Session_Resize_Defer);
         MNN::ScheduleConfig config; config.type=MNN_FORWARD_CPU; config.numThread=o.threads;
         MNN::BackendConfig backend; backend.precision=MNN::BackendConfig::Precision_High;
+        if(o.memory_low) backend.memory=MNN::BackendConfig::Memory_Low;
         config.backendConfig=&backend;
         auto* session=net->createSession(config);
         if(!session) throw std::runtime_error("Cannot create MNN session");
@@ -209,12 +251,24 @@ int main(int argc,char** argv) {
         if(!input->copyFromHostTensor(&host)) throw std::runtime_error("Cannot upload input tensor");
         const double input_ms=elapsed(input_start);
         double linear_setup_ms=0;
+        std::unique_ptr<NativeProjections> projections;
         if(o.fpga_linear) linear_setup_ms=prepare_linear_override(*net,o.fpga_op);
         if(o.fpga_linear_int8) linear_setup_ms=prepare_quantized_linear(*net,o.fpga_op);
         size_t native_count=0;
         if(o.native_int8 || o.native_plan) {
             const auto start=Clock::now();native_count=prepare_native_linears(*net,o.native_allowlist,o.native_pairs,o.native_plan);
-            linear_setup_ms=elapsed(start);if(o.native_plan)return 0;
+            if(o.native_plan)return 0;
+            if(!o.projection_ranges.empty())projections.reset(new NativeProjections(*net,o.projection_ranges,o.threads,o.verify_projections));
+            linear_setup_ms=elapsed(start);
+            mnn_fpga_bind_native_session(session,o.park_workers);
+        }
+        std::unique_ptr<FusedAttentionRegions> attention;
+        if(o.fused_attention)attention.reset(new FusedAttentionRegions(*net,o.threads,o.verify_attention));
+        std::unique_ptr<GeluLookup> gelu;
+        if(o.gelu_lookup) {
+            const auto mode=o.gelu_polynomial ? GeluLookup::Mode::Polynomial :
+                            o.gelu_neon ? GeluLookup::Mode::Reciprocal : GeluLookup::Mode::Lookup;
+            gelu.reset(new GeluLookup(*net,o.threads,o.verify_gelu,mode));
         }
         std::cout<<"Model: "<<o.model<<"\nInput: "<<inputs.begin()->first<<' '<<shape(host)<<" FP32 NCHW\n";
         if(o.zeros) std::cout<<"Input mode: synthetic zeros (smoke test only)\n";
@@ -230,12 +284,15 @@ int main(int argc,char** argv) {
         double target_ms=0;
         unsigned target_calls=0;
         std::vector<MNN::Tensor*> linear_inputs;
+        std::vector<int8_t> verification_input;
+        size_t verification_rows=0,verification_channels=0;
         unsigned linear_replacements=0;
         unsigned long int8_calls_before=0;
         operator_profile::Profiler op_profiler;
         if(!o.profile_ops.empty()) op_profiler.reset();
         auto before_op=[&](const std::vector<MNN::Tensor*>& tensors,const MNN::OperatorInfo* info) {
             const std::string name=info->name();
+            const bool attention_run=!attention || attention->before(name,tensors);
             if(o.list_ops && seen_ops.insert(name).second) {
                 std::cout<<"Runtime op: "<<name<<" type="<<info->type();
                 for(auto* tensor:tensors) std::cout<<' '<<shape(*tensor);
@@ -243,16 +300,30 @@ int main(int argc,char** argv) {
             }
             const bool match=o.native_int8?mnn_fpga_select_native(name):(!o.fpga_op.empty() && name==o.fpga_op);
             target_seen=target_seen || match;
-            mnn_fpga_select_operation(match);
+            mnn_fpga_select_operation(match && !o.native_verify);
             if(o.profile && match) {timing_target=true;target_start=Clock::now();}
             if(!o.profile_ops.empty()) op_profiler.before(tensors,info);
             if(match && (o.fpga_linear_int8 || o.native_int8)) int8_calls_before=mnn_fpga_completed_int8_operations();
+            if(match && o.native_verify) {
+                if(tensors.size()!=1 || tensors[0]->getType().bits!=8 || !tensors[0]->host<int8_t>())throw std::runtime_error("Verification requires explicit INT8 input");
+                const auto* t=tensors[0];verification_rows=size_t(t->batch())*t->height()*t->width();verification_channels=t->channel();
+                if(verification_channels%4)throw std::runtime_error("Verification requires pack4 channels");
+                verification_input.assign(t->host<int8_t>(),t->host<int8_t>()+verification_rows*verification_channels);
+            }
+            if(!attention_run)return false;
             if(o.native_int8 && mnn_fpga_native_skip(name))return false;
+            if(projections && !projections->before(name,tensors))return false;
+            if(gelu && !gelu->before(name,tensors))return false;
             if(match && o.fpga_linear) {linear_inputs=tensors;return false;}
             return true;
         };
         auto after_op=[&](const std::vector<MNN::Tensor*>& tensors,const MNN::OperatorInfo* info) {
             if((o.fpga_linear_int8 && info->name()==o.fpga_op) || (o.native_int8 && mnn_fpga_select_native(info->name()))) {
+                if(o.native_verify) {
+                    if(tensors.size()!=1 || tensors[0]->getType().bits!=8 ||
+                       mnn_fpga_verify_native(verification_input.data(),tensors[0]->host<int8_t>(),verification_rows,verification_channels,tensors[0]->channel())!=1)
+                        throw std::runtime_error("Native CPU/FPGA verification execution failed");
+                }
                 if(mnn_fpga_completed_int8_operations()!=int8_calls_before+1) {
                     std::cerr<<"Native INT8 fc1 hook did not execute exactly once\n";return false;
                 }
@@ -262,12 +333,16 @@ int main(int argc,char** argv) {
                 if(!execute_linear_override(linear_inputs,tensors)) return false;
                 ++linear_replacements;
             }
+            if(gelu)gelu->after(info->name(),tensors);
+            if(projections)projections->after(info->name(),tensors);
             if(!o.profile_ops.empty()) op_profiler.after(tensors,info);
             if(timing_target) {target_ms+=elapsed(target_start);++target_calls;timing_target=false;}
-            mnn_fpga_select_operation(false);return true;
+            mnn_fpga_select_operation(false);
+            if(attention)attention->after(info->name(),tensors);
+            return true;
         };
         auto run=[&] {
-            auto rc=(o.list_ops || !o.fpga_op.empty() || !o.profile_ops.empty() || o.native_int8)
+            auto rc=(o.list_ops || !o.fpga_op.empty() || !o.profile_ops.empty() || o.native_int8 || o.fused_attention || o.gelu_lookup)
                 ? net->runSessionWithCallBackInfo(session,before_op,after_op,true)
                 : net->runSession(session);
             mnn_fpga_select_operation(false);
@@ -287,8 +362,11 @@ int main(int argc,char** argv) {
             input_used=true;
         };
         for(int i=0;i<o.warmup;++i) {prepare_run();run();}
+        if(projections)projections->reset();
         const auto before=mnn_fpga_completed_jobs();
         mnn_fpga_profile_reset(o.profile);
+        if(attention)attention->reset();
+        if(gelu)gelu->reset();
         target_ms=0;target_calls=0;
         linear_replacements=0;
         if(!o.profile_ops.empty()) op_profiler.reset();
@@ -306,6 +384,24 @@ int main(int argc,char** argv) {
         if(o.native_int8) {
             if(linear_replacements!=native_count*unsigned(o.runs))throw std::runtime_error("Native multi-operation replacement count mismatch");
             std::cout<<"Native replacements: "<<linear_replacements<<"\nNATIVE_JSON "<<mnn_fpga_native_json()<<'\n';
+            if(o.native_verify && !mnn_fpga_native_verification_ok())throw std::runtime_error("Native verification exceeded one INT8 output code; inspect NATIVE_JSON");
+        }
+        if(attention) {
+            std::cout<<"ATTENTION_JSON "<<attention->json()<<'\n';
+            if(!attention->valid(unsigned(o.runs)))throw std::runtime_error("Fused attention correctness/count check failed");
+        }
+        if(projections) {
+            if(!projections->valid(unsigned(o.runs)))throw std::runtime_error("Native projection replacement count mismatch");
+            std::cout<<"PROJECTION_JSON "<<projections->json()<<'\n';
+        }
+        if(gelu) {
+            std::cout<<"GELU_JSON "<<gelu->json()<<'\n';
+            if(!gelu->valid(unsigned(o.runs)))throw std::runtime_error("GELU lookup correctness/count check failed");
+        }
+        if(o.park_workers) {
+            const auto calls=mnn_fpga_native_parked_calls();
+            std::cout<<"PARK_JSON {\"calls\":"<<calls<<",\"pending\":0}\n";
+            if(!calls)throw std::runtime_error("CPU worker parking did not execute");
         }
         if((o.fpga_linear || o.fpga_linear_int8) && linear_replacements!=unsigned(o.runs)) throw std::runtime_error("fc1 replacement count mismatch");
         if(o.fpga_linear || o.fpga_linear_int8) std::cout<<"Linear replacements: "<<linear_replacements<<"\nLINEAR_SETUP_JSON "<<mnn_fpga_linear_setup_json()<<'\n';

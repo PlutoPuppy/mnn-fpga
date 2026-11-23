@@ -1,0 +1,27 @@
+{
+  "fp32": {
+    "correct": 16,
+    "agree": 20,
+    "mean_cosine": 1
+  },
+  "all_projections": {
+    "correct": 18,
+    "agree": 18,
+    "mean_cosine": 0.9730266780986354
+  },
+  "transformer": {
+    "correct": 17,
+    "agree": 19,
+    "mean_cosine": 0.9737946181206697
+  },
+  "baseline": {
+    "correct": 16,
+    "agree": 20,
+    "mean_cosine": 0.9976306783768606
+  },
+  "fc2": {
+    "correct": 17,
+    "agree": 19,
+    "mean_cosine": 0.9733823178621045
+  }
+}

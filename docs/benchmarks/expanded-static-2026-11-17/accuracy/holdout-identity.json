@@ -1,0 +1,7 @@
+{
+  "images": 200,
+  "all_current_image_hashes_verified": true,
+  "image_records_equal_to_existing_validated_holdout": true,
+  "manifest_metadata_differs": true,
+  "reference_fp32_top1_predictions_match_prior_all_200": true
+}

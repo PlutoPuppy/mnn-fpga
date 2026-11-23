@@ -1,0 +1,125 @@
+{
+  "metadata": {
+    "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+    "inputs": 20,
+    "runner_sha256": "7a44a387a9e41cb61877d9268eded119a36ed9fe17b4d661978117ee41fc3925",
+    "images": [
+      {
+        "sha256": "baac4959e15829c3ddc83cb39d9805e99a70f0e27485e5d3d294a176a61a7d2c",
+        "file": "n01440764-00.png"
+      },
+      {
+        "sha256": "88b9b7e917a51e98d8e0c17e2b2375199b506dc2b0a5ee133ce5e1b5f0dc0bf3",
+        "file": "n01440764-01.png"
+      },
+      {
+        "sha256": "91cd47e559ee32f5039bad44de0f0e52c533abbb11cd881e1eb309bc5d100b31",
+        "file": "n02102040-00.png"
+      },
+      {
+        "sha256": "a340e2b5728010e1d903a3c5c3afa3ffbc386f8fb8cf7b4d5c5c6f3a22228a6d",
+        "file": "n02102040-01.png"
+      },
+      {
+        "sha256": "fc352ec499e4e3e2f698d32a7f127fed07a4eb759287a03d2cc58fb83f18219d",
+        "file": "n02979186-00.png"
+      },
+      {
+        "sha256": "67a86aefb4262906ceb2018f8502e607bddcb25d6cb68418d53aacaaf7ef8c9c",
+        "file": "n02979186-01.png"
+      },
+      {
+        "sha256": "40fc9de8e497165836d719b3b3a2d079b0b7909f639b286e67235e17d2962367",
+        "file": "n03000684-00.png"
+      },
+      {
+        "sha256": "10656229014c1f04f8fc142a6f80a380efe79b544c5d7c62ab01b2d9be3ff75a",
+        "file": "n03000684-01.png"
+      },
+      {
+        "sha256": "d74344476c4d7a84d57888d3dd2787f8c3a999a57ed9bd8ca65e04dc8ba24409",
+        "file": "n03028079-00.png"
+      },
+      {
+        "sha256": "0c3d2c4cb56155eaded778ec6ea98a6a2bb8f5c082566d73ba110b16233dac57",
+        "file": "n03028079-01.png"
+      },
+      {
+        "sha256": "e779da3f42a97874b6319bcc7b597e7a10ad8fd53301c9fb9f4d3a170b4ed406",
+        "file": "n03394916-00.png"
+      },
+      {
+        "sha256": "1e12eada5f189ca4dfe26cd1159f4bfae09e2b75b69d7909865a0a6b9460b2b9",
+        "file": "n03394916-01.png"
+      },
+      {
+        "sha256": "e186a0b60206168c53dbc40c5a858e62996af6ca603037020bad20efad0353be",
+        "file": "n03417042-00.png"
+      },
+      {
+        "sha256": "b1b03f160e3e847483b4f9ec6b4b64a9844e2108b51d78eca33c67d9f821aa75",
+        "file": "n03417042-01.png"
+      },
+      {
+        "sha256": "a8baae0750e332fb2ba349c4234f60186ebccb9e656f926a737cf84eabff3316",
+        "file": "n03425413-00.png"
+      },
+      {
+        "sha256": "ab485101901359fd659e343d1a9949a28a574b2f6dfeb6eccf561d35d987af26",
+        "file": "n03425413-01.png"
+      },
+      {
+        "sha256": "c27005fcddebfececfd4ce2e2c2e0c159cc3c1ec3b058a6edc5d855a9f28059b",
+        "file": "n03445777-00.png"
+      },
+      {
+        "sha256": "3b459e740fb8d1d624f3b45f316f4273d3ee6960000b9fc073901f23065f3159",
+        "file": "n03445777-01.png"
+      },
+      {
+        "sha256": "91174cd254e07eab273a02730103952ba7b2176df6f79d8c78a221b68d3673ed",
+        "file": "n03888257-00.png"
+      },
+      {
+        "sha256": "f750325a04bd939a9447e297fd75efe5f9093502cfcb3a9c051536163d5747f2",
+        "file": "n03888257-01.png"
+      }
+    ],
+    "comparison": "Same-input per-operator FPGA vs MNN CPU, output code tolerance1",
+    "clock_mhz": 90,
+    "abi": "NI83",
+    "models": {
+      "transformer": "da21ca755de73ebb3f14ff1c5e8e72d984521c2fa2784b87da65aa596341b406",
+      "static": "e30022757743bbd4d6a3b7f55aea40318996ae294b0ca7a3761636a8e9920fe7"
+    },
+    "cpu_graph_outputs_preserved": true,
+    "timing_is_diagnostic": true
+  },
+  "scopes": {
+    "transformer": {
+      "images": 20,
+      "operators_per_image": 40,
+      "elements": 75640320,
+      "mismatches": 9317,
+      "mismatch_fraction": 0.00012317504738213692,
+      "over_one": 0,
+      "maximum_code_error": 1,
+      "mean_absolute_code_error": 0.00012317504738213692,
+      "diagnostic_cpu_outputs_verified_against_controls": 20,
+      "passed": true
+    },
+    "static": {
+      "images": 20,
+      "operators_per_image": 51,
+      "elements": 130540320,
+      "mismatches": 14778,
+      "mismatch_fraction": 0.00011320640243566125,
+      "over_one": 0,
+      "maximum_code_error": 1,
+      "mean_absolute_code_error": 0.00011320640243566125,
+      "diagnostic_cpu_outputs_verified_against_controls": 20,
+      "passed": true
+    }
+  },
+  "passed": true
+}

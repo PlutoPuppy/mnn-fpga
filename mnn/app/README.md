@@ -249,3 +249,133 @@ its input storage. `repeat_input_copy_ms` reports these copies separately from
 inference. `check_native_session_reuse.py` compares runs=1/2/3 CPU/FPGA sessions
 with saved single-inference scores. The 20-image performance report records
 the v10 single-inference artifact separately from this session-reuse fix.
+
+The [expanded static-linear experiment](../../docs/tinyvit-expanded-static-offload.md)
+adds all 40 transformer projections, or all 51 static pointwise/linear
+operations, using separate experimental models. NI83 expands the A bank to
+32 KiB and supports K up to 2048, including stage-3 FC2. Both expanded models
+fail the CPU accuracy gate and must not replace the validated mixed model.
+The historical expanded-static experiment uses `tinyvit_native_v12` with
+NI83. It also supports the preserved validated
+mixed model with 30 offloaded linears and four resident pairs; the older v11
+binary requires NI82.
+`--native-verify` mirrors unfused CPU operators on FPGA with identical INT8
+inputs, preserves CPU graph outputs, and rejects errors above one output code.
+`benchmark_expanded_numeric.py` collects these diagnostics; ordinary
+`benchmark_native_int8.py --abi NI83 --configurations FILE` runs collect
+performance separately. Configurations specify the model, offload/pair flags,
+and expected operation/pair counts.
+
+## CPU kernels and transport optimization
+
+The [latency optimization report](../../docs/tinyvit-latency-optimization.md)
+records the accuracy gates, paired timings, rejected experiments and complete
+pipeline accounting. The original FP32 model and validated mixed model are
+preserved; the expanded static-quantization models remain experimental.
+The [DMA follow-up](../../docs/tinyvit-dma-optimization.md) measures v27 at
+905.762 ms versus 945.195 ms for v25 and 1170.188 ms for FP32 CPU in the
+matched 20-image timing run. The v27 package is
+`build/tinyvit-dma-optimized-90mhz-v27.tar.gz`.
+
+Additional flags are opt-in:
+
+- `--fused-attention` replaces the ten supported TinyViT QK/softmax/AV regions
+  with tiled FP32 CPU attention. Cortex-A9 microkernels process four queries
+  and eight columns, reuse MNN's worker pool, and balance odd-head windows
+  by splitting independent query rows. Scale and positional bias stay FP32.
+- `--gelu-neon` evaluates the original MNN GELU polynomial with vector
+  reciprocals and two Newton refinements. The ARM32 implementation replaces
+  scalar divisions; it does not change model weights or calibration.
+- `--verify-attention --verify-gelu-neon` mirrors these kernels while keeping
+  the original CPU graph outputs. Diagnostic latency is not a benchmark.
+- `--park-fpga-workers` temporarily suspends the session's idle CPU worker
+  pool inside synchronous native FPGA calls. A scope guard restores it before
+  control returns to MNN. `PARK_JSON` records actual calls.
+
+`ATTENTION_JSON` and `GELU_JSON` record per-region times, invocation counts,
+numerical checks and CPU-pool ownership/capacity. Attention replacement time
+is outside the ordinary operator callback intervals; GELU replacement time
+is inside its UnaryOp interval. `summarize_tinyvit_optimization.py` accounts
+for this difference and checks that all pipeline groups sum to inference.
+
+`MNN_MATMUL_SOC_FAST_POLL=1` reduces timer sampling and redundant native DMA
+CSR writes while retaining the one-second deadlines and device barriers.
+`MNN_MATMUL_SOC_STREAM_STAGE=1` selects an experimental cached staging copy;
+it was slower and remains disabled by default. DMA payload limits remain
+2,048 bytes for HPS transfers and 256 bytes for local feedback.
+
+The v27 package enables three transport options explicitly:
+
+- `MNN_MATMUL_SOC_REUSE_A=1` walks tiles in alternating directions to reuse
+  FPGA SRAM contents. It chooses the traversal with the lower estimated
+  transfer and packing cost and reuses resident FC2 inputs at compatible
+  tile boundaries.
+- `MNN_MATMUL_SOC_LIVE_ROWS=1` transfers live rows only. The compute shape
+  and K padding still meet the accelerator's tile requirements.
+- `MNN_MATMUL_SOC_DMA_POLL_BATCH=1` uses one deadline per transfer in the
+  existing fast polling mode. It keeps the barriers around DMA start and stop.
+
+The direct A/C experiments use `MNN_MATMUL_SOC_DIRECT_A` and
+`MNN_MATMUL_SOC_DIRECT_C`. Both are disabled in the package because they
+raised upload or download time compared with DDR DMA. For a labeled run,
+pass the chosen options with repeated `--transport` arguments to
+`benchmark_optimized_accuracy.py`. `--require-identical-fpga` enforces
+exact score parity when reference results are supplied.
+
+The independent kernel tests can be built with
+`-DTINYVIT_BUILD_KERNEL_TESTS=ON` when configuring this application.
+`tinyvit_attention_test` covers FP32/INT8 input, window/head layouts, query
+slices and tails; `tinyvit_gelu_test` covers both kernels and in-place/tail
+cases. Run them on the target ISA, or use CTest in a native host build.
+
+The model builder accepts an optional final weight-only allowlist:
+
+```sh
+create_mixed_quantized_model FP32.mnn CALIBRATED.mnn STATIC_ALLOWLIST.txt \
+  NEW_MODEL.mnn WEIGHT_ONLY_ALLOWLIST.txt
+```
+
+Weight-only additions preserve original FP32 biases and activation graph
+boundaries. `--memory-low` requests MNN dynamic activation quantization for
+those CPU operators; the MNN library must be built with `MNN_LOW_MEMORY=ON`.
+These experiments passed several accuracy screens but were slower on this
+Cortex-A9. They are not the selected deployment policy.
+
+`benchmark_native_int8.py` accepts optional per-configuration `flags`,
+`environment` and `runner` fields, and records all executable hashes.
+`benchmark_optimized_accuracy.py` checks labeled accuracy and FP32 agreement
+separately. Its optional `--reference-results` validates hashes and
+preprocessing before reusing completed FP32 references for a kernel update.
+
+### Calibrated FP32-boundary projections
+
+Use `--native-projections RANGES.tsv` with `--fpga-native-int8 --require-fpga`
+to select additional FP32 1×1 convolutions for the NI83 engine. The runner
+packs their static weights into INT8 tiles during setup. At inference it
+quantizes activations as they become available, runs INT8 GEMM with INT32
+accumulation, and returns FP32 values to MNN. `--verify-native-projections`
+compares FPGA and CPU projection results on the same input tensor.
+
+`calibrate_native_projection.py` generates the TSV from an operator allowlist
+and an independent set of 224×224 RGB calibration images. The generated JSON
+records model and input hashes. Each record specifies the exact operator name,
+output-channel count, and minimum/maximum for each output channel.
+`benchmark_native_int8.py` accepts the TSV filename in a configuration's
+`projection_ranges` field. `benchmark_optimized_accuracy.py` accepts the path
+through `--projection-ranges`.
+
+### Chained DMA
+
+`MNN_MATMUL_SOC_DMA_CHAIN=1` requires the DMC1 capability in the NI83 Quartus
+image. It issues up to 64 KiB in one command per transfer. The FPGA sequences
+the existing 2 KiB HPS bursts or 256-byte local bursts. The benchmark counts
+HPS-issued commands in the descriptor fields. Boot with the existing reserved
+DDR staging window before enabling DMA. Use `--transport dma-chain` to enable
+this transport in the labeled accuracy script.
+
+`MNN_MATMUL_SOC_PIPELINE_C=1` overlaps NC4 output unpacking on an HPS worker
+with the next FPGA tile's upload and compute. The driver waits before reusing
+the DMA destination and drains the worker before returning a completed layer.
+The output-copy timer records the worker's service time. It can overlap other
+phases, so only the wall-time download phase belongs in the additive forward
+breakdown. Pass `--transport pipeline-c` for the labeled accuracy script.

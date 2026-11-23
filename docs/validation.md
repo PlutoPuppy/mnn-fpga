@@ -451,3 +451,98 @@ conversion nodes are measured in addition to the existing driver timers.
   output agreement, not labeled accuracy; the hardware numerical issue remains.
 
 See the [timing report, phase tables and raw evidence](tinyvit-mixed-w8a8-fc1-benchmark.md).
+
+## Expanded static linears and NI83 — 2026-11-17–18
+
+- NI83 extends the A operand bank to 32 KiB and accepts full K through 2048.
+  All 40 transformer linears and all 51 static pointwise/linear operations
+  execute on the board; ten resident FC1/activation/FC2 pairs are supported.
+- The 90-MHz build passes all 88 reported slack checks (minimum +0.039 ns),
+  with zero unconstrained clocks. HPS peripheral/JTAG external I/O timing
+  limitations remain documented separately.
+- 51 host driver cases, 162 output RTL cases and 13 physical matrix/resident
+  cases pass. The physical cases match an independent INT64 oracle exactly.
+- Forty same-input model diagnostic runs compare 206,180,640 output values.
+  Every selected operator differs from MNN CPU by at most one INT8 code.
+- Completed 320 random-image and 280 natural-image timing inferences. All
+  required native counts pass; all-static fused/unfused outputs match exactly
+  on all 20 random images. Full-model transformer/static FPGA top-1 agreement
+  with their own CPU models is only 14/20 and 17/20 on the natural images.
+- Both expanded quantization policies fail the CPU accuracy gate: 43/200 and
+  29/200 correct, versus original FP32 149/200 and validated mixed 148/200.
+  These are experimental artifacts, not accuracy-qualified replacements.
+
+See the [expanded report and evidence](tinyvit-expanded-static-offload.md) for
+timing boundaries, comparisons, quantization ablations and artifact hashes.
+
+## Accuracy-preserving latency optimization — 2026-11-21
+
+- Completed two paired 20-random-image timing suites and two fresh 200-image
+  accuracy passes, including 1,040 new full-model inferences. The final pass
+  reuses hash-verified FP32 references from the first pass; reused references
+  are not counted as new executions. Timing controls and profiles are separate.
+- Selected v25 non-parking configuration: 937.571 ms versus 1173.468 ms
+  original FP32 CPU, 1.2516x speedup and 20.10% lower latency. The paired
+  bootstrap 95% speedup interval is [1.2292, 1.2712]. The requested 1.5x
+  loaded-model inference target is not met; another 155.259 ms is required.
+- FPGA and FP32 CPU each classify 153/200 fresh Imagenette images correctly;
+  agreement is 198/200 and mean cosine is 0.99751683. This is a ten-class
+  subset, not a full ImageNet accuracy result. All 200 final FPGA outputs are
+  byte-identical to the earlier qualified FPGA version.
+- Faster DMA-control polling, tiled FP32 attention with ARM32 NEON kernels,
+  balanced query scheduling and vector reciprocal GELU pass numerical gates.
+  The validated 30-linear/four-resident-pair policy and 90 MHz NI83 image are
+  unchanged. Broader static quantization, dynamic CPU quantization and cached
+  staging trials did not provide an accepted faster deployment.
+- All 1,040 saved score files pass an independent hash/finite-value/accuracy
+  audit. ARM attention/GELU oracles, host driver checks and physical matrix/
+  resident-pair checks pass. The packaged wrapper passes a board smoke test
+  with exactly the benchmark's output hash.
+- Worker parking is optional: no demonstrated inference gain. Its separate
+  startup-inclusive wall-time mean reaches 1.5278x, but the 95% interval
+  [1.4392, 1.6195] crosses 1.5x and includes file-loading/cache effects.
+
+See the [full pipeline report](tinyvit-latency-optimization.md),
+[evidence and audit](benchmarks/optimization-2026-11-21/README.md), and the
+ready local archive `build/tinyvit-optimized-90mhz-v25.tar.gz`.
+
+## DMA and staging follow-up — 2026-11-21
+
+- Selected v27 with tile reuse, live-row DMA and batch polling averages
+  905.762 ms versus 945.195 ms for matched v25 and 1170.188 ms for FP32 CPU
+  on the same 20 random images. Speedup versus FP32 is 1.292×, with a 95%
+  paired interval of [1.278, 1.303]×. The measured gap to 1.5× is 125.636 ms.
+- The profiled adapter falls from 213.291 to 173.003 ms. Input staging falls
+  from 33.293 to 11.125 ms. The driver issues 8,475 versus 9,812 DMA
+  descriptors for the same 296 compute jobs.
+- Two eight-image pilots compare operand reuse, live rows, batch polling and
+  direct FPGA reads/writes. Direct readback and writing A raised transfer
+  times. Batch polling's separate inference effect was inconclusive.
+- 55 host cases and 13 physical integer-oracle cases per tested transport
+  pass. The full 200-image labeled check was resumed after an HPS reboot
+  at the 120-image checkpoint. All 200 FPGA score files match the previous
+  qualified experiment exactly. FP32 and FPGA each classify 153/200
+  correctly. The reboot occurred after the timing run.
+
+See the [DMA report and deployment](tinyvit-dma-optimization.md) and
+[raw evidence](benchmarks/dma-optimization-2026-11-21/README.md).
+
+## Chained DMA and staging overlap
+
+- Quartus reports positive slack in all 88 checks for the 90 MHz DMC1 image.
+  The minimum slack is +0.077 ns. The 85°C core setup slack is +0.910 ns.
+- The selected pipeline runs 39 transformer linears on the FPGA. Four MLP
+  intermediate tensors stay in FPGA RAM. The chained DMA and staging timing
+  comparisons each match scores byte for byte on all 20 random inputs.
+- Warmed forward latency averages 757.013 ms versus 1207.126 ms original FP32
+  CPU, a 1.595x speedup. The first-forward suite averages 784.760 ms versus
+  1172.569 ms, a 1.494x speedup and a 3.047 ms gap to its 1.5x threshold.
+- The selected FPGA pipeline classifies 155 of 200 labeled Imagenette images
+  correctly versus 153 for original FP32. Top-1 agreement is 195/200 and
+  mean logit cosine is 0.99617336.
+- All 58 host driver cases and 13 board matrix cases per tested transport
+  pass. The board checks cover 64 KiB output, reduction depth up to 2048,
+  and three resident MLP geometries.
+
+See the [full report](tinyvit-codesign-optimization.md) and
+[measurement records](benchmarks/codesign-optimization-2026-11-21/README.md).

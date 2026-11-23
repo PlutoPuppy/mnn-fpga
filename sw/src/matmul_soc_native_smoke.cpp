@@ -45,7 +45,10 @@ int main() {
             if(stats.submissions!=3)throw std::runtime_error("Small-K output capacity not respected");
             std::cout<<"PASS maximum 64KB output canvas with M1105 K16 N128, jobs="<<stats.submissions<<std::endl;
         }
-        for(size_t k:{size_t(32),size_t(64),size_t(128),size_t(160),size_t(512),size_t(640),size_t(1024)}) {
+        std::vector<size_t> reductions{32,64,128,160,512,640,1024};
+        const bool extended=io.read(0x90)==fpga::native_int8_extended_abi;
+        if(extended){reductions.push_back(1280);reductions.push_back(2048);}
+        for(size_t k:reductions) {
             const size_t m=37,n=160;auto a=random(m*k,63),w=random(k*n,63),input=pack(a,m,k);std::vector<int8_t> output(m*n);
             const auto prepared=fpga::prepare_native_int8(io,w.data(),k,n,quant(n));
             const auto start=std::chrono::steady_clock::now();const auto stats=fpga::native_int8_linear(io,prepared,input.data(),output.data(),m);
@@ -55,7 +58,7 @@ int main() {
                      <<" tile="<<prepared.tile_m<<'x'<<prepared.kp<<'x'<<prepared.tile_n
                      <<" B_capacity="<<prepared.operand_b_bytes<<" ms="<<ms<<std::endl;
         }
-        for(size_t k:{size_t(128),size_t(160)}) {
+        for(size_t k:extended?std::vector<size_t>{128,160,320}:std::vector<size_t>{128,160}) {
             const size_t m=135,h=k*4,n=k;auto a=random(m*k,7),w=random(k*h,7),v=random(h*n,7),input=pack(a,m,k);
             auto first=fpga::prepare_native_int8(io,w.data(),k,h,quant(h));auto second=fpga::prepare_native_int8(io,v.data(),h,n,quant(n));
             std::array<int8_t,256> lut{};for(unsigned i=0;i<256;++i)lut[i]=int8_t(int(int8_t(i))/2);
@@ -65,6 +68,6 @@ int main() {
             std::cout<<"PASS resident MLP "<<m<<'x'<<k<<" -> "<<h<<" -> "<<n<<" jobs="<<stats.submissions
                      <<" local_bytes="<<stats.local_bytes<<" avoided="<<stats.hidden_bytes_avoided<<std::endl;
         }
-        std::cout<<"PASS physical NI82 matrix and FPGA-resident MLP checks\n";
+        std::cout<<"PASS physical native INT32 matrix and FPGA-resident MLP checks\n";
     }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

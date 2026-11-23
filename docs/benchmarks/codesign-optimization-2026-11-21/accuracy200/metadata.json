@@ -1,0 +1,45 @@
+{
+  "manifest_sha256": "f658648f3a854bdca052e54bd6624accbb8812c89c0adeaba02d386c1481d1f0",
+  "runner_sha256": "1f84da5f895c14de1fe8d2451036bf763e4244b9998a79a90b2945d5360e6ab6",
+  "park_fpga_workers": false,
+  "cpu_before": {},
+  "reference_results": "optimization-v22-accuracy200",
+  "models": {
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "thresholds": {
+    "min_cosine": 0.995,
+    "max_accuracy_drop": 0.01,
+    "min_agreement": 0.95
+  },
+  "limitations": "Imagenette ten-class subset; does not establish full ImageNet accuracy",
+  "bitstream_sha256": "842117565822d0f4a7e38baeb12a7cc7ba8005bdf13e16299de6edaa08d58332",
+  "cpu_after": {},
+  "reference_runner_sha256": "a2140f5054a31aa5f3271576d51a51c8c6ee4857b81c6e08ae7da671cd9a4f6b",
+  "date": "2026-11-21",
+  "projection_ranges": {
+    "sha256": "43b2b4e2268b7b91ec4387234774ea35a6b8dfac83a44a1177bee55ca578b3bc",
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted"
+    ]
+  },
+  "require_identical_fpga": false,
+  "transport_environment": {
+    "MNN_MATMUL_SOC_REUSE_A": "1",
+    "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+    "MNN_MATMUL_SOC_PIPELINE_C": "1",
+    "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+    "MNN_MATMUL_SOC_DMA_CHAIN": "1"
+  },
+  "threads": 2,
+  "images": 200
+}

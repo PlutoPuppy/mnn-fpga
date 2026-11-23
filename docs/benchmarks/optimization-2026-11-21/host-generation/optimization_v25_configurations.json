@@ -1,0 +1,51 @@
+{
+  "fp32": {
+    "model": "tiny-vit.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "previous": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1"
+    },
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v22"
+  },
+  "no_park": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1"
+    },
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ]
+  },
+  "optimized": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1"
+    },
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon",
+      "--park-fpga-workers"
+    ]
+  }
+}

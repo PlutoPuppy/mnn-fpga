@@ -73,7 +73,7 @@ int main() {
             tick();
         }
         dut.p_lut__write.set<uint32_t>(0);
-        for(int enabled:{0,1})for(int extent:{16,49,128})for(int contractions:{1,2,3,8,32,40,64}) {
+        for(int enabled:{0,1})for(int extent:{16,49,128})for(int contractions:{1,2,3,8,32,40,64,80,128}) {
             lookup=bool(enabled);dut.p_lut__enable.set<uint32_t>(enabled);
             columns=extent;pitch=(columns+15)/16*16;bands=contractions;
             dut.p_total__rows.set<uint32_t>(columns);dut.p_row__pitch.set<uint32_t>(pitch);
@@ -105,6 +105,6 @@ int main() {
             }
         }
         std::cout<<"PASS native RTL CXXRTL: "<<cases<<" cases, "<<checks
-                 <<" checked outputs; K up to1024, cancellation, tails, signed rounding, saturation\n";
+                 <<" checked outputs; K up to2048, cancellation, tails, signed rounding, saturation\n";
     }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }

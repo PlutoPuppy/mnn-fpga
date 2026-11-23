@@ -122,7 +122,28 @@ linear operations and four MLP pairs whose hidden activations stay on FPGA.
 It includes measured inference and cold-start costs on the qualified 90 MHz
 image, plus a measured layer-selection policy.
 
+The [expanded static-linear experiment](docs/tinyvit-expanded-static-offload.md)
+adds experimental policies for all 40 transformer linears or all 51 static
+linears, NI83 support for K up to 2048, and same-input CPU/FPGA verification.
+Both expanded quantization policies fail the CPU accuracy gate; keep the
+validated mixed model for accuracy-sensitive use.
+
 ## Current limits
+
+The [latency optimization report](docs/tinyvit-latency-optimization.md) measures
+CPU attention/GELU kernels and DMA-control changes on the same 90 MHz NI83
+image, with separate 20-image timing and 200-image labeled accuracy checks.
+It reports the measured speedup and remaining gap to the 1.5x inference target.
+The [DMA follow-up](docs/tinyvit-dma-optimization.md) reduces inference to
+**905.762 ms versus 1170.188 ms FP32 CPU (1.292x)** in the matched run.
+It applies to the same 90 MHz NI83 FPGA image. The local v27 package is
+`build/tinyvit-dma-optimized-90mhz-v27.tar.gz`.
+
+The [90 MHz co-design report](docs/tinyvit-codesign-optimization.md) covers
+39 FPGA linears, chained DMA and overlapped HPS output staging. Its warmed
+forward averages 757.013 ms versus 1207.126 ms on original FP32 CPU (1.595x).
+The separate first-forward comparison reaches 1.494x. The corresponding local
+deployment bundle is `build/tinyvit-codesign-90mhz.tar.gz`.
 
 - See [validation.md](docs/validation.md) for checks actually performed.
 - The original `platform/` target contains integration files. The friend's

@@ -1,0 +1,52 @@
+{
+  "fp32": {
+    "model": "tiny-vit.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "cpu": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": false,
+    "pairs": false
+  },
+  "pairs": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4
+  },
+  "fast": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1"
+    }
+  },
+  "optimized": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1"
+    },
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ]
+  },
+  "cpu_optimized": {
+    "model": "tiny-vit.mnn",
+    "offload": false,
+    "pairs": false,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ]
+  }
+}

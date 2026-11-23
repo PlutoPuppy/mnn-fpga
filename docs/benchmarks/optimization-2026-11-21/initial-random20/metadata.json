@@ -1,0 +1,84 @@
+{
+  "fresh_process": true,
+  "cpu_state_before": {},
+  "date": "2026-11-21",
+  "clock_mhz": 90,
+  "configurations": {
+    "optimized": {
+      "environment": {
+        "MNN_MATMUL_SOC_FAST_POLL": "1"
+      },
+      "operations": 30,
+      "offload": true,
+      "pairs": true,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ],
+      "pair_count": 4
+    },
+    "fast": {
+      "environment": {
+        "MNN_MATMUL_SOC_FAST_POLL": "1"
+      },
+      "operations": 30,
+      "offload": true,
+      "pairs": true,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "pair_count": 4
+    },
+    "fp32": {
+      "pairs": false,
+      "model": "tiny-vit.mnn",
+      "offload": false
+    },
+    "cpu": {
+      "pairs": false,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "offload": false
+    },
+    "pairs": {
+      "pairs": true,
+      "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+      "offload": true,
+      "pair_count": 4,
+      "operations": 30
+    },
+    "cpu_optimized": {
+      "pairs": false,
+      "model": "tiny-vit.mnn",
+      "offload": false,
+      "flags": [
+        "--fused-attention",
+        "--gelu-neon"
+      ]
+    }
+  },
+  "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+  "threads": 2,
+  "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+  "board_utc": "2016-02-11T17:43:29Z",
+  "cpu_state_after": {},
+  "models": {
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "abi": "NI83",
+  "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded",
+  "runner_sha256": "a2140f5054a31aa5f3271576d51a51c8c6ee4857b81c6e08ae7da671cd9a4f6b",
+  "warmup": 0,
+  "runner": "tinyvit_native_v22",
+  "order_design": "Williams rows, including reversed rows for odd configuration counts",
+  "modes": [
+    "fp32",
+    "cpu",
+    "pairs",
+    "fast",
+    "optimized",
+    "cpu_optimized"
+  ],
+  "inputs": 20,
+  "profile_runs_separate": true,
+  "input_kind": "uniform random RGB images"
+}

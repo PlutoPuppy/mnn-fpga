@@ -1,0 +1,1478 @@
+{
+  "baseline": {
+    "inference_ms": {
+      "n": 8,
+      "mean": 952.64525,
+      "median": 947.9475,
+      "sd": 20.948702842556013,
+      "minimum": 926.803,
+      "maximum": 987.091
+    },
+    "process_wall_ms": {
+      "n": 8,
+      "mean": 1768.8819050003985,
+      "median": 1698.3787500003018,
+      "sd": 207.89258338937174,
+      "minimum": 1578.2276000009006,
+      "maximum": 2148.6553300001106
+    },
+    "vs_baseline": {
+      "delta_ms": {
+        "n": 8,
+        "mean": 0.0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0.0,
+        "maximum": 0.0
+      },
+      "delta_percent": 0.0,
+      "speedup": 1.0,
+      "faster": 0,
+      "delta_ms_bootstrap_95": [
+        0.0,
+        0.0
+      ],
+      "speedup_bootstrap_95": [
+        1.0,
+        1.0
+      ],
+      "target_1_5_margin_ms": 317.54841666666664,
+      "target_1_5_margin_ms_bootstrap_95": [
+        313.27712499999996,
+        322.31737499999997
+      ]
+    },
+    "identical_to_baseline": 8,
+    "counts": {
+      "input_bytes": {
+        "n": 8,
+        "mean": 8049920,
+        "median": 8049920.0,
+        "sd": 0.0,
+        "minimum": 8049920,
+        "maximum": 8049920
+      },
+      "output_bytes": {
+        "n": 8,
+        "mean": 2465280,
+        "median": 2465280.0,
+        "sd": 0.0,
+        "minimum": 2465280,
+        "maximum": 2465280
+      },
+      "local_bytes": {
+        "n": 8,
+        "mean": 1200128,
+        "median": 1200128.0,
+        "sd": 0.0,
+        "minimum": 1200128,
+        "maximum": 1200128
+      },
+      "input_descriptors": {
+        "n": 8,
+        "mean": 3897,
+        "median": 3897.0,
+        "sd": 0.0,
+        "minimum": 3897,
+        "maximum": 3897
+      },
+      "output_descriptors": {
+        "n": 8,
+        "mean": 1227,
+        "median": 1227.0,
+        "sd": 0.0,
+        "minimum": 1227,
+        "maximum": 1227
+      },
+      "local_descriptors": {
+        "n": 8,
+        "mean": 4688,
+        "median": 4688.0,
+        "sd": 0.0,
+        "minimum": 4688,
+        "maximum": 4688
+      },
+      "input_polls": {
+        "n": 8,
+        "mean": 119626,
+        "median": 120822.5,
+        "sd": 1750.810098211682,
+        "minimum": 117372,
+        "maximum": 121068
+      },
+      "output_polls": {
+        "n": 8,
+        "mean": 3569.75,
+        "median": 3583.5,
+        "sd": 33.251208356131315,
+        "minimum": 3527,
+        "maximum": 3606
+      },
+      "local_polls": {
+        "n": 8,
+        "mean": 4688,
+        "median": 4688.0,
+        "sd": 0.0,
+        "minimum": 4688,
+        "maximum": 4688
+      },
+      "jobs": {
+        "n": 8,
+        "mean": 296,
+        "median": 296.0,
+        "sd": 0.0,
+        "minimum": 296,
+        "maximum": 296
+      }
+    },
+    "phases": {
+      "dequantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 8,
+        "mean": 6.35797625,
+        "median": 6.316185,
+        "sd": 0.13680322384855248,
+        "minimum": 6.21232,
+        "maximum": 6.52667
+      },
+      "scale_bound": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 8,
+        "mean": 13.21247625,
+        "median": 13.07245,
+        "sd": 0.26827662178843364,
+        "minimum": 12.97086,
+        "maximum": 13.62656
+      },
+      "output_convert": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 8,
+        "mean": 0.3463625,
+        "median": 0.350075,
+        "sd": 0.024145036017486365,
+        "minimum": 0.316,
+        "maximum": 0.39058
+      },
+      "output_dma_wait": {
+        "n": 8,
+        "mean": 4.38731,
+        "median": 4.28123,
+        "sd": 0.28477465768067,
+        "minimum": 4.22081,
+        "maximum": 5.076
+      },
+      "upload": {
+        "n": 8,
+        "mean": 100.4410425,
+        "median": 99.496565,
+        "sd": 1.5782814024279705,
+        "minimum": 99.0857,
+        "maximum": 102.61556
+      },
+      "device_init": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 8,
+        "mean": 0.19477250000000002,
+        "median": 0.18939,
+        "sd": 0.014050664193756612,
+        "minimum": 0.18173,
+        "maximum": 0.22224
+      },
+      "adapter_total": {
+        "n": 8,
+        "mean": 210.9490625,
+        "median": 208.628515,
+        "sd": 3.434742353580334,
+        "minimum": 208.15336,
+        "maximum": 216.19517
+      },
+      "output_stage_copy": {
+        "n": 8,
+        "mean": 24.66940375,
+        "median": 24.334580000000003,
+        "sd": 0.6119599067384699,
+        "minimum": 24.16931,
+        "maximum": 25.88902
+      },
+      "input_dma_setup": {
+        "n": 8,
+        "mean": 11.172482500000001,
+        "median": 11.141365,
+        "sd": 0.1286487566704674,
+        "minimum": 11.02926,
+        "maximum": 11.37724
+      },
+      "int8_accumulate": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 8,
+        "mean": 34.5241175,
+        "median": 34.063410000000005,
+        "sd": 0.8557377354198101,
+        "minimum": 33.7977,
+        "maximum": 35.86006
+      },
+      "peak_scan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 8,
+        "mean": 51.75317125,
+        "median": 51.546710000000004,
+        "sd": 0.5550218871472534,
+        "minimum": 51.22611,
+        "maximum": 52.65718
+      },
+      "local_dma_setup": {
+        "n": 8,
+        "mean": 13.5279075,
+        "median": 13.341709999999999,
+        "sd": 0.29289868973759514,
+        "minimum": 13.29009,
+        "maximum": 13.92324
+      },
+      "quantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 8,
+        "mean": 32.4495225,
+        "median": 32.064440000000005,
+        "sd": 0.8234688409015327,
+        "minimum": 31.68386,
+        "maximum": 33.791
+      },
+      "completion_wait": {
+        "n": 8,
+        "mean": 34.7466025,
+        "median": 34.74532,
+        "sd": 0.023408716172766634,
+        "minimum": 34.72239,
+        "maximum": 34.79211
+      },
+      "local_feedback": {
+        "n": 8,
+        "mean": 31.87052375,
+        "median": 31.43684,
+        "sd": 0.6714922111437965,
+        "minimum": 31.30134,
+        "maximum": 32.73158
+      },
+      "output_dma_setup": {
+        "n": 8,
+        "mean": 3.53151625,
+        "median": 3.5079000000000002,
+        "sd": 0.061656241240677076,
+        "minimum": 3.47676,
+        "maximum": 3.61439
+      },
+      "launch": {
+        "n": 8,
+        "mean": 0.38093625,
+        "median": 0.378325,
+        "sd": 0.004759087359988249,
+        "minimum": 0.37698,
+        "maximum": 0.38958
+      },
+      "bridge_total": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    }
+  },
+  "reuse": {
+    "inference_ms": {
+      "n": 8,
+      "mean": 909.379,
+      "median": 907.2185,
+      "sd": 12.520754016546153,
+      "minimum": 895.652,
+      "maximum": 927.673
+    },
+    "process_wall_ms": {
+      "n": 8,
+      "mean": 1712.4840487501842,
+      "median": 1519.2565600000307,
+      "sd": 330.2021796103261,
+      "minimum": 1446.832360001281,
+      "maximum": 2259.236210000381
+    },
+    "vs_baseline": {
+      "delta_ms": {
+        "n": 8,
+        "mean": -43.266249999999985,
+        "median": -44.801499999999976,
+        "sd": 15.303506775992803,
+        "minimum": -62.798,
+        "maximum": -16.226999999999975
+      },
+      "delta_percent": -4.541695872624151,
+      "speedup": 1.047577797595942,
+      "faster": 8,
+      "delta_ms_bootstrap_95": [
+        -52.834,
+        -33.043874999999986
+      ],
+      "speedup_bootstrap_95": [
+        1.0363987888045623,
+        1.0579585977889534
+      ],
+      "target_1_5_margin_ms": 274.2821666666666,
+      "target_1_5_margin_ms_bootstrap_95": [
+        267.6818750000001,
+        281.37954166666657
+      ]
+    },
+    "identical_to_baseline": 8,
+    "counts": {
+      "input_bytes": {
+        "n": 8,
+        "mean": 7314688,
+        "median": 7314688.0,
+        "sd": 0.0,
+        "minimum": 7314688,
+        "maximum": 7314688
+      },
+      "output_bytes": {
+        "n": 8,
+        "mean": 2465280,
+        "median": 2465280.0,
+        "sd": 0.0,
+        "minimum": 2465280,
+        "maximum": 2465280
+      },
+      "local_bytes": {
+        "n": 8,
+        "mean": 1200128,
+        "median": 1200128.0,
+        "sd": 0.0,
+        "minimum": 1200128,
+        "maximum": 1200128
+      },
+      "input_descriptors": {
+        "n": 8,
+        "mean": 3484,
+        "median": 3484.0,
+        "sd": 0.0,
+        "minimum": 3484,
+        "maximum": 3484
+      },
+      "output_descriptors": {
+        "n": 8,
+        "mean": 1227,
+        "median": 1227.0,
+        "sd": 0.0,
+        "minimum": 1227,
+        "maximum": 1227
+      },
+      "local_descriptors": {
+        "n": 8,
+        "mean": 4688,
+        "median": 4688.0,
+        "sd": 0.0,
+        "minimum": 4688,
+        "maximum": 4688
+      },
+      "input_polls": {
+        "n": 8,
+        "mean": 106952.125,
+        "median": 107011.5,
+        "sd": 1811.0253952230646,
+        "minimum": 104918,
+        "maximum": 108736
+      },
+      "output_polls": {
+        "n": 8,
+        "mean": 3560,
+        "median": 3564.5,
+        "sd": 28.294370969707536,
+        "minimum": 3526,
+        "maximum": 3587
+      },
+      "local_polls": {
+        "n": 8,
+        "mean": 4688,
+        "median": 4688.0,
+        "sd": 0.0,
+        "minimum": 4688,
+        "maximum": 4688
+      },
+      "jobs": {
+        "n": 8,
+        "mean": 296,
+        "median": 296.0,
+        "sd": 0.0,
+        "minimum": 296,
+        "maximum": 296
+      }
+    },
+    "phases": {
+      "dequantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 8,
+        "mean": 8.22746375,
+        "median": 8.235140000000001,
+        "sd": 0.23038480554668905,
+        "minimum": 7.97445,
+        "maximum": 8.48342
+      },
+      "scale_bound": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 8,
+        "mean": 13.35923625,
+        "median": 13.379495,
+        "sd": 0.29523364563088,
+        "minimum": 13.01764,
+        "maximum": 13.67744
+      },
+      "output_convert": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 8,
+        "mean": 0.3492875,
+        "median": 0.344765,
+        "sd": 0.02374384476629079,
+        "minimum": 0.32487,
+        "maximum": 0.39799
+      },
+      "output_dma_wait": {
+        "n": 8,
+        "mean": 4.34940625,
+        "median": 4.349880000000001,
+        "sd": 0.0961058431310426,
+        "minimum": 4.23176,
+        "maximum": 4.52336
+      },
+      "upload": {
+        "n": 8,
+        "mean": 72.70694375,
+        "median": 72.64155,
+        "sd": 1.0664911279510079,
+        "minimum": 71.59219,
+        "maximum": 74.02029
+      },
+      "device_init": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 8,
+        "mean": 0.20583125,
+        "median": 0.20152,
+        "sd": 0.023884599005276546,
+        "minimum": 0.18156,
+        "maximum": 0.2432
+      },
+      "adapter_total": {
+        "n": 8,
+        "mean": 184.94461875,
+        "median": 185.00905999999998,
+        "sd": 2.6241445489499844,
+        "minimum": 182.27344,
+        "maximum": 187.68362
+      },
+      "output_stage_copy": {
+        "n": 8,
+        "mean": 24.699465,
+        "median": 24.69435,
+        "sd": 0.4865846395614471,
+        "minimum": 24.11153,
+        "maximum": 25.21439
+      },
+      "input_dma_setup": {
+        "n": 8,
+        "mean": 10.005565,
+        "median": 9.998745,
+        "sd": 0.12590176783054755,
+        "minimum": 9.87714,
+        "maximum": 10.20516
+      },
+      "int8_accumulate": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 8,
+        "mean": 34.5527525,
+        "median": 34.511894999999996,
+        "sd": 0.6690121008247899,
+        "minimum": 33.9194,
+        "maximum": 35.25442
+      },
+      "peak_scan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 8,
+        "mean": 46.50080875,
+        "median": 46.522465,
+        "sd": 0.46808168723715937,
+        "minimum": 45.93882,
+        "maximum": 46.98881
+      },
+      "local_dma_setup": {
+        "n": 8,
+        "mean": 13.5443,
+        "median": 13.538775000000001,
+        "sd": 0.2611779399457115,
+        "minimum": 13.27961,
+        "maximum": 13.92813
+      },
+      "quantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 8,
+        "mean": 11.71642125,
+        "median": 11.75047,
+        "sd": 0.3288325619276909,
+        "minimum": 11.35066,
+        "maximum": 12.12093
+      },
+      "completion_wait": {
+        "n": 8,
+        "mean": 34.75595125,
+        "median": 34.746430000000004,
+        "sd": 0.03468393100043248,
+        "minimum": 34.72218,
+        "maximum": 34.82187
+      },
+      "local_feedback": {
+        "n": 8,
+        "mean": 32.06220625,
+        "median": 32.05867,
+        "sd": 0.6359950459361761,
+        "minimum": 31.4014,
+        "maximum": 32.74681
+      },
+      "output_dma_setup": {
+        "n": 8,
+        "mean": 3.539025,
+        "median": 3.527345,
+        "sd": 0.06687407633541036,
+        "minimum": 3.4785,
+        "maximum": 3.64419
+      },
+      "launch": {
+        "n": 8,
+        "mean": 0.37908125,
+        "median": 0.37644500000000003,
+        "sd": 0.007302751805215024,
+        "minimum": 0.37253,
+        "maximum": 0.39103
+      },
+      "bridge_total": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    }
+  },
+  "live": {
+    "inference_ms": {
+      "n": 8,
+      "mean": 924.2642500000001,
+      "median": 923.725,
+      "sd": 12.111265991983318,
+      "minimum": 910.796,
+      "maximum": 940.287
+    },
+    "process_wall_ms": {
+      "n": 8,
+      "mean": 1719.422781249932,
+      "median": 1623.9005800007362,
+      "sd": 274.02931048690226,
+      "minimum": 1460.5416100002913,
+      "maximum": 2172.8493699993123
+    },
+    "vs_baseline": {
+      "delta_ms": {
+        "n": 8,
+        "mean": -28.380999999999986,
+        "median": -19.375999999999976,
+        "sd": 23.47117875182241,
+        "minimum": -76.29499999999996,
+        "maximum": -6.2690000000000055
+      },
+      "delta_percent": -2.9791782407984524,
+      "speedup": 1.030706586346924,
+      "faster": 8,
+      "delta_ms_bootstrap_95": [
+        -45.26799999999996,
+        -15.058125000000004
+      ],
+      "speedup_bootstrap_95": [
+        1.0162498361655516,
+        1.0491393462876706
+      ],
+      "target_1_5_margin_ms": 289.16741666666667,
+      "target_1_5_margin_ms_bootstrap_95": [
+        276.35141666666664,
+        299.5478333333333
+      ]
+    },
+    "identical_to_baseline": 8,
+    "counts": {
+      "input_bytes": {
+        "n": 8,
+        "mean": 7845440,
+        "median": 7845440.0,
+        "sd": 0.0,
+        "minimum": 7845440,
+        "maximum": 7845440
+      },
+      "output_bytes": {
+        "n": 8,
+        "mean": 2352000,
+        "median": 2352000.0,
+        "sd": 0.0,
+        "minimum": 2352000,
+        "maximum": 2352000
+      },
+      "local_bytes": {
+        "n": 8,
+        "mean": 1154048,
+        "median": 1154048.0,
+        "sd": 0.0,
+        "minimum": 1154048,
+        "maximum": 1154048
+      },
+      "input_descriptors": {
+        "n": 8,
+        "mean": 3801,
+        "median": 3801.0,
+        "sd": 0.0,
+        "minimum": 3801,
+        "maximum": 3801
+      },
+      "output_descriptors": {
+        "n": 8,
+        "mean": 1227,
+        "median": 1227.0,
+        "sd": 0.0,
+        "minimum": 1227,
+        "maximum": 1227
+      },
+      "local_descriptors": {
+        "n": 8,
+        "mean": 4508,
+        "median": 4508.0,
+        "sd": 0.0,
+        "minimum": 4508,
+        "maximum": 4508
+      },
+      "input_polls": {
+        "n": 8,
+        "mean": 116784.25,
+        "median": 117662.5,
+        "sd": 1560.6888360134901,
+        "minimum": 114258,
+        "maximum": 117906
+      },
+      "output_polls": {
+        "n": 8,
+        "mean": 3448.75,
+        "median": 3464.0,
+        "sd": 24.771815782111272,
+        "minimum": 3412,
+        "maximum": 3470
+      },
+      "local_polls": {
+        "n": 8,
+        "mean": 4508,
+        "median": 4508.0,
+        "sd": 0.0,
+        "minimum": 4508,
+        "maximum": 4508
+      },
+      "jobs": {
+        "n": 8,
+        "mean": 296,
+        "median": 296.0,
+        "sd": 0.0,
+        "minimum": 296,
+        "maximum": 296
+      }
+    },
+    "phases": {
+      "dequantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 8,
+        "mean": 6.10466125,
+        "median": 6.045590000000001,
+        "sd": 0.12872323626819343,
+        "minimum": 5.97562,
+        "maximum": 6.26855
+      },
+      "scale_bound": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 8,
+        "mean": 12.66379,
+        "median": 12.577580000000001,
+        "sd": 0.20844497334856887,
+        "minimum": 12.48072,
+        "maximum": 13.00128
+      },
+      "output_convert": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 8,
+        "mean": 0.34518875,
+        "median": 0.34233,
+        "sd": 0.012886700162238139,
+        "minimum": 0.3288,
+        "maximum": 0.36399
+      },
+      "output_dma_wait": {
+        "n": 8,
+        "mean": 4.30210125,
+        "median": 4.23276,
+        "sd": 0.14623204245674556,
+        "minimum": 4.17601,
+        "maximum": 4.59516
+      },
+      "upload": {
+        "n": 8,
+        "mean": 96.15734875,
+        "median": 95.461075,
+        "sd": 1.2406186636448506,
+        "minimum": 95.15558,
+        "maximum": 98.05858
+      },
+      "device_init": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 8,
+        "mean": 0.1878475,
+        "median": 0.186575,
+        "sd": 0.009756575438426856,
+        "minimum": 0.17338,
+        "maximum": 0.20204
+      },
+      "adapter_total": {
+        "n": 8,
+        "mean": 204.376955,
+        "median": 202.72360500000002,
+        "sd": 2.587853233550925,
+        "minimum": 202.41874,
+        "maximum": 208.39612
+      },
+      "output_stage_copy": {
+        "n": 8,
+        "mean": 24.424175,
+        "median": 24.201475000000002,
+        "sd": 0.4009876373227914,
+        "minimum": 24.05913,
+        "maximum": 25.0682
+      },
+      "input_dma_setup": {
+        "n": 8,
+        "mean": 10.897516249999999,
+        "median": 10.853385,
+        "sd": 0.12932959819640216,
+        "minimum": 10.76451,
+        "maximum": 11.11829
+      },
+      "int8_accumulate": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 8,
+        "mean": 34.1743375,
+        "median": 33.789705,
+        "sd": 0.601714116592874,
+        "minimum": 33.66653,
+        "maximum": 35.09021
+      },
+      "peak_scan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 8,
+        "mean": 50.27897125,
+        "median": 50.004545,
+        "sd": 0.4733317898363077,
+        "minimum": 49.89011,
+        "maximum": 51.01806
+      },
+      "local_dma_setup": {
+        "n": 8,
+        "mean": 12.9176675,
+        "median": 12.799949999999999,
+        "sd": 0.22501957551352253,
+        "minimum": 12.73734,
+        "maximum": 13.27471
+      },
+      "quantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 8,
+        "mean": 30.06221375,
+        "median": 29.81127,
+        "sd": 0.5465380170788667,
+        "minimum": 29.54491,
+        "maximum": 30.88485
+      },
+      "completion_wait": {
+        "n": 8,
+        "mean": 34.83045125,
+        "median": 34.753275,
+        "sd": 0.18296509225513077,
+        "minimum": 34.72159,
+        "maximum": 35.26397
+      },
+      "local_feedback": {
+        "n": 8,
+        "mean": 30.4888125,
+        "median": 30.232570000000003,
+        "sd": 0.5033011224690153,
+        "minimum": 30.08904,
+        "maximum": 31.3253
+      },
+      "output_dma_setup": {
+        "n": 8,
+        "mean": 3.526515,
+        "median": 3.516685,
+        "sd": 0.053793758267771434,
+        "minimum": 3.4766,
+        "maximum": 3.6277
+      },
+      "launch": {
+        "n": 8,
+        "mean": 0.38210375,
+        "median": 0.3768,
+        "sd": 0.009926161590895611,
+        "minimum": 0.3748,
+        "maximum": 0.40307
+      },
+      "bridge_total": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    }
+  },
+  "combined": {
+    "inference_ms": {
+      "n": 8,
+      "mean": 907.08075,
+      "median": 912.19,
+      "sd": 10.168217918733705,
+      "minimum": 890.751,
+      "maximum": 916.783
+    },
+    "process_wall_ms": {
+      "n": 8,
+      "mean": 1729.2597937498613,
+      "median": 1606.2563200002842,
+      "sd": 314.84791674917295,
+      "minimum": 1449.580700000297,
+      "maximum": 2238.5837499987247
+    },
+    "vs_baseline": {
+      "delta_ms": {
+        "n": 8,
+        "mean": -45.56450000000001,
+        "median": -42.86349999999999,
+        "sd": 15.456085107721892,
+        "minimum": -74.88900000000001,
+        "maximum": -31.61200000000008
+      },
+      "delta_percent": -4.7829451729276995,
+      "speedup": 1.0502320217907832,
+      "faster": 8,
+      "delta_ms_bootstrap_95": [
+        -56.3245,
+        -36.70412500000002
+      ],
+      "speedup_bootstrap_95": [
+        1.0404219952376892,
+        1.0619143948492331
+      ],
+      "target_1_5_margin_ms": 271.9839166666666,
+      "target_1_5_margin_ms_bootstrap_95": [
+        265.26279166666666,
+        277.88666666666666
+      ]
+    },
+    "identical_to_baseline": 8,
+    "counts": {
+      "input_bytes": {
+        "n": 8,
+        "mean": 7265728,
+        "median": 7265728.0,
+        "sd": 0.0,
+        "minimum": 7265728,
+        "maximum": 7265728
+      },
+      "output_bytes": {
+        "n": 8,
+        "mean": 2352000,
+        "median": 2352000.0,
+        "sd": 0.0,
+        "minimum": 2352000,
+        "maximum": 2352000
+      },
+      "local_bytes": {
+        "n": 8,
+        "mean": 1154048,
+        "median": 1154048.0,
+        "sd": 0.0,
+        "minimum": 1154048,
+        "maximum": 1154048
+      },
+      "input_descriptors": {
+        "n": 8,
+        "mean": 3460,
+        "median": 3460.0,
+        "sd": 0.0,
+        "minimum": 3460,
+        "maximum": 3460
+      },
+      "output_descriptors": {
+        "n": 8,
+        "mean": 1227,
+        "median": 1227.0,
+        "sd": 0.0,
+        "minimum": 1227,
+        "maximum": 1227
+      },
+      "local_descriptors": {
+        "n": 8,
+        "mean": 4508,
+        "median": 4508.0,
+        "sd": 0.0,
+        "minimum": 4508,
+        "maximum": 4508
+      },
+      "input_polls": {
+        "n": 8,
+        "mean": 105881.625,
+        "median": 105037.0,
+        "sd": 1739.6663011295338,
+        "minimum": 104296,
+        "maximum": 107998
+      },
+      "output_polls": {
+        "n": 8,
+        "mean": 3433.625,
+        "median": 3431.0,
+        "sd": 30.128000739701076,
+        "minimum": 3392,
+        "maximum": 3471
+      },
+      "local_polls": {
+        "n": 8,
+        "mean": 4508,
+        "median": 4508.0,
+        "sd": 0.0,
+        "minimum": 4508,
+        "maximum": 4508
+      },
+      "jobs": {
+        "n": 8,
+        "mean": 296,
+        "median": 296.0,
+        "sd": 0.0,
+        "minimum": 296,
+        "maximum": 296
+      }
+    },
+    "phases": {
+      "dequantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 8,
+        "mean": 8.24278625,
+        "median": 8.298735,
+        "sd": 0.16173675445325192,
+        "minimum": 7.99807,
+        "maximum": 8.43096
+      },
+      "scale_bound": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 8,
+        "mean": 12.88787125,
+        "median": 12.961105,
+        "sd": 0.23141305472728674,
+        "minimum": 12.51354,
+        "maximum": 13.10588
+      },
+      "output_convert": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 8,
+        "mean": 0.362,
+        "median": 0.36911,
+        "sd": 0.03355750714392066,
+        "minimum": 0.31911,
+        "maximum": 0.4045
+      },
+      "output_dma_wait": {
+        "n": 8,
+        "mean": 4.32057125,
+        "median": 4.33908,
+        "sd": 0.11187293831300628,
+        "minimum": 4.18519,
+        "maximum": 4.46368
+      },
+      "upload": {
+        "n": 8,
+        "mean": 72.008785,
+        "median": 72.65347,
+        "sd": 1.0290923919509998,
+        "minimum": 70.66437,
+        "maximum": 72.98062
+      },
+      "device_init": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 8,
+        "mean": 0.19624375,
+        "median": 0.191835,
+        "sd": 0.016225172627300898,
+        "minimum": 0.18207,
+        "maximum": 0.23497
+      },
+      "adapter_total": {
+        "n": 8,
+        "mean": 183.31190625,
+        "median": 184.65800000000002,
+        "sd": 2.6050758106431826,
+        "minimum": 179.92616,
+        "maximum": 186.03577
+      },
+      "output_stage_copy": {
+        "n": 8,
+        "mean": 24.84774375,
+        "median": 24.981775,
+        "sd": 0.6061031120182558,
+        "minimum": 24.14884,
+        "maximum": 25.63537
+      },
+      "input_dma_setup": {
+        "n": 8,
+        "mean": 9.9567275,
+        "median": 9.9788,
+        "sd": 0.1383589606525618,
+        "minimum": 9.79845,
+        "maximum": 10.16398
+      },
+      "int8_accumulate": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 8,
+        "mean": 34.69759125,
+        "median": 34.89073,
+        "sd": 0.849414975488382,
+        "minimum": 33.70653,
+        "maximum": 35.83543
+      },
+      "peak_scan": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 8,
+        "mean": 46.283025,
+        "median": 46.52777,
+        "sd": 0.4956807035351917,
+        "minimum": 45.64758,
+        "maximum": 46.77552
+      },
+      "local_dma_setup": {
+        "n": 8,
+        "mean": 13.088284999999999,
+        "median": 13.176365,
+        "sd": 0.24719950236889351,
+        "minimum": 12.77834,
+        "maximum": 13.34597
+      },
+      "quantize": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 8,
+        "mean": 11.330919999999999,
+        "median": 11.464455000000001,
+        "sd": 0.31352218641019436,
+        "minimum": 10.91075,
+        "maximum": 11.6581
+      },
+      "completion_wait": {
+        "n": 8,
+        "mean": 34.75292625,
+        "median": 34.752375,
+        "sd": 0.029150028148725957,
+        "minimum": 34.71467,
+        "maximum": 34.79372
+      },
+      "local_feedback": {
+        "n": 8,
+        "mean": 30.9742675,
+        "median": 31.25262,
+        "sd": 0.5499275230622924,
+        "minimum": 30.1599,
+        "maximum": 31.46928
+      },
+      "output_dma_setup": {
+        "n": 8,
+        "mean": 3.56433125,
+        "median": 3.582935,
+        "sd": 0.07592675745884508,
+        "minimum": 3.47836,
+        "maximum": 3.66644
+      },
+      "launch": {
+        "n": 8,
+        "mean": 0.38546,
+        "median": 0.38051999999999997,
+        "sd": 0.01947247214476302,
+        "minimum": 0.37266,
+        "maximum": 0.43168
+      },
+      "bridge_total": {
+        "n": 8,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    }
+  }
+}

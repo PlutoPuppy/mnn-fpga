@@ -1,0 +1,19 @@
+PASS tokens=1 heads=4 dim=32 windows=2 int8=0 sliced=0 outputs=256 maximum=0
+PASS tokens=7 heads=4 dim=32 windows=2 int8=0 sliced=0 outputs=1792 maximum=2.38419e-07
+PASS tokens=49 heads=4 dim=32 windows=2 int8=0 sliced=0 outputs=12544 maximum=4.17233e-07
+PASS tokens=196 heads=4 dim=32 windows=2 int8=0 sliced=0 outputs=50176 maximum=6.55651e-07
+PASS tokens=1 heads=4 dim=32 windows=2 int8=1 sliced=0 outputs=256 maximum=0
+PASS tokens=7 heads=4 dim=32 windows=2 int8=1 sliced=0 outputs=1792 maximum=2.38419e-07
+PASS tokens=49 heads=4 dim=32 windows=2 int8=1 sliced=0 outputs=12544 maximum=4.17233e-07
+PASS tokens=196 heads=4 dim=32 windows=2 int8=1 sliced=0 outputs=50176 maximum=6.55651e-07
+PASS tokens=49 heads=10 dim=32 windows=1 int8=0 sliced=0 outputs=15680 maximum=5.96046e-07
+PASS tokens=196 heads=5 dim=32 windows=1 int8=1 sliced=0 outputs=31360 maximum=4.47035e-07
+PASS tokens=7 heads=1 dim=4 windows=3 int8=0 sliced=0 outputs=84 maximum=2.38419e-07
+PASS tokens=1 heads=1 dim=8 windows=1 int8=1 sliced=0 outputs=8 maximum=0
+PASS tokens=1 heads=5 dim=32 windows=1 int8=0 sliced=1 outputs=160 maximum=0
+PASS tokens=49 heads=5 dim=32 windows=1 int8=0 sliced=1 outputs=7840 maximum=4.76837e-07
+PASS tokens=196 heads=5 dim=32 windows=1 int8=0 sliced=1 outputs=31360 maximum=4.47035e-07
+PASS tokens=1 heads=5 dim=32 windows=1 int8=1 sliced=1 outputs=160 maximum=0
+PASS tokens=49 heads=5 dim=32 windows=1 int8=1 sliced=1 outputs=7840 maximum=4.76837e-07
+PASS tokens=196 heads=5 dim=32 windows=1 int8=1 sliced=1 outputs=31360 maximum=4.47035e-07
+PASS 18 fused attention scalar-oracle cases

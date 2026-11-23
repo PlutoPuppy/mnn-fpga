@@ -1,0 +1,13 @@
+{
+  "exact_images": 20,
+  "mode": "poll_batch",
+  "inference_ms": {
+    "poll_batch": 905.7616,
+    "optimized": 907.31225
+  },
+  "settings": [
+    "reuse-a",
+    "live-rows",
+    "batch-poll"
+  ]
+}

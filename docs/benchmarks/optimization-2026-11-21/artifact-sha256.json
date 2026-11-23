@@ -1,0 +1,47 @@
+{
+  "tinyvit_native_v13": {
+    "size": 2465920,
+    "sha256": "53df7498ad1408d36d8f157aa84b542975c59b153797efc3ce72002189ebb2ae"
+  },
+  "tinyvit_native_v17": {
+    "size": 2496424,
+    "sha256": "09270d78e8b56bec80277b08a03b18ce8407efd32ef12d700291d11ebc984444"
+  },
+  "tinyvit_native_v18": {
+    "size": 2497064,
+    "sha256": "418f9e2fb83dcfb4a132a4cdd25afcd13e85ce47bdeac972e1174ee066e5a8bd"
+  },
+  "tinyvit_native_v19": {
+    "size": 2497416,
+    "sha256": "5dd45cc0cdce127bbb97a0b45122643a5bc740b5af778cde2d01e287c581bbdb"
+  },
+  "tinyvit_native_v20": {
+    "size": 2498376,
+    "sha256": "671fb0b5d64bc4db6bf5928f821df2d56e43ee85eb9b66f86c315dc08c4c231b"
+  },
+  "tinyvit_native_v21": {
+    "size": 2526648,
+    "sha256": "a7f08c151ee102c8a67bd329bceda400cdc00f5277ca3f3b3bba3aa786d787ab"
+  },
+  "tinyvit_native_v22": {
+    "size": 2526712,
+    "sha256": "a2140f5054a31aa5f3271576d51a51c8c6ee4857b81c6e08ae7da671cd9a4f6b"
+  },
+  "tinyvit_native_v23": {
+    "size": 2526936,
+    "sha256": "5f3ca055e8d56f73ba3e4977be9e9490468e2ad7f5bd3e0aa9ed51aea3e1f2d1"
+  },
+  "tinyvit_native_v24": {
+    "size": 2527960,
+    "sha256": "f30963b550e41a3c2f8f922d308744e5577641fa6df3f841aead07407700e348"
+  },
+  "tinyvit_native_v25": {
+    "size": 2529368,
+    "sha256": "e38415e1885bfc8c4f154f4cb86488a2416d4f73fb318de6c9016460d4a39988"
+  },
+  "matmul-soc-native-ni83-90mhz.sof": {
+    "size": 7432941,
+    "sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+    "clock_mhz": 90
+  }
+}

@@ -1,0 +1,21 @@
+INPUT 00 fp32 1133.940 ms; cpu 1055.290 ms; pairs 1013.520 ms; transformer_cpu 1025.930 ms; transformer_fpga 889.441 ms; static_cpu 1001.430 ms; static_fpga 920.995 ms
+INPUT 01 fp32 1130.770 ms; cpu 1059.140 ms; pairs 995.022 ms; transformer_cpu 1013.880 ms; transformer_fpga 931.206 ms; static_cpu 1004.480 ms; static_fpga 908.716 ms
+INPUT 02 fp32 1132.860 ms; cpu 1057.430 ms; pairs 983.479 ms; transformer_cpu 1007.980 ms; transformer_fpga 909.231 ms; static_cpu 1006.460 ms; static_fpga 909.236 ms
+INPUT 03 fp32 1126.930 ms; cpu 1066.230 ms; pairs 978.931 ms; transformer_cpu 1004.930 ms; transformer_fpga 893.070 ms; static_cpu 1001.120 ms; static_fpga 912.351 ms
+INPUT 04 fp32 1129.560 ms; cpu 1054.830 ms; pairs 990.195 ms; transformer_cpu 1008.650 ms; transformer_fpga 891.693 ms; static_cpu 1001.260 ms; static_fpga 924.009 ms
+INPUT 05 fp32 1132.440 ms; cpu 1053.630 ms; pairs 981.522 ms; transformer_cpu 1007.850 ms; transformer_fpga 921.589 ms; static_cpu 1001.860 ms; static_fpga 910.062 ms
+INPUT 06 fp32 1157.160 ms; cpu 1057.810 ms; pairs 982.674 ms; transformer_cpu 1025.320 ms; transformer_fpga 895.876 ms; static_cpu 1003.230 ms; static_fpga 909.492 ms
+INPUT 07 fp32 1127.490 ms; cpu 1052.230 ms; pairs 977.331 ms; transformer_cpu 1014.220 ms; transformer_fpga 893.155 ms; static_cpu 1027.020 ms; static_fpga 918.248 ms
+INPUT 08 fp32 1130.300 ms; cpu 1051.160 ms; pairs 989.119 ms; transformer_cpu 1008.850 ms; transformer_fpga 889.144 ms; static_cpu 999.720 ms; static_fpga 909.672 ms
+INPUT 09 fp32 1157.660 ms; cpu 1053.090 ms; pairs 983.785 ms; transformer_cpu 1006.240 ms; transformer_fpga 889.774 ms; static_cpu 1004.680 ms; static_fpga 910.407 ms
+INPUT 10 fp32 1124.630 ms; cpu 1094.660 ms; pairs 981.151 ms; transformer_cpu 1009.060 ms; transformer_fpga 895.673 ms; static_cpu 1017.470 ms; static_fpga 912.896 ms
+INPUT 11 fp32 1124.180 ms; cpu 1058.810 ms; pairs 1024.690 ms; transformer_cpu 1014.620 ms; transformer_fpga 901.716 ms; static_cpu 1043.470 ms; static_fpga 909.806 ms
+INPUT 12 fp32 1125.800 ms; cpu 1049.700 ms; pairs 978.894 ms; transformer_cpu 1005.720 ms; transformer_fpga 886.623 ms; static_cpu 1009.250 ms; static_fpga 909.530 ms
+INPUT 13 fp32 1124.910 ms; cpu 1050.140 ms; pairs 980.378 ms; transformer_cpu 1010.860 ms; transformer_fpga 896.052 ms; static_cpu 1002.410 ms; static_fpga 908.962 ms
+INPUT 14 fp32 1146.500 ms; cpu 1048.500 ms; pairs 981.842 ms; transformer_cpu 1004.390 ms; transformer_fpga 909.175 ms; static_cpu 1006.460 ms; static_fpga 909.417 ms
+INPUT 15 fp32 1132.630 ms; cpu 1060.430 ms; pairs 1019.960 ms; transformer_cpu 1006.300 ms; transformer_fpga 890.608 ms; static_cpu 1014.640 ms; static_fpga 911.142 ms
+INPUT 16 fp32 1145.770 ms; cpu 1053.360 ms; pairs 980.053 ms; transformer_cpu 1022.030 ms; transformer_fpga 890.977 ms; static_cpu 1006.070 ms; static_fpga 999.993 ms
+INPUT 17 fp32 1134.120 ms; cpu 1061.500 ms; pairs 985.141 ms; transformer_cpu 1037.060 ms; transformer_fpga 894.575 ms; static_cpu 1006.960 ms; static_fpga 910.270 ms
+INPUT 18 fp32 1126.130 ms; cpu 1052.460 ms; pairs 1010.230 ms; transformer_cpu 1012.880 ms; transformer_fpga 891.515 ms; static_cpu 1000.560 ms; static_fpga 908.760 ms
+INPUT 19 fp32 1134.920 ms; cpu 1059.320 ms; pairs 984.607 ms; transformer_cpu 1009.670 ms; transformer_fpga 896.248 ms; static_cpu 1004.580 ms; static_fpga 911.548 ms
+COMPLETE 20 images; 280 measured inferences

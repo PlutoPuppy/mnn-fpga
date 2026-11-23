@@ -1,0 +1,111 @@
+{
+  "protected": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "agree": 5,
+    "inference_ms": 817.1759999999999,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "agreement": true,
+        "inference_ms": 818.919,
+        "cosine": 0.9690990404081463
+      },
+      {
+        "image": "n02979186-00.png",
+        "agreement": true,
+        "inference_ms": 797.476,
+        "cosine": 0.9871789586766575
+      },
+      {
+        "image": "n03028079-00.png",
+        "agreement": true,
+        "inference_ms": 838.757,
+        "cosine": 0.9749482815159961
+      },
+      {
+        "image": "n03417042-00.png",
+        "agreement": true,
+        "inference_ms": 826.576,
+        "cosine": 0.9834187980491947
+      },
+      {
+        "image": "n03445777-00.png",
+        "agreement": false,
+        "inference_ms": 808.417,
+        "cosine": 0.9777114620429215
+      },
+      {
+        "image": "n03888257-00.png",
+        "agreement": true,
+        "inference_ms": 812.911,
+        "cosine": 0.967200658816743
+      }
+    ],
+    "cosine": 0.9765928665849432
+  },
+  "nine": {
+    "operations": [
+      "/layers.1/blocks.0/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.1/blocks.0/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.3/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.4/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.2/blocks.5/mlp/fc2/Add_output_0__matmul_converted",
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/proj/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/attn/qkv/Add_output_0__matmul_converted",
+      "/layers.3/blocks.1/mlp/fc2/Add_output_0__matmul_converted"
+    ],
+    "agree": 6,
+    "inference_ms": 820.0863333333333,
+    "cases": [
+      {
+        "image": "n01440764-00.png",
+        "agreement": true,
+        "inference_ms": 811.473,
+        "cosine": 0.9945306077869149
+      },
+      {
+        "image": "n02979186-00.png",
+        "agreement": true,
+        "inference_ms": 810.304,
+        "cosine": 0.9967418617943932
+      },
+      {
+        "image": "n03028079-00.png",
+        "agreement": true,
+        "inference_ms": 818.288,
+        "cosine": 0.9963070770486657
+      },
+      {
+        "image": "n03417042-00.png",
+        "agreement": true,
+        "inference_ms": 806.454,
+        "cosine": 0.997484857095579
+      },
+      {
+        "image": "n03445777-00.png",
+        "agreement": true,
+        "inference_ms": 837.683,
+        "cosine": 0.9950618548254706
+      },
+      {
+        "image": "n03888257-00.png",
+        "agreement": true,
+        "inference_ms": 836.316,
+        "cosine": 0.9950329443435462
+      }
+    ],
+    "cosine": 0.9958598671490949
+  }
+}

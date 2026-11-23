@@ -11,6 +11,11 @@ namespace fpga {
 class MatmulSocIo {
 public:
     MatmulSocProfile* profile = nullptr;
+    // Experimental A/B switch; changes polling/control only, never operands.
+    bool fast_poll = false;
+    // Native scheduling may keep A in SRAM while loading successive B tiles.
+    bool reuse_native_activations = false;
+    bool transfer_live_rows = false;
     using Beat = std::array<int8_t, 16>;
     virtual ~MatmulSocIo() = default;
     virtual uint32_t read(unsigned offset) = 0;
@@ -33,8 +38,13 @@ public:
     virtual void read_nc4(unsigned offset,int8_t* data,size_t rows,size_t channels,
                           size_t first,size_t column,size_t count,size_t columns,
                           size_t padded_rows,size_t padded_columns);
+    // Complete any deferred NC4 copies before the result tensor is consumed.
+    virtual void finish_output_reads() noexcept {}
     // NI82 resident ABI only. Source is FPGA output, destination is operand A.
     virtual void feedback(unsigned source,unsigned destination,size_t bytes);
+    // Native row-oriented activations. Width is a multiple of one beat.
+    virtual void write_rows(unsigned offset,const int8_t* data,size_t rows,size_t width,size_t padded_rows);
+    virtual void read_rows(unsigned offset,int8_t* data,size_t rows,size_t width,size_t stride,size_t padded_rows);
 };
 struct MatmulSocStats {
     size_t submissions = 0;

@@ -1,0 +1,70 @@
+{
+  "baseline": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v25",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "0",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "0"
+    }
+  },
+  "reuse": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v26",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "0"
+    }
+  },
+  "live": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v26",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "0",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1"
+    }
+  },
+  "combined": {
+    "model": "tiny-vit-mixed-w8a8-accuracy.mnn",
+    "offload": true,
+    "pairs": true,
+    "operations": 30,
+    "pair_count": 4,
+    "flags": [
+      "--fused-attention",
+      "--gelu-neon"
+    ],
+    "runner": "tinyvit_native_v26",
+    "environment": {
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1"
+    }
+  }
+}

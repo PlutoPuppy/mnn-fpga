@@ -1,0 +1,10 @@
+{
+  "top1_agreement": 0.975,
+  "fpga_accuracy": 0.775,
+  "reference_accuracy": 0.765,
+  "passed": true,
+  "accuracy_drop": -0.010000000000000009,
+  "identical_fpga_outputs_to_reference_experiment": 0,
+  "mean_cosine": 0.9961733571276319,
+  "images": 200
+}

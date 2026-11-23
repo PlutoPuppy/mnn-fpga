@@ -1,0 +1,8 @@
+{
+  "packaged_launcher_on_board": "passed",
+  "fpga_submissions": 400,
+  "test_input": "random-01.ppm",
+  "score_sha256": "a67255039ccc4a6fcc368a31ff4bdd3670cb9236b86f32715025026d1a5c0744",
+  "matches_benchmark": true,
+  "archive_sha256": "591b3d33bcf4cf85695ddad18dcf143389408858a59ebcfa3bc0db8746182668"
+}

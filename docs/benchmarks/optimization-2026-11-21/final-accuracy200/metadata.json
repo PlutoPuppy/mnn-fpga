@@ -1,0 +1,23 @@
+{
+  "reference_results": "/home/ubuntu/tinyvit/optimization-v22-accuracy200",
+  "cpu_after": {},
+  "threads": 2,
+  "cpu_before": {},
+  "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+  "models": {
+    "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4"
+  },
+  "thresholds": {
+    "min_agreement": 0.95,
+    "min_cosine": 0.995,
+    "max_accuracy_drop": 0.01
+  },
+  "images": 200,
+  "reference_runner_sha256": "a2140f5054a31aa5f3271576d51a51c8c6ee4857b81c6e08ae7da671cd9a4f6b",
+  "limitations": "Imagenette ten-class subset; does not establish full ImageNet accuracy",
+  "park_fpga_workers": true,
+  "date": "2026-11-21",
+  "manifest_sha256": "f658648f3a854bdca052e54bd6624accbb8812c89c0adeaba02d386c1481d1f0",
+  "runner_sha256": "e38415e1885bfc8c4f154f4cb86488a2416d4f73fb318de6c9016460d4a39988"
+}

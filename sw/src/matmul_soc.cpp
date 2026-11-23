@@ -93,6 +93,20 @@ void MatmulSocIo::read_nc4(unsigned off,int8_t* data,size_t rows,size_t channels
         data[((column+j)/4*rows+first+i)*4+(column+j)%4]=dense[i*np+j];
 }
 void MatmulSocIo::feedback(unsigned,unsigned,size_t) {throw std::runtime_error("FPGA-local DMA unavailable");}
+void MatmulSocIo::write_rows(unsigned off,const int8_t* data,size_t rows,size_t width,size_t pad) {
+    if(!data || !rows || rows>pad || !width || width%16 || pad>std::numeric_limits<size_t>::max()/width)
+        throw std::invalid_argument("Invalid row-major input tile");
+    std::vector<int8_t> tile(pad*width,0);
+    std::copy_n(data,rows*width,tile.data());
+    write_buffer(off,tile.data(),tile.size());
+}
+void MatmulSocIo::read_rows(unsigned off,int8_t* data,size_t rows,size_t width,size_t stride,size_t pad) {
+    if(!data || !rows || rows>pad || !width || width%16 || stride<width || pad>std::numeric_limits<size_t>::max()/width)
+        throw std::invalid_argument("Invalid row-major output tile");
+    std::vector<int8_t> tile(pad*width);
+    read_buffer(off,tile.data(),tile.size());
+    for(size_t r=0;r<rows;++r)std::copy_n(tile.data()+r*width,width,data+r*stride);
+}
 MatmulSocOperand prepare_matmul_soc_operand(const float* data,size_t rows,size_t cols,bool trans,MatmulSocProfile* profile) {
     ProfileSteps timer(profile);
     const auto count=area(rows,cols);

@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "unique_output_files_checked": 1040,
+  "finite_scores_per_file": 1000,
+  "random_control_profile_pairs": 200,
+  "final_fpga_old_new_identical_random": 20,
+  "final_fpga_old_new_identical_labeled": 200,
+  "accuracy": {
+    "v22": {
+      "images": 200,
+      "fp32_correct": 153,
+      "fpga_correct": 153,
+      "matching_top1": 198,
+      "mean_cosine": 0.9975168317993538
+    },
+    "v25": {
+      "images": 200,
+      "fp32_correct": 153,
+      "fpga_correct": 153,
+      "matching_top1": 198,
+      "mean_cosine": 0.9975168317993538
+    }
+  }
+}

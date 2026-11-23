@@ -1,0 +1,27 @@
+{
+  "path": "build/tinyvit-dma-optimized-90mhz-v27.tar.gz",
+  "size": 14026498,
+  "sha256": "51575224f592023f5ef6a8c6067b0aab2ec1b03aac717bd2c2226c4e3f308cf9",
+  "provenance": {
+    "runner_sha256": "6d27713df9848534a7c7ccecdefcbcc09b250561899e2381c86700d28df81e55",
+    "model_sha256": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+    "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+    "abi": "NI83",
+    "fpga_clock_mhz": 90,
+    "cpu_threads": 2,
+    "offloaded_linears": 30,
+    "resident_pairs": 4,
+    "transport_environment": {
+      "MNN_MATMUL_SOC_DEVMEM": "1",
+      "MNN_MATMUL_SOC_DMA": "1",
+      "MNN_MATMUL_SOC_FAST_POLL": "1",
+      "MNN_MATMUL_SOC_REUSE_A": "1",
+      "MNN_MATMUL_SOC_LIVE_ROWS": "1",
+      "MNN_MATMUL_SOC_DMA_POLL_BATCH": "1",
+      "MNN_MATMUL_SOC_DIRECT_A": "0",
+      "MNN_MATMUL_SOC_DIRECT_C": "0",
+      "MNN_MATMUL_SOC_STREAM_STAGE": "0"
+    },
+    "board_runner": "tinyvit_native_v27"
+  }
+}

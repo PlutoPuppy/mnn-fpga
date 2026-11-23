@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Summarize NI82 board evidence, verifying paired score/metadata records."""
+"""Summarize NI82/NI83 board evidence, verifying paired score/metadata records."""
 import argparse
 import csv
+import gzip
 import hashlib
 import json
 import pathlib
@@ -17,13 +18,35 @@ def stats(values):
                 minimum=min(values),maximum=max(values))
 
 
+def read_operator_profile(run):
+    path = run / 'operators.json'
+    if path.is_file():
+        return json.loads(path.read_text())
+    with gzip.open(run / 'operators.json.gz', mode='rt') as profile:
+        return json.load(profile)
+
+
 def paired(cpu,fpga):
     differences=[b-a for a,b in zip(cpu,fpga)]
     rng=random.Random(20261114)
-    means=sorted(s.mean(rng.choices(differences,k=len(differences))) for _ in range(10000))
+    # Bootstrap resamples need ordinary floating means; exact Fraction summation
+    # inside statistics.mean is costly across thousands of identical-size draws.
+    count=len(differences)
+    means=[];ratios=[];target_margins=[]
+    for _ in range(10000):
+        selected=rng.choices(range(count),k=count)
+        first=sum(cpu[i] for i in selected)/count
+        second=sum(fpga[i] for i in selected)/count
+        means.append(sum(differences[i] for i in selected)/count)
+        ratios.append(first/second)
+        target_margins.append(second-first/1.5)
+    means.sort();ratios.sort();target_margins.sort()
     return dict(delta_ms=stats(differences),delta_percent=100*(s.mean(fpga)/s.mean(cpu)-1),
                 speedup=s.mean(cpu)/s.mean(fpga),faster=sum(d<0 for d in differences),
-                delta_ms_bootstrap_95=[means[250],means[9749]])
+                delta_ms_bootstrap_95=[means[250],means[9749]],
+                speedup_bootstrap_95=[ratios[250],ratios[9749]],
+                target_1_5_margin_ms=s.mean(fpga)-s.mean(cpu)/1.5,
+                target_1_5_margin_ms_bootstrap_95=[target_margins[250],target_margins[9749]])
 
 
 def main():
@@ -33,6 +56,7 @@ def main():
     assert len(rows)==metadata['inputs']
     modes=metadata['modes'];summary=dict(metadata=metadata,configurations={},comparisons={},phases={},scores={})
     operators={m:[] for m in modes}
+    accounting={m:[] for m in modes}
     for row in rows:
         for mode in modes:
             control=row['runs'][mode+'_control'];profile=row['runs'][mode+'_profile']
@@ -46,13 +70,20 @@ def main():
                 assert control['native']['pending']==-1 and control['jobs']>0
                 assert control['jobs']==profile['jobs']==profile['profile']['offload']['jobs']
                 assert profile['native']['local_feedback_bytes']==profile['profile']['offload']['local_bytes']
-            detail=json.loads((root/('input-%02d'%row['input'])/(mode+'_profile')/'operators.json').read_text())
+            detail=read_operator_profile(root/('input-%02d'%row['input'])/(mode+'_profile'))
+            assert abs(sum(op['ms'] for op in detail['records'])-detail['sum_operator_ms'])<0.05
+            assert abs(detail['sum_operator_ms']+detail['outside_operator_ms']-detail['inference_ms'])<0.05
             operators[mode].append(detail['records'])
+            accounting[mode].append(detail)
     for mode in modes:
         controls=[r['runs'][mode+'_control'] for r in rows]
         profiles=[r['runs'][mode+'_profile']['profile'] for r in rows]
         summary['configurations'][mode]={k:stats([r[k] for r in controls]) for k in ('inference_ms','process_wall_ms','jobs')}
         summary['configurations'][mode]['setup_ms']=stats([r['linear_setup_ms'] for r in profiles])
+        summary['configurations'][mode]['profiled_inference_ms']=stats([r['inference_ms'] for r in profiles])
+        summary['configurations'][mode]['profile_components_ms']={k:stats([r.get(k,0) for r in profiles])
+            for k in ('preprocess_ms','model_load_ms','session_ms','input_copy_ms',
+                      'repeat_input_copy_ms','linear_setup_ms','inference_ms','output_ms','main_elapsed_ms')}
         summary['configurations'][mode]['selected_operation_ms']=stats([r['selected_operation_ms'] for r in profiles])
         for counter in ('input_bytes','output_bytes','local_bytes','input_descriptors','output_descriptors','local_descriptors'):
             summary['configurations'][mode][counter]=stats([r['offload'].get(counter,0) for r in profiles])
@@ -72,7 +103,8 @@ def main():
             mean_relative_l2=s.mean(c['relative_l2'] for c in checks),max_abs=max(c['max_abs_error'] for c in checks))
     # Also compare directly to FP32; agreement with the mixed CPU model alone
     # does not establish agreement with the original model.
-    for reference in ('cpu','fp32','all'):
+    references=list(dict.fromkeys(['cpu','fp32','all']+[m for m in modes if m.endswith('_cpu')]))
+    for reference in references:
         if reference not in modes:continue
         for mode in modes:
             if mode==reference:continue
@@ -98,11 +130,23 @@ def main():
                 mean_cosine=s.mean(c['cosine'] for c in checks),mean_relative_l2=s.mean(c['relative_l2'] for c in checks),
                 max_abs=max(c['max_abs'] for c in checks))
     layer_rows=[]
+    summary['operator_accounting_ms']={m:{k:stats([d[k] for d in accounting[m]])
+        for k in ('inference_ms','sum_operator_ms','outside_operator_ms')} for m in modes}
     if 'cpu' in modes:
-        candidates=[r for r in operators['cpu'][0] if r['type'].startswith('Convolution') and
-                    r['inputs'][0]['bits']==8 and r['inputs'][0]['shape'][-2:]==[1,1]]
+        native_names={layer['name'] for run in rows[0]['runs'].values() if 'native' in run for layer in run['native']['layers']}
+        candidates=[r for r in operators['cpu'][0] if r['name'] in native_names] if native_names else [
+            r for r in operators['cpu'][0] if r['type'].startswith('Convolution') and
+            r['inputs'][0]['bits']==8 and r['inputs'][0]['shape'][-2:]==[1,1]]
         for candidate in candidates:
-            name=candidate['name'];shape=candidate['inputs'][0]['shape'];line=dict(name=name,M=shape[0],K=shape[1],N=candidate['outputs'][0]['shape'][1])
+            name=candidate['name'];shape=candidate['inputs'][0]['shape'];line=dict(name=name,M=shape[0]*shape[2]*shape[3],K=shape[1],N=candidate['outputs'][0]['shape'][1])
+            plans=[layer for run in rows[0]['runs'].values() if 'native' in run
+                   for layer in run['native']['layers'] if layer['name']==name]
+            if plans:
+                plan=plans[0]
+                line.update({k:plan[k] for k in ('tile_m','tile_n','tile_k','operand_b_bytes')})
+                line['operand_a_bytes']=plan.get('operand_a_bytes',16384)
+                line['operand_b_offset']=plan.get('operand_b_offset',0x5000)
+                line['unfused_planned_jobs']=math.ceil(line['M']/plan['tile_m'])*math.ceil(line['N']/plan['tile_n'])
             for mode in modes:
                 values=[sum(op['ms'] for op in record if op['name']==name) for record in operators[mode]]
                 line[mode+'_mean_ms']=s.mean(values);line[mode+'_sd_ms']=s.stdev(values) if len(values)>1 else 0

@@ -1,0 +1,6416 @@
+{
+  "metadata": {
+    "profile_runs_separate": true,
+    "runner": "tinyvit_native_v12",
+    "order_design": "Williams rows, including reversed rows for odd configuration counts",
+    "board_utc": "2016-02-11T16:31:22Z",
+    "clock_mhz": 90,
+    "warmup": 0,
+    "bitstream_sha256": "f4b4803ba459ee33a496fe6e4def06919ac06d6dce4e6be2146bca37e3951447",
+    "fresh_process": true,
+    "threads": 2,
+    "input_kind": "uniform random RGB images",
+    "timing": "Inference excludes load/session/cache/LUT setup; process wall and setup also recorded",
+    "abi": "NI83",
+    "inputs": 20,
+    "cpu_state_before": {},
+    "configurations": {
+      "cpu": {
+        "offload": false,
+        "pairs": false,
+        "model": "tiny-vit-mixed-w8a8-accuracy.mnn"
+      },
+      "transformer_cpu": {
+        "offload": false,
+        "pairs": false,
+        "model": "tiny-vit-mixed-w8a8-all-transformer.mnn"
+      },
+      "static_fpga": {
+        "pair_count": 10,
+        "operations": 51,
+        "offload": true,
+        "pairs": true,
+        "model": "tiny-vit-mixed-w8a8-all-static.mnn"
+      },
+      "fp32": {
+        "offload": false,
+        "pairs": false,
+        "model": "tiny-vit.mnn"
+      },
+      "static_cpu": {
+        "offload": false,
+        "pairs": false,
+        "model": "tiny-vit-mixed-w8a8-all-static.mnn"
+      },
+      "static_unfused": {
+        "pair_count": 0,
+        "operations": 51,
+        "offload": true,
+        "pairs": false,
+        "model": "tiny-vit-mixed-w8a8-all-static.mnn"
+      },
+      "pairs": {
+        "pair_count": 4,
+        "operations": 30,
+        "offload": true,
+        "pairs": true,
+        "model": "tiny-vit-mixed-w8a8-accuracy.mnn"
+      },
+      "transformer_fpga": {
+        "pair_count": 10,
+        "operations": 40,
+        "offload": true,
+        "pairs": true,
+        "model": "tiny-vit-mixed-w8a8-all-transformer.mnn"
+      }
+    },
+    "modes": [
+      "fp32",
+      "cpu",
+      "pairs",
+      "transformer_cpu",
+      "transformer_fpga",
+      "static_cpu",
+      "static_fpga",
+      "static_unfused"
+    ],
+    "models": {
+      "tiny-vit-mixed-w8a8-accuracy.mnn": "f6a577a805887e486a4bc52179724e9c7c3340ec694c51532073b55beabab1cf",
+      "tiny-vit.mnn": "f7aee628e2cef2d726979cc259529b3af0778b429c52ba8b76f3c609a2996de4",
+      "tiny-vit-mixed-w8a8-all-static.mnn": "e30022757743bbd4d6a3b7f55aea40318996ae294b0ca7a3761636a8e9920fe7",
+      "tiny-vit-mixed-w8a8-all-transformer.mnn": "da21ca755de73ebb3f14ff1c5e8e72d984521c2fa2784b87da65aa596341b406"
+    },
+    "date": "2026-11-17",
+    "source": "/home/ubuntu/tinyvit/benchmark-qk-profile-90mhz-20",
+    "runner_sha256": "7a44a387a9e41cb61877d9268eded119a36ed9fe17b4d661978117ee41fc3925",
+    "cpu_state_after": {}
+  },
+  "configurations": {
+    "fp32": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1144.495,
+        "median": 1129.355,
+        "sd": 56.17543502279266,
+        "minimum": 1124.71,
+        "maximum": 1379.99
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1822.2434844999952,
+        "median": 1560.0104800000026,
+        "sd": 436.0196359266527,
+        "minimum": 1548.8764600000309,
+        "maximum": 2934.1918200000237
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1148.1959305,
+        "median": 1143.190005,
+        "sd": 16.624744257790937,
+        "minimum": 1134.921,
+        "maximum": 1203.12266
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 22.842095999999998,
+          "median": 21.338675000000002,
+          "sd": 4.349110249689191,
+          "minimum": 21.28885,
+          "maximum": 39.51139
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 700.1969335,
+          "median": 232.18369,
+          "sd": 549.0573321680746,
+          "minimum": 230.18999,
+          "maximum": 1512.29368
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 137.8231985,
+          "median": 128.967255,
+          "sd": 21.037198554153214,
+          "minimum": 128.04512,
+          "maximum": 197.13131
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 4.7335425,
+          "median": 4.628405,
+          "sd": 0.5126008087850674,
+          "minimum": 4.52742,
+          "maximum": 6.89822
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1148.1959305,
+          "median": 1143.190005,
+          "sd": 16.624744257790937,
+          "minimum": 1134.921,
+          "maximum": 1203.12266
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 4.560994,
+          "median": 0.80479,
+          "sd": 6.918489214305161,
+          "minimum": 0.75969,
+          "maximum": 21.76433
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 2019.0404755,
+          "median": 1549.274985,
+          "sd": 567.8982848785085,
+          "minimum": 1521.49424,
+          "maximum": 2858.24843
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "cpu": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1069.4180000000001,
+        "median": 1052.3400000000001,
+        "sd": 62.86706949881169,
+        "minimum": 1047.71,
+        "maximum": 1329.31
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1718.163831500003,
+        "median": 1476.9268049999482,
+        "sd": 341.3247917417728,
+        "minimum": 1467.4076100000093,
+        "maximum": 2288.0550500000254
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1157.4945545,
+        "median": 1064.77548,
+        "sd": 289.6673195049273,
+        "minimum": 1058.84699,
+        "maximum": 2233.66343
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 22.003006,
+          "median": 21.37371,
+          "sd": 1.8896364490457167,
+          "minimum": 21.25907,
+          "maximum": 29.32572
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 281.9360735,
+          "median": 163.67464999999999,
+          "sd": 242.58329255491006,
+          "minimum": 161.97881,
+          "maximum": 935.47676
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 192.5436575,
+          "median": 189.293095,
+          "sd": 10.336280543671032,
+          "minimum": 188.53017,
+          "maximum": 226.73592
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 4.834181,
+          "median": 4.610665,
+          "sd": 0.9203108631435358,
+          "minimum": 4.52268,
+          "maximum": 8.68122
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1157.4945545,
+          "median": 1064.77548,
+          "sd": 289.6673195049273,
+          "minimum": 1058.84699,
+          "maximum": 2233.66343
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 2.2128935,
+          "median": 0.750965,
+          "sd": 4.401287123183129,
+          "minimum": 0.73094,
+          "maximum": 15.75799
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1661.95347,
+          "median": 1452.201905,
+          "sd": 375.23810059193175,
+          "minimum": 1436.45946,
+          "maximum": 2690.25703
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "pairs": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 985.56165,
+        "median": 980.0615,
+        "sd": 16.128320414642353,
+        "minimum": 975.617,
+        "maximum": 1048.13
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1570.7570875000115,
+        "median": 1501.0342600000115,
+        "sd": 150.73646888636034,
+        "minimum": 1480.4025800000318,
+        "maximum": 2061.7553800000223
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 296,
+        "median": 296.0,
+        "sd": 0.0,
+        "minimum": 296,
+        "maximum": 296
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 97.0887115,
+        "median": 84.5829,
+        "sd": 55.06497956203583,
+        "minimum": 84.37153,
+        "maximum": 331.01869
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1096.3037185,
+        "median": 1018.25384,
+        "sd": 334.4033367788334,
+        "minimum": 1013.74362,
+        "maximum": 2516.31099
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 27.2553975,
+          "median": 21.326144999999997,
+          "sd": 21.033646970968327,
+          "minimum": 21.28153,
+          "maximum": 115.2472
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 297.0680555,
+          "median": 163.72279,
+          "sd": 286.8176843178722,
+          "minimum": 162.31844,
+          "maximum": 1010.58337
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 204.9470625,
+          "median": 189.40969,
+          "sd": 67.86808158781392,
+          "minimum": 188.3932,
+          "maximum": 493.19158
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 5.107623,
+          "median": 4.60951,
+          "sd": 2.2658968807100597,
+          "minimum": 4.4902,
+          "maximum": 14.73041
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 97.0887115,
+          "median": 84.5829,
+          "sd": 55.06497956203583,
+          "minimum": 84.37153,
+          "maximum": 331.01869
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1096.3037185,
+          "median": 1018.25384,
+          "sd": 334.4033367788334,
+          "minimum": 1013.74362,
+          "maximum": 2516.31099
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 3.854022,
+          "median": 0.6679649999999999,
+          "sd": 14.240004158646496,
+          "minimum": 0.65322,
+          "maximum": 64.35307
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1734.8405705,
+          "median": 1485.46613,
+          "sd": 607.0698920147648,
+          "minimum": 1478.71524,
+          "maximum": 4006.62872
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 219.1064015,
+        "median": 216.40592,
+        "sd": 11.242997380167601,
+        "minimum": 215.89864,
+        "maximum": 266.7142
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 8049920,
+        "median": 8049920.0,
+        "sd": 0.0,
+        "minimum": 8049920,
+        "maximum": 8049920
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 2465280,
+        "median": 2465280.0,
+        "sd": 0.0,
+        "minimum": 2465280,
+        "maximum": 2465280
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 1200128,
+        "median": 1200128.0,
+        "sd": 0.0,
+        "minimum": 1200128,
+        "maximum": 1200128
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 3897,
+        "median": 3897.0,
+        "sd": 0.0,
+        "minimum": 3897,
+        "maximum": 3897
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 1227,
+        "median": 1227.0,
+        "sd": 0.0,
+        "minimum": 1227,
+        "maximum": 1227
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 4688,
+        "median": 4688.0,
+        "sd": 0.0,
+        "minimum": 4688,
+        "maximum": 4688
+      },
+      "local_feedback_bytes": {
+        "n": 20,
+        "mean": 1200128,
+        "median": 1200128.0,
+        "sd": 0.0,
+        "minimum": 1200128,
+        "maximum": 1200128
+      },
+      "hidden_roundtrip_bytes_avoided": {
+        "n": 20,
+        "mean": 1601536,
+        "median": 1601536.0,
+        "sd": 0.0,
+        "minimum": 1601536,
+        "maximum": 1601536
+      },
+      "fused_pairs": {
+        "n": 20,
+        "mean": 4,
+        "median": 4.0,
+        "sd": 0.0,
+        "minimum": 4,
+        "maximum": 4
+      },
+      "skipped_runtime_operations": {
+        "n": 20,
+        "mean": 16,
+        "median": 16.0,
+        "sd": 0.0,
+        "minimum": 16,
+        "maximum": 16
+      }
+    },
+    "transformer_cpu": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1008.75425,
+        "median": 1006.64,
+        "sd": 7.474105346038718,
+        "minimum": 999.685,
+        "maximum": 1032.19
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1588.1868299999965,
+        "median": 1419.044939999992,
+        "sd": 245.64462779691698,
+        "minimum": 1404.5957299999827,
+        "maximum": 1977.0037600000023
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1022.4324265,
+        "median": 1020.11069,
+        "sd": 10.99941654468869,
+        "minimum": 1011.33644,
+        "maximum": 1064.02439
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 25.250706,
+          "median": 21.40068,
+          "sd": 13.14168470309704,
+          "minimum": 21.27904,
+          "maximum": 79.8032
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 175.56386799999999,
+          "median": 110.117935,
+          "sd": 169.25810185297132,
+          "minimum": 109.02207,
+          "maximum": 673.64386
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 228.030858,
+          "median": 226.169555,
+          "sd": 7.171128034757886,
+          "minimum": 225.46333,
+          "maximum": 257.88939
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 5.437336,
+          "median": 4.620855,
+          "sd": 2.558872061906224,
+          "minimum": 4.48942,
+          "maximum": 15.16834
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1022.4324265,
+          "median": 1020.11069,
+          "sd": 10.99941654468869,
+          "minimum": 1011.33644,
+          "maximum": 1064.02439
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 1.2307785,
+          "median": 0.729595,
+          "sd": 2.216990861981203,
+          "minimum": 0.72045,
+          "maximum": 10.6495
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1458.276515,
+          "median": 1383.762565,
+          "sd": 195.4588948187469,
+          "minimum": 1374.31936,
+          "maximum": 2091.57862
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "transformer_fpga": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 894.2841999999999,
+        "median": 891.6545,
+        "sd": 6.667775416923274,
+        "minimum": 887.988,
+        "maximum": 911.106
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1508.1734625000095,
+        "median": 1444.8773000000017,
+        "sd": 175.06410539377032,
+        "minimum": 1439.0607199999863,
+        "maximum": 2086.8902000000844
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 496,
+        "median": 496.0,
+        "sd": 0.0,
+        "minimum": 496,
+        "maximum": 496
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 145.2953015,
+        "median": 144.54541,
+        "sd": 2.2576647827562066,
+        "minimum": 143.75586,
+        "maximum": 151.90661
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 965.6998305,
+        "median": 965.5121,
+        "sd": 2.5778714206808138,
+        "minimum": 961.43214,
+        "maximum": 972.14858
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 22.633429500000002,
+          "median": 21.359155,
+          "sd": 3.1351433309675434,
+          "minimum": 21.27281,
+          "maximum": 30.38268
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 211.8031485,
+          "median": 110.000665,
+          "sd": 211.55880928906873,
+          "minimum": 109.0466,
+          "maximum": 726.80179
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 226.4981855,
+          "median": 226.01757500000002,
+          "sd": 1.2167689828284656,
+          "minimum": 225.58531,
+          "maximum": 230.23094
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 4.600417,
+          "median": 4.595525,
+          "sd": 0.06222271290334922,
+          "minimum": 4.4911,
+          "maximum": 4.81711
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 145.2953015,
+          "median": 144.54541,
+          "sd": 2.2576647827562066,
+          "minimum": 143.75586,
+          "maximum": 151.90661
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 965.6998305,
+          "median": 965.5121,
+          "sd": 2.5778714206808138,
+          "minimum": 961.43214,
+          "maximum": 972.14858
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 2.4120295,
+          "median": 0.6290450000000001,
+          "sd": 4.391462316016668,
+          "minimum": 0.61493,
+          "maximum": 13.80349
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1580.2742465,
+          "median": 1477.576785,
+          "sd": 214.8335523331366,
+          "minimum": 1468.99594,
+          "maximum": 2097.65674
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 349.462519,
+        "median": 349.43175,
+        "sd": 0.5361586541598752,
+        "minimum": 348.32109,
+        "maximum": 351.25544
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 13555712,
+        "median": 13555712.0,
+        "sd": 0.0,
+        "minimum": 13555712,
+        "maximum": 13555712
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 2206720,
+        "median": 2206720.0,
+        "sd": 0.0,
+        "minimum": 2206720,
+        "maximum": 2206720
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 3547136,
+        "median": 3547136.0,
+        "sd": 0.0,
+        "minimum": 3547136,
+        "maximum": 3547136
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 6518,
+        "median": 6518.0,
+        "sd": 0.0,
+        "minimum": 6518,
+        "maximum": 6518
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 1154,
+        "median": 1154.0,
+        "sd": 0.0,
+        "minimum": 1154,
+        "maximum": 1154
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 13856,
+        "median": 13856.0,
+        "sd": 0.0,
+        "minimum": 13856,
+        "maximum": 13856
+      },
+      "local_feedback_bytes": {
+        "n": 20,
+        "mean": 3547136,
+        "median": 3547136.0,
+        "sd": 0.0,
+        "minimum": 3547136,
+        "maximum": 3547136
+      },
+      "hidden_roundtrip_bytes_avoided": {
+        "n": 20,
+        "mean": 3530752,
+        "median": 3530752.0,
+        "sd": 0.0,
+        "minimum": 3530752,
+        "maximum": 3530752
+      },
+      "fused_pairs": {
+        "n": 20,
+        "mean": 10,
+        "median": 10.0,
+        "sd": 0.0,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "skipped_runtime_operations": {
+        "n": 20,
+        "mean": 40,
+        "median": 40.0,
+        "sd": 0.0,
+        "minimum": 40,
+        "maximum": 40
+      }
+    },
+    "static_cpu": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1015.9816,
+        "median": 1003.4649999999999,
+        "sd": 33.41945218991008,
+        "minimum": 997.634,
+        "maximum": 1119.4
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1491.5250565000038,
+        "median": 1415.155590000012,
+        "sd": 162.3730882672552,
+        "minimum": 1402.146920000007,
+        "maximum": 1878.6190600000054
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1016.675418,
+        "median": 1015.041725,
+        "sd": 5.740718353118164,
+        "minimum": 1010.11109,
+        "maximum": 1032.00518
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 22.4224515,
+          "median": 21.379385,
+          "sd": 3.063129265075306,
+          "minimum": 21.26444,
+          "maximum": 32.67451
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 151.343406,
+          "median": 94.56344999999999,
+          "sd": 142.47358414816082,
+          "minimum": 93.89501,
+          "maximum": 555.79858
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 242.46232,
+          "median": 242.375995,
+          "sd": 0.5944710869867076,
+          "minimum": 241.38429,
+          "maximum": 243.59525
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 4.566668,
+          "median": 4.5708400000000005,
+          "sd": 0.05850809594001762,
+          "minimum": 4.49779,
+          "maximum": 4.69781
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1016.675418,
+          "median": 1015.041725,
+          "sd": 5.740718353118164,
+          "minimum": 1010.11109,
+          "maximum": 1032.00518
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 0.652816,
+          "median": 0.642665,
+          "sd": 0.022896543384261482,
+          "minimum": 0.62877,
+          "maximum": 0.72697
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1438.45524,
+          "median": 1380.9796999999999,
+          "sd": 146.29640801616995,
+          "minimum": 1373.65677,
+          "maximum": 1859.23943
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "static_fpga": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 910.5537,
+        "median": 909.519,
+        "sd": 3.1438575885116222,
+        "minimum": 907.157,
+        "maximum": 920.222
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1486.201384500005,
+        "median": 1482.4280700000543,
+        "sd": 12.353245817991452,
+        "minimum": 1477.7677199999744,
+        "maximum": 1535.4487200000904
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 614,
+        "median": 614.0,
+        "sd": 0.0,
+        "minimum": 614,
+        "maximum": 614
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 168.1305755,
+        "median": 164.200805,
+        "sd": 12.187421710293846,
+        "minimum": 163.70131,
+        "maximum": 217.62022
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1018.211369,
+        "median": 990.960765,
+        "sd": 115.71973444988818,
+        "minimum": 987.28284,
+        "maximum": 1509.41105
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 22.368598,
+          "median": 21.404545,
+          "sd": 2.976341744601742,
+          "minimum": 21.29737,
+          "maximum": 32.37331
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 148.200259,
+          "median": 94.67716999999999,
+          "sd": 168.84686886473386,
+          "minimum": 93.82589,
+          "maximum": 738.84831
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 244.7139275,
+          "median": 242.395635,
+          "sd": 6.873097714783854,
+          "minimum": 241.80477,
+          "maximum": 267.18037
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 4.566481,
+          "median": 4.54721,
+          "sd": 0.09901437343293037,
+          "minimum": 4.47441,
+          "maximum": 4.95341
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 168.1305755,
+          "median": 164.200805,
+          "sd": 12.187421710293846,
+          "minimum": 163.70131,
+          "maximum": 217.62022
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1018.211369,
+          "median": 990.960765,
+          "sd": 115.71973444988818,
+          "minimum": 987.28284,
+          "maximum": 1509.41105
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 1.95312,
+          "median": 0.606215,
+          "sd": 4.2548559813464895,
+          "minimum": 0.59815,
+          "maximum": 17.50761
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1610.5134905,
+          "median": 1522.6718799999999,
+          "sd": 214.70242289338518,
+          "minimum": 1515.81401,
+          "maximum": 2213.18651
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 481.95958,
+        "median": 475.201905,
+        "sd": 28.147179476283895,
+        "minimum": 474.58042,
+        "maximum": 601.36287
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 17369984,
+        "median": 17369984.0,
+        "sd": 0.0,
+        "minimum": 17369984,
+        "maximum": 17369984
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 4977408,
+        "median": 4977408.0,
+        "sd": 0.0,
+        "minimum": 4977408,
+        "maximum": 4977408
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 3547136,
+        "median": 3547136.0,
+        "sd": 0.0,
+        "minimum": 3547136,
+        "maximum": 3547136
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 8378,
+        "median": 8378.0,
+        "sd": 0.0,
+        "minimum": 8378,
+        "maximum": 8378
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 2509,
+        "median": 2509.0,
+        "sd": 0.0,
+        "minimum": 2509,
+        "maximum": 2509
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 13856,
+        "median": 13856.0,
+        "sd": 0.0,
+        "minimum": 13856,
+        "maximum": 13856
+      },
+      "local_feedback_bytes": {
+        "n": 20,
+        "mean": 3547136,
+        "median": 3547136.0,
+        "sd": 0.0,
+        "minimum": 3547136,
+        "maximum": 3547136
+      },
+      "hidden_roundtrip_bytes_avoided": {
+        "n": 20,
+        "mean": 3530752,
+        "median": 3530752.0,
+        "sd": 0.0,
+        "minimum": 3530752,
+        "maximum": 3530752
+      },
+      "fused_pairs": {
+        "n": 20,
+        "mean": 10,
+        "median": 10.0,
+        "sd": 0.0,
+        "minimum": 10,
+        "maximum": 10
+      },
+      "skipped_runtime_operations": {
+        "n": 20,
+        "mean": 40,
+        "median": 40.0,
+        "sd": 0.0,
+        "minimum": 40,
+        "maximum": 40
+      }
+    },
+    "static_unfused": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 989.12335,
+        "median": 987.9265,
+        "sd": 6.071982397823109,
+        "minimum": 983.437,
+        "maximum": 1007.64
+      },
+      "process_wall_ms": {
+        "n": 20,
+        "mean": 1624.966771000004,
+        "median": 1562.1641749999924,
+        "sd": 142.54208839268486,
+        "minimum": 1549.7654700000112,
+        "maximum": 1997.2222600000578
+      },
+      "jobs": {
+        "n": 20,
+        "mean": 498,
+        "median": 498.0,
+        "sd": 0.0,
+        "minimum": 498,
+        "maximum": 498
+      },
+      "setup_ms": {
+        "n": 20,
+        "mean": 160.676003,
+        "median": 159.457775,
+        "sd": 2.2127566184289353,
+        "minimum": 158.93248,
+        "maximum": 167.22469
+      },
+      "profiled_inference_ms": {
+        "n": 20,
+        "mean": 1027.4022435,
+        "median": 1024.8251,
+        "sd": 11.917612527397479,
+        "minimum": 1021.54375,
+        "maximum": 1077.418
+      },
+      "profile_components_ms": {
+        "preprocess_ms": {
+          "n": 20,
+          "mean": 22.445719,
+          "median": 21.35649,
+          "sd": 3.416542654997886,
+          "minimum": 21.26555,
+          "maximum": 34.8806
+        },
+        "model_load_ms": {
+          "n": 20,
+          "mean": 179.4503415,
+          "median": 94.56286,
+          "sd": 174.02766730179758,
+          "minimum": 93.65375,
+          "maximum": 534.47588
+        },
+        "session_ms": {
+          "n": 20,
+          "mean": 243.2809415,
+          "median": 242.135005,
+          "sd": 4.715850829880768,
+          "minimum": 241.38472,
+          "maximum": 263.17903
+        },
+        "input_copy_ms": {
+          "n": 20,
+          "mean": 4.5899135,
+          "median": 4.575665000000001,
+          "sd": 0.12684164990358324,
+          "minimum": 4.48391,
+          "maximum": 5.09996
+        },
+        "repeat_input_copy_ms": {
+          "n": 20,
+          "mean": 0,
+          "median": 0.0,
+          "sd": 0.0,
+          "minimum": 0,
+          "maximum": 0
+        },
+        "linear_setup_ms": {
+          "n": 20,
+          "mean": 160.676003,
+          "median": 159.457775,
+          "sd": 2.2127566184289353,
+          "minimum": 158.93248,
+          "maximum": 167.22469
+        },
+        "inference_ms": {
+          "n": 20,
+          "mean": 1027.4022435,
+          "median": 1024.8251,
+          "sd": 11.917612527397479,
+          "minimum": 1021.54375,
+          "maximum": 1077.418
+        },
+        "output_ms": {
+          "n": 20,
+          "mean": 0.5992839999999999,
+          "median": 0.592245,
+          "sd": 0.015872295758067857,
+          "minimum": 0.58432,
+          "maximum": 0.64643
+        },
+        "main_elapsed_ms": {
+          "n": 20,
+          "mean": 1639.98025,
+          "median": 1551.29294,
+          "sd": 185.72258197933763,
+          "minimum": 1545.17521,
+          "maximum": 2052.26028
+        }
+      },
+      "selected_operation_ms": {
+        "n": 20,
+        "mean": 439.0878685,
+        "median": 438.31847,
+        "sd": 2.940826567765694,
+        "minimum": 437.98417,
+        "maximum": 451.46887
+      },
+      "input_bytes": {
+        "n": 20,
+        "mean": 16851328,
+        "median": 16851328.0,
+        "sd": 0.0,
+        "minimum": 16851328,
+        "maximum": 16851328
+      },
+      "output_bytes": {
+        "n": 20,
+        "mean": 6742784,
+        "median": 6742784.0,
+        "sd": 0.0,
+        "minimum": 6742784,
+        "maximum": 6742784
+      },
+      "local_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_descriptors": {
+        "n": 20,
+        "mean": 8216,
+        "median": 8216.0,
+        "sd": 0.0,
+        "minimum": 8216,
+        "maximum": 8216
+      },
+      "output_descriptors": {
+        "n": 20,
+        "mean": 3371,
+        "median": 3371.0,
+        "sd": 0.0,
+        "minimum": 3371,
+        "maximum": 3371
+      },
+      "local_descriptors": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_feedback_bytes": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "hidden_roundtrip_bytes_avoided": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "fused_pairs": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "skipped_runtime_operations": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    }
+  },
+  "comparisons": {
+    "fp32_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 75.07699999999998,
+        "median": 79.02499999999998,
+        "sd": 87.24862382265616,
+        "minimum": -202.27999999999997,
+        "maximum": 325.0999999999999
+      },
+      "delta_percent": 7.020360607358378,
+      "speedup": 0.9344016356559008,
+      "faster": 1,
+      "delta_ms_bootstrap_95": [
+        35.60850000000001,
+        113.60349999999998
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 104.07965299999232,
+          "median": 84.41312999997308,
+          "sd": 493.1938701856749,
+          "minimum": -636.6165700000013,
+          "maximum": 1154.9280699999827
+        },
+        "delta_percent": 6.057609355513427,
+        "speedup": 0.9428837837065717,
+        "faster": 6,
+        "delta_ms_bootstrap_95": [
+          -102.962359,
+          321.3715619999803
+        ]
+      }
+    },
+    "cpu_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -75.07699999999998,
+        "median": -79.02499999999998,
+        "sd": 87.24862382265616,
+        "minimum": -325.0999999999999,
+        "maximum": 202.27999999999997
+      },
+      "delta_percent": -6.559836434409916,
+      "speedup": 1.0702036060735838,
+      "faster": 19,
+      "delta_ms_bootstrap_95": [
+        -113.60349999999998,
+        -35.60850000000001
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -104.07965299999232,
+          "median": -84.41312999997308,
+          "sd": 493.1938701856749,
+          "minimum": -1154.9280699999827,
+          "maximum": 636.6165700000013
+        },
+        "delta_percent": -5.711621629342833,
+        "speedup": 1.0605760935551343,
+        "faster": 14,
+        "delta_ms_bootstrap_95": [
+          -321.3715619999803,
+          102.962359
+        ]
+      }
+    },
+    "pairs_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -83.85635,
+        "median": -72.08350000000007,
+        "sd": 48.54819560663941,
+        "minimum": -281.17999999999984,
+        "maximum": -53.20999999999992
+      },
+      "delta_percent": -7.841307140893472,
+      "speedup": 1.0850848346219641,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -107.85019999999999,
+        -69.32124999999999
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -147.40674399999136,
+          "median": 12.58680499998377,
+          "sd": 275.8035728278993,
+          "minimum": -730.3917499999957,
+          "maximum": 155.00313000006827
+        },
+        "delta_percent": -8.579318298843564,
+        "speedup": 1.0938443920915877,
+        "faster": 7,
+        "delta_ms_bootstrap_95": [
+          -272.5241699999984,
+          -36.20955299999622
+        ]
+      }
+    },
+    "pairs_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -158.93335,
+        "median": -149.2595,
+        "sd": 59.02362339666257,
+        "minimum": -397.51599999999996,
+        "maximum": -78.89999999999986
+      },
+      "delta_percent": -13.886766652541072,
+      "speedup": 1.1612617029081842,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -187.8982,
+        -140.0948
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -251.4863969999837,
+          "median": -72.63634500000649,
+          "sd": 341.9612457025601,
+          "minimum": -1071.2777300000198,
+          "maximum": 12.110829999869566
+        },
+        "delta_percent": -13.800921728579485,
+        "speedup": 1.1601052123216868,
+        "faster": 19,
+        "delta_ms_bootstrap_95": [
+          -407.9626069999932,
+          -115.66959149998581
+        ]
+      }
+    },
+    "transformer_cpu_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -60.66375000000001,
+        "median": -46.43000000000001,
+        "sd": 62.320772849976905,
+        "minimum": -316.9599999999999,
+        "maximum": -23.019999999999982
+      },
+      "delta_percent": -5.672594813253584,
+      "speedup": 1.060137293101863,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -90.82424999999999,
+        -42.383000000000024
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -129.9770015000064,
+          "median": -62.86807499998304,
+          "sd": 322.39916997458783,
+          "minimum": -828.7184800000205,
+          "maximum": 425.208649999945
+        },
+        "delta_percent": -7.564878221568261,
+        "speedup": 1.0818398686129431,
+        "faster": 17,
+        "delta_ms_bootstrap_95": [
+          -269.10313800001546,
+          3.18581699999354
+        ]
+      }
+    },
+    "transformer_cpu_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -135.74075,
+        "median": -121.6799999999999,
+        "sd": 57.94733280894862,
+        "minimum": -376.99,
+        "maximum": -107.5
+      },
+      "delta_percent": -11.860318306327244,
+      "speedup": 1.1345627540107017,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -163.7595,
+        -119.49799999999999
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -234.05665449999873,
+          "median": -142.75019999999472,
+          "sd": 439.7803119579232,
+          "minimum": -1527.9804499999727,
+          "maximum": 350.5542999999989
+        },
+        "delta_percent": -12.844422630174556,
+        "speedup": 1.1473735017057152,
+        "faster": 16,
+        "delta_ms_bootstrap_95": [
+          -432.7105119999928,
+          -58.17971700000868
+        ]
+      }
+    },
+    "transformer_fpga_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -175.1338,
+        "median": -160.9000000000001,
+        "sd": 59.64682164523895,
+        "minimum": -418.20399999999995,
+        "maximum": -141.3710000000001
+      },
+      "delta_percent": -16.376552479947048,
+      "speedup": 1.1958368491806075,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -204.1181,
+        -157.38760000000002
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -209.9903689999934,
+          "median": -28.387694999963742,
+          "sd": 296.3937917547368,
+          "minimum": -836.8127899999536,
+          "maximum": 62.98698999989938
+        },
+        "delta_percent": -12.221789630891388,
+        "speedup": 1.139234891888301,
+        "faster": 18,
+        "delta_ms_bootstrap_95": [
+          -347.1044955000011,
+          -92.98956050000413
+        ]
+      }
+    },
+    "transformer_fpga_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -250.2108,
+        "median": -237.42150000000004,
+        "sd": 57.78534471427309,
+        "minimum": -489.601,
+        "maximum": -215.92399999999998
+      },
+      "delta_percent": -21.862113858077137,
+      "speedup": 1.2797889082687584,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -278.3059,
+        -233.57805
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -314.0700219999857,
+          "median": -113.74302999999486,
+          "sd": 365.79432703013583,
+          "minimum": -1193.8695299999154,
+          "maximum": 38.16155999993498
+        },
+        "delta_percent": -17.235348880183444,
+        "speedup": 1.2082452912806,
+        "faster": 19,
+        "delta_ms_bootstrap_95": [
+          -482.9108169999728,
+          -167.13272799998435
+        ]
+      }
+    },
+    "static_cpu_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -53.436400000000006,
+        "median": -49.120000000000005,
+        "sd": 72.11250735402432,
+        "minimum": -322.63,
+        "maximum": 69.63000000000011
+      },
+      "delta_percent": -4.996773946202526,
+      "speedup": 1.0525958344127493,
+      "faster": 18,
+      "delta_ms_bootstrap_95": [
+        -88.50170000000001,
+        -27.101199999999995
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -226.63877499999927,
+          "median": -63.005850000024566,
+          "sd": 406.7191181422269,
+          "minimum": -852.7670299999954,
+          "maximum": 399.1059600000426
+        },
+        "delta_percent": -13.19075462100361,
+        "speedup": 1.1519510342868977,
+        "faster": 16,
+        "delta_ms_bootstrap_95": [
+          -402.4997659999812,
+          -58.56528799997422
+        ]
+      }
+    },
+    "static_cpu_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -128.5134,
+        "median": -125.47499999999997,
+        "sd": 65.47745381700403,
+        "minimum": -377.19000000000005,
+        "maximum": -9.009999999999991
+      },
+      "delta_percent": -11.228830182744353,
+      "speedup": 1.1264918577265572,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -159.8644,
+        -104.85679999999999
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -330.7184279999916,
+          "median": -153.00031999998964,
+          "sd": 397.0147813980939,
+          "minimum": -1525.8150400001114,
+          "maximum": 329.7425999999746
+        },
+        "delta_percent": -18.14897025633966,
+        "speedup": 1.2217317279107947,
+        "faster": 19,
+        "delta_ms_bootstrap_95": [
+          -511.99622500002704,
+          -174.36721199999567
+        ]
+      }
+    },
+    "static_fpga_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -158.86430000000001,
+        "median": -142.668,
+        "sd": 62.574205243055204,
+        "minimum": -416.92599999999993,
+        "maximum": -132.10399999999993
+      },
+      "delta_percent": -14.855210965216603,
+      "speedup": 1.1744699955642375,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -189.1331,
+        -141.05355
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -231.96244699999795,
+          "median": 3.9180599999610877,
+          "sd": 335.91878518085247,
+          "minimum": -756.4633399999823,
+          "maximum": 19.26421999996819
+        },
+        "delta_percent": -13.500601208529028,
+        "speedup": 1.1560773993478926,
+        "faster": 10,
+        "delta_ms_bootstrap_95": [
+          -383.55503300000754,
+          -97.03363749998744
+        ]
+      }
+    },
+    "static_fpga_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -233.94129999999998,
+        "median": -219.702,
+        "sd": 56.578761549114695,
+        "minimum": -470.466,
+        "maximum": -208.014
+      },
+      "delta_percent": -20.440569858321776,
+      "speedup": 1.2569220244780728,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -260.9658,
+        -218.45469999999997
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -336.0420999999903,
+          "median": -76.17436999998972,
+          "sd": 436.4690275038211,
+          "minimum": -1452.332320000096,
+          "maximum": -62.32634999992115
+        },
+        "delta_percent": -18.441119579154197,
+        "speedup": 1.226108052047767,
+        "faster": 20,
+        "delta_ms_bootstrap_95": [
+          -538.1872105,
+          -163.99948649997214
+        ]
+      }
+    },
+    "static_unfused_vs_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -80.29465,
+        "median": -65.37700000000001,
+        "sd": 58.648539743364,
+        "minimum": -321.66999999999996,
+        "maximum": -51.75999999999988
+      },
+      "delta_percent": -7.508256827545468,
+      "speedup": 1.08117759023685,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -108.9039,
+        -63.41815000000001
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -93.19706049999895,
+          "median": 82.37646000000609,
+          "sd": 275.3482551569796,
+          "minimum": -680.4903700001432,
+          "maximum": 95.48766000000342
+        },
+        "delta_percent": -5.424224325490279,
+        "speedup": 1.0573532100245013,
+        "faster": 8,
+        "delta_ms_bootstrap_95": [
+          -218.4203509999975,
+          15.42660150002888
+        ]
+      }
+    },
+    "static_unfused_vs_fp32": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -155.37165,
+        "median": -141.73599999999993,
+        "sd": 56.88665455583817,
+        "minimum": -392.428,
+        "maximum": -119.38999999999999
+      },
+      "delta_percent": -13.575563894992982,
+      "speedup": 1.1570801558774242,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -182.66905,
+        -139.47074999999995
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -197.27671349999127,
+          "median": 5.247995000047467,
+          "sd": 467.731757229487,
+          "minimum": -1364.6260300000677,
+          "maximum": 428.7623499999995
+        },
+        "delta_percent": -10.826034785034333,
+        "speedup": 1.1214035369957671,
+        "faster": 9,
+        "delta_ms_bootstrap_95": [
+          -411.9638799999706,
+          -12.306164999989733
+        ]
+      }
+    },
+    "fp32_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 135.74075,
+        "median": 121.6799999999999,
+        "sd": 57.94733280894862,
+        "minimum": 107.5,
+        "maximum": 376.99
+      },
+      "delta_percent": 13.456275401070172,
+      "speedup": 0.8813968169367276,
+      "faster": 0,
+      "delta_ms_bootstrap_95": [
+        119.49799999999999,
+        163.7595
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 234.05665449999873,
+          "median": 142.75019999999472,
+          "sd": 439.7803119579232,
+          "minimum": -350.5542999999989,
+          "maximum": 1527.9804499999727
+        },
+        "delta_percent": 14.737350170571517,
+        "speedup": 0.8715557736982544,
+        "faster": 4,
+        "delta_ms_bootstrap_95": [
+          58.17971700000868,
+          432.7105119999928
+        ]
+      }
+    },
+    "cpu_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 60.66375000000001,
+        "median": 46.43000000000001,
+        "sd": 62.320772849976905,
+        "minimum": 23.019999999999982,
+        "maximum": 316.9599999999999
+      },
+      "delta_percent": 6.013729310186311,
+      "speedup": 0.9432740518674642,
+      "faster": 0,
+      "delta_ms_bootstrap_95": [
+        42.383000000000024,
+        90.82424999999999
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 129.9770015000064,
+          "median": 62.86807499998304,
+          "sd": 322.39916997458783,
+          "minimum": -425.208649999945,
+          "maximum": 828.7184800000205
+        },
+        "delta_percent": 8.183986861294311,
+        "speedup": 0.9243512177843174,
+        "faster": 3,
+        "delta_ms_bootstrap_95": [
+          -3.18581699999354,
+          269.10313800001546
+        ]
+      }
+    },
+    "pairs_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -23.1926,
+        "median": -26.437999999999988,
+        "sd": 16.42050659965991,
+        "minimum": -44.23700000000008,
+        "maximum": 35.780000000000086
+      },
+      "delta_percent": -2.2991328165407943,
+      "speedup": 1.0235323685737974,
+      "faster": 19,
+      "delta_ms_bootstrap_95": [
+        -29.127050000000008,
+        -15.326049999999992
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -17.429742499984968,
+          "median": 73.3897700000341,
+          "sd": 274.1130206829265,
+          "minimum": -396.34370999999646,
+          "maximum": 655.5440099999714
+        },
+        "delta_percent": -1.097461719915216,
+        "speedup": 1.0110963958964054,
+        "faster": 7,
+        "delta_ms_bootstrap_95": [
+          -130.62487549998423,
+          101.66128100000265
+        ]
+      }
+    },
+    "transformer_fpga_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -114.47005,
+        "median": -114.01400000000001,
+        "sd": 10.322163657698717,
+        "minimum": -142.05200000000002,
+        "maximum": -97.00099999999998
+      },
+      "delta_percent": -11.347664706245354,
+      "speedup": 1.1280018700990133,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -119.0206,
+        -110.2062
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -80.013367499987,
+          "median": 28.681270000021186,
+          "sd": 329.00359835462746,
+          "minimum": -537.014519999957,
+          "maximum": 680.6788300000335
+        },
+        "delta_percent": -5.038032427204242,
+        "speedup": 1.0530531596593362,
+        "faster": 7,
+        "delta_ms_bootstrap_95": [
+          -219.1801549999809,
+          64.41305999999827
+        ]
+      }
+    },
+    "static_cpu_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 7.227350000000001,
+        "median": -2.9850000000000136,
+        "sd": 33.726498596917786,
+        "minimum": -24.382000000000062,
+        "maximum": 110.88000000000011
+      },
+      "delta_percent": 0.7164629046172655,
+      "speedup": 0.9928863377053285,
+      "faster": 13,
+      "delta_ms_bootstrap_95": [
+        -4.7230500000000175,
+        23.409150000000004
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -96.66177349999288,
+          "median": -7.596250000005966,
+          "sd": 197.67396519799632,
+          "minimum": -507.8758899999798,
+          "maximum": 114.37599999999293
+        },
+        "delta_percent": -6.08629738479779,
+        "speedup": 1.064807341370998,
+        "faster": 12,
+        "delta_ms_bootstrap_95": [
+          -190.31571699997585,
+          -19.55644700000221
+        ]
+      }
+    },
+    "static_fpga_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -98.20054999999999,
+        "median": -97.13699999999994,
+        "sd": 8.303108558498494,
+        "minimum": -122.67900000000009,
+        "maximum": -86.82399999999996
+      },
+      "delta_percent": -9.734833830935518,
+      "speedup": 1.107847071512641,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -101.8872,
+        -94.96934999999999
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -101.98544549999156,
+          "median": 61.69537499999933,
+          "sd": 241.8988440486271,
+          "minimum": -489.4912800000384,
+          "maximum": 82.97057999999424
+        },
+        "delta_percent": -6.421501776336469,
+        "speedup": 1.0686215519401512,
+        "faster": 7,
+        "delta_ms_bootstrap_95": [
+          -208.892543499978,
+          -1.5595554999848105
+        ]
+      }
+    },
+    "static_unfused_vs_transformer_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -19.63089999999999,
+        "median": -18.974999999999966,
+        "sd": 9.294249630820136,
+        "minimum": -42.533000000000015,
+        "maximum": 0.21000000000003638
+      },
+      "delta_percent": -1.9460537588813165,
+      "speedup": 1.0198467663310142,
+      "faster": 19,
+      "delta_ms_bootstrap_95": [
+        -23.656199999999995,
+        -15.715950000000003
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 36.779941000007454,
+          "median": 135.15863500001046,
+          "sd": 183.92233750815356,
+          "minimum": -406.7284099999142,
+          "maximum": 169.158809999999
+        },
+        "delta_percent": 2.3158447296787843,
+        "speedup": 0.9773657273143049,
+        "faster": 5,
+        "delta_ms_bootstrap_95": [
+          -47.96156399999063,
+          111.28640149999143
+        ]
+      }
+    },
+    "fp32_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 128.5134,
+        "median": 125.47499999999997,
+        "sd": 65.47745381700403,
+        "minimum": 9.009999999999991,
+        "maximum": 377.19000000000005
+      },
+      "delta_percent": 12.649185772655724,
+      "speedup": 0.8877116981725565,
+      "faster": 0,
+      "delta_ms_bootstrap_95": [
+        104.85679999999999,
+        159.8644
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 330.7184279999916,
+          "median": 153.00031999998964,
+          "sd": 397.0147813980939,
+          "minimum": -329.7425999999746,
+          "maximum": 1525.8150400001114
+        },
+        "delta_percent": 22.173172791079466,
+        "speedup": 0.8185102974366034,
+        "faster": 1,
+        "delta_ms_bootstrap_95": [
+          174.36721199999567,
+          511.99622500002704
+        ]
+      }
+    },
+    "cpu_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": 53.436400000000006,
+        "median": 49.120000000000005,
+        "sd": 72.11250735402432,
+        "minimum": -69.63000000000011,
+        "maximum": 322.63
+      },
+      "delta_percent": 5.259583441274929,
+      "speedup": 0.9500322605379747,
+      "faster": 2,
+      "delta_ms_bootstrap_95": [
+        27.101199999999995,
+        88.50170000000001
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 226.63877499999927,
+          "median": 63.005850000024566,
+          "sd": 406.7191181422269,
+          "minimum": -399.1059600000426,
+          "maximum": 852.7670299999954
+        },
+        "delta_percent": 15.195103428689771,
+        "speedup": 0.8680924537899639,
+        "faster": 4,
+        "delta_ms_bootstrap_95": [
+          58.56528799997422,
+          402.4997659999812
+        ]
+      }
+    },
+    "pairs_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -30.41995,
+        "median": -23.124500000000012,
+        "sd": 36.45858007668288,
+        "minimum": -139.08800000000008,
+        "maximum": 41.45000000000016
+      },
+      "delta_percent": -2.9941437915804725,
+      "speedup": 1.030865598311379,
+      "faster": 19,
+      "delta_ms_bootstrap_95": [
+        -47.01470000000001,
+        -16.469549999999987
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 79.23203100000791,
+          "median": 74.82273500005476,
+          "sd": 213.55934387751526,
+          "minimum": -397.4112600000126,
+          "maximum": 653.37860000011
+        },
+        "delta_percent": 5.31214884086042,
+        "speedup": 0.9495580623951778,
+        "faster": 4,
+        "delta_ms_bootstrap_95": [
+          -8.94562599998352,
+          171.52570600002406
+        ]
+      }
+    },
+    "transformer_cpu_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -7.227350000000001,
+        "median": 2.9850000000000136,
+        "sd": 33.726498596917786,
+        "minimum": -110.88000000000011,
+        "maximum": 24.382000000000062
+      },
+      "delta_percent": -0.7113662294671474,
+      "speedup": 1.0071646290461727,
+      "faster": 7,
+      "delta_ms_bootstrap_95": [
+        -23.409150000000004,
+        4.7230500000000175
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 96.66177349999288,
+          "median": 7.596250000005966,
+          "sd": 197.67396519799632,
+          "minimum": -114.37599999999293,
+          "maximum": 507.8758899999798
+        },
+        "delta_percent": 6.480734137099797,
+        "speedup": 0.9391370261520221,
+        "faster": 8,
+        "delta_ms_bootstrap_95": [
+          19.55644700000221,
+          190.31571699997585
+        ]
+      }
+    },
+    "transformer_fpga_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -121.6974,
+        "median": -110.42700000000002,
+        "sd": 35.14299609250606,
+        "minimum": -225.87900000000013,
+        "maximum": -95.57399999999996
+      },
+      "delta_percent": -11.978307481159112,
+      "speedup": 1.1360835850616617,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -138.05995000000004,
+        -108.73840000000001
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 16.648406000005878,
+          "median": 30.988460000003215,
+          "sd": 251.94806417215435,
+          "minimum": -435.8471100000543,
+          "maximum": 678.5134200001721
+        },
+        "delta_percent": 1.1162002225475698,
+        "speedup": 0.9889612127424596,
+        "faster": 6,
+        "delta_ms_bootstrap_95": [
+          -87.75849900000452,
+          128.38641050003048
+        ]
+      }
+    },
+    "static_fpga_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -105.4279,
+        "median": -93.40799999999996,
+        "sd": 34.41910363048866,
+        "minimum": -212.10800000000006,
+        "maximum": -81.12800000000004
+      },
+      "delta_percent": -10.376949740034657,
+      "speedup": 1.1157843848199178,
+      "faster": 20,
+      "delta_ms_bootstrap_95": [
+        -121.6365,
+        -92.79604999999997
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": -5.32367199999868,
+          "median": 73.30565500001285,
+          "sd": 164.55523930972737,
+          "minimum": -400.2409999999941,
+          "maximum": 100.16070000006039
+        },
+        "delta_percent": -0.35692809697017713,
+        "speedup": 1.0035820663710322,
+        "faster": 5,
+        "delta_ms_bootstrap_95": [
+          -81.65088200001378,
+          58.65529350001566
+        ]
+      }
+    },
+    "static_unfused_vs_static_cpu": {
+      "delta_ms": {
+        "n": 20,
+        "mean": -26.85824999999999,
+        "median": -15.816499999999962,
+        "sd": 35.203715998344656,
+        "minimum": -135.96300000000008,
+        "maximum": 3.560000000000059
+      },
+      "delta_percent": -2.643576419100502,
+      "speedup": 1.0271535900957145,
+      "faster": 18,
+      "delta_ms_bootstrap_95": [
+        -43.3141,
+        -13.977649999999977
+      ],
+      "process_wall": {
+        "delta_ms": {
+          "n": 20,
+          "mean": 133.44171450000033,
+          "median": 147.4457099999711,
+          "sd": 224.59229065096426,
+          "minimum": -308.0033999999614,
+          "maximum": 586.0839399999804
+        },
+        "delta_percent": 8.946662606737089,
+        "speedup": 0.9178803426128644,
+        "faster": 3,
+        "delta_ms_bootstrap_95": [
+          37.124030500018534,
+          227.23182399999473
+        ]
+      }
+    }
+  },
+  "phases": {
+    "fp32": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "cpu": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "pairs": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 5.209535,
+        "median": 5.063045,
+        "sd": 0.5927105730056041,
+        "minimum": 5.01963,
+        "maximum": 7.71154
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 53.492166499999996,
+        "median": 52.998585,
+        "sd": 2.349495844331121,
+        "minimum": 52.6974,
+        "maximum": 63.45287
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 13.3755965,
+        "median": 13.07967,
+        "sd": 1.274871197557145,
+        "minimum": 13.00398,
+        "maximum": 18.78025
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 35.421691,
+        "median": 34.85868,
+        "sd": 2.5211129865386215,
+        "minimum": 34.79506,
+        "maximum": 46.1311
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0.34346,
+        "median": 0.333245,
+        "sd": 0.042150859890086274,
+        "minimum": 0.31011,
+        "maximum": 0.4842
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 24.1683115,
+        "median": 23.966279999999998,
+        "sd": 0.6357420619888559,
+        "minimum": 23.82676,
+        "maximum": 26.66636
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 16.498537,
+        "median": 16.45311,
+        "sd": 0.1891851343636981,
+        "minimum": 16.38902,
+        "maximum": 17.23444
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 13.9838745,
+        "median": 13.685659999999999,
+        "sd": 1.2881466658750471,
+        "minimum": 13.62572,
+        "maximum": 19.4509
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 30.528498,
+        "median": 30.220165,
+        "sd": 1.1863487412916192,
+        "minimum": 30.08265,
+        "maximum": 35.50693
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 4.312658,
+        "median": 4.31086,
+        "sd": 0.024196758286575266,
+        "minimum": 4.28943,
+        "maximum": 4.36693
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0.3803975,
+        "median": 0.378455,
+        "sd": 0.0057825107231338465,
+        "minimum": 0.37542,
+        "maximum": 0.39611
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0.0671575,
+        "median": 0.064305,
+        "sd": 0.012391751447933759,
+        "minimum": 0.06032,
+        "maximum": 0.11874
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 34.930224,
+        "median": 34.565765,
+        "sd": 1.4769826417623766,
+        "minimum": 34.40609,
+        "maximum": 41.15849
+      },
+      "download": {
+        "n": 20,
+        "mean": 35.5220875,
+        "median": 35.1811,
+        "sd": 1.256695723549721,
+        "minimum": 34.94762,
+        "maximum": 40.69969
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 217.7727005,
+        "median": 215.293515,
+        "sd": 10.265116891015177,
+        "minimum": 214.80687,
+        "maximum": 261.21971
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 102.8820415,
+        "median": 101.70982,
+        "sd": 4.974690741759758,
+        "minimum": 101.37473,
+        "maximum": 123.96677
+      },
+      "configure": {
+        "n": 20,
+        "mean": 6.2688905,
+        "median": 6.249605,
+        "sd": 0.044932949166390915,
+        "minimum": 6.21957,
+        "maximum": 6.38666
+      }
+    },
+    "transformer_cpu": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "transformer_fpga": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 4.6175695,
+        "median": 4.605715,
+        "sd": 0.019954736800806772,
+        "minimum": 4.59975,
+        "maximum": 4.65618
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 88.897168,
+        "median": 88.889915,
+        "sd": 0.20545472938671616,
+        "minimum": 88.34885,
+        "maximum": 89.28324
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 38.6437435,
+        "median": 38.634474999999995,
+        "sd": 0.09088907932054789,
+        "minimum": 38.44581,
+        "maximum": 38.87549
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 51.670559,
+        "median": 51.61721,
+        "sd": 0.2511245528439076,
+        "minimum": 51.55426,
+        "maximum": 52.72806
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0.719093,
+        "median": 0.7128049999999999,
+        "sd": 0.01939212403881643,
+        "minimum": 0.69448,
+        "maximum": 0.75887
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 21.625574,
+        "median": 21.623835,
+        "sd": 0.09647428887914564,
+        "minimum": 21.47077,
+        "maximum": 21.8164
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 48.528225,
+        "median": 48.530365,
+        "sd": 0.03905060111404686,
+        "minimum": 48.46652,
+        "maximum": 48.61377
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 22.8461,
+        "median": 22.830334999999998,
+        "sd": 0.07014985868613136,
+        "minimum": 22.76846,
+        "maximum": 23.06793
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 27.079044,
+        "median": 27.060245000000002,
+        "sd": 0.07913849049542629,
+        "minimum": 26.96302,
+        "maximum": 27.26775
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 4.0437525,
+        "median": 4.0288900000000005,
+        "sd": 0.02626262581071608,
+        "minimum": 4.02333,
+        "maximum": 4.10057
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0.631573,
+        "median": 0.6268549999999999,
+        "sd": 0.012734701079293052,
+        "minimum": 0.62328,
+        "maximum": 0.67034
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0.0764435,
+        "median": 0.075965,
+        "sd": 0.003494216688065853,
+        "minimum": 0.07054,
+        "maximum": 0.08685
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 102.149233,
+        "median": 102.132755,
+        "sd": 0.14341878167762676,
+        "minimum": 101.84965,
+        "maximum": 102.44525
+      },
+      "download": {
+        "n": 20,
+        "mean": 32.2242915,
+        "median": 32.22045,
+        "sd": 0.10418024260992592,
+        "minimum": 32.03341,
+        "maximum": 32.4309
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 347.9998855,
+        "median": 347.96612000000005,
+        "sd": 0.5378300999041334,
+        "minimum": 346.87915,
+        "maximum": 349.82885
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 146.5848215,
+        "median": 146.60634,
+        "sd": 0.23518901290742356,
+        "minimum": 145.9306,
+        "maximum": 147.12161
+      },
+      "configure": {
+        "n": 20,
+        "mean": 10.948501,
+        "median": 10.931885,
+        "sd": 0.06596187829664235,
+        "minimum": 10.87607,
+        "maximum": 11.13396
+      }
+    },
+    "static_cpu": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "configure": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      }
+    },
+    "static_fpga": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 10.3363425,
+        "median": 10.22218,
+        "sd": 0.4377543178527017,
+        "minimum": 10.19906,
+        "maximum": 12.18657
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 115.692597,
+        "median": 114.362245,
+        "sd": 5.377536660238736,
+        "minimum": 114.12242,
+        "maximum": 138.46212
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 39.137544,
+        "median": 38.61558,
+        "sd": 1.6838041371545995,
+        "minimum": 38.45674,
+        "maximum": 44.51537
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 70.6247295,
+        "median": 69.809065,
+        "sd": 3.498588062170639,
+        "minimum": 69.71255,
+        "maximum": 85.47589
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0.654001,
+        "median": 0.630565,
+        "sd": 0.10399393063767559,
+        "minimum": 0.58443,
+        "maximum": 1.0872
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 51.654973,
+        "median": 50.22386,
+        "sd": 6.1103476945097865,
+        "minimum": 49.95479,
+        "maximum": 77.58235
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 49.3344315,
+        "median": 48.58697,
+        "sd": 3.3500307488208225,
+        "minimum": 48.46062,
+        "maximum": 63.56436
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 30.096061,
+        "median": 29.386065,
+        "sd": 3.0799264591099025,
+        "minimum": 29.28543,
+        "maximum": 43.17574
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 57.901687,
+        "median": 57.353775,
+        "sd": 2.0894736719090425,
+        "minimum": 57.20063,
+        "maximum": 66.73654
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 8.807407,
+        "median": 8.804145,
+        "sd": 0.039560025823524136,
+        "minimum": 8.7634,
+        "maximum": 8.91341
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0.7838245,
+        "median": 0.781455,
+        "sd": 0.011657509653257413,
+        "minimum": 0.77684,
+        "maximum": 0.8323
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0.0766385,
+        "median": 0.077,
+        "sd": 0.00238735765626924,
+        "minimum": 0.07174,
+        "maximum": 0.08077
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 103.7051215,
+        "median": 102.07290499999999,
+        "sd": 6.341334352132815,
+        "minimum": 101.7407,
+        "maximum": 130.22105
+      },
+      "download": {
+        "n": 20,
+        "mean": 74.4550625,
+        "median": 72.88513,
+        "sd": 6.646979536443106,
+        "minimum": 72.59863,
+        "maximum": 102.65932
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 480.0989905,
+        "median": 473.356545,
+        "sd": 27.99643720971586,
+        "minimum": 472.72725,
+        "maximum": 598.86127
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 213.942963,
+        "median": 211.35447499999998,
+        "sd": 10.935753989239101,
+        "minimum": 210.7832,
+        "maximum": 260.34587
+      },
+      "configure": {
+        "n": 20,
+        "mean": 12.0400915,
+        "median": 11.961025,
+        "sd": 0.30711437136290365,
+        "minimum": 11.9272,
+        "maximum": 13.33748
+      }
+    },
+    "static_unfused": {
+      "output_dma_wait": {
+        "n": 20,
+        "mean": 13.860049,
+        "median": 13.841325,
+        "sd": 0.05354479628753545,
+        "minimum": 13.78503,
+        "maximum": 13.98101
+      },
+      "input_dma_wait": {
+        "n": 20,
+        "mean": 112.2035685,
+        "median": 112.17080999999999,
+        "sd": 0.2892180191167942,
+        "minimum": 111.88372,
+        "maximum": 112.91379
+      },
+      "local_dma_wait": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_convert": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "completion_wait": {
+        "n": 20,
+        "mean": 69.7476935,
+        "median": 69.64163,
+        "sd": 0.28127579397555513,
+        "minimum": 69.58629,
+        "maximum": 70.7065
+      },
+      "output_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "bridge_total": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_stage_copy": {
+        "n": 20,
+        "mean": 67.3741315,
+        "median": 67.248485,
+        "sd": 0.43372618818637687,
+        "minimum": 66.98012,
+        "maximum": 68.97663
+      },
+      "local_dma_setup": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_dma_setup": {
+        "n": 20,
+        "mean": 28.9392805,
+        "median": 28.924039999999998,
+        "sd": 0.16904734922111128,
+        "minimum": 28.77272,
+        "maximum": 29.56668
+      },
+      "input_layout": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "input_stage_copy": {
+        "n": 20,
+        "mean": 107.4884645,
+        "median": 107.03121,
+        "sd": 1.8804787248869297,
+        "minimum": 106.68699,
+        "maximum": 115.4081
+      },
+      "pack_pad": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "peak_scan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "output_dma_setup": {
+        "n": 20,
+        "mean": 11.8395755,
+        "median": 11.834325,
+        "sd": 0.04837026669077649,
+        "minimum": 11.77966,
+        "maximum": 11.94057
+      },
+      "dequantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "scale_bound": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "launch": {
+        "n": 20,
+        "mean": 0.6436585,
+        "median": 0.643035,
+        "sd": 0.001893807846085421,
+        "minimum": 0.64135,
+        "maximum": 0.64816
+      },
+      "quantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "int8_requantize": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "tile_plan": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "workspace": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "layout_allocate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "local_feedback": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "download": {
+        "n": 20,
+        "mean": 97.803597,
+        "median": 97.656915,
+        "sd": 0.461634078135259,
+        "minimum": 97.32462,
+        "maximum": 99.47553
+      },
+      "int8_accumulate": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "adapter_total": {
+        "n": 20,
+        "mean": 436.989454,
+        "median": 436.280705,
+        "sd": 2.7558498024621283,
+        "minimum": 435.92531,
+        "maximum": 448.57735
+      },
+      "device_init": {
+        "n": 20,
+        "mean": 0,
+        "median": 0.0,
+        "sd": 0.0,
+        "minimum": 0,
+        "maximum": 0
+      },
+      "upload": {
+        "n": 20,
+        "mean": 258.8903715,
+        "median": 258.34969,
+        "sd": 2.1402788845659075,
+        "minimum": 257.96141,
+        "maximum": 267.83679
+      },
+      "configure": {
+        "n": 20,
+        "mean": 6.490754,
+        "median": 6.481120000000001,
+        "sd": 0.034782861690327065,
+        "minimum": 6.45498,
+        "maximum": 6.57657
+      }
+    }
+  },
+  "scores": {
+    "transformer_cpu_vs_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3483225751233896,
+      "mean_relative_l2": 2.011309635727464,
+      "max_abs": 5.420972675085068
+    },
+    "static_fpga_vs_static_cpu": {
+      "top1_agreement": 12,
+      "mean_cosine": 0.975831324223629,
+      "mean_relative_l2": 0.22024479388306956,
+      "max_abs": 1.6540542542934418
+    },
+    "transformer_fpga_vs_transformer_cpu": {
+      "top1_agreement": 14,
+      "mean_cosine": 0.9782925212738431,
+      "mean_relative_l2": 0.20764107345545554,
+      "max_abs": 1.44066321849823
+    },
+    "static_unfused_vs_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3546976508907813,
+      "mean_relative_l2": 2.2041499471980153,
+      "max_abs": 6.325592756271362
+    },
+    "pairs_vs_cpu": {
+      "top1_agreement": 20,
+      "mean_cosine": 0.997551965812532,
+      "mean_relative_l2": 0.07032926907728271,
+      "max_abs": 0.24664795398712158
+    },
+    "transformer_fpga_vs_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3439477881987984,
+      "mean_relative_l2": 2.0108726586350736,
+      "max_abs": 5.548058211803436
+    },
+    "static_cpu_vs_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.35071626077294205,
+      "mean_relative_l2": 2.202625046590129,
+      "max_abs": 6.325592756271362
+    },
+    "fp32_vs_cpu": {
+      "top1_agreement": 19,
+      "mean_cosine": 0.9936689457516816,
+      "mean_relative_l2": 0.12580752653353774,
+      "max_abs": 0.4345897436141968
+    },
+    "static_fpga_vs_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3546976508907813,
+      "mean_relative_l2": 2.2041499471980153,
+      "max_abs": 6.325592756271362
+    },
+    "static_unfused_vs_static_cpu": {
+      "top1_agreement": 12,
+      "mean_cosine": 0.975831324223629,
+      "mean_relative_l2": 0.22024479388306956,
+      "max_abs": 1.6540542542934418
+    },
+    "cpu_vs_fp32": {
+      "top1_agreement": 19,
+      "mean_cosine": 0.9936689457516816,
+      "mean_relative_l2": 0.11936062615545487,
+      "max_abs": 0.4345897436141968
+    },
+    "pairs_vs_fp32": {
+      "top1_agreement": 19,
+      "mean_cosine": 0.9937218784977032,
+      "mean_relative_l2": 0.12090336800839396,
+      "max_abs": 0.39663243293762207
+    },
+    "transformer_cpu_vs_fp32": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3453092458728685,
+      "mean_relative_l2": 1.9218413029208061,
+      "max_abs": 5.625332474708557
+    },
+    "transformer_fpga_vs_fp32": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.34153434727120374,
+      "mean_relative_l2": 1.9212665795861643,
+      "max_abs": 5.734178185462952
+    },
+    "static_cpu_vs_fp32": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3395480398057332,
+      "mean_relative_l2": 2.1100902983053405,
+      "max_abs": 6.197876811027527
+    },
+    "static_fpga_vs_fp32": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3431611013599402,
+      "mean_relative_l2": 2.111759280358494,
+      "max_abs": 6.197876811027527
+    },
+    "static_unfused_vs_fp32": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3431611013599402,
+      "mean_relative_l2": 2.111759280358494,
+      "max_abs": 6.197876811027527
+    },
+    "fp32_vs_transformer_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3453092458728685,
+      "mean_relative_l2": 0.9528929291816962,
+      "max_abs": 5.625332474708557
+    },
+    "cpu_vs_transformer_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3483225751233896,
+      "mean_relative_l2": 0.9476790948422834,
+      "max_abs": 5.420972675085068
+    },
+    "pairs_vs_transformer_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.35142836046859116,
+      "mean_relative_l2": 0.9457867957476169,
+      "max_abs": 5.568777799606323
+    },
+    "static_cpu_vs_transformer_cpu": {
+      "top1_agreement": 5,
+      "mean_cosine": 0.8054866925513996,
+      "mean_relative_l2": 0.6635910822135125,
+      "max_abs": 4.053369998931885
+    },
+    "static_fpga_vs_transformer_cpu": {
+      "top1_agreement": 7,
+      "mean_cosine": 0.8075990936444206,
+      "mean_relative_l2": 0.6605306000817518,
+      "max_abs": 3.954385459423065
+    },
+    "static_unfused_vs_transformer_cpu": {
+      "top1_agreement": 7,
+      "mean_cosine": 0.8075990936444206,
+      "mean_relative_l2": 0.6605306000817518,
+      "max_abs": 3.954385459423065
+    },
+    "fp32_vs_static_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3395480398057332,
+      "mean_relative_l2": 0.9492473622992079,
+      "max_abs": 6.197876811027527
+    },
+    "cpu_vs_static_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.35071626077294205,
+      "mean_relative_l2": 0.9417535456058961,
+      "max_abs": 6.325592756271362
+    },
+    "pairs_vs_static_cpu": {
+      "top1_agreement": 0,
+      "mean_cosine": 0.3542831505207682,
+      "mean_relative_l2": 0.9399297766751308,
+      "max_abs": 6.19565361738205
+    },
+    "transformer_cpu_vs_static_cpu": {
+      "top1_agreement": 5,
+      "mean_cosine": 0.8054866925513996,
+      "mean_relative_l2": 0.6000681414972974,
+      "max_abs": 4.053369998931885
+    },
+    "transformer_fpga_vs_static_cpu": {
+      "top1_agreement": 3,
+      "mean_cosine": 0.8055105573644347,
+      "mean_relative_l2": 0.6002385497864556,
+      "max_abs": 4.127267479896545
+    }
+  },
+  "operator_accounting_ms": {
+    "fp32": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1148.1959305,
+        "median": 1143.190005,
+        "sd": 16.624744257790937,
+        "minimum": 1134.921,
+        "maximum": 1203.12266
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1139.713684,
+        "median": 1134.673585,
+        "sd": 16.60477487582712,
+        "minimum": 1126.40227,
+        "maximum": 1194.59059
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 8.4822465,
+        "median": 8.484005,
+        "sd": 0.09009682757864901,
+        "minimum": 8.319,
+        "maximum": 8.63196
+      }
+    },
+    "cpu": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1157.4945545,
+        "median": 1064.77548,
+        "sd": 289.6673195049273,
+        "minimum": 1058.84699,
+        "maximum": 2233.66343
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1147.0429145,
+        "median": 1055.095865,
+        "sd": 288.0134355954652,
+        "minimum": 1049.24738,
+        "maximum": 2221.0916
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 10.45164,
+        "median": 9.74654,
+        "sd": 2.5788466649607042,
+        "minimum": 9.59961,
+        "maximum": 21.0629
+      }
+    },
+    "pairs": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1096.3037185,
+        "median": 1018.25384,
+        "sd": 334.4033367788334,
+        "minimum": 1013.74362,
+        "maximum": 2516.31099
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1085.507962,
+        "median": 1008.29818,
+        "sd": 331.1393958834645,
+        "minimum": 1003.68531,
+        "maximum": 2491.65254
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 10.7957565,
+        "median": 10.033995,
+        "sd": 3.2646623934897234,
+        "minimum": 9.92045,
+        "maximum": 24.65845
+      }
+    },
+    "transformer_cpu": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1022.4324265,
+        "median": 1020.11069,
+        "sd": 10.99941654468869,
+        "minimum": 1011.33644,
+        "maximum": 1064.02439
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1012.2422765,
+        "median": 1009.921245,
+        "sd": 10.983777810110515,
+        "minimum": 1001.15406,
+        "maximum": 1053.83649
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 10.190150000000001,
+        "median": 10.18244,
+        "sd": 0.08843382759531504,
+        "minimum": 9.99077,
+        "maximum": 10.34854
+      }
+    },
+    "transformer_fpga": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 965.6998305,
+        "median": 965.5121,
+        "sd": 2.5778714206808138,
+        "minimum": 961.43214,
+        "maximum": 972.14858
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 955.85176,
+        "median": 955.62927,
+        "sd": 2.565342994703375,
+        "minimum": 951.6111,
+        "maximum": 962.30515
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 9.8480705,
+        "median": 9.82194,
+        "sd": 0.0984998204366516,
+        "minimum": 9.74419,
+        "maximum": 10.12549
+      }
+    },
+    "static_cpu": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1016.675418,
+        "median": 1015.041725,
+        "sd": 5.740718353118164,
+        "minimum": 1010.11109,
+        "maximum": 1032.00518
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1005.898612,
+        "median": 1004.276685,
+        "sd": 5.7414642904141715,
+        "minimum": 999.32726,
+        "maximum": 1021.26124
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 10.776806,
+        "median": 10.758665,
+        "sd": 0.07326509691021485,
+        "minimum": 10.66687,
+        "maximum": 10.93539
+      }
+    },
+    "static_fpga": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1018.211369,
+        "median": 990.960765,
+        "sd": 115.71973444988818,
+        "minimum": 987.28284,
+        "maximum": 1509.41105
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1007.475021,
+        "median": 980.59312,
+        "sd": 113.95614549021548,
+        "minimum": 976.91416,
+        "maximum": 1491.17687
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 10.736348,
+        "median": 10.346465,
+        "sd": 1.7658228874428037,
+        "minimum": 10.23295,
+        "maximum": 18.23418
+      }
+    },
+    "static_unfused": {
+      "inference_ms": {
+        "n": 20,
+        "mean": 1027.4022435,
+        "median": 1024.8251,
+        "sd": 11.917612527397479,
+        "minimum": 1021.54375,
+        "maximum": 1077.418
+      },
+      "sum_operator_ms": {
+        "n": 20,
+        "mean": 1016.3286420000001,
+        "median": 1014.08396,
+        "sd": 10.898156015373258,
+        "minimum": 1010.69626,
+        "maximum": 1061.96239
+      },
+      "outside_operator_ms": {
+        "n": 20,
+        "mean": 11.0736015,
+        "median": 10.850935,
+        "sd": 1.034770025659274,
+        "minimum": 10.70782,
+        "maximum": 15.45561
+      }
+    }
+  },
+  "cpu_candidate_wall_ms": {
+    "n": 20,
+    "mean": 596.6580875000001,
+    "median": 554.1616600000002,
+    "sd": 142.74021589156942,
+    "minimum": 550.156,
+    "maximum": 1164.6374900000003
+  },
+  "operator_categories_ms": {
+    "fp32": {
+      "Raster": {
+        "n": 20,
+        "mean": 110.80832350000001,
+        "median": 109.61530500000003,
+        "sd": 3.1884689063896294,
+        "minimum": 108.29156999999998,
+        "maximum": 122.44467000000004
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 711.6513065,
+        "median": 707.9333999999999,
+        "sd": 9.785499989388287,
+        "minimum": 703.9222799999999,
+        "maximum": 738.5508200000002
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 119.4907585,
+        "median": 118.717685,
+        "sd": 1.6060129356963322,
+        "minimum": 118.32912999999999,
+        "maximum": 124.06152
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 39.452894,
+        "median": 39.194424999999995,
+        "sd": 0.7213946931093371,
+        "minimum": 38.80921,
+        "maximum": 41.837219999999995
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 37.9803915,
+        "median": 37.429525000000005,
+        "sd": 1.4148714573835641,
+        "minimum": 36.868140000000004,
+        "maximum": 41.93733000000001
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 8.0631595,
+        "median": 7.315275000000001,
+        "sd": 3.348545941195929,
+        "minimum": 7.144920000000001,
+        "maximum": 22.283809999999995
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.08547349999999,
+        "median": 83.86247499999999,
+        "sd": 1.0642758203797569,
+        "minimum": 82.85713999999997,
+        "maximum": 87.23201
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 28.0426055,
+        "median": 27.63627,
+        "sd": 1.4884695768065557,
+        "minimum": 27.463420000000003,
+        "maximum": 34.203450000000004
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.1387715,
+        "median": 0.13541999999999998,
+        "sd": 0.012670303562599482,
+        "minimum": 0.12588,
+        "maximum": 0.17649
+      }
+    },
+    "cpu": {
+      "Raster": {
+        "n": 20,
+        "mean": 117.433369,
+        "median": 109.86926000000001,
+        "sd": 22.799684801646947,
+        "minimum": 108.76442999999999,
+        "maximum": 188.98980999999995
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 395.666004,
+        "median": 364.4265,
+        "sd": 109.01634155349338,
+        "minimum": 362.18005000000005,
+        "maximum": 846.1891599999999
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 130.7742085,
+        "median": 118.787565,
+        "sd": 32.51091132259596,
+        "minimum": 118.21975,
+        "maximum": 243.24905000000004
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 36.544735,
+        "median": 34.206875,
+        "sd": 6.617940389686761,
+        "minimum": 33.77688,
+        "maximum": 61.94656
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 41.178934,
+        "median": 37.51444999999999,
+        "sd": 11.627646319608692,
+        "minimum": 37.25765,
+        "maximum": 83.85122000000001
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 8.9460805,
+        "median": 7.277354999999998,
+        "sd": 5.036056509241997,
+        "minimum": 7.186630000000001,
+        "maximum": 25.95951
+      },
+      "While": {
+        "n": 20,
+        "mean": 88.7604735,
+        "median": 83.743685,
+        "sd": 15.524857650101955,
+        "minimum": 82.71627000000001,
+        "maximum": 138.44323
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 30.216396,
+        "median": 27.680405,
+        "sd": 7.823878968856142,
+        "minimum": 27.5231,
+        "maximum": 53.41915999999999
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 24.439203,
+        "median": 20.028304999999996,
+        "sd": 13.744701451413386,
+        "minimum": 19.836609999999993,
+        "maximum": 73.21556999999999
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 248.72311749999997,
+        "median": 230.80532999999997,
+        "sd": 54.41144142201457,
+        "minimum": 229.39907,
+        "maximum": 438.82152999999994
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 18.624273,
+        "median": 14.318135,
+        "sd": 14.025563804315956,
+        "minimum": 14.23405,
+        "maximum": 72.28809
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 5.0294185,
+        "median": 4.40409,
+        "sd": 2.1707144222880195,
+        "minimum": 4.37268,
+        "maximum": 13.9318
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.7067019999999999,
+        "median": 0.140005,
+        "sd": 2.521239997656959,
+        "minimum": 0.1315,
+        "maximum": 11.41818
+      }
+    },
+    "pairs": {
+      "Raster": {
+        "n": 20,
+        "mean": 106.78570500000001,
+        "median": 101.00450499999998,
+        "sd": 24.02011849133743,
+        "minimum": 100.36858999999993,
+        "maximum": 208.5944900000001
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 390.353558,
+        "median": 364.0092000000001,
+        "sd": 106.78635359216283,
+        "minimum": 362.12111000000004,
+        "maximum": 843.47231
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 111.791609,
+        "median": 104.80326999999997,
+        "sd": 27.05751737913687,
+        "minimum": 104.32733,
+        "maximum": 225.90846
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 37.17893,
+        "median": 34.14537,
+        "sd": 12.791846133750493,
+        "minimum": 33.829919999999994,
+        "maximum": 91.47434000000001
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 39.986848,
+        "median": 37.61385000000001,
+        "sd": 9.8846715540459,
+        "minimum": 37.163589999999985,
+        "maximum": 81.83447
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 10.88133,
+        "median": 7.36167,
+        "sd": 15.616448750374174,
+        "minimum": 7.23355,
+        "maximum": 77.22287999999999
+      },
+      "While": {
+        "n": 20,
+        "mean": 88.998894,
+        "median": 84.372385,
+        "sd": 20.61060616991047,
+        "minimum": 83.20848,
+        "maximum": 176.50451999999999
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 31.222196,
+        "median": 27.799909999999997,
+        "sd": 14.23214066783771,
+        "minimum": 27.549360000000004,
+        "maximum": 91.56672
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 15.2350565,
+        "median": 13.396119999999996,
+        "sd": 7.694404761081962,
+        "minimum": 13.257850000000001,
+        "maximum": 47.874109999999995
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 218.547495,
+        "median": 215.861005,
+        "sd": 11.205186278908847,
+        "minimum": 215.35647999999995,
+        "maximum": 265.99790999999993
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 15.8791535,
+        "median": 11.613995,
+        "sd": 18.867480991340425,
+        "minimum": 11.49667,
+        "maximum": 96.03245
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 5.353277,
+        "median": 4.4328899999999996,
+        "sd": 3.911197919415887,
+        "minimum": 4.379049999999999,
+        "maximum": 21.956650000000003
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 13.29391,
+        "median": 0.14071,
+        "sd": 58.824904367745916,
+        "minimum": 0.13348,
+        "maximum": 263.21323
+      }
+    },
+    "transformer_cpu": {
+      "Raster": {
+        "n": 20,
+        "mean": 111.406497,
+        "median": 110.46428999999998,
+        "sd": 4.2883842765178235,
+        "minimum": 109.01948000000002,
+        "maximum": 129.27921
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 205.76656450000002,
+        "median": 204.59803500000004,
+        "sd": 2.9316652742865426,
+        "minimum": 203.11204,
+        "maximum": 213.37142
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 119.1719115,
+        "median": 118.90009999999998,
+        "sd": 0.8391623057127916,
+        "minimum": 118.32731999999997,
+        "maximum": 121.29562999999997
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 34.3023845,
+        "median": 34.265420000000006,
+        "sd": 0.24760887675344956,
+        "minimum": 33.78723,
+        "maximum": 34.70418
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 37.832198,
+        "median": 37.73138499999999,
+        "sd": 0.33877218663564074,
+        "minimum": 37.45832,
+        "maximum": 38.865469999999995
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 7.558949999999999,
+        "median": 7.408800000000001,
+        "sd": 0.5492848704595726,
+        "minimum": 7.213169999999999,
+        "maximum": 9.52281
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 29.3802735,
+        "median": 29.14910000000001,
+        "sd": 0.6586934171147178,
+        "minimum": 28.852079999999994,
+        "maximum": 31.215170000000004
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 333.48857949999996,
+        "median": 332.27210999999994,
+        "sd": 3.6708433862024217,
+        "minimum": 329.78998999999993,
+        "maximum": 347.05818999999997
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 17.087779500000003,
+        "median": 17.09635,
+        "sd": 0.14158596152068395,
+        "minimum": 16.853250000000006,
+        "maximum": 17.434580000000004
+      },
+      "While": {
+        "n": 20,
+        "mean": 83.944019,
+        "median": 83.714125,
+        "sd": 0.8009953500285552,
+        "minimum": 83.03267,
+        "maximum": 86.41284999999999
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.658247,
+        "median": 27.62607,
+        "sd": 0.1474289122219494,
+        "minimum": 27.496990000000004,
+        "maximum": 28.180899999999998
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 4.5115095,
+        "median": 4.512045,
+        "sd": 0.07861263903168689,
+        "minimum": 4.39692,
+        "maximum": 4.70733
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.133363,
+        "median": 0.13107,
+        "sd": 0.010616913071034101,
+        "minimum": 0.12074,
+        "maximum": 0.16492
+      }
+    },
+    "transformer_fpga": {
+      "Raster": {
+        "n": 20,
+        "mean": 92.6498505,
+        "median": 92.29559,
+        "sd": 1.478663206446876,
+        "minimum": 90.81088999999999,
+        "maximum": 96.92385000000002
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 204.217101,
+        "median": 204.00268499999999,
+        "sd": 0.9232988386609344,
+        "minimum": 202.98069,
+        "maximum": 207.23118
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 88.5028935,
+        "median": 88.37983,
+        "sd": 0.47976316405268316,
+        "minimum": 88.03894000000001,
+        "maximum": 89.89908
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 34.35647,
+        "median": 34.230205,
+        "sd": 0.43354314047465997,
+        "minimum": 33.80478,
+        "maximum": 35.32804999999999
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 37.5822725,
+        "median": 37.57068000000001,
+        "sd": 0.24579565265040976,
+        "minimum": 37.14350000000001,
+        "maximum": 38.07299
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 7.3757375,
+        "median": 7.375245,
+        "sd": 0.08712726873131592,
+        "minimum": 7.215649999999998,
+        "maximum": 7.5543
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 14.644775,
+        "median": 14.637160000000002,
+        "sd": 0.1576278516499849,
+        "minimum": 14.407529999999996,
+        "maximum": 14.925060000000006
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 348.7470125,
+        "median": 348.718115,
+        "sd": 0.5354420589114305,
+        "minimum": 347.62833,
+        "maximum": 350.55956
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 11.11591,
+        "median": 11.120664999999999,
+        "sd": 0.10619534279608918,
+        "minimum": 10.932210000000005,
+        "maximum": 11.34123
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.2854925,
+        "median": 84.31222,
+        "sd": 0.260280675827486,
+        "minimum": 83.69163999999999,
+        "maximum": 84.69277
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.7586805,
+        "median": 27.680075000000002,
+        "sd": 0.20718997142147474,
+        "minimum": 27.51901,
+        "maximum": 28.33541
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 4.485705,
+        "median": 4.473990000000001,
+        "sd": 0.05956677089398802,
+        "minimum": 4.395429999999999,
+        "maximum": 4.64648
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.1298595,
+        "median": 0.128255,
+        "sd": 0.006072396106454538,
+        "minimum": 0.12188,
+        "maximum": 0.14699
+      }
+    },
+    "static_cpu": {
+      "Raster": {
+        "n": 20,
+        "mean": 110.425664,
+        "median": 110.24156499999992,
+        "sd": 1.2036933744036151,
+        "minimum": 108.62874000000002,
+        "maximum": 113.62091000000005
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 42.3216075,
+        "median": 42.302395,
+        "sd": 0.1915300112494392,
+        "minimum": 41.99561,
+        "maximum": 42.80649
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 119.120704,
+        "median": 118.956295,
+        "sd": 0.6724492295247477,
+        "minimum": 118.40936,
+        "maximum": 121.25652000000001
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 69.70104450000001,
+        "median": 69.59481,
+        "sd": 0.40840825302855915,
+        "minimum": 69.20084000000003,
+        "maximum": 70.81011999999997
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 430.62979149999995,
+        "median": 429.459975,
+        "sd": 3.2403318690549945,
+        "minimum": 427.2097,
+        "maximum": 440.53026
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 37.3400235,
+        "median": 37.13929,
+        "sd": 0.7279669149095248,
+        "minimum": 36.94165000000001,
+        "maximum": 40.25990999999999
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 34.507686,
+        "median": 34.515055,
+        "sd": 0.2243835961824972,
+        "minimum": 34.11831,
+        "maximum": 34.93936
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 37.8768975,
+        "median": 37.78724,
+        "sd": 0.4295084735868342,
+        "minimum": 37.20031000000001,
+        "maximum": 39.257299999999994
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 7.332506,
+        "median": 7.282795,
+        "sd": 0.11740111616971421,
+        "minimum": 7.18699,
+        "maximum": 7.578429999999999
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.2325345,
+        "median": 83.79956000000001,
+        "sd": 1.319621115561801,
+        "minimum": 83.19823,
+        "maximum": 88.90934
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.8154155,
+        "median": 27.686519999999994,
+        "sd": 0.576548456122841,
+        "minimum": 27.538100000000004,
+        "maximum": 30.23752
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 4.460627,
+        "median": 4.456754999999999,
+        "sd": 0.0640419753878573,
+        "minimum": 4.38155,
+        "maximum": 4.597309999999999
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.1341105,
+        "median": 0.127905,
+        "sd": 0.027979878761823035,
+        "minimum": 0.11926,
+        "maximum": 0.24966
+      }
+    },
+    "static_fpga": {
+      "Raster": {
+        "n": 20,
+        "mean": 95.0235935,
+        "median": 91.94450999999998,
+        "sd": 14.244858579530929,
+        "minimum": 90.34662999999993,
+        "maximum": 155.39763000000022
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 43.315542,
+        "median": 42.16576500000001,
+        "sd": 5.026695172534859,
+        "minimum": 41.82508,
+        "maximum": 64.6631
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 93.5740445,
+        "median": 88.8203,
+        "sd": 18.356937544085838,
+        "minimum": 88.31780000000002,
+        "maximum": 171.18565
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 56.273993499999996,
+        "median": 55.19901,
+        "sd": 4.371440280687062,
+        "minimum": 54.95351,
+        "maximum": 74.77709999999998
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 481.07457200000005,
+        "median": 474.327135,
+        "sd": 28.084792830377257,
+        "minimum": 473.68802000000017,
+        "maximum": 600.2130500000003
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 34.5390555,
+        "median": 31.16901500000001,
+        "sd": 13.638866794270616,
+        "minimum": 31.01305,
+        "maximum": 92.25336
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 35.7668865,
+        "median": 34.506895,
+        "sd": 4.495565134606227,
+        "minimum": 34.161469999999994,
+        "maximum": 54.53492
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 39.758334,
+        "median": 37.85338,
+        "sd": 8.797588538596003,
+        "minimum": 37.21621,
+        "maximum": 77.11197999999999
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 7.9349745,
+        "median": 7.397255000000001,
+        "sd": 2.336038896527455,
+        "minimum": 7.218370000000001,
+        "maximum": 17.83484
+      },
+      "While": {
+        "n": 20,
+        "mean": 86.948668,
+        "median": 84.10494499999999,
+        "sd": 11.396235141261442,
+        "minimum": 83.46349999999998,
+        "maximum": 135.07633
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 28.5576295,
+        "median": 27.762695,
+        "sd": 3.2443774281029563,
+        "minimum": 27.56829,
+        "maximum": 42.298590000000004
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 4.579662,
+        "median": 4.48499,
+        "sd": 0.2998187246812207,
+        "minimum": 4.4046199999999995,
+        "maximum": 5.689089999999999
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.1280655,
+        "median": 0.12522,
+        "sd": 0.0067833709016589736,
+        "minimum": 0.12109,
+        "maximum": 0.14123
+      }
+    },
+    "static_unfused": {
+      "Raster": {
+        "n": 20,
+        "mean": 110.98347,
+        "median": 110.73543499999998,
+        "sd": 1.0616492335339134,
+        "minimum": 109.71681000000004,
+        "maximum": 112.82772999999997
+      },
+      "Convolution FP32": {
+        "n": 20,
+        "mean": 42.281936,
+        "median": 42.20366,
+        "sd": 0.22245203954773562,
+        "minimum": 41.96001,
+        "maximum": 42.932829999999996
+      },
+      "UnaryOp": {
+        "n": 20,
+        "mean": 120.02579749999998,
+        "median": 119.13421,
+        "sd": 3.6001635345836727,
+        "minimum": 118.83359,
+        "maximum": 135.24064999999996
+      },
+      "FloatToInt8": {
+        "n": 20,
+        "mean": 70.40587649999999,
+        "median": 69.834035,
+        "sd": 2.300384620717691,
+        "minimum": 69.48037,
+        "maximum": 80.04229999999998
+      },
+      "Convolution INT8": {
+        "n": 20,
+        "mean": 437.928834,
+        "median": 437.20055500000007,
+        "sd": 2.76746234384194,
+        "minimum": 436.85416,
+        "maximum": 449.56599
+      },
+      "Int8ToFloat": {
+        "n": 20,
+        "mean": 37.931985499999996,
+        "median": 37.49249999999998,
+        "sd": 1.99772231311318,
+        "minimum": 37.221220000000024,
+        "maximum": 46.38949000000001
+      },
+      "ConvolutionDepthwise FP32": {
+        "n": 20,
+        "mean": 34.4581785,
+        "median": 34.42029000000001,
+        "sd": 0.16118795936731836,
+        "minimum": 34.183949999999996,
+        "maximum": 34.73022
+      },
+      "BinaryOp": {
+        "n": 20,
+        "mean": 38.247292,
+        "median": 38.325680000000006,
+        "sd": 0.27588128523544003,
+        "minimum": 37.79906999999999,
+        "maximum": 38.79218000000001
+      },
+      "LayerNorm": {
+        "n": 20,
+        "mean": 7.3883515,
+        "median": 7.342475,
+        "sd": 0.14192451226564826,
+        "minimum": 7.233390000000001,
+        "maximum": 7.8464
+      },
+      "While": {
+        "n": 20,
+        "mean": 84.3386405,
+        "median": 84.129105,
+        "sd": 0.9575647473970786,
+        "minimum": 83.31956000000001,
+        "maximum": 87.91179
+      },
+      "Softmax": {
+        "n": 20,
+        "mean": 27.74346,
+        "median": 27.733495,
+        "sd": 0.1355122647003235,
+        "minimum": 27.607969999999998,
+        "maximum": 28.240669999999998
+      },
+      "ConvolutionDepthwise INT8": {
+        "n": 20,
+        "mean": 4.4660715,
+        "median": 4.4444,
+        "sd": 0.05865250407675436,
+        "minimum": 4.39992,
+        "maximum": 4.5583
+      },
+      "Reduction": {
+        "n": 20,
+        "mean": 0.1287485,
+        "median": 0.129655,
+        "sd": 0.00471329728701569,
+        "minimum": 0.12178,
+        "maximum": 0.13829
+      }
+    }
+  },
+  "complete_candidate_region_ms": {
+    "fp32": {
+      "n": 20,
+      "mean": 718.589058,
+      "median": 715.1473500000001,
+      "sd": 9.85836125729434,
+      "minimum": 711.0629299999998,
+      "maximum": 746.1592200000002
+    },
+    "cpu": {
+      "n": 20,
+      "mean": 665.1131005000001,
+      "median": 616.72648,
+      "sd": 159.03384214142164,
+      "minimum": 612.35227,
+      "maximum": 1285.5111500000003
+    },
+    "pairs": {
+      "n": 20,
+      "mean": 596.050962,
+      "median": 567.5764350000002,
+      "sd": 115.17463962039953,
+      "minimum": 565.4205699999999,
+      "maximum": 1084.78372
+    },
+    "transformer_cpu": {
+      "n": 20,
+      "mean": 566.668633,
+      "median": 565.606945,
+      "sd": 4.548133439896666,
+      "minimum": 561.796,
+      "maximum": 581.2862700000001
+    },
+    "transformer_fpga": {
+      "n": 20,
+      "mean": 511.078275,
+      "median": 510.91015500000003,
+      "sd": 0.9350250401853734,
+      "minimum": 509.4529200000002,
+      "maximum": 513.66228
+    },
+    "static_cpu": {
+      "n": 20,
+      "mean": 501.3543825,
+      "median": 500.1915,
+      "sd": 3.484223138224005,
+      "minimum": 497.5387,
+      "maximum": 511.09832
+    },
+    "static_fpga": {
+      "n": 20,
+      "mean": 481.46705900000006,
+      "median": 474.71819000000005,
+      "sd": 28.093595655919852,
+      "minimum": 474.0763200000002,
+      "maximum": 600.6432800000003
+    },
+    "static_unfused": {
+      "n": 20,
+      "mean": 509.18248600000004,
+      "median": 508.03794500000015,
+      "sd": 4.5093689153751315,
+      "minimum": 507.55152,
+      "maximum": 528.23132
+    }
+  },
+  "resident_pair_regions_ms": {
+    "fp32": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 74.7948595,
+        "median": 74.73079999999999,
+        "sd": 0.21176731350272088,
+        "minimum": 74.35895,
+        "maximum": 75.16460000000001
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 29.947145,
+        "median": 29.534425,
+        "sd": 1.7697130427082175,
+        "minimum": 29.3429,
+        "maximum": 37.44094
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 74.826306,
+        "median": 74.79907499999999,
+        "sd": 0.23611816725841658,
+        "minimum": 74.44395,
+        "maximum": 75.23895999999999
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 29.559428,
+        "median": 29.529034999999997,
+        "sd": 0.19758527383865107,
+        "minimum": 29.291759999999996,
+        "maximum": 30.034969999999998
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 29.473014,
+        "median": 29.4631,
+        "sd": 0.11042089258831343,
+        "minimum": 29.3046,
+        "maximum": 29.687749999999998
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 35.0113745,
+        "median": 34.4922,
+        "sd": 2.018394919229986,
+        "minimum": 33.28038,
+        "maximum": 42.037440000000004
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 30.055762,
+        "median": 29.56355,
+        "sd": 2.257509841889371,
+        "minimum": 29.30847,
+        "maximum": 39.63374
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 34.6868495,
+        "median": 34.42136,
+        "sd": 1.4727804900022667,
+        "minimum": 33.17232,
+        "maximum": 40.00967
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 30.1352085,
+        "median": 29.47211,
+        "sd": 2.047221007145449,
+        "minimum": 29.33595,
+        "maximum": 37.08886
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 29.5556385,
+        "median": 29.509165000000003,
+        "sd": 0.1822238398602684,
+        "minimum": 29.34532,
+        "maximum": 30.06348
+      }
+    },
+    "cpu": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 76.3577555,
+        "median": 69.203105,
+        "sd": 21.63836024969216,
+        "minimum": 69.03009,
+        "maximum": 146.88337
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 24.0480415,
+        "median": 21.653025,
+        "sd": 7.061897965755364,
+        "minimum": 21.56872,
+        "maximum": 45.78027
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 63.346359,
+        "median": 58.404005,
+        "sd": 16.02614700984084,
+        "minimum": 57.47381,
+        "maximum": 121.59477999999999
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 22.857514,
+        "median": 21.633515000000003,
+        "sd": 4.146671114769938,
+        "minimum": 21.561529999999998,
+        "maximum": 39.327619999999996
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 27.808553500000002,
+        "median": 25.940365,
+        "sd": 8.194605882026925,
+        "minimum": 25.779130000000002,
+        "maximum": 62.61641
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 32.473944,
+        "median": 31.221475,
+        "sd": 3.499530013425712,
+        "minimum": 30.60033,
+        "maximum": 46.2979
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 23.631416,
+        "median": 21.69367,
+        "sd": 6.39742296597902,
+        "minimum": 21.580170000000003,
+        "maximum": 47.933490000000006
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 35.995367,
+        "median": 34.03288,
+        "sd": 6.099775139425955,
+        "minimum": 33.13702,
+        "maximum": 60.36107
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 27.049141,
+        "median": 25.907705,
+        "sd": 5.085169447624293,
+        "minimum": 25.721269999999997,
+        "maximum": 48.64959999999999
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 27.141392,
+        "median": 25.948815,
+        "sd": 4.524719849078881,
+        "minimum": 25.74906,
+        "maximum": 45.977109999999996
+      }
+    },
+    "pairs": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 67.9546085,
+        "median": 65.273865,
+        "sd": 11.108861469282447,
+        "minimum": 65.03242,
+        "maximum": 114.99271
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.0583675,
+        "median": 17.98397,
+        "sd": 0.31148879918824823,
+        "minimum": 17.895719999999997,
+        "maximum": 19.33944
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 31.3268665,
+        "median": 31.11914,
+        "sd": 0.8997581972910116,
+        "minimum": 30.96604,
+        "maximum": 35.074540000000006
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.0504165,
+        "median": 17.975849999999994,
+        "sd": 0.32683765233192197,
+        "minimum": 17.90533,
+        "maximum": 19.420540000000003
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 26.3289695,
+        "median": 25.066885,
+        "sd": 4.630939540408704,
+        "minimum": 24.865270000000002,
+        "maximum": 45.680719999999994
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 31.039686,
+        "median": 29.913045,
+        "sd": 5.085346016540177,
+        "minimum": 29.66923,
+        "maximum": 52.63793
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.277,
+        "median": 17.986355,
+        "sd": 1.1787557978961045,
+        "minimum": 17.93382,
+        "maximum": 23.267649999999996
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 36.4366035,
+        "median": 33.845479999999995,
+        "sd": 11.4421694235634,
+        "minimum": 33.16153,
+        "maximum": 85.00084
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 26.681862,
+        "median": 25.04619,
+        "sd": 7.130135402194503,
+        "minimum": 24.881790000000002,
+        "maximum": 56.96328
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 26.650208499999998,
+        "median": 25.034875,
+        "sd": 7.101252264912061,
+        "minimum": 24.9639,
+        "maximum": 56.818619999999996
+      }
+    },
+    "transformer_cpu": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 59.067087,
+        "median": 58.37025,
+        "sd": 3.3814453568883973,
+        "minimum": 57.410160000000005,
+        "maximum": 73.34244
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.6393455,
+        "median": 21.600875000000002,
+        "sd": 0.1544959109823405,
+        "minimum": 21.42625,
+        "maximum": 22.2282
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 58.868497,
+        "median": 58.406699999999994,
+        "sd": 1.5261247677700058,
+        "minimum": 58.19643000000001,
+        "maximum": 64.55932
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.681075500000002,
+        "median": 21.65547,
+        "sd": 0.165404485284917,
+        "minimum": 21.330080000000002,
+        "maximum": 22.27383
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.6212545,
+        "median": 21.625785,
+        "sd": 0.12744833374124995,
+        "minimum": 21.14782,
+        "maximum": 21.753459999999997
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 24.0848065,
+        "median": 24.12328,
+        "sd": 0.4356546105306119,
+        "minimum": 23.33678,
+        "maximum": 24.74102
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.6207975,
+        "median": 21.622529999999998,
+        "sd": 0.1651697758089828,
+        "minimum": 21.220909999999996,
+        "maximum": 21.88177
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 24.116659,
+        "median": 24.0611,
+        "sd": 0.5867348954744113,
+        "minimum": 23.087110000000003,
+        "maximum": 25.39801
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.642641,
+        "median": 21.6423,
+        "sd": 0.09051263598322319,
+        "minimum": 21.409470000000002,
+        "maximum": 21.808699999999998
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.606126500000002,
+        "median": 21.62685,
+        "sd": 0.18821524537711753,
+        "minimum": 21.07309,
+        "maximum": 21.867350000000002
+      }
+    },
+    "transformer_fpga": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 31.1040775,
+        "median": 31.106515,
+        "sd": 0.04827596731021356,
+        "minimum": 31.01636,
+        "maximum": 31.199740000000002
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.0290625,
+        "median": 17.963789999999996,
+        "sd": 0.27771518094083447,
+        "minimum": 17.92758,
+        "maximum": 19.204880000000003
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 31.074496,
+        "median": 31.07382,
+        "sd": 0.036229295415668494,
+        "minimum": 31.023849999999996,
+        "maximum": 31.131629999999998
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 17.983314,
+        "median": 17.982014999999997,
+        "sd": 0.05568227502158043,
+        "minimum": 17.891280000000002,
+        "maximum": 18.095959999999998
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 17.9594435,
+        "median": 17.958840000000002,
+        "sd": 0.03230040023786503,
+        "minimum": 17.902830000000005,
+        "maximum": 18.02402
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 37.089989,
+        "median": 37.10629,
+        "sd": 0.11095050033804794,
+        "minimum": 36.82546000000001,
+        "maximum": 37.24443000000001
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 17.974835,
+        "median": 17.967425,
+        "sd": 0.04781523799178028,
+        "minimum": 17.895560000000003,
+        "maximum": 18.10075
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 37.0579555,
+        "median": 37.07302,
+        "sd": 0.06844577419388136,
+        "minimum": 36.94672,
+        "maximum": 37.20898
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 17.9831315,
+        "median": 17.983235,
+        "sd": 0.05384636265631857,
+        "minimum": 17.91051,
+        "maximum": 18.159769999999998
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 17.9711465,
+        "median": 17.96487,
+        "sd": 0.07364158609708696,
+        "minimum": 17.815520000000003,
+        "maximum": 18.19652
+      }
+    },
+    "static_cpu": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 58.802434500000004,
+        "median": 58.41256,
+        "sd": 2.1129144714512593,
+        "minimum": 57.613060000000004,
+        "maximum": 67.6481
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.74597,
+        "median": 21.688215,
+        "sd": 0.35337782528053485,
+        "minimum": 21.51344,
+        "maximum": 23.21542
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 58.4313895,
+        "median": 58.51545,
+        "sd": 0.297244855304512,
+        "minimum": 57.61395,
+        "maximum": 58.849230000000006
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.924097,
+        "median": 21.66035,
+        "sd": 1.1779721310174038,
+        "minimum": 21.57752,
+        "maximum": 26.92138
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.6488425,
+        "median": 21.620724999999997,
+        "sd": 0.13230780391810368,
+        "minimum": 21.281950000000002,
+        "maximum": 22.003009999999996
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 23.7857735,
+        "median": 23.510455,
+        "sd": 0.7316350871005153,
+        "minimum": 22.93188,
+        "maximum": 25.14692
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.727701,
+        "median": 21.69214,
+        "sd": 0.23210358651393384,
+        "minimum": 21.44562,
+        "maximum": 22.642649999999996
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 23.99136,
+        "median": 23.930515,
+        "sd": 0.39976610107464233,
+        "minimum": 23.40753,
+        "maximum": 24.97793
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.6685875,
+        "median": 21.66538,
+        "sd": 0.0574599900044872,
+        "minimum": 21.579520000000002,
+        "maximum": 21.80379
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 21.717608,
+        "median": 21.67152,
+        "sd": 0.15212111707106057,
+        "minimum": 21.555320000000002,
+        "maximum": 22.17049
+      }
+    },
+    "static_fpga": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 31.531481,
+        "median": 31.026225000000004,
+        "sd": 2.215780637375317,
+        "minimum": 30.95402,
+        "maximum": 40.943
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.1909805,
+        "median": 17.966405,
+        "sd": 0.9171489903498441,
+        "minimum": 17.92335,
+        "maximum": 22.081270000000004
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 31.181024999999998,
+        "median": 31.05774,
+        "sd": 0.6067737276561033,
+        "minimum": 30.934299999999997,
+        "maximum": 33.741319999999995
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.062095,
+        "median": 17.95241,
+        "sd": 0.4909451337391031,
+        "minimum": 17.83021,
+        "maximum": 20.13585
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.5609445,
+        "median": 17.991895000000003,
+        "sd": 1.8258761518081785,
+        "minimum": 17.850830000000002,
+        "maximum": 24.8062
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 37.2700215,
+        "median": 37.10315,
+        "sd": 0.8722650229402767,
+        "minimum": 36.93637,
+        "maximum": 40.96444
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.1010275,
+        "median": 17.991529999999997,
+        "sd": 0.48742030561415944,
+        "minimum": 17.883269999999996,
+        "maximum": 20.156100000000002
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 37.2694695,
+        "median": 37.06518000000001,
+        "sd": 1.0495111384453193,
+        "minimum": 36.89964,
+        "maximum": 41.71831
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 19.225288,
+        "median": 17.960345000000004,
+        "sd": 5.6267602615271475,
+        "minimum": 17.902109999999997,
+        "maximum": 43.13031
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 18.532342,
+        "median": 17.952035000000002,
+        "sd": 2.411025827204765,
+        "minimum": 17.880119999999998,
+        "maximum": 28.75411
+      }
+    },
+    "static_unfused": {
+      "/layers.1/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 47.1302385,
+        "median": 47.09253,
+        "sd": 0.1811385089771736,
+        "minimum": 46.90558,
+        "maximum": 47.64836
+      },
+      "/layers.2/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 20.6210485,
+        "median": 20.50678,
+        "sd": 0.38028637522509523,
+        "minimum": 20.43932,
+        "maximum": 22.16108
+      },
+      "/layers.1/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 47.213887,
+        "median": 47.124015,
+        "sd": 0.4318714643709334,
+        "minimum": 47.01443,
+        "maximum": 49.02654
+      },
+      "/layers.2/blocks.2/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 20.538831000000002,
+        "median": 20.528660000000002,
+        "sd": 0.052175227223170674,
+        "minimum": 20.445750000000004,
+        "maximum": 20.676920000000003
+      },
+      "/layers.2/blocks.3/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 20.519302500000002,
+        "median": 20.486325,
+        "sd": 0.10458995176024559,
+        "minimum": 20.36083,
+        "maximum": 20.83003
+      },
+      "/layers.3/blocks.1/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 30.062842500000002,
+        "median": 30.030609999999996,
+        "sd": 0.1476836081797842,
+        "minimum": 29.923610000000004,
+        "maximum": 30.62704
+      },
+      "/layers.2/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 20.528004,
+        "median": 20.50432,
+        "sd": 0.13088983171475072,
+        "minimum": 20.406820000000003,
+        "maximum": 21.03802
+      },
+      "/layers.3/blocks.0/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 30.354245,
+        "median": 30.068995,
+        "sd": 1.3394354626699612,
+        "minimum": 29.923360000000002,
+        "maximum": 36.036049999999996
+      },
+      "/layers.2/blocks.5/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 20.5248875,
+        "median": 20.52204,
+        "sd": 0.03923520463684054,
+        "minimum": 20.44773,
+        "maximum": 20.60246
+      },
+      "/layers.2/blocks.4/mlp/fc1/Add_output_0__matmul_converted": {
+        "n": 20,
+        "mean": 20.536997500000002,
+        "median": 20.526005,
+        "sd": 0.044912758927432274,
+        "minimum": 20.47907,
+        "maximum": 20.630609999999997
+      }
+    }
+  }
+}
